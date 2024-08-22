@@ -433,11 +433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\muthuProject\\CarParkingBooking\\CarParkingBooking.csproj",
+      "projectUniqueName": "E:\\muthumainproject\\CarParkingBooking\\CarParkingBooking.csproj",
       "projectName": "CarParkingBooking",
-      "projectPath": "E:\\muthuProject\\CarParkingBooking\\CarParkingBooking.csproj",
+      "projectPath": "E:\\muthumainproject\\CarParkingBooking\\CarParkingBooking.csproj",
       "packagesPath": "C:\\Users\\surya parakash\\.nuget\\packages\\",
-      "outputPath": "E:\\muthuProject\\CarParkingBooking\\obj\\",
+      "outputPath": "E:\\muthumainproject\\CarParkingBooking\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\surya parakash\\AppData\\Roaming\\NuGet\\NuGet.Config",
