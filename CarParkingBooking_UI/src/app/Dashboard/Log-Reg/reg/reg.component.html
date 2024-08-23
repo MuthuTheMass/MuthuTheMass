@@ -2,28 +2,35 @@
     <div class="halfbody">
     <div class="container" id="container">
         <div class="form-container sign-up">
-<form>
+<form [formGroup]="regpage">
     <h1>Create Account</h1>
-    <div class="social-icon">
+    <!-- <div class="social-icons">
         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-    <span>
+    </div> -->
+    <!-- <span>
         Or use your email for registeration
-    </span>
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>Sign Up</button>
+    </span> -->
+    <input type="text" placeholder="Name"  name="fullname" formControlName="fullname">
+    <span class="error" *ngIf="this.validate.validation(this.regpage,'fullname')">*Enter the Fullname</span>
+    <input type="email" placeholder="Email"  name="regemail" formControlName="regemail">
+    <span class="error" *ngIf="this.validate.validation(this.regpage,'regemail')">*Enter the Email</span>
+    <input type="text" placeholder="mobilenumber"  name="mobilenumber" formControlName="mobilenumber">
+    <span class="error" *ngIf="this.validate.validation(this.regpage,'mobilenumber')">*Enter the mobilenumber</span>
+    <input type="password" placeholder="Password" name="password" formControlName="password">
+    <span class="error" *ngIf="this.validate.validation(this.regpage,'password')">*Enter the password</span>
+    <input type="password" placeholder="confirmpassword" name="confirmpassword" formControlName="confirmpassword" >
+    <span class="error" *ngIf="this.validate.validation(this.regpage,'confirmpassword')">*Confirmpassword</span>
+    <button  (click)="signin()">Sign Up</button>
 </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form [formGroup]="login">
                 <h1>Sign In</h1>
                 <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi58N6e_IiIAxX1iK8BHYjJAaAQPAgJ" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
@@ -31,10 +38,14 @@
                 <span>
                     Or use your email Password
                 </span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+            
+                <input type="email" placeholder="Email" name="useremail" formControlName="useremail">
+                <span class="error" *ngIf="this.validate.validation(login,'useremail')">Enter The Valid Email</span>
+                
+                <input type="password" placeholder="Password" class="form-control"  name="pass" formControlName="pass">
+                <span class="error" *ngIf="this.validate.validation(login,'pass')">Enter The Valid Password</span>
                 <a href="#">Forget your Password?</a>
-                <button>Sign Up</button>
+                <button (click)="logininto()">Sign Up</button>
             </form>
                     </div>
 
