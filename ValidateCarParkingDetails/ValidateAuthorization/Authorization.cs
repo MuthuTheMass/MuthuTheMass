@@ -1,4 +1,6 @@
-﻿using CarParkingBookingVM.Login;
+﻿using CarParkingBookingDatabase.BookingDBContext;
+using CarParkingBookingDatabase.DBModel;
+using CarParkingBookingVM.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,28 +11,58 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 {
     public interface IAuthorization
     {
-        Task<bool> ValidateLoginDetials(SignUpVM? SignUpDetials);
+        Task<bool> UpsertLoginDetials(SignUpVM? SignUpDetials);
     }
 
     public class Authorization : IAuthorization
     {
-        public Task<bool> ValidateLoginDetials(SignUpVM? SignUpDetials)
+        private readonly CarParkingBookingDBContext dBContext;
+
+        public Authorization(CarParkingBookingDBContext carParkingBookingDB)
+        {
+            dBContext = carParkingBookingDB;
+        }
+
+
+        public async Task<bool> UpsertLoginDetials(SignUpVM? SignUpDetials)
         {
             if(SignUpDetials is not null)
             {
                 if (SignUpDetials.Password.Equals(SignUpDetials.ConfirmPassword) && SignUpDetials.MobileNumber.Length != 10 && SignUpDetials.Email.Contains("@") && SignUpDetials.Email.EndsWith(".com"))
                 {
-                    return Task.FromResult(false);
+                    return await Task.FromResult(false);
                 }
                 else
                 {
-                    //Implement add details in SQL DB
+                    var duplicate = dBContext.userDetails.FirstOrDefault(v => v.MobileNumber == SignUpDetials.MobileNumber);
+                    if (duplicate is null) 
+                    {
+                        var data = new UserDetails()
+                        {
+                            Name = SignUpDetials.UserName,
+                            Email = SignUpDetials.Email,
+                            MobileNumber = SignUpDetials.MobileNumber,
+                            Password = SignUpDetials.Password,
+                        };
 
-                    return Task.FromResult(true);
+                        await dBContext.userDetails.AddAsync(data);
+                        await dBContext.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        duplicate.Name = SignUpDetials.UserName;
+                        duplicate.Email = SignUpDetials.Email;
+                        duplicate.Password = SignUpDetials.Password;
+                        
+                        dBContext.userDetails.Update(duplicate);
+                        await dBContext.SaveChangesAsync();
+                    }
+
+                    return await Task.FromResult(true);
                 }
 
             }
-            return Task.FromResult(false);
+            return await Task.FromResult(false);
         }
     }
 }

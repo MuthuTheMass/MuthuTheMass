@@ -20,7 +20,7 @@ namespace CarParkingBooking.Controllers
         public async Task<ActionResult> Login([FromBody] SignUpVM signUp)
         {
 
-            var result = await authorization.ValidateLoginDetials(signUp);
+            var result = await authorization.UpsertLoginDetials(signUp);
 
             return Ok(result);
 

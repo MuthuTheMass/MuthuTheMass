@@ -1,4 +1,6 @@
 using CarParkingBooking.ExceptionHandler;
+using CarParkingBookingDatabase.BookingDBContext;
+using Microsoft.EntityFrameworkCore;
 using ValidateCarParkingDetails.ValidateAuthorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IAuthorization, Authorization>();
+builder.Services.AddDbContext<CarParkingBookingDBContext>(opt => 
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection"))
+    );
 
 
 var app = builder.Build();

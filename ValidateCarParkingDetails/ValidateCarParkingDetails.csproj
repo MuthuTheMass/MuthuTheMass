@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarParkingBookingDatabase\CarParkingBookingDatabase.csproj" />
     <ProjectReference Include="..\CarParkingBookingVM\CarParkingBookingVM.csproj" />
   </ItemGroup>
 

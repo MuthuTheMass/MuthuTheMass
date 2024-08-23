@@ -5,9 +5,11 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarParkingBooking", "CarParkingBooking.csproj", "{C471F369-9E30-4254-9759-F21F931E8449}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingBookingVM", "..\CarParkingBookingVM\CarParkingBookingVM.csproj", "{938980A9-1BA1-492F-83C0-BD81FB95645C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarParkingBookingVM", "..\CarParkingBookingVM\CarParkingBookingVM.csproj", "{938980A9-1BA1-492F-83C0-BD81FB95645C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateCarParkingDetails", "..\ValidateCarParkingDetails\ValidateCarParkingDetails.csproj", "{E4A252C4-701D-4A69-8734-6A1EDEC2AB56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidateCarParkingDetails", "..\ValidateCarParkingDetails\ValidateCarParkingDetails.csproj", "{E4A252C4-701D-4A69-8734-6A1EDEC2AB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingBookingDatabase", "..\CarParkingBookingDatabase\CarParkingBookingDatabase.csproj", "{53273B31-DED3-47B2-B459-18477A1CAC55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E4A252C4-701D-4A69-8734-6A1EDEC2AB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4A252C4-701D-4A69-8734-6A1EDEC2AB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4A252C4-701D-4A69-8734-6A1EDEC2AB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53273B31-DED3-47B2-B459-18477A1CAC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53273B31-DED3-47B2-B459-18477A1CAC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53273B31-DED3-47B2-B459-18477A1CAC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53273B31-DED3-47B2-B459-18477A1CAC55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
