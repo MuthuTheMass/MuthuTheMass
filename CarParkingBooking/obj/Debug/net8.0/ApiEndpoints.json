@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "CarParkingBooking.Controllers.AuthorizationController",
+    "Method": "Login",
+    "RelativePath": "api/Authorization",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signUp",
+        "Type": "CarParkingBookingVM.Login.SignUpVM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

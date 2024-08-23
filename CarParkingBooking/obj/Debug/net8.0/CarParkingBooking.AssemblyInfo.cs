@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarParkingBooking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2aeb97f7fd38a5fd7e9be7ae80a4055248c02e0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fadb4b0ef8b7e21b314b6850ccdf96b3ea1d26b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarParkingBooking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarParkingBooking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
