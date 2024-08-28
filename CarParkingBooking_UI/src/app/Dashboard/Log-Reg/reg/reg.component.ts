@@ -15,7 +15,9 @@ import { CommonModule } from '@angular/common';
 })
 export class RegComponent {
 validators : any;
-
+signinto() {
+  throw new Error('Method not implemented.');
+  }
 
 
 
@@ -65,39 +67,41 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
     
     
     registerBtn () {
-        const container: HTMLElement | null = document.getElementById('container');
-    const registerBtn: HTMLElement | null = document.getElementById('register');
-    const loginBtn: HTMLElement | null = document.getElementById('login');
+        const container = document.getElementById('container');
+    const registerBtn  = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
 
-
-        registerBtn?.addEventListener('click', () => {
-            if (container) {
-                container.classList.add("active");
-            }
-        });
+      container?.classList.add('active');
+        // registerBtn?.addEventListener('click', () => {
+        //     if (container) {
+        //         container.classList.add("active");
+        //     }
+        // });
     }
        
     loginBtn() {
 
-        const container: HTMLElement | null = document.getElementById('container');
-    const registerBtn: HTMLElement | null = document.getElementById('register');
-    const loginBtn: HTMLElement | null = document.getElementById('login');
+        const container  = document.getElementById('container');
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
 
-        loginBtn?.addEventListener('click', () => {
-            if (container) {
-                container.classList.remove("active");
-            }
-        });
+
+        container?.classList.remove("active");
+        // loginBtn?.addEventListener('click', () => {
+        //     if (container) {
+        //         container.classList.remove("active");
+        //     }
+        // });
     }
 
 
     signin(){
 
         if(this.regpage.valid){
-          this.router.navigate(['/home']);
+          this.router.navigate(['/main']);
         }
         else{
-          this.checkValidityAndMarkAsTouched();
+          this. checkValidityAndMarkAsTouchedreg();
         }
       
     }
@@ -106,19 +110,35 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
     logininto(){
 
         if(this.login.valid){
-          this.router.navigate(['/home']);
+          this.router.navigate(['/main']);
         }
         else{
           this.checkValidityAndMarkAsTouched();
         }
       }
-    checkValidityAndMarkAsTouched() {
-
-    }
+   
 
     
  
 
+    checkValidityAndMarkAsTouched(): void {
+      // Loop through all form controls and mark them as touched
+      Object.keys(this.login.controls).forEach((controlName) => {
+        const control = this.login.get(controlName);
+        if (control) {
+          control.markAsTouched();
+        }
+      });
+    }
+    checkValidityAndMarkAsTouchedreg(): void {
+      // Loop through all form controls and mark them as touched
+      Object.keys(this.regpage.controls).forEach((controlName) => {
+        const control = this.regpage.get(controlName);
+        if (control) {
+          control.markAsTouched();
+        }
+      });
+    }
 
 
 }
