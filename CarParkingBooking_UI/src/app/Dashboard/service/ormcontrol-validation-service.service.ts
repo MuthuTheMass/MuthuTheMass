@@ -10,7 +10,7 @@ export class OrmcontrolValidationServiceService {
 
   public validation(controls:any,controllerName:string){
     let valid=controls.get(controllerName)
-
+ 
     if(valid.errors?.required && valid.touched){
   return true;
     }
