@@ -1,4 +1,6 @@
-﻿using CarParkingBookingDatabase.BookingDBContext;
+﻿using AutoMapper;
+using CarParkingBooking.Automapper;
+using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Login;
 using System;
@@ -17,10 +19,12 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     public class Authorization : IAuthorization
     {
         private readonly CarParkingBookingDBContext dBContext;
+        private readonly IMapper mapper;
 
         public Authorization(CarParkingBookingDBContext carParkingBookingDB)
         {
             dBContext = carParkingBookingDB;
+            mapper = AutoMapperConfig.Initialize();
         }
 
 
