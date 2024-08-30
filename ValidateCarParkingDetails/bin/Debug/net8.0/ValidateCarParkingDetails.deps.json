@@ -566,18 +566,12 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8"
         },
         "runtime": {
-          "CarParkingBookingDatabase.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "CarParkingBookingDatabase.dll": {}
         }
       },
       "CarParkingBookingVM/1.0.0": {
         "runtime": {
-          "CarParkingBookingVM.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "CarParkingBookingVM.dll": {}
         }
       }
     }
