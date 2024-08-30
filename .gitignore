@@ -12,3 +12,7 @@ CarParkingBooking/.vs/CarParkingBooking/v17/.futdcache.v2
 /CarParkingBookingDatabase/obj/*
 /CarParkingBookingVM/obj/*
 /ValidateCarParkingDetials/obj/*
+/CarParkingBooking/obj/Debug/net8.0
+/CarParkingBookingDatabase/obj/Debug/net8.0
+/CarParkingBookingVM/obj/Debug/net8.0
+/ValidateCarParkingDetails/obj/Debug/net8.0
