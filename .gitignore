@@ -2,11 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/CarParkingBooking/.vs
-/CarParkingBooking/.vs
+/.vs/*
+/CarParkingBooking/.vs/*
 CarParkingBooking/.vs/CarParkingBooking/v17/.futdcache.v2
-/CarParkingBooking/.vs/CarParkingBooking
-/CarParkingBooking/obj
-/CarParkingBookingDatabase/obj/Debug/net8.0
-/CarParkingBookingVM/obj/Debug/net8.0
+/CarParkingBooking/.vs/CarParkingBooking/*
+/CarParkingBooking/obj/*
+/CarParkingBookingDatabase/obj/Debug/net8.0/*
+/CarParkingBookingVM/obj/Debug/net8.0/*
