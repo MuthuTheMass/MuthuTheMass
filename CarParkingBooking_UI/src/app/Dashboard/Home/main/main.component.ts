@@ -9,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  getdata(){
+    const searchbox= document.getElementById('loac') as HTMLInputElement;
+    const putdata = document.getElementById('sdata');
+    const sbtn = document.getElementById('btnd');
+    
+    
+      if (putdata) {
+        putdata.innerHTML = searchbox?.value;
+      }
+  }
 }
