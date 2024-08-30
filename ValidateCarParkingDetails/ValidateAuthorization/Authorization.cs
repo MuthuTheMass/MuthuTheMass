@@ -28,7 +28,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if(SignUpDetials is not null)
             {
-                if (SignUpDetials.Password.Equals(SignUpDetials.ConfirmPassword) && SignUpDetials.MobileNumber.Length != 10 && SignUpDetials.Email.Contains("@") && SignUpDetials.Email.EndsWith(".com"))
+                if (SignUpDetials.Password.Equals(SignUpDetials.ConfirmPassword) || SignUpDetials.MobileNumber.Length != 10 || SignUpDetials.Email.Contains("@") || SignUpDetials.Email.EndsWith(".com"))
                 {
                     return await Task.FromResult(false);
                 }
