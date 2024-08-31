@@ -19,3 +19,14 @@ CarParkingBooking/.vs/CarParkingBooking/v17/.futdcache.v2
 /CarParkingBooking/obj/Debug/net8.0/*
 .vs/
 .obj/
+/CarParkingBooking/bin/Debug/net8.0/AutoMapper.dll
+/CarParkingBooking/obj/Debug/net8.0/CarParkingBooking.AssemblyInfo.cs
+/CarParkingBooking/obj/Debug/net8.0/CarParkingBooking.AssemblyInfoInputs.cache
+/CarParkingBooking/obj/Debug/net8.0/CarParkingBooking.csproj.AssemblyReference.cache
+/CarParkingBookingDatabase/obj/Debug/net8.0/CarParkingBookingDatabase.AssemblyInfo.cs
+/CarParkingBookingDatabase/obj/Debug/net8.0/CarParkingBookingDatabase.AssemblyInfoInputs.cache
+/CarParkingBookingVM/obj/Debug/net8.0/CarParkingBookingVM.AssemblyInfo.cs
+/CarParkingBookingVM/obj/Debug/net8.0/CarParkingBookingVM.AssemblyInfoInputs.cache
+/ValidateCarParkingDetails/obj/Debug/net8.0/ValidateCarParkingDetails.AssemblyInfo.cs
+/ValidateCarParkingDetails/obj/Debug/net8.0/ValidateCarParkingDetails.AssemblyInfoInputs.cache
+/ValidateCarParkingDetails/obj/Debug/net8.0/ValidateCarParkingDetails.csproj.AssemblyReference.cache
