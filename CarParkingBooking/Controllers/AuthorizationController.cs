@@ -34,5 +34,11 @@ namespace CarParkingBooking.Controllers
             var result = await authorization.VerifyUser(loginVM);
             return Ok(result);
         }
+
+        [HttpPost("alreadyexists")]
+        public async Task<ActionResult> AlreadyExists()
+        {
+
+        }
     }
 }

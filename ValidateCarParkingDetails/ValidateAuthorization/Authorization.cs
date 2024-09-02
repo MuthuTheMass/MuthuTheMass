@@ -11,6 +11,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         Task<bool> UpsertLoginDetials(SignUpVM? SignUpDetials);
 
         Task<AuthorizedLoginVM> VerifyUser(LoginVM login);
+
+        Task<bool> CheckUserAlreadyExists(string Email);
     }
 
     public class Authorization : IAuthorization
@@ -24,10 +26,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             mapper = _mapper;
         }
 
-
         public async Task<bool> UpsertLoginDetials(SignUpVM? SignUpDetials)
         {
-            if(SignUpDetials is not null)
+            if(SignUpDetials is not null) 
             {
                 if (!(SignUpDetials.Password.Equals(SignUpDetials.ConfirmPassword))
                     || !(SignUpDetials.MobileNumber.Length == 10)
@@ -77,6 +78,14 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 }
             }
             return Task.FromResult(new AuthorizedLoginVM());
+        }
+
+        public Task<bool> CheckUserAlreadyExists(string Email)
+        {
+            if (string.IsNullOrEmpty(Email))
+            {
+                var data = dBContext.userDetails.Where(y => y.Email == Email).Select(v=>v.Email).ToList();
+            }
         }
     }
 }
