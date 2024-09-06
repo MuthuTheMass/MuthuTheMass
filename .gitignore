@@ -83,3 +83,11 @@ CarParkingBooking/.vs/CarParkingBooking/v17/.futdcache.v2
 /CarParkingBooking/obj/project.assets.json
 /CarParkingBooking/obj/CarParkingBooking.csproj.nuget.dgspec.json
 /CarParkingBooking/obj/project.nuget.cache
+/CarParkingBooking/obj/Debug/net8.0/CarParkingBooking.GeneratedMSBuildEditorConfig.editorconfig
+/CarParkingBooking/obj/CarParkingBooking.csproj.nuget.g.props
+/CarParkingBookingDatabase/obj/Debug/net8.0/CarParkingBookingDatabase.GeneratedMSBuildEditorConfig.editorconfig
+/CarParkingBookingDatabase/obj/CarParkingBookingDatabase.csproj.nuget.g.props
+/CarParkingBookingVM/obj/Debug/net8.0/CarParkingBookingVM.GeneratedMSBuildEditorConfig.editorconfig
+/CarParkingBookingVM/obj/CarParkingBookingVM.csproj.nuget.g.props
+/ValidateCarParkingDetails/obj/Debug/net8.0/ValidateCarParkingDetails.GeneratedMSBuildEditorConfig.editorconfig
+/ValidateCarParkingDetails/obj/ValidateCarParkingDetails.csproj.nuget.g.props
