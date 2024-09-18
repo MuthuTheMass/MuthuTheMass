@@ -1,4 +1,5 @@
-﻿using CarParkingBookingVM.Login;
+﻿using CarParkingBookingVM.Authorization;
+using CarParkingBookingVM.Login;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ValidateCarParkingDetails.ValidateAuthorization;
@@ -16,14 +17,27 @@ namespace CarParkingBooking.Controllers
             authorization = _authorization;
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Login([FromBody] SignUpVM signUp)
+        [HttpPost("signup")]
+        public async Task<ActionResult> SignUp([FromBody] SignUpVM signUp)
         {
 
             var result = await authorization.UpsertLoginDetials(signUp);
 
             return Ok(result);
 
+
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> Login([FromBody] LoginVM loginVM)
+        {
+            var result = await authorization.VerifyUser(loginVM);
+            return Ok(result);
+        }
+
+        [HttpPost("alreadyexists")]
+        public async Task<ActionResult> AlreadyExists()
+        {
 
         }
     }
