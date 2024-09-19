@@ -1,3 +1,5 @@
+using AutoMapper;
+using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
