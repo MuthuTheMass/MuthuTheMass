@@ -38,3 +38,5 @@ CarParkingBooking/.vs/
 >>>>>>> main
 /CarParkingBooking/bin/Debug/net8.0
 /CarParkingBookingDatabase/bin/Debug/net8.0
+/CarParkingBookingVM/bin/Debug/net8.0
+/ValidateCarParkingDetails/bin/Debug/net8.0
