@@ -1,4 +1,3 @@
-using CarParkingBooking.Automapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +15,11 @@ builder.Services.AddTransient<IAuthorization, Authorization>();
 builder.Services.AddDbContext<CarParkingBookingDBContext>(opt => 
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection"))
     );
+
+builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MapperProfile());
+}).CreateMapper());
 
 var app = builder.Build();
 

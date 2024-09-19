@@ -1,0 +1,17 @@
+.container-fluid{
+    background-color: aqua;
+    height: 50px;
+}
+.navbar{
+    margin: 0px;
+    padding: 0px;
+    position: static;
+    width: 100%;
+}
+
+.form-control{
+    box-shadow: none;
+}
+.d-flex{
+    margin-right: 80px;
+}
