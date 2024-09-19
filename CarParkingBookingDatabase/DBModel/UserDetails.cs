@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarParkingBookingVM.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,12 +15,14 @@ namespace CarParkingBookingDatabase.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [DataType(DataType.Text)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public required string Email { get; set; }
         [DataType(DataType.PhoneNumber)]
-        public string MobileNumber { get; set; }
+        public required string MobileNumber { get; set; }
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public required string Password { get; set; }
+        [DataType(DataType.Text)]
+        public string Rights { get; set; } = AccessToUsers.User.ToString();
     }
 }

@@ -11,6 +11,17 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MainComponent {
 
+  /**
+   *
+   */
+  constructor() {
+    
+  }
+
+  ngOnInit(){
+    
+  }
+
   getdata(){
     const searchbox= document.getElementById('loac') as HTMLInputElement;
     const putdata = document.getElementById('sdata');
