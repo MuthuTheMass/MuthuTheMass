@@ -35,10 +35,10 @@ namespace CarParkingBooking.Controllers
             return Ok(result);
         }
 
-        [HttpPost("alreadyexists")]
-        public async Task<ActionResult> AlreadyExists()
-        {
+        //[HttpPost("alreadyexists")]
+        //public async Task<ActionResult> AlreadyExists()
+        //{
 
-        }
+        //}
     }
 }
