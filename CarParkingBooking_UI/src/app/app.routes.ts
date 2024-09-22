@@ -7,6 +7,7 @@ import { NavbarComponent } from './Dashboard/Home/navbar/navbar.component';
 import { ArticalComponent } from './Dashboard/Home/main/artical/artical.component';
 import { BalajiarComponent } from './Dashboard/Home/main/balajiar/balajiar.component';
 import { MuthubookComponent } from './Dashboard/Home/muthubook/muthubook.component';
+import { UserdataComponent } from './Dashboard/Home/userdata/userdata.component';
 
 export const routes: Routes = [
 
@@ -30,6 +31,9 @@ export const routes: Routes = [
         },
         {
             path:"book",component:MuthubookComponent
+        },
+        {
+            path:"user",component:UserdataComponent
         },
         {
             path:"nav",component:NavbarComponent,title:"navbar"
