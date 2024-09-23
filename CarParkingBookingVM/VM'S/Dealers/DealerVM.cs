@@ -1,4 +1,7 @@
-﻿namespace CarParkingBookingVM.VM_S.Dealers
+﻿
+using System.Text.Json.Serialization;
+
+namespace CarParkingBookingVM.VM_S.Dealers
 {
 
     public class Filter
@@ -35,9 +38,19 @@
 
         public string DealerLandmark { get; set; }
 
-        public string DealerGPSLocation { get; set; }
+        public GPSLocation DealerGPSLocation { get; set; }
 
         public string DealerRating { get; set; }
 
+        private string DealerGPS
+        {
+            set { value = "" }
+        }
+    }
+
+    public class GPSLocation
+    {
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }

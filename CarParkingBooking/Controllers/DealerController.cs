@@ -21,5 +21,11 @@ namespace CarParkingBooking.Controllers
         {
             return Ok(dealerData.SearchData(filter));
         }
+
+        [HttpPost("AddDealer")]
+        public IActionResult Add(DealerVM dealerValue) 
+        {
+            return Ok(dealerData.AddDealerData(dealerValue));
+        }
     }
 }

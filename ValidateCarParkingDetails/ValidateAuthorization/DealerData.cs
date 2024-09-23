@@ -9,6 +9,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     public interface IDealerData
     {
         Task<List<DealerVM>> SearchData(Filter filter);
+
+        Task<bool> AddDealerData(DealerVM dealerVM);
     }
 
     public class DealerData : IDealerData
@@ -22,6 +24,22 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             dbContext = _dbContext;
         }
 
+        public async Task<bool> AddDealerData(DealerVM dealerVM)
+        {
+            if (!string.IsNullOrEmpty(dealerVM.DealerName))
+            {
+                var data = mapper.Map<DealerDetails>(dealerVM);
+                await dbContext.dealerDetails.AddAsync(data);
+                await dbContext.SaveChangesAsync();
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public Task<List<DealerVM>> SearchData(Filter filter)
         {
             List<DealerDetails>? data;
@@ -32,13 +50,14 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 foreach (var search in filter.filters)
                 {
-                    if (search.key.Contains("Address"))
+                    if (search.key.ToLower().Contains("address"))
                     {
                         query = query.Where(n=>n.DealerAddress.Contains(search.value));
                     }
-                    if (search.key.Contains("Timing"))
+                    if (search.key.ToLower().Contains("timing"))
                     {
-                        query = query.Where(n => TimingSeperation(n.DealerTiming) == search.value);
+                        query = query.Where(n => TimingSeperation(n.DealerTiming,1) == search.value)
+                                     .Where(y => TimingSeperation(y.DealerTiming,2) == search.value);
                     }
                 }
 
@@ -52,9 +71,17 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         }
 
 
-        public string TimingSeperation(string date)
+        private string TimingSeperation(string date,int count)
         {
-            return date.Split("-").First();
+            switch (count)
+            {
+                case 1:
+                    return date.Split("-").First();
+                case 2:
+                    return date.Split("-").Last();
+
+            }
+            return string.Empty;
         }
     }
 }
