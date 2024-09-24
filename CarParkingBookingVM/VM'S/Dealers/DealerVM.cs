@@ -30,7 +30,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public string DealerDescription { get; set; }
 
-        public DateOnly? DealerStartDate { get; set; }
+        public DateTime? DealerStartDate { get; set; }
 
         public string DealerTiming { get; set; }
 
@@ -42,10 +42,6 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public string DealerRating { get; set; }
 
-        private string DealerGPS
-        {
-            set { value = "" }
-        }
     }
 
     public class GPSLocation

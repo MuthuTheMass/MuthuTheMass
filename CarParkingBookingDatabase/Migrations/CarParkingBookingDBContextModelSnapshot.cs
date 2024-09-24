@@ -71,7 +71,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("DealerID");
 
-                    b.ToTable("dealerDetails");
+                    b.ToTable("dealerDetails", (string)null);
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
@@ -104,7 +104,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("userDetails");
+                    b.ToTable("userDetails", (string)null);
                 });
 #pragma warning restore 612, 618
         }

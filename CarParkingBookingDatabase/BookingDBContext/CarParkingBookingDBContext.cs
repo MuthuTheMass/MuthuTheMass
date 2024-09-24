@@ -1,6 +1,5 @@
 ﻿using CarParkingBookingDatabase.DBModel;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
 
 namespace CarParkingBookingDatabase.BookingDBContext
 {
@@ -21,6 +20,7 @@ namespace CarParkingBookingDatabase.BookingDBContext
             modelBuilder.Entity<UserDetails>().HasKey(b => b.ID);
 
             modelBuilder.Entity<DealerDetails>().HasKey(b => b.DealerID);
+
 
         }
     }

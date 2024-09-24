@@ -22,7 +22,7 @@ namespace CarParkingBookingDatabase.DBModel
 
         [DataType(DataType.Date)]
         [AllowNull]
-        public DateOnly? DealerStartDate { get; set; }
+        public DateTime? DealerStartDate { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string DealerTiming { get; set; }
@@ -36,7 +36,7 @@ namespace CarParkingBookingDatabase.DBModel
         [DataType(DataType.Text)]
         public string DealerGPSLocation { get; set; }
 
-        [DataType("Number")]
+        [DataType(DataType.Text)]
         public string DealerRating { get; set; }
 
     }

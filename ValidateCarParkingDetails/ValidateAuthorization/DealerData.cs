@@ -2,6 +2,7 @@
 using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.VM_S.Dealers;
+using Microsoft.EntityFrameworkCore;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {
@@ -29,8 +30,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             if (!string.IsNullOrEmpty(dealerVM.DealerName))
             {
                 var data = mapper.Map<DealerDetails>(dealerVM);
-                await dbContext.dealerDetails.AddAsync(data);
-                await dbContext.SaveChangesAsync();
+                dbContext.dealerDetails.Add(data);
+                dbContext.SaveChanges();
                 return true;
 
             }
@@ -43,7 +44,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         public Task<List<DealerVM>> SearchData(Filter filter)
         {
             List<DealerDetails>? data;
-            var query = dbContext.dealerDetails.AsQueryable();
+            var query = dbContext.dealerDetails;
 
 
             if (filter.filters.Any())
@@ -52,12 +53,18 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 {
                     if (search.key.ToLower().Contains("address"))
                     {
-                        query = query.Where(n=>n.DealerAddress.Contains(search.value));
+                        query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails WHERE LOWER(DealerAddress) LIKE '%{search.value}%'");
                     }
                     if (search.key.ToLower().Contains("timing"))
                     {
-                        query = query.Where(n => TimingSeperation(n.DealerTiming,1) == search.value)
-                                     .Where(y => TimingSeperation(y.DealerTiming,2) == search.value);
+                        if (search.key.ToLower().Contains("timingstart"))
+                        {
+                            query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit WHERE TRIM(TimingSplit.value) = '{search.value}';");
+                        }
+                        if (search.key.ToLower().Contains("timingstop"))
+                        {
+                            query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit WHERE TRIM(TimingSplit.value) = '{search.value}';");
+                        }
                     }
                 }
 
@@ -65,6 +72,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             }
 
             data = query.ToList();
+
+            
             var result = mapper.Map<List<DealerVM>>(data);
 
             return Task.FromResult(result);
@@ -73,6 +82,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
         private string TimingSeperation(string date,int count)
         {
+            var t = date.Substring(0, date.IndexOf("-"));
             switch (count)
             {
                 case 1:
