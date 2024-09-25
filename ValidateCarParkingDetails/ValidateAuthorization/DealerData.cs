@@ -52,7 +52,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 if (filter.filters.Any(b=>b.key.Contains("timing")))
                 {
-                    queryString += "CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit";
+                    queryString += " CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit ";
                 }
 
                 foreach (var search in filter.filters)
