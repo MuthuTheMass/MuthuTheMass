@@ -13,7 +13,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddTransient<IAuthorization, Authorization>();
+builder.Services.AddTransient<IDealerData, DealerData>();
+
 builder.Services.AddDbContext<CarParkingBookingDBContext>(opt => 
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection"))
     );

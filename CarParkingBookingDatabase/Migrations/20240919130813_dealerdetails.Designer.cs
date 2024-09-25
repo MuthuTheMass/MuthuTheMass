@@ -4,6 +4,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    partial class CarParkingBookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240919130813_dealerdetails")]
+    partial class dealerdetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("DealerID");
 
-                    b.ToTable("dealerDetails", (string)null);
+                    b.ToTable("dealerDetails");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
@@ -104,7 +107,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("userDetails", (string)null);
+                    b.ToTable("userDetails");
                 });
 #pragma warning restore 612, 618
         }
