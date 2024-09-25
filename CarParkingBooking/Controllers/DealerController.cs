@@ -25,7 +25,13 @@ namespace CarParkingBooking.Controllers
         [HttpPost("AddDealer")]
         public IActionResult Add(DealerVM dealerValue) 
         {
-            return Ok(dealerData.AddDealerData(dealerValue));
+            return Ok(dealerData.UpsertDealerData(dealerValue));
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(DeleteDealer deleteDealer) 
+        {
+            return Ok(dealerData.RemoveDealer(deleteDealer));
         }
     }
 }

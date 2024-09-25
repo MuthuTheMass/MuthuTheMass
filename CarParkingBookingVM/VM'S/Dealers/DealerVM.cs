@@ -49,4 +49,13 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public string Latitude { get; set; }
         public string Longitude { get; set; }
     }
+
+    public class DeleteDealer
+    {
+        public string DealerName { get; set; } = string.Empty;
+
+        public string DealerEmail { get; set; } = string.Empty;
+
+        public string DealerPhoneNo { get; set; } = string.Empty;
+    }
 }

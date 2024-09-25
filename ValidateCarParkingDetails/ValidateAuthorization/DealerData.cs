@@ -12,7 +12,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     {
         Task<List<DealerVM>> SearchData(Filter filter);
 
-        Task<bool> AddDealerData(DealerVM dealerVM);
+        Task<bool> UpsertDealerData(DealerVM dealerVM);
+
+        Task<bool> RemoveDealer(DeleteDealer delete);
     }
 
     public class DealerData : IDealerData
@@ -26,20 +28,36 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             dbContext = _dbContext;
         }
 
-        public async Task<bool> AddDealerData(DealerVM dealerVM)
+        public Task<bool> UpsertDealerData(DealerVM dealerVM)
         {
-            if (!string.IsNullOrEmpty(dealerVM.DealerName))
-            {
-                var data = mapper.Map<DealerDetails>(dealerVM);
-                dbContext.dealerDetails.Add(data);
-                dbContext.SaveChanges();
-                return true;
+            var checkDuplicate = dbContext.dealerDetails.FirstOrDefault(g => g.DealerName == dealerVM.DealerName && 
+                                                                             g.DealerEmail == dealerVM.DealerEmail);
 
-            }
-            else
+            if (checkDuplicate is not null)
             {
-                return false;
+                mapper.Map(dealerVM, checkDuplicate);
+                dbContext.dealerDetails.Update(checkDuplicate);
+                dbContext.SaveChanges();
+                return Task.FromResult(true);
             }
+            else if (checkDuplicate is null)
+            {
+
+                if (!string.IsNullOrEmpty(dealerVM.DealerName))
+                {
+                    var data = mapper.Map<DealerDetails>(dealerVM);
+                    dbContext.dealerDetails.Add(data);
+                    dbContext.SaveChanges();
+                    return Task.FromResult(true);
+
+                }
+                else
+                {
+                    return Task.FromResult(false);
+                }
+            }
+
+            return Task.FromResult(false);
         }
 
         public Task<List<DealerVM>> SearchData(Filter filter)
@@ -73,8 +91,6 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                         }
                     }
                 }
-
-                
             }
 
             var query = dbContext.dealerDetails.FromSqlRaw(queryString);
@@ -99,6 +115,25 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
             }
             return string.Empty;
+        }
+
+        public Task<bool> RemoveDealer(DeleteDealer delete)
+        {
+            var isData = dbContext.dealerDetails.Where(d => d.DealerName == delete.DealerName ||
+                                                            d.DealerEmail == delete.DealerEmail ||
+                                                            d.DealerPhoneNo == delete.DealerPhoneNo).ToList();
+            if(isData.Count > 0)
+            {
+                dbContext.dealerDetails.RemoveRange(isData);
+                dbContext.SaveChanges();
+                return Task.FromResult(true);
+            }
+            else
+            {
+                return Task.FromResult(false);
+            }
+
+           
         }
     }
 }
