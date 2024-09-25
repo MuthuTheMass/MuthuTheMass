@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
+using CarParkingBookingDatabase.SqlHelper;
 using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,26 +45,31 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         public Task<List<DealerVM>> SearchData(Filter filter)
         {
             List<DealerDetails>? data;
-            var query = dbContext.dealerDetails;
+            var queryString = "SELECT * FROM dealerDetails ";
 
 
             if (filter.filters.Any())
             {
+                if (filter.filters.Any(b=>b.key.Contains("timing")))
+                {
+                    queryString += "CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit";
+                }
+
                 foreach (var search in filter.filters)
                 {
                     if (search.key.ToLower().Contains("address"))
                     {
-                        query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails WHERE LOWER(DealerAddress) LIKE '%{search.value}%'");
+                        queryString = SqlHelper.clause(queryString, $" LOWER(DealerAddress) LIKE '%{search.value.ToLower()}%'");
                     }
                     if (search.key.ToLower().Contains("timing"))
                     {
                         if (search.key.ToLower().Contains("timingstart"))
                         {
-                            query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit WHERE TRIM(TimingSplit.value) = '{search.value}';");
+                            queryString = SqlHelper.clause(queryString, $" TRIM(TimingSplit.value) = '{search.value}';");
                         }
                         if (search.key.ToLower().Contains("timingstop"))
                         {
-                            query = (DbSet<DealerDetails>)query.FromSqlRaw($"SELECT * FROM dealerDetails CROSS APPLY STRING_SPLIT(DealerTiming, '-') AS TimingSplit WHERE TRIM(TimingSplit.value) = '{search.value}';");
+                            queryString = SqlHelper.clause(queryString, $" TRIM(TimingSplit.value) = '{search.value}';)");
                         }
                     }
                 }
@@ -71,6 +77,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 
             }
 
+            var query = dbContext.dealerDetails.FromSqlRaw(queryString);
             data = query.ToList();
 
             
