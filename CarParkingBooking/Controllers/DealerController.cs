@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.AspNetCore.Mvc;
+using ValidateCarParkingDetails.ValidateAuthorization;
 
 namespace CarParkingBooking.Controllers
 {
@@ -7,11 +8,30 @@ namespace CarParkingBooking.Controllers
     [ApiController]
     public class DealerController : ControllerBase
     {
+        private readonly IDealerData dealerData;
 
-        [HttpPost]
-        public IActionResult Search()
+        public DealerController(IDealerData _dealerData)
         {
+            dealerData = _dealerData;
+        }
 
+
+        [HttpPost("search")]
+        public IActionResult Search(Filter filter)
+        {
+            return Ok(dealerData.SearchData(filter));
+        }
+
+        [HttpPost("AddDealer")]
+        public IActionResult Add(DealerVM dealerValue) 
+        {
+            return Ok(dealerData.UpsertDealerData(dealerValue));
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(DeleteDealer deleteDealer) 
+        {
+            return Ok(dealerData.RemoveDealer(deleteDealer));
         }
     }
 }
