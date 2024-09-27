@@ -7,21 +7,27 @@ namespace CarParkingBooking.AutoMapper
 {
     public class MapperHelper : Profile
     {
-        public string convertstring(GPSLocation GPS)
+        public string ConvertString(GPSLocation GPS)
         {
-            return $"Latitude : {GPS.Latitude} , Longitude : {GPS.Longitude}";
+            return JsonConvert.SerializeObject(GPS);
         }
 
-        public GPSLocation convertGPS(string GPS)
+        public GPSLocation ConvertGPS(string GPS)
         {
-            var latitude = GPS.Split(',').FirstOrDefault()?.Split(":").LastOrDefault()?.Trim();
-            var longitude = GPS.Split(',').LastOrDefault()?.Split(":").LastOrDefault()?.Trim();
+            return JsonConvert.DeserializeObject<GPSLocation>(GPS);
+        }
 
-            return new GPSLocation()
-            {
-                Latitude = latitude ?? "",
-                Longitude = longitude ?? ""
-            } ;
+        public string ConvertTimingString(Timing times)
+        {
+            var timing = Newtonsoft.Json.JsonConvert.SerializeObject(times);
+            return timing;
+        }
+
+        public Timing ConvertStringTiming(string timing)
+        {
+            Timing data = JsonConvert.DeserializeObject<Timing>(timing);
+            return data;
+
         }
     }
 }

@@ -24,14 +24,15 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerPhoneNo,     dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerDescription, dest => dest.MapFrom(src => src.DealerDescription))
                 .ForMember(opt => opt.DealerStartDate,   dest => dest.MapFrom(src => src.DealerStartDate))
-                .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => src.DealerTiming))
+                .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => ConvertTimingString(src.DealerTiming)))
                 .ForMember(opt => opt.DealerAddress,     dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark,    dest => dest.MapFrom(src => src.DealerLandmark))
-                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => convertstring(src.DealerGPSLocation)))
+                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => ConvertString(src.DealerGPSLocation)))
                 .ForMember(opt => opt.DealerRating,      dest => dest.MapFrom(src => src.DealerRating));
 
             CreateMap<DealerDetails, DealerVM>()
-                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => convertGPS(src.DealerGPSLocation)));
+                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => ConvertGPS(src.DealerGPSLocation)))
+                .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)));
         }
     }
 }
