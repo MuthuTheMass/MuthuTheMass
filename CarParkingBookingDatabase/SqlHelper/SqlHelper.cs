@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarParkingBookingDatabase.SqlHelper
+﻿namespace CarParkingBookingDatabase.SqlHelper
 {
     public static class SqlHelper
     {
@@ -23,6 +17,27 @@ namespace CarParkingBookingDatabase.SqlHelper
             }
 
             return queryString;
+        }
+
+        public static string jsonValueTiming(string cycle,string timing)
+        {
+            List<string> days = new() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            var resultString = string.Empty;
+
+            days.ForEach(d => {
+                if (cycle.Contains("Start")) {
+                    resultString += $"JSON_VALUE([DealerTiming], '$.{d}.Start') = '{timing}'";
+                }
+                else if (cycle.Contains("Stop")){
+                    resultString += $"JSON_VALUE([DealerTiming], '$.{d}.Stop') = '{timing}'";
+                }
+                if (!d.Contains("Sunday"))
+                {
+                    resultString += " AND ";
+                }
+            });
+
+            return resultString;
         }
     }
 }
