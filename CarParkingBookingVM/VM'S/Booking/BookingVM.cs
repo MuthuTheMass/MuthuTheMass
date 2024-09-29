@@ -1,31 +1,28 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarParkingBookingVM.VM_S.Booking
 {
     public class BookingVM
     {
-        public UserDetails UserDetails { get; set; }
-
-        public DateTime ArrivingDate { get; set; }
-
-        public DateTime ExitDate { get; set; }
-
-
+        public string UserName { get; set; }
+        public string Phone_Number { get; set; }
+        public string Vehicle_Number { get; set; }
+        public string Vehicle_Size_Type { get; set; }
+        public string RC_Book_Number { get; set; }
+        public IFormFile RC_Book_File { get; set; }
+        public IFormFile Vehicle_Image { get; set; }
+        public string Dealer_Name { get; set; }
+        public string Dealer_PhoneNumber { get; set; }
+        public string? Driver_Name { get; set; }
+        public string Driver_PhoneNumber { get; set; }
+        public DateTime ArrivingTime { get; set; }
     }
 
-    public class UserDetails
+    public class ImageFile
     {
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-    }
-
-    public class CarDetails
-    {
-        public string Name { get; set; }
-        public string CarType { get; set; }
-        public string VehicleNumber { get; set; }
-        public string VehicleRC_Number { get; set; }
-        public IFormFile VehicleRC_Image { get; set; }
+        public byte[] File { get; set; }
+        public string  FileName { get; set; }
+        public string ContentType { get; set; }
     }
 }
