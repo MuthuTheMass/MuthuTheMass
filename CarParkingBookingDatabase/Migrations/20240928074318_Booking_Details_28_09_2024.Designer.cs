@@ -4,6 +4,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    partial class CarParkingBookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240928074318_Booking_Details_28_09_2024")]
+    partial class Booking_Details_28_09_2024
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,10 @@ namespace CarParkingBookingDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ArrivingTime")
                         .HasColumnType("datetime2");
 
@@ -39,30 +46,14 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Driver_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Driver_PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("ExitTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Phone_Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RC_Book_File")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RC_Book_Number")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Vehicle_Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

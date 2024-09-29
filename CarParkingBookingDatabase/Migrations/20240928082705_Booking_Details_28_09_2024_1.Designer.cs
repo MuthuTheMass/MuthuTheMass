@@ -4,6 +4,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    partial class CarParkingBookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240928082705_Booking_Details_28_09_2024_1")]
+    partial class Booking_Details_28_09_2024_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,19 +53,15 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RC_Book_File")
+                    b.Property<byte[]>("RC_Book_File")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("RC_Book_Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Vehicle_Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
