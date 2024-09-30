@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { routes } from '../../../../app.routes';
 
 
@@ -11,10 +11,16 @@ import { routes } from '../../../../app.routes';
   styleUrl: './artical.component.css'
 })
 export class ArticalComponent {
-router: any;
+
+constructor( private router:Router){
+
+}
+userbooking(){
 
 
+  this.router.navigate(['/main/user']);
 
+}
 
 
 }

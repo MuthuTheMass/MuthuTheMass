@@ -1,0 +1,197 @@
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 640px;
+    background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+  .left-container {
+    background: #000000; 
+background: -webkit-linear-gradient(to right, #434343, #000000);
+background: linear-gradient(to right, #434343, #000000); 
+    flex: 1;
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:600px;
+    padding: 70px;
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .right-container {
+    background: #000000; 
+    background: -webkit-linear-gradient(to left, #434343, #000000);
+    background: linear-gradient(to left, #434343, #000000); 
+    flex: 1;
+    max-width:70%;
+    height:600px;
+    padding-left: 150px;
+    padding-top: 90px;
+    margin: 20px;
+    border-radius:30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  @media only screen and (max-width: 860px) {
+    .card
+     {
+     flex-direction: column;
+     margin: 10px;
+     height: auto;
+     width: 90%;
+    }
+    .left-container{
+        flex: 1;
+        max-width:100%; 
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .card
+     {
+     flex-direction: column;
+     margin: 10px;
+    }
+    .left-container{
+        flex: 1;
+        max-width:100%; 
+    }
+  }
+  img {
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  h3 {
+  padding-left: 250px;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  .gradienttext{
+    background-image: linear-gradient(to right, #ee00ff 0%, #fbff00 100%);
+    color: transparent;
+    
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color:aliceblue
+  }
+  
+form{
+position: relative;
+bottom: 50px;
+}
+  
+  td {
+    
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+  }
+  
+  td:first-child {
+    font-weight: bold;
+  }
+  .credit a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+}
+
+.credit {
+    color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  font-family: Verdana,Geneva,Tahoma,sans-serif;
+}
+       
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+h3,h1{
+  color: white;
+}
+
+
+video {
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+img {
+  margin-top: 10px;
+  border: 2px solid black;
+  max-width: 100%;
+}
+td .form-control{
+  width: 400px;
+}
+.form-check{
+  position: relative;
+  bottom: 20px;
+}
+
+.d-grid {
+position: relative;
+top:30px;
+width: 200px;
+}
