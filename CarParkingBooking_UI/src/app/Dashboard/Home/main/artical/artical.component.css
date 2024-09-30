@@ -1,95 +1,51 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+
+	background-color: #eee;
+	font-family: 'Roboto', sans-serif;
 }
 
-body {
-    top: 45%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+
+
+
+.card{
+
+    background-color:#92e2f9;
+	width: 450px;
+    height:500px;
+	border-radius: 20px;
 }
 
-.container {
-    height: 550px;
-    width: 400px;
-    box-shadow: 0 10px 20px black;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    font-family: 'Abel', sans-serif;
+
+.heading{
+
+   font-weight: 700;
+
 }
 
-.image {
-    height: 200px;
-    width: 200px;
-    background-image: url('/assets/zoro.jpeg');
-    background-size: cover;
-    border-radius: 50%;
-    border: 8px solid white;
-    position: relative;
-    top: 100px;
-    margin-left: 170px;
-    box-shadow: 0 2px 15px rgb(58, 54, 54);
-    transform: rotate(-30deg);
+
+.hour{
+    margin-top: 1px;
+	color: rgb(0, 0, 0);
+	font-size: 12px;
 }
 
-.shape {
-    height: 350px;
-    width: 440px;
-    background-color: black;
-    margin-left: -40px;
-    position: relative;
-    top: -110px;
-    box-shadow: 0 2px 15px black;
-    transform: rotate(30deg);
-}
+.ratings i{
 
-h3 {
-    margin-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.title {
-    color: rgb(105, 100, 109);
-}
-
-p {
-    padding-left: 30px;
-    padding-right: 30px;
-    color: rgb(105, 100, 109);
-}
-
-.icons {
-    margin-top: 15px;
-}
-
-.icons i {
-    margin-left: 10px;
-    font-size: 20px;
-    transition: 0.3s;
-    color: rgb(40, 163, 194);
-    ;
-}
-
-.icons i:hover {
-    transform: scale(1.1);
-    color: rgb(18, 192, 235);
+	color: #bbd64c;
 }
 
 .btn{
- margin-top: 20px;
- width: 100%;
- height: 50px;
- background:linear-gradient(to left,#7ef9f9,#ff34dd);
- color:white;
- font-size: 16px;
- box-shadow: none;
+
+	border-radius: 15px !important;
+    margin-top: 120px;
+    background-color: #9be7fe;
+    color: black;
 }
 
- .checked{
- color: orange;
+
+.line-color{
+	color: rgb(139, 219, 237);
+	height: 3px;
 }

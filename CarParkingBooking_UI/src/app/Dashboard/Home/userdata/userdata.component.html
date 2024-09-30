@@ -1,15 +1,41 @@
 <div class="card">
     <div class="left-container">
-      <img src="" alt="Profile Image">
-      <p>Vichle picture</p>
+      <!-- <img src="" alt="Profile Image">
+      <p>Vichle picture</p> -->
+      <h1>Vechile Image</h1>
+      <video #video width="200" height="150" autoplay></video>
+      <button (click)="capturePhoto()">Capture Photo</button>
+      <canvas #canvas width="640" height="480" style="display: none;"></canvas>
+      <img #photo alt="Captured Image" />
+
+      <div class="d-grid gap-2 col-4 mx-auto">
+        <button class="btn btn-primary" type="button" id="ebtnn"  (click)="Erecepit()">Confirm Booking</button>
+      </div>
     </div>
     <div class="right-container">
-      <h3 class="gradienttext">Profile Details</h3>
-      <table>
+      
+      <form>
+        <h3>Vechile Detailes</h3>
+        
+        <tr>
+          <td>Vechile Number</td>
+            <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
+          </tr>
           <tr>
-            <td>Enter the name</td>
-              <td><input type="text"></td>
+            <td>Vechile Number</td>
+            <div class="mb-3">
+              <input class="form-control" type="file" id="formFile">
+              
+            </div>
             </tr>
+          <tr>
+            <td>Owner Name</td>
+              <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
+            </tr>
+            <tr>
+            <td> Driver Number</td>
+            <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
+          </tr>
         <tr>
           <td>viechle Modal</td>
           <td>
@@ -29,34 +55,27 @@
           </div> -->
         
 
-          <form autocomplete="off" action="/action_page.php">
-            <div class="autocomplete" style="width:300px;">
-              <input id="myInput" type="text" name="myCountry" placeholder="Country">
-            </div>
-            <input type="submit">
-          </form>
-        
-        
-        
-        
-        
+          
+            <div class="autocomplete">
+              <input id="myInput" class="form-control" type="text" name="myCountry" placeholder="Country">
+            </div> 
         </td>
         </tr>
         <tr>
-          <td>Mobile :</td>
-          <td>+91 XXXXXXXXXX</td>
+          <td>Mobile Number</td>
+          <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
         </tr>
         <tr>
-          <td>Email :</td>
-          <td>johnexamplecom</td>
+          <td>Date</td>
+          <td><input type="date" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
         </tr>
         <tr>
-          <td>Address :</td>
-          <td>123 Main St, Anytown, USA</td>
+          <td>Time</td>
+          <td><input type="time" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
         </tr>
-      </table>
-      <div class="credit">Made with <span style="color:tomato;font-size:20px;">❤ </span>by<a href="https://www.learningrobo.com/"> Learning Robo</a></div>
-    </div>
+        
+      
+      </form>
   </div>
   
   

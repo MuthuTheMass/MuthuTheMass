@@ -8,11 +8,18 @@ import { ArticalComponent } from './Dashboard/Home/main/artical/artical.componen
 import { BalajiarComponent } from './Dashboard/Home/main/balajiar/balajiar.component';
 import { MuthubookComponent } from './Dashboard/Home/muthubook/muthubook.component';
 import { UserdataComponent } from './Dashboard/Home/userdata/userdata.component';
+import { EReceiptComponent } from './Dashboard/Home/e-receipt/e-receipt.component';
+import { DregComponent } from './Dashboard/Dealer/dreg/dreg.component';
+import { ProfileComponent } from './Dashboard/Home/profile/profile.component';
+import { EditdetailsComponent } from './Dashboard/Home/profile/editdetails/editdetails.component';
 
 export const routes: Routes = [
 
 {
     path:"",component:RegComponent,title:"CarParking-Login",pathMatch:"full"
+},
+{
+   path:"Dreg",component:DregComponent,title:"Dealer-login"
 },
 
 
@@ -30,10 +37,21 @@ export const routes: Routes = [
             ]
         },
         {
+            path:"profile",component:ProfileComponent,title:"profiledetailes",
+               
+       },
+       {
+            path:"edit",component:EditdetailsComponent,title:"editdetailes"
+       },
+       
+        {
             path:"book",component:MuthubookComponent
         },
         {
             path:"user",component:UserdataComponent
+        },
+        {
+            path:"erecepit",component:EReceiptComponent
         },
         {
             path:"nav",component:NavbarComponent,title:"navbar"
