@@ -19,19 +19,60 @@ namespace CarParkingBooking.Controllers
         [HttpPost("search")]
         public IActionResult Search(Filter filter)
         {
-            return Ok(dealerData.SearchData(filter));
+            var result = dealerData.SearchData(filter);
+
+            if (result.Result.Count > 0)
+            {
+                return Ok(result);
+            }
+            else if (result.Result.Count == 0)
+            {
+                return NotFound(result);
+            }
+            else 
+            {
+                return BadRequest(result);
+            }
+
         }
 
         [HttpPost("AddDealer")]
         public IActionResult Add(DealerVM dealerValue) 
         {
-            return Ok(dealerData.UpsertDealerData(dealerValue));
+            var result = dealerData.UpsertDealerData(dealerValue);
+
+            if (result.Result == true)
+            {
+                return Ok(result);
+            }
+            else if(result.Result == false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
         }
 
         [HttpDelete]
         public IActionResult Delete(DeleteDealer deleteDealer) 
         {
-            return Ok(dealerData.RemoveDealer(deleteDealer));
+            var result = dealerData.RemoveDealer(deleteDealer);
+
+            if (result.Result == true) 
+            {
+                return Ok(result);
+            }
+            else if(result.Result == false)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
     }
 }

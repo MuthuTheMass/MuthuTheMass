@@ -20,7 +20,20 @@ namespace CarParkingBooking.Controllers
         [HttpPost("Booking")]
         public IActionResult Booking([FromForm]BookingVM booking)
         {
-            return Ok(bookingData.AddBooking(booking));
+            var result = bookingData.AddBooking(booking);
+            if(result.Result == true)
+            {
+                return Ok(result);
+            }
+            else if(result.Result == false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
         }
     }
 }

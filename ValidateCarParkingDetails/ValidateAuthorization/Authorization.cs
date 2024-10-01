@@ -29,9 +29,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if(SignUpDetials is not null) 
             {
-                if (!(SignUpDetials.Password.Equals(SignUpDetials.ConfirmPassword))
-                    || !(SignUpDetials.MobileNumber.Length == 10)
-                    || !SignUpDetials.Email.Contains("@")
+                if (!(SignUpDetials.Password!.Equals(SignUpDetials.ConfirmPassword))
+                    || !(SignUpDetials.MobileNumber!.Length == 10)
+                    || !SignUpDetials.Email!.Contains("@")
                     || !SignUpDetials.Email.EndsWith(".com"))
                 {
                     return await Task.FromResult(false);
@@ -76,7 +76,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                     return Task.FromResult(result);
                 }
             }
-            return Task.FromResult(new AuthorizedLoginVM());
+            return Task.FromResult<AuthorizedLoginVM>(null!);
         }
 
        

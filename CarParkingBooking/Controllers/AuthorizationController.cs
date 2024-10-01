@@ -22,8 +22,19 @@ namespace CarParkingBooking.Controllers
         {
 
             var result = await authorization.UpsertLoginDetials(signUp);
+            if (result is true)
+            {
+                return Ok(result);
+            }
+            else if (result is false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
 
-            return Ok(result);
 
 
         }
@@ -32,7 +43,14 @@ namespace CarParkingBooking.Controllers
         public async Task<ActionResult> Login([FromBody] LoginVM loginVM)
         {
             var result = await authorization.VerifyUser(loginVM);
-            return Ok(result);
+            if(result is true)
+            {
+                return Ok(result);
+            }
+            else if(result is false)
+            {
+
+            }
         }
 
         //[HttpPost("alreadyexists")]

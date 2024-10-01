@@ -3,7 +3,7 @@ using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
-using ValidateCarParkingDetails.ValidateAuthorization;
+using CarParkingBooking.Services_Program;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IAuthorization, Authorization>();
-builder.Services.AddTransient<IDealerData, DealerData>();
+builder.Services.SeperateServicies();
 
 builder.Services.AddDbContext<CarParkingBookingDBContext>(opt => 
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection"))
