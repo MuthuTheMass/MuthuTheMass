@@ -27,12 +27,13 @@ namespace CarParkingBookingDatabase.DBModel
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
         [DataType(DataType.Text)]
-        public string? RC_Book_Number { get; set; }
-        [DataType(DataType.Custom)]
-        public byte[]? RC_Book_Image { get; set; }
-        [DataType(DataType.Text)]
-        public string? Owner_Name { get; set; }
-        [DataType(DataType.PhoneNumber)]
-        public string? Owner_PhoneNo { get; set; }
+        //public string? RC_Book_Number { get; set; }
+        //[DataType(DataType.Custom)]
+        //public byte[]? RC_Book_Image { get; set; }
+        //[DataType(DataType.Text)]
+        //public string? Owner_Name { get; set; }
+        //[DataType(DataType.PhoneNumber)]
+        //public string? Owner_PhoneNo { get; set; }
+        public string? VehicleNumber { get; set; }
     }
 }

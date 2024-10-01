@@ -43,13 +43,17 @@ namespace CarParkingBooking.Controllers
         public async Task<ActionResult> Login([FromBody] LoginVM loginVM)
         {
             var result = await authorization.VerifyUser(loginVM);
-            if(result is true)
+            if(result is not null)
             {
                 return Ok(result);
             }
-            else if(result is false)
+            else if(result is null)
             {
-
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
             }
         }
 
