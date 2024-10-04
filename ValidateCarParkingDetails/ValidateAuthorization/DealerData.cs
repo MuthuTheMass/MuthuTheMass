@@ -4,7 +4,6 @@ using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingDatabase.SqlHelper;
 using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {

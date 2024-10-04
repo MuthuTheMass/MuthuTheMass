@@ -6,10 +6,11 @@ namespace CarParkingBooking.Services_Program
     public static class AppSettingValues
     {
         public static IConfiguration? configuration;
-        public static string JwtIssuer { get; set; } 
-        public static string JwtAudience { get; set; } 
-        public static string JwtSecretKey { get; set; } 
-        public static string JwtSqlConnection { get; set; } 
+        public static string? JwtIssuer { get; set; } 
+        public static string? JwtAudience { get; set; } 
+        public static string? JwtSecretKey { get; set; } 
+        public static string? JwtSqlConnection { get; set; } 
+        public static string? AuthSqlConnection { get; set; }
 
         public static void Initialize(IConfiguration _configuration)
         {
@@ -18,6 +19,7 @@ namespace CarParkingBooking.Services_Program
             JwtAudience = configuration?["Authentication:Audience"]!;
             JwtSecretKey = configuration?["Authentication:SecretKey"]!;
             JwtSqlConnection = configuration?.GetConnectionString("MyDbConnection")!;
+            AuthSqlConnection = configuration?.GetConnectionString("AuthDbConnection")!;
         }
 
         

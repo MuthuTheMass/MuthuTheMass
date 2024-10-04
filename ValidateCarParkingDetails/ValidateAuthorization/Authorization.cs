@@ -1,10 +1,8 @@
-﻿using Auth.DataAccess.AuthDbContext;
-using AutoMapper;
+﻿using AutoMapper;
 using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Login;
-using Microsoft.AspNetCore.Identity;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {
@@ -18,10 +16,10 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
     public class Authorization : IAuthorization
     {
-        private readonly AuthDbContext dBContext;
+        private readonly CarParkingBookingDBContext dBContext;
         private readonly IMapper mapper;
 
-        public Authorization(AuthDbContext carParkingBookingDB,IMapper _mapper)
+        public Authorization(CarParkingBookingDBContext carParkingBookingDB,IMapper _mapper)
         {
             dBContext = carParkingBookingDB;
             mapper = _mapper;

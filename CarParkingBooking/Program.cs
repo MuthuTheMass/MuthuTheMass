@@ -1,15 +1,12 @@
 using AutoMapper;
 using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
-using CarParkingBookingDatabase.BookingDBContext;
-using Microsoft.EntityFrameworkCore;
 using CarParkingBooking.Services_Program;
+using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CarParkingBookingDatabase.DBModel;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +50,10 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddDbContext<CarParkingBookingDBContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
+
+//builder.Services.AddDbContext<AuthDbContext>(opt =>
+//    opt.UseSqlServer(AppSettingValues.AuthSqlConnection)
+//    );
 
 //builder.Services.AddIdentity<UserDetails, IdentityRole<int>>()
 //    .AddEntityFrameworkStores<CarParkingBookingDBContext>()

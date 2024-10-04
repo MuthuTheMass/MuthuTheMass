@@ -52,22 +52,8 @@ namespace CarParkingBooking.Controllers
             var result = await authorization.VerifyUser(loginVM);
             if(result is not null)
             {
-                var claims = new[]
-            {
-                new Claim(ClaimTypes.Name, result.UserName),
-                new Claim(ClaimTypes.Role, AccessToUser.User) // Assign role
-            };
-
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettingValues.JwtSecretKey));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var token = new JwtSecurityToken(
-                    issuer: AppSettingValues.JwtIssuer,
-                    audience: AppSettingValues.JwtAudience,
-                    expires: DateTime.Now.AddMinutes(30),
-                    claims: claims,
-                    signingCredentials: creds);
-
-                return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) , data = result });
+                var token = GenerateJWTToken.GenerateJwtToken("User", new List<string> { "User" });
+                return Ok(new { token = token , data = result });
             }
             else if(result is null)
             {

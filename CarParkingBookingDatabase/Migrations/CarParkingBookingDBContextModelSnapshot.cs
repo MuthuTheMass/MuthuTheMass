@@ -81,11 +81,9 @@ namespace CarParkingBookingDatabase.Migrations
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
                 {
-                    b.Property<int>("DealerID")
+                    b.Property<string>("DealerID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DealerID"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DealerAddress")
                         .IsRequired()
@@ -137,11 +135,9 @@ namespace CarParkingBookingDatabase.Migrations
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<string>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");

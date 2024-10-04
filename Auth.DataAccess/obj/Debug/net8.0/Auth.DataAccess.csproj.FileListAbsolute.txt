@@ -3,3 +3,16 @@ C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.Asse
 C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.AssemblyInfo.cs
 C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.csproj.CoreCompileInputs.cache
 C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.sourcelink.json
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\Auth.DataAccess.deps.json
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\Auth.DataAccess.runtimeconfig.json
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\Auth.DataAccess.dll
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\Auth.DataAccess.pdb
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\CarParkingBookingVM.dll
+C:\sampleProjects\dev-data\Auth.DataAccess\bin\Debug\net8.0\CarParkingBookingVM.pdb
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.csproj.AssemblyReference.cache
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.Dat.C9F7C305.Up2Date
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.dll
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\refint\Auth.DataAccess.dll
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.pdb
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\Auth.DataAccess.genruntimeconfig.cache
+C:\sampleProjects\dev-data\Auth.DataAccess\obj\Debug\net8.0\ref\Auth.DataAccess.dll
