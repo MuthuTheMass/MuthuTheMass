@@ -8,6 +8,7 @@
 
     public class AuthorizedLoginVM
     {
+        public string UserName { get; set; }
         public string Email { get; set; }
 
         public string Access { get; set; }

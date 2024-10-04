@@ -7,17 +7,29 @@ using CarParkingBooking.Services_Program;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CarParkingBookingDatabase.DBModel;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+GenerateJWTToken.Initialize(builder.Configuration);
+AppSettingValues.Initialize(builder.Configuration);
+
 
 builder.Services.SeperateServicies();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("carparkingorigins",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 
 builder.Services.AddAuthentication(options =>
 {
@@ -32,21 +44,31 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Authentication:Issuer"],
-        ValidAudience = builder.Configuration["Authentication:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:SecretKey"]!))
+        ValidIssuer = AppSettingValues.JwtIssuer,
+        ValidAudience = AppSettingValues.JwtAudience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettingValues.JwtSecretKey!))
     };
 });
-GenerateJWTToken.Initialize(builder.Configuration);
 
-builder.Services.AddDbContext<CarParkingBookingDBContext>(opt => 
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection"))
+builder.Services.AddDbContext<CarParkingBookingDBContext>(opt =>
+    opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
+
+//builder.Services.AddIdentity<UserDetails, IdentityRole<int>>()
+//    .AddEntityFrameworkStores<CarParkingBookingDBContext>()
+//    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
 {
     mc.AddProfile(new MapperProfile());
 }).CreateMapper());
+
+// Role seeding at startup
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("User", policy => policy.RequireRole("User"));
+});
 
 var app = builder.Build();
 
@@ -63,7 +85,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors("carparkingorigins");
 app.MapControllers();
 
 app.Run();
+
+

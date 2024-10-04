@@ -38,7 +38,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 mapper.Map(dealerVM, checkDuplicate);
                 dbContext.dealerDetails.Update(checkDuplicate);
-                dbContext.Entry(checkDuplicate).State = EntityState.Modified;
+                //dbContext.Entry(checkDuplicate).State = EntityState.Modified;
                 dbContext.SaveChanges();
                 return true;
             }
@@ -48,9 +48,10 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 if (!string.IsNullOrEmpty(dealerVM.DealerName))
                 {
                     var data = mapper.Map<DealerDetails>(dealerVM);
-                    dbContext.dealerDetails.Add(data);
-                    dbContext.Entry(data).State = EntityState.Added;
-                    dbContext.SaveChanges();
+                    await dbContext.dealerDetails.AddAsync(data);
+                    //dbContext.Entry(data).State = EntityState.Added;
+                    await dbContext.SaveChangesAsync();
+                    //dbContext.SaveChanges();
                     return true;
 
                 }

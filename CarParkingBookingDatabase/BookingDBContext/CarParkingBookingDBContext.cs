@@ -1,17 +1,17 @@
 ﻿using CarParkingBookingDatabase.DBModel;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarParkingBookingDatabase.BookingDBContext
 {
-    public class CarParkingBookingDBContext : DbContext
-    {
+   // public class CarParkingBookingDBContext : IdentityDbContext<UserDetails, IdentityRole<int>, int>    
+        public class CarParkingBookingDBContext : DbContext
+        {
         public CarParkingBookingDBContext(DbContextOptions<CarParkingBookingDBContext> options)
         : base(options)
         {
         }
-
-
-        public DbSet<UserDetails> userDetails {  get; set; }
 
         public DbSet<DealerDetails> dealerDetails { get; set; }
 
@@ -19,7 +19,9 @@ namespace CarParkingBookingDatabase.BookingDBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserDetails>().HasKey(b => b.ID);
+            //modelBuilder.Entity<IdentityUserLogin<int>>().HasKey(l => new { l.LoginProvider, l.ProviderKey });
+            //modelBuilder.Entity<IdentityUserRole<int>>().HasKey(r => new { r.UserId, r.RoleId });
+            //modelBuilder.Entity<IdentityUserToken<int>>().HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
 
             modelBuilder.Entity<DealerDetails>().HasKey(b => b.DealerID);
 

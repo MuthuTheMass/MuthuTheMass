@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Auth.DataAccess\Auth.DataAccess.csproj" />
     <ProjectReference Include="..\CarParkingBookingDatabase\CarParkingBookingDatabase.csproj" />
     <ProjectReference Include="..\CarParkingBookingVM\CarParkingBookingVM.csproj" />
   </ItemGroup>
