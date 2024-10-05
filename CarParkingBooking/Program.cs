@@ -13,10 +13,44 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Car Parking Booking API",
+        Version = "v1"
+    });
+
+    // Define JWT Bearer token authentication scheme
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Enter JWT Bearer token **_only_**. Example: `Bearer {your token}`"
+    });
+
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 GenerateJWTToken.Initialize(builder.Configuration);
 AppSettingValues.Initialize(builder.Configuration);
-
 
 builder.Services.SeperateServicies();
 
@@ -51,14 +85,6 @@ builder.Services.AddDbContext<CarParkingBookingDBContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
 
-//builder.Services.AddDbContext<AuthDbContext>(opt =>
-//    opt.UseSqlServer(AppSettingValues.AuthSqlConnection)
-//    );
-
-//builder.Services.AddIdentity<UserDetails, IdentityRole<int>>()
-//    .AddEntityFrameworkStores<CarParkingBookingDBContext>()
-//    .AddDefaultTokenProviders();
-
 builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
 {
     mc.AddProfile(new MapperProfile());
@@ -90,5 +116,3 @@ app.UseCors("carparkingorigins");
 app.MapControllers();
 
 app.Run();
-
-
