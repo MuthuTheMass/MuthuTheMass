@@ -5,3 +5,19 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+::-webkit-scrollbar-track{
+  background-color: rgb(136, 234, 234); 
+  border-radius: 5px;
+  overflow: hidden;
+  
+}
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#7f7878;
+    border-radius: 20px;
+}

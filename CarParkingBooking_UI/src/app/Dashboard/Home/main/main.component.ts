@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ArticalComponent } from "./artical/artical.component";
 import { RouterOutlet } from '@angular/router';
+import { UserdataService } from '../../../src/service/userdata.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { DealerdatasService } from '../../../src/service/dealerdatas.service';
 
 @Component({
   selector: 'app-main',
@@ -11,12 +14,55 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MainComponent {
 
-  /**
-   *
-   */
-  constructor() {
+dealerdetails:DealerdatasService|any;
+
+
+  constructor( public ms:DealerdatasService) {
     
+
+    
+  this.dealerdetails= new FormGroup({
+    dealername:new FormControl(),
+    email:new FormControl(),
+    parkingaddress:new FormControl(),
+    starrating:new FormControl()
+ 
+ 
+ });
   }
+
+
+
+  getalldealersdetails(){
+  this.ms.getalldealerdata();
+  }
+
+
+  getalldealerdetails(){
+    this.ms.getalluserdata().subscribe(r=>{
+      console.log(r);
+      this.dealerdetails.patchValue({
+        dealername:r.uname,
+        parkingaddress:r.parkingaddress,
+        email:r.email,
+        starrating:r.starrating,
+  
+      })
+    },error=>{
+      console.log(JSON.stringify(error));
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   ngOnInit(){
     
