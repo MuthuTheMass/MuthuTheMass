@@ -94,7 +94,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("dealerlogin")]
-        public async IActionResult DealerLogin(DealerLogin dealerLogin)
+        public async Task<IActionResult> DealerLogin(DealerLogin dealerLogin)
         {
             var data = await authorization.VerifyDealer(dealerLogin);
             var result = data.Item1;
@@ -103,6 +103,10 @@ namespace CarParkingBooking.Controllers
                 var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.Dealer });
                 result.AccessToken = token;
                 return Ok(result);
+            }
+            else if (!(bool)data.Item2)
+            {
+                return Unauthorized("Password doesn't Match.");
             }
             else if (result is null)
             {
