@@ -21,8 +21,8 @@ namespace CarParkingBooking.Controllers
 
         [HttpPost("Booking")]
         [Authorize(Policy = AccessToUser.User)]
-        //public IActionResult Booking([FromForm]BookingVM booking)
-        public IActionResult Booking()
+        public IActionResult Booking([FromForm]BookingVM booking)
+        //public IActionResult Booking()
         {
             //var result = bookingData.AddBooking(booking);
             //if(result.Result == true)

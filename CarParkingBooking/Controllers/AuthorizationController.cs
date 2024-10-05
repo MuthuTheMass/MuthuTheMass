@@ -52,7 +52,7 @@ namespace CarParkingBooking.Controllers
             var result = await authorization.VerifyUser(loginVM);
             if(result is not null)
             {
-                var token = GenerateJWTToken.GenerateJwtToken("User", new List<string> { "User" });
+                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { "User" });
                 return Ok(new { token = token , data = result });
             }
             else if(result is null)

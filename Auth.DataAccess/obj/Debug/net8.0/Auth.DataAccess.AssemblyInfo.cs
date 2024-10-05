@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auth.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbb6d16cb154954993183374a592718c0cddfe69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93cb70682a066ac58920fd869ebf1685e7e14bd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auth.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auth.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
