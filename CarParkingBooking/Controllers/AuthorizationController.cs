@@ -28,7 +28,7 @@ namespace CarParkingBooking.Controllers
         public async Task<ActionResult> SignUp([FromBody] SignUpVM signUp)
         {
 
-            var result = await authorization.UpsertLoginDetials(signUp);
+            var result = await authorization.InsertLoginDetials(signUp);
             if (result is true)
             {
                 return Ok(result);
@@ -36,6 +36,10 @@ namespace CarParkingBooking.Controllers
             else if (result is false)
             {
                 return UnprocessableEntity(result);
+            }
+            else if(result is null)
+            {
+                return Conflict(result);
             }
             else
             {
@@ -52,8 +56,9 @@ namespace CarParkingBooking.Controllers
             var result = await authorization.VerifyUser(loginVM);
             if(result is not null)
             {
-                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { "User" });
-                return Ok(new { token = token , data = result });
+                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.User });
+                result.AccessToken = token;
+                return Ok(result);
             }
             else if(result is null)
             {
@@ -65,10 +70,54 @@ namespace CarParkingBooking.Controllers
             }
         }
 
-        //[HttpPost("alreadyexists")]
-        //public async Task<ActionResult> AlreadyExists()
-        //{
+        [HttpPost("dealersignup")]
+        public async Task<IActionResult> DealerSignUp(DealerSignUpVM dealerSignUp)
+        {
+            var result = await authorization.InsertDealerDetails(dealerSignUp);
+            if(result is true)
+            {
+                return Ok(true);
+            }
+            else if(result is false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else if (result is null)
+            {
+                return Conflict(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
 
-        //}
+        }
+
+        [HttpPost("dealerlogin")]
+        public async IActionResult DealerLogin(DealerLogin dealerLogin)
+        {
+            var data = await authorization.VerifyDealer(dealerLogin);
+            var result = data.Item1;
+            if (result is not null)
+            {
+                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.Dealer });
+                result.AccessToken = token;
+                return Ok(result);
+            }
+            else if (result is null)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpPost("dealerlogout")]
+        public IActionResult DealerLogout()
+        {
+            return Ok();
+        }
     }
 }

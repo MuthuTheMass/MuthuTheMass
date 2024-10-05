@@ -86,4 +86,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public string DealerPhoneNo { get; set; } = string.Empty;
     }
+
+   
+
 }

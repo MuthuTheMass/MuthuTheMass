@@ -15,24 +15,6 @@ namespace CarParkingBooking.Controllers
             dealerData = _dealerData;
         }
 
-        [HttpPost("dealersignup")]
-        public IActionResult DealerSignUp() 
-        {
-            return Ok();
-        }
-        
-        [HttpPost("dealerlogin")]
-        public IActionResult DealerLogin() 
-        {
-            return Ok();
-        }
-
-        [HttpPost("dealerlogout")]
-        public IActionResult DealerLogout() 
-        {
-            return Ok();
-        }
-
 
         [HttpPost("search")]
         public IActionResult Search(Filter filter)

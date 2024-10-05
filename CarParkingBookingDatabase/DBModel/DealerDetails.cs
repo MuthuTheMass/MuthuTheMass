@@ -19,6 +19,9 @@ namespace CarParkingBookingDatabase.DBModel
 
         [DataType(DataType.Text)]
         public string DealerPhoneNo { get; set; }
+        
+        [DataType(DataType.Text)]
+        public string DealerPassword { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string DealerDescription { get; set; }
