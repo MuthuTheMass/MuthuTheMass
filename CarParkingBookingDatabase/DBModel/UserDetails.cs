@@ -32,5 +32,8 @@ namespace CarParkingBookingDatabase.DBModel
         //[DataType(DataType.PhoneNumber)]
         //public string? Owner_PhoneNo { get; set; }
         public string? VehicleNumber { get; set; }
+
+        // Navigation property
+        public virtual ICollection<VehicleDetails> VehicleDetails { get; set; }
     }
 }

@@ -117,11 +117,5 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
         }
-
-        [HttpPost("dealerlogout")]
-        public IActionResult DealerLogout()
-        {
-            return Ok();
-        }
     }
 }
