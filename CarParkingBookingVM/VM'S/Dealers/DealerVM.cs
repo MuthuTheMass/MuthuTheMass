@@ -32,7 +32,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public DateTime? DealerStartDate { get; set; }
 
-        public string DealerTiming { get; set; }
+        public Timing DealerTiming { get; set; }
 
         public string DealerAddress { get; set; }
 
@@ -50,6 +50,34 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public string Longitude { get; set; }
     }
 
+    public class Timing
+    {
+        public moments Monday { get; set; }
+        public moments Tuesday { get; set; }
+        public moments Wednesday { get; set; }
+        public moments Thursday { get; set; }
+        public moments Friday { get; set; }
+        public moments? Saturday { get; set;}
+        public moments? Sunday { get; set; }    
+    }
+
+    public class moments 
+    {
+        private TimeOnly _start;
+        private TimeOnly _stop;
+
+        public string Start 
+        {
+            get => _start.ToString("hh:mm tt");
+            set => _start = TimeOnly.ParseExact(value, "hh:mm tt", null);
+        }
+        public string Stop 
+        {
+            get => _stop.ToString("hh:mm tt");
+            set => _stop = TimeOnly.ParseExact(value, "hh:mm tt", null);
+        }
+    }
+
     public class DeleteDealer
     {
         public string DealerName { get; set; } = string.Empty;
@@ -58,4 +86,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public string DealerPhoneNo { get; set; } = string.Empty;
     }
+
+   
+
 }

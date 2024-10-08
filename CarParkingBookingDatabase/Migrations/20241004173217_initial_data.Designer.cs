@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    [Migration("20240919130813_dealerdetails")]
-    partial class dealerdetails
+    [Migration("20241004173217_initial_data")]
+    partial class initial_data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,13 +25,68 @@ namespace CarParkingBookingDatabase.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingDetails", b =>
+                {
+                    b.Property<string>("BookingID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ArrivingTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Dealer_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dealer_PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Driver_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Driver_PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RC_Book_File")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RC_Book_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Size_Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BookingID");
+
+                    b.ToTable("bookingDetials");
+                });
+
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
                 {
-                    b.Property<int>("DealerID")
+                    b.Property<string>("DealerID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DealerID"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DealerAddress")
                         .IsRequired()
@@ -65,10 +120,14 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("DealerStartDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DealerStartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DealerTiming")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rights")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -79,11 +138,12 @@ namespace CarParkingBookingDatabase.Migrations
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -105,7 +165,10 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("VehicleNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
 
                     b.ToTable("userDetails");
                 });

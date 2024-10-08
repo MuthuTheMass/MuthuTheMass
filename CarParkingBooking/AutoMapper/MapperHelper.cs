@@ -1,27 +1,68 @@
 ﻿using AutoMapper;
+using CarParkingBookingVM.VM_S.Booking;
 using CarParkingBookingVM.VM_S.Dealers;
 using Newtonsoft.Json;
+using System.IO;
 using System.Text.Json;
 
 namespace CarParkingBooking.AutoMapper
 {
     public class MapperHelper : Profile
     {
-        public string convertstring(GPSLocation GPS)
+        public string ConvertString(GPSLocation GPS)
         {
-            return $"Latitude : {GPS.Latitude} , Longitude : {GPS.Longitude}";
+            return JsonConvert.SerializeObject(GPS);
         }
 
-        public GPSLocation convertGPS(string GPS)
+        public GPSLocation ConvertGPS(string GPS)
         {
-            var latitude = GPS.Split(',').FirstOrDefault()?.Split(":").LastOrDefault()?.Trim();
-            var longitude = GPS.Split(',').LastOrDefault()?.Split(":").LastOrDefault()?.Trim();
+            return JsonConvert.DeserializeObject<GPSLocation>(GPS);
+        }
 
-            return new GPSLocation()
+        public string ConvertTimingString(Timing times)
+        {
+            var timing = Newtonsoft.Json.JsonConvert.SerializeObject(times);
+            return timing;
+        }
+
+        public Timing ConvertStringTiming(string timing)
+        {
+            Timing data = JsonConvert.DeserializeObject<Timing>(timing);
+            return data;
+
+        }
+
+        public string convertFileToByte(IFormFile file)
+        {
+            ImageFile image;
+
+            using (var steam = new MemoryStream())
             {
-                Latitude = latitude ?? "",
-                Longitude = longitude ?? ""
-            } ;
+                file.CopyTo(steam);
+                image = new()
+                {
+                    File = steam.ToArray(),
+                    FileName = file.FileName,
+                    ContentType = file.ContentType
+                };
+            }
+
+            return JsonConvert.SerializeObject(image);
+        }
+
+        public IFormFile convertByteToFromFile(string file)
+        {
+            ImageFile? image = JsonConvert.DeserializeObject<ImageFile>(file);
+
+            var stream = new MemoryStream(image!.File);
+
+            IFormFile formFile = new FormFile(stream,0,image.File.Length,"file",image.FileName) 
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = image.ContentType
+            };
+
+            return formFile;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             dbContext = _dbContext;
         }
 
-        public Task<bool> UpsertDealerData(DealerVM dealerVM)
+        public async Task<bool> UpsertDealerData(DealerVM dealerVM)
         {
             var checkDuplicate = dbContext.dealerDetails.FirstOrDefault(g => g.DealerName == dealerVM.DealerName && 
                                                                              g.DealerEmail == dealerVM.DealerEmail);
@@ -37,8 +37,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 mapper.Map(dealerVM, checkDuplicate);
                 dbContext.dealerDetails.Update(checkDuplicate);
+                //dbContext.Entry(checkDuplicate).State = EntityState.Modified;
                 dbContext.SaveChanges();
-                return Task.FromResult(true);
+                return true;
             }
             else if (checkDuplicate is null)
             {
@@ -46,18 +47,20 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 if (!string.IsNullOrEmpty(dealerVM.DealerName))
                 {
                     var data = mapper.Map<DealerDetails>(dealerVM);
-                    dbContext.dealerDetails.Add(data);
-                    dbContext.SaveChanges();
-                    return Task.FromResult(true);
+                    await dbContext.dealerDetails.AddAsync(data);
+                    //dbContext.Entry(data).State = EntityState.Added;
+                    await dbContext.SaveChangesAsync();
+                    //dbContext.SaveChanges();
+                    return true;
 
                 }
                 else
                 {
-                    return Task.FromResult(false);
+                    return false;
                 }
             }
 
-            return Task.FromResult(false);
+            return false;
         }
 
         public Task<List<DealerVM>> SearchData(Filter filter)
@@ -83,11 +86,11 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                     {
                         if (search.key.ToLower().Contains("timingstart"))
                         {
-                            queryString = SqlHelper.clause(queryString, $" TRIM(TimingSplit.value) = '{search.value}';");
+                            queryString = SqlHelper.clause(queryString, SqlHelper.jsonValueTiming("Start", search.value));
                         }
                         if (search.key.ToLower().Contains("timingstop"))
                         {
-                            queryString = SqlHelper.clause(queryString, $" TRIM(TimingSplit.value) = '{search.value}';)");
+                            queryString = SqlHelper.clause(queryString, SqlHelper.jsonValueTiming("Stop",search.value));
                         }
                     }
                 }

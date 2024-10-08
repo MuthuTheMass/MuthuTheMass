@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CarParkingBookingVM.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace CarParkingBookingDatabase.DBModel
@@ -6,7 +8,8 @@ namespace CarParkingBookingDatabase.DBModel
     public class DealerDetails
     {
         [Key]
-        public int DealerID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string DealerID { get; set; }
 
         [DataType(DataType.Text)]
         public string DealerName { get; set; }
@@ -16,6 +19,9 @@ namespace CarParkingBookingDatabase.DBModel
 
         [DataType(DataType.Text)]
         public string DealerPhoneNo { get; set; }
+        
+        [DataType(DataType.Text)]
+        public string DealerPassword { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string DealerDescription { get; set; }
@@ -38,6 +44,9 @@ namespace CarParkingBookingDatabase.DBModel
 
         [DataType(DataType.Text)]
         public string DealerRating { get; set; }
+
+        [DataType(DataType.Text)]
+        public string Rights { get; set; } = AccessToUsers.Dealer.ToString();
 
     }
 }
