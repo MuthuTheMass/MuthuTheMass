@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarParkingBookingDatabase.DBModel;
+using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Login;
 using CarParkingBookingVM.VM_S.Booking;
 using CarParkingBookingVM.VM_S.Dealers;
@@ -54,6 +55,20 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.RC_Book_File, dest => dest.MapFrom(src => convertFileToByte(src.RC_Book_File)))
                 .ForMember(opt => opt.Vehicle_Image, dest => dest.MapFrom(src => convertFileToByte(src.Vehicle_Image)))
                 ;
+
+            CreateMap<DealerSignUpVM, DealerDetails>()
+                .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.Name))
+                .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.Email))
+                .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.PhoneNo))
+                .ForMember(opt => opt.DealerPassword, dest => dest.MapFrom(src => src.Password))
+                .ReverseMap();
+
+            CreateMap<DealerDetails, AuthorizedDealerLoginVM>()
+                .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.DealerEmail))
+                .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.DealerName))
+                .ReverseMap()
+                ;
+
                 
         }
     }

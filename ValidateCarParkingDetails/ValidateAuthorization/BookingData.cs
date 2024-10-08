@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarParkingBookingDatabase.BookingDBContext;
+using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.VM_S.Booking;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,22 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
         public async Task<bool> AddBooking(BookingVM booking)
         {
+            if (booking is not null) 
+            {
+                if (booking?.UserName is null || booking?.Dealer_Name is null || booking.Dealer_PhoneNumber is null || booking.Phone_Number is null) 
+                {
+                    return false;
+                }
+                else
+                {
+                    var data = mapper.Map<BookingDetails>(booking);
+                    dbContext.Add(data);
+                    dbContext.SaveChanges();
+                    return true;
+                }
+            }
+
+
             return false;
         }
 

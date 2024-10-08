@@ -5,11 +5,14 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
+import { UserAuthService } from '../../../Service/Backend/user-auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { userLogin } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule,HttpClientModule],
   templateUrl: './reg.component.html',
   styleUrl: './reg.component.css'
 })
@@ -29,7 +32,7 @@ router:any;
 
 
 
-constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService) {
+constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private userLogin:UserAuthService) {
     this.router = _router;
     this.validate = _validate;
     this.login=new FormGroup({
@@ -46,8 +49,8 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
         mobilenumber:new FormControl('',Validators.required),
         password:new FormControl('',Validators.required),
         confirmpassword:new FormControl('',Validators.required)
-  
-  
+
+
       })
 
   }
@@ -64,8 +67,8 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
 
 
 
-    
-    
+
+
     registerBtn () {
         const container = document.getElementById('container');
     const registerBtn  = document.getElementById('register');
@@ -78,7 +81,7 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
         //     }
         // });
     }
-       
+
     loginBtn() {
 
         const container  = document.getElementById('container');
@@ -103,23 +106,30 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
         else{
           this. checkValidityAndMarkAsTouchedreg();
         }
-      
+
     }
 
 
     logininto(){
 
         if(this.login.valid){
-          this.router.navigate(['/main']);
+          let data = {
+            Email:this.login.value.useremail,
+            Password:this.login.value.pass
+          } as userLogin
+
+          this.userLogin.UserLogin(data);
+
+          //this.router.navigate(['/main']);
         }
         else{
           this.checkValidityAndMarkAsTouched();
         }
       }
-   
 
-    
- 
+
+
+
 
     checkValidityAndMarkAsTouched(): void {
       // Loop through all form controls and mark them as touched

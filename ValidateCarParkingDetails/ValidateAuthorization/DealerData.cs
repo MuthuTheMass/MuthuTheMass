@@ -4,7 +4,6 @@ using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingDatabase.SqlHelper;
 using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {
@@ -38,7 +37,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 mapper.Map(dealerVM, checkDuplicate);
                 dbContext.dealerDetails.Update(checkDuplicate);
-                dbContext.Entry(checkDuplicate).State = EntityState.Modified;
+                //dbContext.Entry(checkDuplicate).State = EntityState.Modified;
                 dbContext.SaveChanges();
                 return true;
             }
@@ -48,9 +47,10 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 if (!string.IsNullOrEmpty(dealerVM.DealerName))
                 {
                     var data = mapper.Map<DealerDetails>(dealerVM);
-                    dbContext.dealerDetails.Add(data);
-                    dbContext.Entry(data).State = EntityState.Added;
-                    dbContext.SaveChanges();
+                    await dbContext.dealerDetails.AddAsync(data);
+                    //dbContext.Entry(data).State = EntityState.Added;
+                    await dbContext.SaveChangesAsync();
+                    //dbContext.SaveChanges();
                     return true;
 
                 }

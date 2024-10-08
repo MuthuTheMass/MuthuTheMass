@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    [Migration("20240928063325_Booking_Details_28_09_24")]
-    partial class Booking_Details_28_09_24
+    [Migration("20241007172710_vehicle_db")]
+    partial class vehicle_db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,29 +31,41 @@ namespace CarParkingBookingDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ArrivingTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Dealer_")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dealer_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ExitTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Dealer_PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Driver_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Driver_PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone_Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RC_Book_File")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RC_Book_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -72,11 +84,9 @@ namespace CarParkingBookingDatabase.Migrations
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
                 {
-                    b.Property<int>("DealerID")
+                    b.Property<string>("DealerID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DealerID"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DealerAddress")
                         .IsRequired()
@@ -99,6 +109,10 @@ namespace CarParkingBookingDatabase.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DealerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerPassword")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -128,11 +142,9 @@ namespace CarParkingBookingDatabase.Migrations
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -149,29 +161,74 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Owner_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Owner_PhoneNo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RC_Book_Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("RC_Book_Number")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rights")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("VehicleNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
 
                     b.ToTable("userDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
+                {
+                    b.Property<string>("VehicleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Alternative_Phone_Number")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("DriverName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DriverPhoneNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<byte[]>("VehicleImage")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("VehicleModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VehicleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VehicleId");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("vehicleDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
+                {
+                    b.HasOne("CarParkingBookingDatabase.DBModel.UserDetails", "UserDetails")
+                        .WithMany("VehicleDetails")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
+                {
+                    b.Navigation("VehicleDetails");
                 });
 #pragma warning restore 612, 618
         }

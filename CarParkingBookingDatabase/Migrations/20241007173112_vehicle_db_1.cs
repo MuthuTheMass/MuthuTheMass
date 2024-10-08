@@ -5,25 +5,25 @@
 namespace CarParkingBookingDatabase.Migrations
 {
     /// <inheritdoc />
-    public partial class Booking_Details_28_09_2024_2 : Migration
+    public partial class vehicle_db_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<byte[]>(
-                name: "Vehicle_Image",
-                table: "bookingDetials",
-                type: "varbinary(max)",
+            migrationBuilder.AddColumn<string>(
+                name: "VehicleNumber",
+                table: "vehicleDetails",
+                type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: new byte[0]);
+                defaultValue: "");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Vehicle_Image",
-                table: "bookingDetials");
+                name: "VehicleNumber",
+                table: "vehicleDetails");
         }
     }
 }
