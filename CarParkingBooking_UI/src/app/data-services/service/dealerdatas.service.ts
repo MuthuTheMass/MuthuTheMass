@@ -1,36 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { BackstoreService } from '../store/backstore.service';
+import { dealerVM } from '../modal/dealermodal.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DealerdatasService {
 
 
-  dealerapi = "https://localhost:7045/api/Dealer/search";
+  dealerapi = "https://localhost:7045/api/";
 
 
- constructor(public mc:HttpClient){
+ constructor(public mc:HttpClient,public bstore:BackstoreService ){
 
  }
 
-  dealername!:string;
-  dpasswoard!:string;
-  dmobilenumber!:number;
-  parkingaddress!:string;
-  starrating!:string;
 
 
-  public dealeralldata = new BehaviorSubject<string>("");
 
 
-  getalldealerdata(){
-    this.dealeralldata.next("");
-  }
+  getalluserdata(){
 
-  getalluserdata():Observable<any>{
-    return this.mc.get(this.dealerapi+"getalldetails");
+    var body = {
+      "searchFrom": "string",
+      "filters": [
+      ]
+    }
+
+     this.mc.post<any>(this.dealerapi+"Dealer/search",body).subscribe(data =>{
+      console.log(data.result)
+      this.bstore.dealerData.next(data.result as dealerVM[]);
+     });
   }
 
 }

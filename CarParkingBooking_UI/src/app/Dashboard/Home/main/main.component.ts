@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ArticalComponent } from "./artical/artical.component";
 import { RouterOutlet } from '@angular/router';
-import { UserdataService } from '../../../src/service/userdata.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DealerdatasService } from '../../../src/service/dealerdatas.service';
+import { BackstoreService } from '../../../data-services/store/backstore.service';
+import { DealerdatasService } from '../../../data-services/service/dealerdatas.service';
+
 
 @Component({
   selector: 'app-main',
@@ -17,7 +18,7 @@ export class MainComponent {
 dealerdetails:DealerdatasService|any;
 
 
-  constructor( public ms:DealerdatasService) {
+  constructor( public ms:DealerdatasService , protected bstore:BackstoreService) {
     
 
     
@@ -32,25 +33,8 @@ dealerdetails:DealerdatasService|any;
   }
 
 
-
-  getalldealersdetails(){
-  this.ms.getalldealerdata();
-  }
-
-
   getalldealerdetails(){
-    this.ms.getalluserdata().subscribe(r=>{
-      console.log(r);
-      this.dealerdetails.patchValue({
-        dealername:r.uname,
-        parkingaddress:r.parkingaddress,
-        email:r.email,
-        starrating:r.starrating,
-  
-      })
-    },error=>{
-      console.log(JSON.stringify(error));
-    });
+    this.ms.getalluserdata();
   }
 
 
@@ -65,7 +49,7 @@ dealerdetails:DealerdatasService|any;
 
 
   ngOnInit(){
-    
+    this.getalldealerdetails();
   }
 
   getdata(){

@@ -26,6 +26,15 @@ builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
     mc.AddProfile(new MapperProfile());
 }).CreateMapper());
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("carparkingorigins",
+                     builder => builder.WithOrigins("http://localhost:4200")
+                                       .AllowAnyOrigin()
+                                       .AllowAnyHeader()
+        );
+});
+
 var app = builder.Build();
 
 app.UseMiddleware<CommonExceptionHandler>();
@@ -42,5 +51,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors("carparkingorigins");
 app.Run();
