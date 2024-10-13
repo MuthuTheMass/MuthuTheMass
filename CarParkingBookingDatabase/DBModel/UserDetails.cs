@@ -9,8 +9,7 @@ namespace CarParkingBookingDatabase.DBModel
     public class UserDetails 
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required string UserID { get; set; }
+        public required string UserID { get; set; } = string.Empty;
         [DataType(DataType.Text)]
         public required string Name { get; set; }
         [DataType(DataType.EmailAddress)]

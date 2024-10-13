@@ -4,6 +4,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    partial class CarParkingBookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241008175216_vehicle_identity")]
+    partial class vehicle_identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,7 +79,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("BookingID");
 
-                    b.ToTable("bookingDetials", (string)null);
+                    b.ToTable("bookingDetials");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
@@ -134,7 +137,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("DealerID");
 
-                    b.ToTable("dealerDetails", (string)null);
+                    b.ToTable("dealerDetails");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
@@ -171,7 +174,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("userDetails", (string)null);
+                    b.ToTable("userDetails");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
@@ -214,7 +217,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("vehicleDetails", (string)null);
+                    b.ToTable("vehicleDetails");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>

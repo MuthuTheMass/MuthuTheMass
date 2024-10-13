@@ -3,6 +3,8 @@ using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Login;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
@@ -35,7 +37,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if(SignUpDetials is not null) 
             {
-                if (!string.IsNullOrEmpty(SignUpDetials.Password!)
+                if (string.IsNullOrEmpty(SignUpDetials.Password!)
                     || !(SignUpDetials.MobileNumber!.Length == 10)
                     || !SignUpDetials.Email!.Contains("@")
                     || !SignUpDetials.Email.EndsWith(".com"))
@@ -44,13 +46,13 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 }
                 else
                 {
-                    var duplicate = dBContext.userDetails.FirstOrDefault(v => v.Email == SignUpDetials.Email);
+                    var duplicate = dBContext.UserDetails.FirstOrDefault(v => v.Email == SignUpDetials.Email);
                     if (duplicate is null) 
                     {
                         var data =mapper.Map<UserDetails>(SignUpDetials);
-
-                        await dBContext.userDetails.AddAsync(data);
-                        await dBContext.SaveChangesAsync();
+                        dBContext.UserDetails.Add(data);
+                        dBContext.Entry(data).State = EntityState.Added;
+                        dBContext.SaveChanges();
                         return true;
                     }
                     else
@@ -68,7 +70,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if(login.Email is not null && login.Password is not null)
             {
-                var data = dBContext.userDetails.FirstOrDefault(y =>y.Email == login.Email);
+                var data = dBContext.UserDetails.FirstOrDefault(y =>y.Email == login.Email);
                 if (data is not null && data.Password.Equals(login.Password))
                 {
                     var result = new AuthorizedLoginVM()
@@ -99,12 +101,12 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 }
                 else
                 {
-                    var duplicate = dBContext.dealerDetails.FirstOrDefault(v => v.DealerEmail == dealerSign.Email);
+                    var duplicate = dBContext.DealerDetails.FirstOrDefault(v => v.DealerEmail == dealerSign.Email);
                     if (duplicate is null)
                     {
                         var data = mapper.Map<UserDetails>(dealerSign);
 
-                        await dBContext.userDetails.AddAsync(data);
+                        await dBContext.UserDetails.AddAsync(data);
                         await dBContext.SaveChangesAsync();
                     }
                     else
@@ -122,7 +124,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
         public async Task<(AuthorizedDealerLoginVM?,bool?)> VerifyDealer(DealerLogin dealer)
         {
-            var data = dBContext.dealerDetails.FirstOrDefault(h=>h.DealerEmail == dealer.Email);
+            var data = dBContext.DealerDetails.FirstOrDefault(h=>h.DealerEmail == dealer.Email);
             if (data is null)
             {
                 return (null,null);

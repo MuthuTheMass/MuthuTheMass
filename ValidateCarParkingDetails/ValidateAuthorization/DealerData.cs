@@ -30,13 +30,13 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
         public async Task<bool> UpsertDealerData(DealerVM dealerVM)
         {
-            var checkDuplicate = dbContext.dealerDetails.FirstOrDefault(g => g.DealerName == dealerVM.DealerName && 
+            var checkDuplicate = dbContext.DealerDetails.FirstOrDefault(g => g.DealerName == dealerVM.DealerName && 
                                                                              g.DealerEmail == dealerVM.DealerEmail);
 
             if (checkDuplicate is not null)
             {
                 mapper.Map(dealerVM, checkDuplicate);
-                dbContext.dealerDetails.Update(checkDuplicate);
+                dbContext.DealerDetails.Update(checkDuplicate);
                 //dbContext.Entry(checkDuplicate).State = EntityState.Modified;
                 dbContext.SaveChanges();
                 return true;
@@ -47,7 +47,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 if (!string.IsNullOrEmpty(dealerVM.DealerName))
                 {
                     var data = mapper.Map<DealerDetails>(dealerVM);
-                    await dbContext.dealerDetails.AddAsync(data);
+                    await dbContext.DealerDetails.AddAsync(data);
                     //dbContext.Entry(data).State = EntityState.Added;
                     await dbContext.SaveChangesAsync();
                     //dbContext.SaveChanges();
@@ -96,7 +96,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 }
             }
 
-            var query = dbContext.dealerDetails.FromSqlRaw(queryString);
+            var query = dbContext.DealerDetails.FromSqlRaw(queryString);
             data = query.ToList();
 
             
@@ -122,12 +122,12 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
         public Task<bool> RemoveDealer(DeleteDealer delete)
         {
-            var isData = dbContext.dealerDetails.Where(d => d.DealerName == delete.DealerName ||
+            var isData = dbContext.DealerDetails.Where(d => d.DealerName == delete.DealerName ||
                                                             d.DealerEmail == delete.DealerEmail ||
                                                             d.DealerPhoneNo == delete.DealerPhoneNo).ToList();
             if(isData.Count > 0)
             {
-                dbContext.dealerDetails.RemoveRange(isData);
+                dbContext.DealerDetails.RemoveRange(isData);
                 dbContext.SaveChanges();
                 return Task.FromResult(true);
             }

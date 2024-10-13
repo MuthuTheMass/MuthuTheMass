@@ -11,7 +11,7 @@ namespace CarParkingBookingDatabase.DBModel
     public class VehicleDetails
     {
         [Key]
-        public string? VehicleId { get; set; }
+        public string VehicleId { get; set; } = string.Empty;
 
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }

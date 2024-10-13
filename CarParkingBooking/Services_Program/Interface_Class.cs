@@ -9,6 +9,7 @@ namespace CarParkingBooking.Services_Program
             services.AddTransient<IAuthorization, Authorization>();
             services.AddTransient<IDealerData, DealerData>();
             services.AddTransient<IBookingData, BookingData>();
+            services.AddTransient<IVehicleData, VehicleData>();
         }
     }
 }
