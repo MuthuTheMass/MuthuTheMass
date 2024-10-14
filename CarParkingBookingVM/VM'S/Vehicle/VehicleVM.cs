@@ -26,7 +26,7 @@ namespace CarParkingBookingVM.VM_S.Vehicle
         public string VehicleId { get; set; }
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }
-        public IFormFile VehicleImage { get; set; }
+        public string VehicleImage { get; set; }
         public string? DriverName { get; set; }
         public string? DriverPhoneNumber { get; set; }
         public string? VehicleModel { get; set; }

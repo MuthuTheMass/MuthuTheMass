@@ -90,5 +90,10 @@ namespace CarParkingBooking.AutoMapper
 
             return formFile;
         }
+
+        public string ConvertByteToString(byte[] bytes)
+        {
+            return Convert.ToBase64String(bytes);
+        }
     }
 }
