@@ -22,7 +22,7 @@ namespace CarParkingBookingDatabase.DBModel
         public string Rights { get; set; } = AccessToUsers.User.ToString();
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
-        [DataType(DataType.Text)]
+        //[DataType(DataType.Text)]
         //public string? RC_Book_Number { get; set; }
         //[DataType(DataType.Custom)]
         //public byte[]? RC_Book_Image { get; set; }
@@ -30,7 +30,7 @@ namespace CarParkingBookingDatabase.DBModel
         //public string? Owner_Name { get; set; }
         //[DataType(DataType.PhoneNumber)]
         //public string? Owner_PhoneNo { get; set; }
-        public string? VehicleNumber { get; set; }
+        //public string? VehicleNumber { get; set; }
 
         // Navigation property
         public virtual ICollection<VehicleDetails> VehicleDetails { get; set; }

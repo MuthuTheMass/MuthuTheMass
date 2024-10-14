@@ -52,7 +52,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
             if(vehicleData is not null)
             {
-                var data = mapper.Map<Vehicle_User_VM>(vehicleData);
+                var data = mapper.Map<Vehicle_User_VM>(vehicleData.FirstOrDefault());
                 return data;
             }
             else

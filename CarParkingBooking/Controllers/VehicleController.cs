@@ -20,15 +20,38 @@ namespace CarParkingBooking.Controllers
         public IActionResult GetVehicleDetails_UserId([FromQuery] string UserId) 
         {
             var result = vehicleData.GetVehicleDetailsBy_UserID(UserId);
-            if (result is null || result.Result.Count > 0) 
+            if ( result.Result?.Count > 0) 
+            {
+                return Ok(result);
+
+            }
+            else if(result is null || result.Result?.Count == 0)
             {
                 return NotFound();
             }
             else
             {
-                return BadRequest(result.Result);
+                return BadRequest(result);
             }
 
+        }
+
+        [HttpGet("vehiclesingle")]
+        public IActionResult vehicleDetailsBySingle([FromQuery] string UserId, [FromQuery] string VehileId)
+        {
+            var result = vehicleData.GetVehicleDetailsSingle(UserId,VehileId);
+            if(!string.IsNullOrEmpty(result.Result?.VehicleId))
+            {
+                return Ok(result);
+            }
+            else if (result is null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         [HttpPost("addvehicle")]

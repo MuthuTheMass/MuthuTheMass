@@ -26,7 +26,6 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerEmail,       dest => dest.MapFrom(src => src.DealerEmail))
                 .ForMember(opt => opt.DealerPhoneNo,     dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerDescription, dest => dest.MapFrom(src => src.DealerDescription))
-                .ForMember(opt => opt.DealerStartDate,   dest => dest.MapFrom(src => src.DealerStartDate))
                 .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => ConvertTimingString(src.DealerTiming)))
                 .ForMember(opt => opt.DealerAddress,     dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark,    dest => dest.MapFrom(src => src.DealerLandmark))
@@ -72,16 +71,22 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<VehicleDetails, Vehicle_User_VM>()
                 .ForMember(opt => opt.VehicleId, dest => dest.MapFrom(src => src.VehicleId))
+                .ForMember(opt => opt.VehicleName, dest => dest.MapFrom(src => src.VehicleName))
                 .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleNumber))
                 .ForMember(opt => opt.VehicleImage, dest => dest.MapFrom(src => ConvertByteToFromFile(src.VehicleImage)))
+                .ForMember(opt => opt.DriverName, dest => dest.MapFrom(src => src.DriverName))
+                .ForMember(opt => opt.DriverPhoneNumber, dest => dest.MapFrom(src => src.DriverPhoneNumber))
                 .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleModel))
                 .ForMember(opt => opt.Alternative_Phone_Number, dest => dest.MapFrom(src => src.Alternative_Phone_Number))
                 ;
 
             CreateMap<Vehicle_User_VM,VehicleDetails>()
                 .ForMember(opt => opt.VehicleId, dest => dest.MapFrom(src => src.VehicleId))
+                .ForMember(opt => opt.VehicleName, dest => dest.MapFrom(src => src.VehicleName))
                 .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleNumber))
                 .ForMember(opt => opt.VehicleImage, dest => dest.MapFrom(src => ConvertFileToByte(src.VehicleImage)))
+                .ForMember(opt => opt.DriverName, dest => dest.MapFrom(src => src.DriverName))
+                .ForMember(opt => opt.DriverPhoneNumber, dest => dest.MapFrom(src => src.DriverPhoneNumber))
                 .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleModel))
                 .ForMember(opt => opt.Alternative_Phone_Number, dest => dest.MapFrom(src => src.Alternative_Phone_Number))
                 ;

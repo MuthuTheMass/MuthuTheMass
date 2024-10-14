@@ -26,10 +26,6 @@ namespace CarParkingBookingDatabase.DBModel
         [DataType(DataType.MultilineText)]
         public string DealerDescription { get; set; }
 
-        [DataType(DataType.Date)]
-        [AllowNull]
-        public DateTime? DealerStartDate { get; set; }
-
         [DataType(DataType.MultilineText)]
         public string DealerTiming { get; set; }
 
@@ -47,6 +43,9 @@ namespace CarParkingBookingDatabase.DBModel
 
         [DataType(DataType.Text)]
         public string Rights { get; set; } = AccessToUsers.Dealer.ToString();
+
+        [DataType(DataType.Text)]
+        public bool DealerOpenOrClosed { get; set; }
 
     }
 }
