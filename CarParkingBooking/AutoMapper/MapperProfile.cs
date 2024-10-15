@@ -29,11 +29,10 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => ConvertTimingString(src.DealerTiming)))
                 .ForMember(opt => opt.DealerAddress,     dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark,    dest => dest.MapFrom(src => src.DealerLandmark))
-                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => ConvertString(src.DealerGPSLocation)))
+                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => src.DealerLocationURL))
                 .ForMember(opt => opt.DealerRating,      dest => dest.MapFrom(src => src.DealerRating));
 
             CreateMap<DealerDetails, DealerVM>()
-                .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => ConvertGPS(src.DealerGPSLocation)))
                 .ForMember(opt => opt.DealerTiming,      dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)));
 
             CreateMap<BookingDetails, BookingVM>()

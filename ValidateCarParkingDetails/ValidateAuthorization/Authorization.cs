@@ -3,6 +3,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Login;
+using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -119,7 +120,41 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
 
             }
 
-            return true;
+            return false;
+        }
+
+        public async Task<bool?> InsertDealerDetails(DealerVM dealerSign)
+        {
+            if (dealerSign is not null)
+            {
+                if (!string.IsNullOrEmpty(dealerSign.DealerName!)
+                    || !(dealerSign.DealerPhoneNo!.Length == 10)
+                    || !dealerSign.DealerEmail!.Contains("@")
+                    || !dealerSign.DealerEmail.EndsWith(".com"))
+                {
+                    return await Task.FromResult(false);
+                }
+                else
+                {
+                    var duplicate = dBContext.DealerDetails.FirstOrDefault(v => v.DealerEmail == dealerSign.DealerEmail);
+                    if (duplicate is null)
+                    {
+                        var data = mapper.Map<UserDetails>(dealerSign);
+
+                        await dBContext.UserDetails.AddAsync(data);
+                        await dBContext.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    return await Task.FromResult(true);
+                }
+
+            }
+
+            return false;
         }
 
         public async Task<(AuthorizedDealerLoginVM?,bool?)> VerifyDealer(DealerLogin dealer)
