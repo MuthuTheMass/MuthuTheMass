@@ -118,9 +118,9 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
             Password:this.login.value.pass
           } as userLogin
 
-          this.userLogin.UserLogin(data);
+          // this.userLogin.UserLogin(data);
 
-          //this.router.navigate(['/main']);
+          this.router.navigate(['/main']);
         }
         else{
           this.checkValidityAndMarkAsTouched();
