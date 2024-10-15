@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { userLogin } from '../Model/UserModels';
+import { userLogin, userSignUp } from '../Model/UserModels';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +10,23 @@ import { Observable } from 'rxjs';
 })
 export class UserAuthService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
   UserLogin(login:userLogin) : any{
     this.http.post("https://localhost:7045/api/Authorization/userlogin",login)
-             .subscribe(data => {
-                console.log(data);
-             });
+             .subscribe(
+              (data)=>{
+                this.router.navigate(['/main']);
+
+             },
+            error =>{
+             alert(error.status as HttpErrorResponse);
+            });
+  }
+
+  UserSignUp(signUp:userSignUp):any{
+
+    return this.http.post<userSignUp>("https://localhost:7045/api/Authorization/signup",signUp).toPromise();
   }
 
 }

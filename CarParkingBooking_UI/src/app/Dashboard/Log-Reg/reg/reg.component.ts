@@ -7,7 +7,7 @@ import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-val
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { userLogin } from '../../../Service/Model/UserModels';
+import { userLogin, userSignUp } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
@@ -101,7 +101,23 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
     signin(){
 
         if(this.regpage.valid){
-          this.router.navigate(['/main']);
+          let data = { 
+            userName:this.regpage.value.fullname,
+            email:this.regpage.value.regemail,
+            mobileNumber: this.regpage.value.mobilenumber,
+            password: this.regpage.value.password,
+          } as userSignUp
+
+
+          this.userLogin.UserSignUp(data).then(
+            (response: any) => {
+              console.log(response);
+              this.loginBtn();
+            },
+            (error: any) => {
+              console.error(error);
+            }
+          )
         }
         else{
           this. checkValidityAndMarkAsTouchedreg();
@@ -119,8 +135,6 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
           } as userLogin
 
           this.userLogin.UserLogin(data);
-
-          //this.router.navigate(['/main']);
         }
         else{
           this.checkValidityAndMarkAsTouched();

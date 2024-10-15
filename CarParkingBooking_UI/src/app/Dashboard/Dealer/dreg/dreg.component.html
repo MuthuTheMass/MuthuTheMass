@@ -1,75 +1,142 @@
 <div class="fullbody">
-    <div class="halfbody">
+  <div class="halfbody">
     <div class="container" id="container">
-        <div class="form-container sign-up">
-<form [formGroup]="regpage">
-    <h5>Create Account For Dealer</h5>
-    <!-- <div class="social-icons">
+      <div class="form-container sign-up">
+        <form [formGroup]="regpage">
+          <h5>Create Account For Dealer</h5>
+          <!-- <div class="social-icons">
         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
         <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
     </div> -->
-    <!-- <span>
+          <!-- <span>
         Or use your email for registeration
     </span> -->
-    <input type="text" placeholder="Name"  name="fullname" formControlName="fullname">
-    <span class="error" *ngIf="this.validate.validation(this.regpage,'fullname')">*Enter the Fullname</span>
-    <input type="email" placeholder="Email"  name="regemail" formControlName="regemail">
-    <span class="error" *ngIf="this.validate.validation(this.regpage,'regemail')">*Enter the Email</span>
-    <input type="text" placeholder="mobilenumber"  name="mobilenumber" formControlName="mobilenumber">
-    <span class="error" *ngIf="this.validate.validation(this.regpage,'mobilenumber')">*Enter the mobile number</span>
-    <input type="password" placeholder="Password" name="password" formControlName="password">
-    <span class="error" *ngIf="this.validate.validation(this.regpage,'password')">*Enter the password</span>
-    <input type="password" placeholder="confirmpassword" name="confirmpassword" formControlName="confirmpassword" >
-    <span class="error" *ngIf="this.validate.validation(this.regpage,'confirmpassword')">*Confirm password</span>
-    <button  (click)="signin()">Sign Up</button>
+          <input
+            type="text"
+            placeholder="Name"
+            name="fullname"
+            formControlName="fullname"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(this.regpage, 'fullname')"
+            >*Enter the Fullname</span
+          >
+          <input
+            type="email"
+            placeholder="Email"
+            name="regemail"
+            formControlName="regemail"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(this.regpage, 'regemail')"
+            >*Enter the Email</span
+          >
+          <input
+            type="text"
+            placeholder="mobilenumber"
+            name="mobilenumber"
+            formControlName="mobilenumber"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(this.regpage, 'mobilenumber')"
+            >*Enter the mobile number</span
+          >
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            formControlName="password"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(this.regpage, 'password')"
+            >*Enter the password</span
+          >
+          <input
+            type="password"
+            placeholder="confirmpassword"
+            name="confirmpassword"
+            formControlName="confirmpassword"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(this.regpage, 'confirmpassword')"
+            >*Confirm password</span
+          >
+          <button (click)="signin()">Sign Up</button>
 
-    <span class="Dlog"><a href="">Customer Register</a></span>
+          <span class="Dlog"><a href="">Customer Register</a></span>
+        </form>
+      </div>
+      <div class="form-container sign-in">
+        <form [formGroup]="login">
+          <h1>Dealer Login</h1>
+          <div class="social-icons">
+            <a
+              href="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi58N6e_IiIAxX1iK8BHYjJAaAQPAgJ"
+              class="icon"
+              ><i class="fa-brands fa-google-plus-g"></i
+            ></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+          <span> Or use your email Password </span>
 
- 
-</form>
+          <input
+            type="email"
+            placeholder="Email"
+            name="useremail"
+            formControlName="useremail"
+          />
+          <span
+            class="error"
+            *ngIf="this.validate.validation(login, 'useremail')"
+            >Enter The Valid Email</span
+          >
+
+          <input
+            type="password"
+            placeholder="Password"
+            class="form-control"
+            name="pass"
+            formControlName="pass"
+          />
+          <span class="error" *ngIf="this.validate.validation(login, 'pass')"
+            >Enter The Valid Password</span
+          >
+          <a href="#">Forget your Password?</a>
+          <button (click)="logininto()">Sign in</button>
+
+          <span class="Dlog"><a href=" ">Customer Login</a></span>
+        </form>
+      </div>
+
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Welcom to Zenpark!</h1>
+            <p>Enter your personal details to use all of site features</p>
+            <button class="hidden" id="login" (click)="loginBtn()">
+              Sign In
+            </button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h1>Hello, Welcom to Zenpark!</h1>
+            <p>
+              Register with your personal details to use all of site features
+            </p>
+            <button class="hidden" id="register" (click)="registerBtn()">
+              Sign Up
+            </button>
+          </div>
         </div>
-        <div class="form-container sign-in">
-            <form [formGroup]="login">
-                <h1>Dealer Login</h1>
-                <div class="social-icons">
-                    <a href="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi58N6e_IiIAxX1iK8BHYjJAaAQPAgJ" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-                <span>
-                    Or use your email Password
-                </span>
-            
-                <input type="email" placeholder="Email" name="useremail" formControlName="useremail">
-                <span class="error" *ngIf="this.validate.validation(login,'useremail')">Enter The Valid Email</span>
-                
-                <input type="password" placeholder="Password" class="form-control"  name="pass" formControlName="pass">
-                <span class="error" *ngIf="this.validate.validation(login,'pass')">Enter The Valid Password</span>
-                <a href="#">Forget your Password?</a>
-                <button (click)="logininto()">Sign in</button>
-
-                <span class="Dlog"><a href=" ">Customer Login</a></span>
-            </form>
-           
-                    </div>
-
-                    <div class="toggle-container">
-                        <div class="toggle">
-                            <div class="toggle-panel toggle-left">
-                                <h1> Welcom to Zenpark!</h1>
-                                <p>Enter your personal details to use all of site features</p>
-                                <button class="hidden" id="login" (click)="loginBtn()">Sign In</button>
-                            </div>
-                            <div class="toggle-panel toggle-right">
-                                <h1>Hello, Welcom to Zenpark!</h1>
-                                <p>Register with your personal details to use all of site features</p>
-                                <button class="hidden" id="register" (click)="registerBtn()" >Sign Up</button>
-                            </div>
-                        </div>
-                    </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>
