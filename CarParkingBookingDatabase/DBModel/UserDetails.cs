@@ -1,4 +1,5 @@
-﻿using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.CustomServices;
+using CarParkingBookingVM.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -34,5 +35,8 @@ namespace CarParkingBookingDatabase.DBModel
 
         // Navigation property
         public virtual ICollection<VehicleDetails> VehicleDetails { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
     }
 }

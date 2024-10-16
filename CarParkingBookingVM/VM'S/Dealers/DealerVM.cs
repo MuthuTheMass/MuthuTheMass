@@ -61,7 +61,8 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public moments? Thursday { get; set; }
         public moments? Friday { get; set; }
         public moments? Saturday { get; set;}
-        public moments? Sunday { get; set; }    
+        public moments? Sunday { get; set; }
+        public string alwaysAvailable { get; set; } = string.Empty;
     }
 
     public class moments
@@ -69,15 +70,15 @@ namespace CarParkingBookingVM.VM_S.Dealers
         private TimeOnly? _start;
         private TimeOnly? _stop;
 
-        public string? Start 
+        public string? Start
         {
             get => _start?.ToString("hh:mm tt");
-            set => _start = TimeOnly.ParseExact(value, "hh:mm tt", null);
+            set => _start = value is not null ? TimeOnly.ParseExact(value, "hh:mm tt", null) : null;
         }
         public string? Stop 
         {
             get => _stop?.ToString("hh:mm tt");
-            set => _stop = TimeOnly.ParseExact(value, "hh:mm tt", null);
+            set => _stop = value is not null ? TimeOnly.ParseExact(value, "hh:mm tt", null) : null;
         }
     }
 

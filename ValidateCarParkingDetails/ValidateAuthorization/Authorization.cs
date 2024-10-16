@@ -93,7 +93,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if (dealerSign is not null)
             {
-                if (!string.IsNullOrEmpty(dealerSign.Password!)
+                if (string.IsNullOrEmpty(dealerSign.Password!)
                     || !(dealerSign.PhoneNo!.Length == 10)
                     || !dealerSign.Email!.Contains("@")
                     || !dealerSign.Email.EndsWith(".com"))
@@ -105,43 +105,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                     var duplicate = dBContext.DealerDetails.FirstOrDefault(v => v.DealerEmail == dealerSign.Email);
                     if (duplicate is null)
                     {
-                        var data = mapper.Map<UserDetails>(dealerSign);
+                        var data = mapper.Map<DealerDetails>(dealerSign);
 
-                        await dBContext.UserDetails.AddAsync(data);
-                        await dBContext.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        return null;
-                    }
-
-                    return await Task.FromResult(true);
-                }
-
-            }
-
-            return false;
-        }
-
-        public async Task<bool?> InsertDealerDetails(DealerVM dealerSign)
-        {
-            if (dealerSign is not null)
-            {
-                if (!string.IsNullOrEmpty(dealerSign.DealerName!)
-                    || !(dealerSign.DealerPhoneNo!.Length == 10)
-                    || !dealerSign.DealerEmail!.Contains("@")
-                    || !dealerSign.DealerEmail.EndsWith(".com"))
-                {
-                    return await Task.FromResult(false);
-                }
-                else
-                {
-                    var duplicate = dBContext.DealerDetails.FirstOrDefault(v => v.DealerEmail == dealerSign.DealerEmail);
-                    if (duplicate is null)
-                    {
-                        var data = mapper.Map<UserDetails>(dealerSign);
-
-                        await dBContext.UserDetails.AddAsync(data);
+                        await dBContext.DealerDetails.AddAsync(data);
                         await dBContext.SaveChangesAsync();
                     }
                     else
