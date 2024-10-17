@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
-import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { userLogin, userSignUp } from '../../../Service/Model/UserModels';
+import { Login, SignUp } from '../../../Service/Model/UserModels';
+import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 
 @Component({
   selector: 'app-reg',
@@ -106,7 +106,7 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
             email:this.regpage.value.regemail,
             mobileNumber: this.regpage.value.mobilenumber,
             password: this.regpage.value.password,
-          } as userSignUp
+          } as SignUp
 
 
           this.userLogin.UserSignUp(data).then(
@@ -132,7 +132,7 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
           let data = {
             Email:this.login.value.useremail,
             Password:this.login.value.pass
-          } as userLogin
+          } as Login
 
           this.userLogin.UserLogin(data);
         }
