@@ -37,10 +37,17 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 }
                 else
                 {
-                    var data = mapper.Map<BookingDetails>(booking);
-                    await dbContext.BookingDetails.AddAsync(data);
-                    await dbContext.SaveChangesAsync();
-                    return true;
+                    var userDetail = await dbContext.UserDetails.FindAsync(booking.User_ID);
+                    var vehicleDetail = await dbContext.VehicleDetails.FindAsync(booking.Vehicle_Id);
+                    var dealerDetail = await dbContext.DealerDetails.FindAsync(booking.Dealer_ID);
+                    if (userDetail != null && vehicleDetail != null && dealerDetail != null)
+                    {
+                        var data = mapper.Map<BookingDetails>(booking);
+                        await dbContext.BookingDetails.AddAsync(data);
+                        await dbContext.SaveChangesAsync();
+                        return true;
+                    }
+                    return false;
                 }
             }
 

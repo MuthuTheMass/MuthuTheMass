@@ -18,6 +18,8 @@ namespace CarParkingBookingDatabase.BookingDBContext
         public DbSet<DealerDetails> DealerDetails { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<VehicleDetails> VehicleDetails { get; set; }
+        public DbSet<BookingTripDetails> BookingTripDetails { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +41,14 @@ namespace CarParkingBookingDatabase.BookingDBContext
                       .WithMany(u => u.VehicleDetails) // Assuming User has a collection of VehicleDetails
                       .HasForeignKey(v => v.UserID); // Foreign key property in VehicleDetails
             });
+            modelBuilder.Entity<BookingTripDetails>(entity => {
+                entity.HasKey(t => t.TripId);
+
+                entity.HasOne(o => o.BookingDetails)
+                      .WithMany(u => u.BookingTripDetails)
+                      .HasForeignKey(v => v.BookingID);
+            });
+
             base.OnModelCreating(modelBuilder);
 
 
@@ -53,36 +63,34 @@ namespace CarParkingBookingDatabase.BookingDBContext
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             await SetCustomIds();
-            var result = await base.SaveChangesAsync(cancellationToken);
-
-            return result;
+            return await base.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task GenerateIdsAsync(IEnumerable<object> entities, string prefix, Func<object, string> getId, Action<object, string> setId)
-        {
-            // Filter for 'Added' state entities in ChangeTracker
-            var entries = ChangeTracker
-                .Entries()
-                .Where(e => entities.Contains(e.Entity) && e.State == EntityState.Added)
-                .Select(e => e.Entity)
-                .ToList();
+        //private async Task GenerateIdsAsync(IEnumerable<object> entities, string prefix, Func<object, string> getId, Action<object, string> setId)
+        //{
+        //    // Filter for 'Added' state entities in ChangeTracker
+        //    var entries = ChangeTracker
+        //        .Entries()
+        //        .Where(e => entities.Contains(e.Entity) && e.State == EntityState.Added)
+        //        .Select(e => e.Entity)
+        //        .ToList();
 
-            // Determine the current max ID across all entities of this type (async)
-            var maxId = entities
-                .OfType<object>()
-                .Select(getId)
-                .Where(id => id != null)
-                .OrderByDescending(id => int.Parse(id.Split('-')[1]))
-                .FirstOrDefault();
+        //    // Determine the current max ID across all entities of this type (async)
+        //    var maxId = entities
+        //        .OfType<object>()
+        //        .Select(getId)
+        //        .Where(id => id != null)
+        //        .OrderByDescending(id => int.Parse(id.Split('-')[1]))
+        //        .FirstOrDefault();
 
-            var currentIdNumber = maxId != null ? int.Parse(maxId.Split('-')[1]) : 0;
+        //    var currentIdNumber = maxId != null ? int.Parse(maxId.Split('-')[1]) : 0;
 
-            // Assign new IDs to each entity
-            foreach (var entity in entries)
-            {
-                setId(entity, $"{prefix}-{++currentIdNumber}");
-            }
-        }
+        //    // Assign new IDs to each entity
+        //    foreach (var entity in entries)
+        //    {
+        //        setId(entity, $"{prefix}-{++currentIdNumber}");
+        //    }
+        //}
 
 
         private async Task SetCustomIds()
@@ -92,7 +100,8 @@ namespace CarParkingBookingDatabase.BookingDBContext
                 (typeof(UserDetails), "User", u => ((UserDetails)u).UserID, (u, id) => ((UserDetails)u).UserID = id),
                 (typeof(DealerDetails), "Dealer", d => ((DealerDetails)d).DealerID, (d, id) => ((DealerDetails)d).DealerID = id),
                 (typeof(BookingDetails), "Booking", b => ((BookingDetails)b).BookingID, (b, id) => ((BookingDetails)b).BookingID = id),
-                (typeof(VehicleDetails), "Vehicle", v => ((VehicleDetails)v).VehicleId, (v, id) => ((VehicleDetails)v).VehicleId = id)
+                (typeof(VehicleDetails), "Vehicle", v => ((VehicleDetails)v).VehicleId, (v, id) => ((VehicleDetails)v).VehicleId = id),
+                (typeof(BookingTripDetails), "Trip", v => ((BookingTripDetails)v).TripId, (v, id) => ((BookingTripDetails)v).TripId = id)
             };
 
             foreach (var (entityType, prefix, getId, setId) in details)
