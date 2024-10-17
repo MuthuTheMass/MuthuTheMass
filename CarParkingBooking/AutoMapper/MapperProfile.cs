@@ -38,20 +38,15 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerLocationURL, dest => dest.MapFrom(src => src.DealerGPSLocation));
 ;
 
-            //CreateMap<BookingDetails, BookingVM>()
-            //    .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.UserName))
-            //    .ForMember(opt => opt.Phone_Number, dest => dest.MapFrom(src => src.Phone_Number))
-            //    .ForMember(opt => opt.Vehicle_Number, dest => dest.MapFrom(src => src.Vehicle_Number))
-            //    .ForMember(opt => opt.Vehicle_Size_Type, dest => dest.MapFrom(src => src.Vehicle_Size_Type))
-            //    .ForMember(opt => opt.RC_Book_Number, dest => dest.MapFrom(src => src.RC_Book_Number))
-            //    .ForMember(opt => opt.RC_Book_File, dest => dest.MapFrom(src => convertByteToFromFile(src.RC_Book_File)))
-            //    .ForMember(opt => opt.Vehicle_Image, dest => dest.MapFrom(src => convertByteToFromFile(src.Vehicle_Image)))
-            //    .ForMember(opt => opt.Dealer_Name, dest => dest.MapFrom(src => src.Dealer_Name))
-            //    .ForMember(opt => opt.Dealer_PhoneNumber, dest => dest.MapFrom(src => src.Dealer_PhoneNumber))
-            //    .ForMember(opt => opt.Driver_Name, dest => dest.MapFrom(src => src.Driver_Name))
-            //    .ForMember(opt => opt.Driver_PhoneNumber, dest => dest.MapFrom(src => src.Driver_PhoneNumber))
-            //    .ForMember(opt => opt.ArrivingTime, dest => dest.MapFrom(src => src.ArrivingTime))
-            //    ;
+            CreateMap<BookingDetails, BookingVM>()
+                .ForMember(opt => opt.User_ID, dest => dest.MapFrom(src => src.User_ID))
+                .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
+                .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
+                .ForMember(opt => opt.Driver_Name, dest => dest.MapFrom(src => src.Driver_Name))
+                .ForMember(opt => opt.Driver_PhoneNumber, dest => dest.MapFrom(src => src.Driver_PhoneNumber))
+                .ForMember(opt => opt.ArrivingTime, dest => dest.MapFrom(src => src.ArrivingTime))
+                .ReverseMap()
+                ;
 
             //CreateMap<BookingVM, BookingDetails>()
             //    .ForMember(opt => opt.RC_Book_File, dest => dest.MapFrom(src => convertFileToByte(src.RC_Book_File)))

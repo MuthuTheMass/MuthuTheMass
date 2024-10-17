@@ -55,7 +55,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("BookingID");
 
-                    b.ToTable("BookingDetials");
+                    b.ToTable("BookingDetials", (string)null);
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
@@ -110,7 +110,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("DealerID");
 
-                    b.ToTable("DealerDetails");
+                    b.ToTable("DealerDetails", (string)null);
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
@@ -146,7 +146,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("UserDetails");
+                    b.ToTable("UserDetails", (string)null);
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
@@ -191,7 +191,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("VehicleDetails");
+                    b.ToTable("VehicleDetails", (string)null);
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>

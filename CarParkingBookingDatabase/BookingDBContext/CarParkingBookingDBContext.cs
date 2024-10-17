@@ -14,7 +14,7 @@ namespace CarParkingBookingDatabase.BookingDBContext
         }
 
 
-        public DbSet<BookingDetails> BookingDetials { get; set; }
+        public DbSet<BookingDetails> BookingDetails { get; set; }
         public DbSet<DealerDetails> DealerDetails { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<VehicleDetails> VehicleDetails { get; set; }
@@ -89,10 +89,10 @@ namespace CarParkingBookingDatabase.BookingDBContext
         {
             var details = new (Type entityType, string prefix, Func<object, string> idGetter, Action<object, string> idSetter)[]
             {
-        (typeof(UserDetails), "User", u => ((UserDetails)u).UserID, (u, id) => ((UserDetails)u).UserID = id),
-        (typeof(DealerDetails), "Dealer", d => ((DealerDetails)d).DealerID, (d, id) => ((DealerDetails)d).DealerID = id),
-        (typeof(BookingDetails), "Booking", b => ((BookingDetails)b).BookingID, (b, id) => ((BookingDetails)b).BookingID = id),
-        (typeof(VehicleDetails), "Vehicle", v => ((VehicleDetails)v).VehicleId, (v, id) => ((VehicleDetails)v).VehicleId = id)
+                (typeof(UserDetails), "User", u => ((UserDetails)u).UserID, (u, id) => ((UserDetails)u).UserID = id),
+                (typeof(DealerDetails), "Dealer", d => ((DealerDetails)d).DealerID, (d, id) => ((DealerDetails)d).DealerID = id),
+                (typeof(BookingDetails), "Booking", b => ((BookingDetails)b).BookingID, (b, id) => ((BookingDetails)b).BookingID = id),
+                (typeof(VehicleDetails), "Vehicle", v => ((VehicleDetails)v).VehicleId, (v, id) => ((VehicleDetails)v).VehicleId = id)
             };
 
             foreach (var (entityType, prefix, getId, setId) in details)

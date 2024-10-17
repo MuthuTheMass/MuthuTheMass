@@ -2,11 +2,6 @@
 using CarParkingBookingDatabase.BookingDBContext;
 using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.VM_S.Booking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {
@@ -36,15 +31,15 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             if (booking is not null) 
             {
-                if (booking?.UserName is null || booking?.Dealer_Name is null || booking.Dealer_PhoneNumber is null || booking.Phone_Number is null) 
+                if (booking?.User_ID is null || booking?.Dealer_ID is null || booking.Vehicle_Id is null ) 
                 {
                     return false;
                 }
                 else
                 {
                     var data = mapper.Map<BookingDetails>(booking);
-                    dbContext.Add(data);
-                    dbContext.SaveChanges();
+                    await dbContext.BookingDetails.AddAsync(data);
+                    await dbContext.SaveChangesAsync();
                     return true;
                 }
             }
