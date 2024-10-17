@@ -60,8 +60,7 @@ export const routes: Routes = [
         {
             path:"nav",component:NavbarComponent,title:"navbar"
         },
-    ],
-    // canActivate:[authGuard]
+    ]
 }
 
 

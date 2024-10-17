@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RegLogService } from '../../../reg-log.service';
+import { routes } from '../../../app.routes';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
+import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 
 @Component({
   selector: 'app-dreg',
@@ -28,7 +30,7 @@ export class DregComponent {
   
   
   
-  constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService) {
+  constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService,private http:UserAuthService) {
       this.router = _router;
       this.validate = _validate;
       this.login=new FormGroup({
