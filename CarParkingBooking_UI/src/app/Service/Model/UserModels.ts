@@ -1,12 +1,20 @@
-export interface userLogin{
-  Email:string,
-  Password:string
+export interface Login{
+  email: string,
+  password: string
 }
 
-export interface userSignUp
+export interface SignUp
 {
   userName: string,
   email: string,
   mobileNumber: string,
   password: string
+}
+
+export interface DealerSignUp{
+
+    name: string,
+    email: string,
+    phoneNo: string,
+    password: string
 }

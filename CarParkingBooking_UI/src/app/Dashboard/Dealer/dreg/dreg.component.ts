@@ -6,6 +6,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
+import { DealerSignUp, Login, SignUp } from '../../../Service/Model/UserModels';
+import { LoginResponse } from '../../../Service/Model/BackendUserModels';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dreg',
@@ -30,7 +33,7 @@ export class DregComponent {
   
   
   
-  constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService,private http:UserAuthService) {
+  constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService,private auth:UserAuthService) {
       this.router = _router;
       this.validate = _validate;
       this.login=new FormGroup({
@@ -68,6 +71,7 @@ export class DregComponent {
       
       
       registerBtn () {
+        //TODO : Refactor to typescript
           const container = document.getElementById('container');
       const registerBtn  = document.getElementById('register');
       const loginBtn = document.getElementById('login');
@@ -81,7 +85,7 @@ export class DregComponent {
       }
          
       loginBtn() {
-  
+        //TODO: Refactor to typescript
           const container  = document.getElementById('container');
       const registerBtn = document.getElementById('register');
       const loginBtn = document.getElementById('login');
@@ -96,10 +100,25 @@ export class DregComponent {
       }
   
   
-      signin(){
+      signUp(){
   
           if(this.regpage.valid){
-            this.router.navigate(['/main']);
+            let signData ={
+              name:this.regpage.value.fullname,
+              email:this.regpage.value.regemail,
+              phoneNo:this.regpage.value.mobilenumber,
+              password:this.regpage.value.password,
+            } as DealerSignUp
+
+            this.auth.DealerSignUp(signData).toPromise()
+            .then((response: boolean) => {
+              console.log(response);
+            })
+            .catch((error: HttpErrorResponse) => {
+              console.error(error);
+            });
+
+            this.loginBtn();
           }
           else{
             this. checkValidityAndMarkAsTouchedreg();
@@ -111,8 +130,12 @@ export class DregComponent {
       logininto(){
   
           if(this.login.valid){
+            let loginData ={
+              email:this.login.value.useremail,
+              password:this.login.value.pass,
+            } as Login
 
-            this.router.navigate(['/main']);
+            this.auth.DealerLogin(loginData);
           }
           else{
             this.checkValidityAndMarkAsTouched();

@@ -7,7 +7,7 @@ import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-val
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { userLogin, userSignUp } from '../../../Service/Model/UserModels';
+import { Login, SignUp } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
@@ -32,7 +32,7 @@ router:any;
 
 
 
-constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private userLogin:UserAuthService) {
+constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private Login:UserAuthService) {
     this.router = _router;
     this.validate = _validate;
     this.login=new FormGroup({
@@ -106,10 +106,10 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
             email:this.regpage.value.regemail,
             mobileNumber: this.regpage.value.mobilenumber,
             password: this.regpage.value.password,
-          } as userSignUp
+          } as SignUp
 
 
-          this.userLogin.UserSignUp(data).then(
+          this.Login.SignUp(data).then(
             (response: any) => {
               console.log(response);
               this.loginBtn();
@@ -130,11 +130,11 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
 
         if(this.login.valid){
           let data = {
-            Email:this.login.value.useremail,
-            Password:this.login.value.pass
-          } as userLogin
+            email:this.login.value.useremail,
+            password:this.login.value.pass
+          } as Login;
 
-          this.userLogin.UserLogin(data);
+          this.Login.Login(data);
         }
         else{
           this.checkValidityAndMarkAsTouched();

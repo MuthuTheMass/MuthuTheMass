@@ -114,5 +114,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors("carparkingorigins");
 app.MapControllers();
-app.UseCors("carparkingorigins");
 app.Run();
