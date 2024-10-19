@@ -20,15 +20,15 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("Booking")]
-        [Authorize(Policy = AccessToUser.User)]
-        public IActionResult Booking([FromForm]BookingVM booking)
+        //[Authorize(Policy = AccessToUser.User)]
+        public async Task<IActionResult> Booking([FromBody]BookingVM booking)
         {
-            var result = bookingData.AddBooking(booking);
-            if (result.Result == true)
+            var result = await bookingData.AddBooking(booking);
+            if (result == true)
             {
                 return Ok(result);
             }
-            else if (result.Result == false)
+            else if (result == false)
             {
                 return UnprocessableEntity(result);
             }

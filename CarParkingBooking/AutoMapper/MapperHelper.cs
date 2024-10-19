@@ -9,25 +9,25 @@ namespace CarParkingBooking.AutoMapper
 {
     public class MapperHelper : Profile
     {
-        public string ConvertString(GPSLocation GPS)
-        {
-            return JsonConvert.SerializeObject(GPS);
-        }
+        //public string ConvertString(GPSLocation GPS)
+        //{
+        //    return JsonConvert.SerializeObject(GPS);
+        //}
 
-        public GPSLocation ConvertGPS(string GPS)
-        {
-            return JsonConvert.DeserializeObject<GPSLocation>(GPS);
-        }
+        //public GPSLocation ConvertGPS(string GPS)
+        //{
+        //    return JsonConvert.DeserializeObject<GPSLocation>(GPS);
+        //}
 
         public string ConvertTimingString(Timing times)
         {
-            var timing = Newtonsoft.Json.JsonConvert.SerializeObject(times);
+            var timing = JsonConvert.SerializeObject(times);
             return timing;
         }
 
-        public Timing ConvertStringTiming(string timing)
+        public Timing? ConvertStringTiming(string timing)
         {
-            Timing data = JsonConvert.DeserializeObject<Timing>(timing);
+            Timing? data = JsonConvert.DeserializeObject<Timing>(timing);
             return data;
 
         }
@@ -63,6 +63,37 @@ namespace CarParkingBooking.AutoMapper
             };
 
             return formFile;
+        }
+
+        public byte[] ConvertFileToByte(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return null; // Handle the case where the file is null or empty
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                file.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+        public IFormFile ConvertByteToFromFile(byte[] file)
+        {
+            var stream = new MemoryStream(file);
+
+            IFormFile formFile = new FormFile(stream, 0, file.Length, "file", "")
+            {
+                Headers = new HeaderDictionary(),
+            };
+
+            return formFile;
+        }
+
+        public string ConvertByteToString(byte[] bytes)
+        {
+            return Convert.ToBase64String(bytes);
         }
     }
 }

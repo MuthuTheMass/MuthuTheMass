@@ -4,6 +4,7 @@ using CarParkingBookingDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingBookingDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDBContext))]
-    partial class CarParkingBookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241016071740_dealer_details_changes")]
+    partial class dealer_details_changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,10 +34,11 @@ namespace CarParkingBookingDatabase.Migrations
                     b.Property<DateTime>("ArrivingTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Dealer_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Dealer_ID")
+                    b.Property<string>("Dealer_PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -45,44 +49,37 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("User_ID")
+                    b.Property<string>("Phone_Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Vehicle_Id")
+                    b.Property<string>("RC_Book_File")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RC_Book_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle_Size_Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookingID");
 
-                    b.ToTable("BookingDetails");
-                });
-
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingTripDetails", b =>
-                {
-                    b.Property<string>("TripId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("BookingID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TripDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TripName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TripId");
-
-                    b.HasIndex("BookingID");
-
-                    b.ToTable("BookingTripDetails");
+                    b.ToTable("BookingDetials");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
@@ -90,9 +87,6 @@ namespace CarParkingBookingDatabase.Migrations
                     b.Property<string>("DealerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("DealerAddress")
                         .HasColumnType("nvarchar(max)");
@@ -148,9 +142,6 @@ namespace CarParkingBookingDatabase.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -185,9 +176,6 @@ namespace CarParkingBookingDatabase.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("DriverName")
                         .HasColumnType("nvarchar(max)");
 
@@ -221,17 +209,6 @@ namespace CarParkingBookingDatabase.Migrations
                     b.ToTable("VehicleDetails");
                 });
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingTripDetails", b =>
-                {
-                    b.HasOne("CarParkingBookingDatabase.DBModel.BookingDetails", "BookingDetails")
-                        .WithMany("BookingTripDetails")
-                        .HasForeignKey("BookingID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookingDetails");
-                });
-
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
                 {
                     b.HasOne("CarParkingBookingDatabase.DBModel.UserDetails", "UserDetails")
@@ -241,11 +218,6 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired();
 
                     b.Navigation("UserDetails");
-                });
-
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingDetails", b =>
-                {
-                    b.Navigation("BookingTripDetails");
                 });
 
             modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>

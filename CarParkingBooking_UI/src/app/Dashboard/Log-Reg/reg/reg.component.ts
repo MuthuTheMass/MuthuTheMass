@@ -6,13 +6,13 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
-import { HttpClientModule } from '@angular/common/http';
-import { userLogin } from '../../../Service/Model/UserModels';
+import {} from '@angular/common/http';
+import { Login, SignUp } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule,HttpClientModule],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule],
   templateUrl: './reg.component.html',
   styleUrl: './reg.component.css'
 })
@@ -32,7 +32,7 @@ router:any;
 
 
 
-constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private userLogin:UserAuthService) {
+constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private Login:UserAuthService) {
     this.router = _router;
     this.validate = _validate;
     this.login=new FormGroup({
@@ -101,7 +101,23 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
     signin(){
 
         if(this.regpage.valid){
-          this.router.navigate(['/main']);
+          let data = { 
+            userName:this.regpage.value.fullname,
+            email:this.regpage.value.regemail,
+            mobileNumber: this.regpage.value.mobilenumber,
+            password: this.regpage.value.password,
+          } as SignUp
+
+
+          this.Login.SignUp(data).then(
+            (response: any) => {
+              console.log(response);
+              this.loginBtn();
+            },
+            (error: any) => {
+              console.error(error);
+            }
+          )
         }
         else{
           this. checkValidityAndMarkAsTouchedreg();
@@ -114,13 +130,11 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
 
         if(this.login.valid){
           let data = {
-            Email:this.login.value.useremail,
-            Password:this.login.value.pass
-          } as userLogin
+            email:this.login.value.useremail,
+            password:this.login.value.pass
+          } as Login;
 
-          // this.userLogin.UserLogin(data);
-
-          this.router.navigate(['/main']);
+          this.Login.Login(data);
         }
         else{
           this.checkValidityAndMarkAsTouched();
