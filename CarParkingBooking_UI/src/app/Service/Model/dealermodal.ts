@@ -12,5 +12,5 @@ parkingaddress: any
     latitude: string,
     longitude: string
   },
-  dealerRating: string
+  dealerRating: number
 }

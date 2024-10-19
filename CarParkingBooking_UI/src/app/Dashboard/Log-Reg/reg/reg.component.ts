@@ -6,13 +6,13 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { Login, SignUp } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule,HttpClientModule],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule],
   templateUrl: './reg.component.html',
   styleUrl: './reg.component.css'
 })
