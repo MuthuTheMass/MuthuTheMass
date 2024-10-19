@@ -12,7 +12,7 @@ export class EReceiptComponent {
 
   printInvoice(){
     window.print();
-}
+
 
 // const container: HTMLElement | null = document.querySelector(".container");
 // const qrInput: HTMLInputElement | null = container?.querySelector(".form input") as HTMLInputElement;
@@ -96,6 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
+  }
 
 }
