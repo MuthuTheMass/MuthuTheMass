@@ -11,12 +11,12 @@ body{
 
 .card{
 
-    background-color:#92e2f9;
+	background: linear-gradient(to right,#01a9ac,#01dbdf);
 	width: 450px;
     height:600px;
 	border-radius: 10px;
 	position: relative;
-	bottom: 30px;
+	bottom: 50px;
 	overflow-y: scroll;
 	
 }
