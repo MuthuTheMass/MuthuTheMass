@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { ArticalComponent } from "./artical/artical.component";
 import { RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BackstoreService } from '../../../data-services/store/backstore.service';
-import { DealerdatasService } from '../../../data-services/service/dealerdatas.service';
+import { CommonModule } from '@angular/common';
+import { DealerdatasService } from '../../../Service/Backend/dealerdatas.service';
+import { BackstoreService } from '../../../Service/store/backstore.service';
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ArticalComponent,RouterOutlet],
+  imports: [ArticalComponent,RouterOutlet,CommonModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

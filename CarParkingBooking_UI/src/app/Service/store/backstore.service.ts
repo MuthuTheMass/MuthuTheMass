@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { dealerVM } from '../modal/dealermodal.service';
+import { dealerVM } from '../Model/dealermodal';
 
 @Injectable({
   providedIn: 'root'
