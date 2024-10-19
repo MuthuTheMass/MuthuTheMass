@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarParkingBookingVM.CustomServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace CarParkingBookingDatabase.DBModel
     public class VehicleDetails
     {
         [Key]
-        public string? VehicleId { get; set; }
+        public string VehicleId { get; set; } = string.Empty;
 
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }
@@ -26,7 +27,11 @@ namespace CarParkingBookingDatabase.DBModel
         public string? Alternative_Phone_Number { get; set; }
         [ForeignKey("UserDetails")]
         public string UserID { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
         public virtual UserDetails UserDetails { get; set; }
+
+
     }
 }

@@ -1,0 +1,10 @@
+<div>
+    <div>Name:</div>
+    <div>{{this.vehicleDisplayData.value.vehicleName}}</div>
+    <div>VehicleImage:</div>
+    <div>
+        @if(this.vehicleDisplayData.value.vehicleImage){
+        <img [src]="'data:image/jpeg;base64,' + this.vehicleDisplayData.value.vehicleImage" alt="wait for the image" style="height:300px; width:150px;">
+        }
+    </div>
+</div>

@@ -48,10 +48,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-8 vh-100 ">
-          <div class="dealerdata">
-            <p>
-              {{bstore.dealerData.value[0].dealerName}}
-            </p>
+          <div *ngFor="let data of bstore.dealerData.value" class="dealerdata" >
+            <div>{{data.dealerName}}</div>
+            <div>{{data.dealerDescription}}</div>
+            <ngb-rating [(rate)]="data.dealerRating" [readonly]="true"></ngb-rating>
           </div>
         </div>
         <div class="col-lg-4 vh-100 ">

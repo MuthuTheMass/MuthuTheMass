@@ -1,4 +1,5 @@
-﻿using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.CustomServices;
+using CarParkingBookingVM.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -9,44 +10,46 @@ namespace CarParkingBookingDatabase.DBModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string DealerID { get; set; }
+        public required string DealerID { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerName { get; set; }
+        public required string DealerName { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerEmail { get; set; }
+        public required string DealerEmail { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerPhoneNo { get; set; }
+        public required string DealerPhoneNo { get; set; }
         
         [DataType(DataType.Text)]
-        public string DealerPassword { get; set; }
+        public required string DealerPassword { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string DealerDescription { get; set; }
-
-        [DataType(DataType.Date)]
-        [AllowNull]
-        public DateTime? DealerStartDate { get; set; }
+        public string? DealerDescription { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string DealerTiming { get; set; }
+        public string? DealerTiming { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string DealerAddress { get; set; }
+        public string? DealerAddress { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerLandmark { get; set; }
+        public string? DealerLandmark { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerGPSLocation { get; set; }
+        public string? DealerGPSLocation { get; set; }
 
         [DataType(DataType.Text)]
-        public string DealerRating { get; set; }
+        public string? DealerRating { get; set; }
 
         [DataType(DataType.Text)]
         public string Rights { get; set; } = AccessToUsers.Dealer.ToString();
+
+        [DataType(DataType.Text)]
+        public bool? DealerOpenOrClosed { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
     }
 }

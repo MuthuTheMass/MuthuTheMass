@@ -2,6 +2,7 @@
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
+using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -84,7 +85,7 @@ namespace CarParkingBooking.Controllers
             }
             else if (result is null)
             {
-                return Conflict(result);
+                return Conflict("This user already available");
             }
             else
             {

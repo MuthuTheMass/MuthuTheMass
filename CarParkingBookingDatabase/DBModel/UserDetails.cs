@@ -1,4 +1,5 @@
-﻿using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.CustomServices;
+using CarParkingBookingVM.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -9,8 +10,7 @@ namespace CarParkingBookingDatabase.DBModel
     public class UserDetails 
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required string UserID { get; set; }
+        public required string UserID { get; set; } = string.Empty;
         [DataType(DataType.Text)]
         public required string Name { get; set; }
         [DataType(DataType.EmailAddress)]
@@ -23,7 +23,7 @@ namespace CarParkingBookingDatabase.DBModel
         public string Rights { get; set; } = AccessToUsers.User.ToString();
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
-        [DataType(DataType.Text)]
+        //[DataType(DataType.Text)]
         //public string? RC_Book_Number { get; set; }
         //[DataType(DataType.Custom)]
         //public byte[]? RC_Book_Image { get; set; }
@@ -31,9 +31,12 @@ namespace CarParkingBookingDatabase.DBModel
         //public string? Owner_Name { get; set; }
         //[DataType(DataType.PhoneNumber)]
         //public string? Owner_PhoneNo { get; set; }
-        public string? VehicleNumber { get; set; }
+        //public string? VehicleNumber { get; set; }
 
         // Navigation property
         public virtual ICollection<VehicleDetails> VehicleDetails { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
     }
 }

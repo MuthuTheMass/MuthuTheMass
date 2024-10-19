@@ -36,7 +36,7 @@ namespace CarParkingBooking.Controllers
 
         }
 
-        [HttpPost("AddDealer")]
+        [HttpPost("updatedealer")]
         public IActionResult Add(DealerVM dealerValue) 
         {
             var result = dealerData.UpsertDealerData(dealerValue);
@@ -45,9 +45,9 @@ namespace CarParkingBooking.Controllers
             {
                 return Ok(result);
             }
-            else if(result.Result == false)
+            else if(result.Result == null)
             {
-                return UnprocessableEntity(result);
+                return Conflict("User Doesn't exists.");
             }
             else
             {

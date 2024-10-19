@@ -12,8 +12,12 @@ import { EReceiptComponent } from './Dashboard/Home/e-receipt/e-receipt.componen
 import { DregComponent } from './Dashboard/Dealer/dreg/dreg.component';
 import { ProfileComponent } from './Dashboard/Home/profile/profile.component';
 import { EditdetailsComponent } from './Dashboard/Home/profile/editdetails/editdetails.component';
+import { SampleBackendComponent } from './sample-backend/sample-backend.component';
 
 export const routes: Routes = [
+  {
+    path:"sampleback",component:SampleBackendComponent,title:"validation for the backend process only of balaji"
+  },
 
 {
     path:"",component:RegComponent,title:"CarParking-Login",pathMatch:"full"
