@@ -5,10 +5,14 @@
    width: 500px;
 }
 .d-flex{
-    margin-right: 200px;
-    box-shadow: 0 5px 5px 0.5px;
+    margin-left: 200px;
+    background: transparent;
+    
+}
+
+.d-flex input{
     border-radius: 10px;
-    box-sizing: border-box;
+    
 }
 
 .rlarrow{
@@ -32,14 +36,16 @@
     margin-left: 15px;
 }
 .col-lg-4{
-    border-left: 1px solid black;
-    border-top: 1px solid black;
+
+    border-top: 1px  dashed rgb(185, 185, 185);
     
 }
 
 
 .col-lg-8 {
-    border-top: 1px solid black;
+    border-top: 1px dashed rgb(185, 185, 185);
+    overflow-y: scroll;
+    
 }
 
 .parkinglist{
@@ -120,5 +126,18 @@
 /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
 
 .dealerdata{
-    border: 1px solid black;
+    margin-top: 10px;
+    border: 1px solid rgb(97, 75, 224);
+    width: 100%;
+    height: 80px;
+    border-radius:8px;
+    font-family: cursive;
+    font-weight: 600;
+    background: linear-gradient(to right,#01a9ac,#01dbdf);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 10px 1px;
+}
+
+.btn{
+    margin-left: 10px;
 }

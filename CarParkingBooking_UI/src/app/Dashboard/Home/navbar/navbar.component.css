@@ -1,17 +1,29 @@
 .container-fluid{
-    background-color: #1acdff;
+    background-color: #3b7093;
     height: 50px;
+
 }
 .navbar{
     margin: 0px;
     padding: 0px;
     position: static;
     width: 100%;
+    
 }
 
 .form-control{
     box-shadow: none;
+
 }
 .d-flex{
     margin-right: 80px;
 }
+
+.navbar a{
+    color: white;
+}
+
+.d-flex ul li{
+    color: white;
+}
+
