@@ -65,7 +65,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.Property<string>("BookingID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
@@ -79,6 +79,8 @@ namespace CarParkingBookingDatabase.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TripId");
+
+                    b.HasIndex("BookingID");
 
                     b.ToTable("BookingTripDetails");
                 });
@@ -123,14 +125,7 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("DealerProfilePicture")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("DealerRating")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerStoreName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DealerTiming")
@@ -176,9 +171,6 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("UserProfilePicture")
-                        .HasColumnType("varbinary(max)");
-
                     b.HasKey("UserID");
 
                     b.ToTable("UserDetails");
@@ -205,7 +197,7 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.Property<string>("UserID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("VehicleImage")
                         .IsRequired()
@@ -224,7 +216,41 @@ namespace CarParkingBookingDatabase.Migrations
 
                     b.HasKey("VehicleId");
 
+                    b.HasIndex("UserID");
+
                     b.ToTable("VehicleDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingTripDetails", b =>
+                {
+                    b.HasOne("CarParkingBookingDatabase.DBModel.BookingDetails", "BookingDetails")
+                        .WithMany("BookingTripDetails")
+                        .HasForeignKey("BookingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookingDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
+                {
+                    b.HasOne("CarParkingBookingDatabase.DBModel.UserDetails", "UserDetails")
+                        .WithMany("VehicleDetails")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingDetails", b =>
+                {
+                    b.Navigation("BookingTripDetails");
+                });
+
+            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
+                {
+                    b.Navigation("VehicleDetails");
                 });
 #pragma warning restore 612, 618
         }
