@@ -47,8 +47,8 @@
   <section class="">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-8 vh-100 " >
-          <!-- <div class="dealerdata">
+        <div class="col-lg-8 vh-100 ">
+          <div class="dealerdata">
             <p class="data-box">
            <a href="main/artical"> Muthu Car parking 
             chennai-perambu,sembuim,janaki raman street
@@ -112,16 +112,12 @@
             Muthu Car parking 
             chennai-perambu,sembuim,janaki raman street
             </p>
-          </div> -->
-          <div class="dealerdata"*ngFor="let dealers of bstore.dealerData.value">
-            <div class="data-box">
-              <div class="col-12">{{dealers.dealerStoreName}}</div>
-              <div class="col-12">{{dealers.dealerAddress}}</div>
-              <div class="col-12">
-                <ngb-rating [(rate)]="dealers.dealerRating" [readonly]="true" [max]="5">
-                </ngb-rating>
-              </div>
-            </div>
+          </div>
+          <div class="dealerdata">
+            <p class="data-box">
+            Muthu Car parking 
+            chennai-perambu,sembuim,janaki raman street
+            </p>
           </div>
         </div>
         <div class="col-lg-4 vh-100 ">

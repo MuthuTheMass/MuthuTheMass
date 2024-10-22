@@ -32,8 +32,6 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public required string DealerName { get; set; }
 
-        public required string DealerStoreName { get; set; }
-
         public required string DealerEmail { get; set; }
 
         public required string DealerPhoneNo { get; set; }

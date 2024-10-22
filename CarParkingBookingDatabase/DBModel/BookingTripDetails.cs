@@ -11,10 +11,10 @@ namespace CarParkingBookingDatabase.DBModel
         public string TripDescription { get; set; }
         public DateTime CreatedTime { get; set; }
 
-        //[ForeignKey("BookingDetails")]
+        [ForeignKey("BookingDetails")]
         public string BookingID { get; set; }
 
-        //public virtual BookingDetails BookingDetails { get; set; }
+        public virtual BookingDetails BookingDetails { get; set; }
 
     }
 }
