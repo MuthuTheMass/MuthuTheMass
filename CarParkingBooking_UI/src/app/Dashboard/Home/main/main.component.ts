@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { DealerdatasService } from '../../../Service/Backend/dealerdatas.service';
 import { BackstoreService } from '../../../Service/store/backstore.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ArticalComponent,RouterOutlet,CommonModule,NgbRating],
+  imports: [ArticalComponent,RouterOutlet,CommonModule,NgbRatingModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
@@ -31,7 +31,6 @@ sample:number = 3;
     email:new FormControl(),
     parkingaddress:new FormControl(),
     starrating:new FormControl()
- 
  
  });
   }
@@ -62,7 +61,6 @@ sample:number = 3;
     const searchbox= document.getElementById('loac') as HTMLInputElement;
     const putdata = document.getElementById('sdata');
     const sbtn = document.getElementById('btnd');
-    
     
       if (putdata) {
         putdata.innerHTML = searchbox?.value;

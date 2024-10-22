@@ -32,7 +32,7 @@ namespace CarParkingBooking.AutoMapper
 
         }
 
-        public string convertFileToByte(IFormFile file)
+        public string convertFileToString(IFormFile file)
         {
             ImageFile image;
 

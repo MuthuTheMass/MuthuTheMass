@@ -25,12 +25,12 @@ namespace CarParkingBookingDatabase.DBModel
         [StringLength(10, MinimumLength = 10)]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string? Alternative_Phone_Number { get; set; }
-        [ForeignKey("UserDetails")]
+        //[ForeignKey("UserDetails")]
         public string UserID { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
-        public virtual UserDetails UserDetails { get; set; }
+        //public virtual UserDetails UserDetails { get; set; }
 
 
     }

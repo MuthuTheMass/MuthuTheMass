@@ -24,9 +24,6 @@ namespace CarParkingBookingDatabase.BookingDBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<IdentityUserLogin<int>>().HasKey(l => new { l.LoginProvider, l.ProviderKey });
-            //modelBuilder.Entity<IdentityUserRole<int>>().HasKey(r => new { r.UserId, r.RoleId });
-            //modelBuilder.Entity<IdentityUserToken<int>>().HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
 
             modelBuilder.Entity<UserDetails>().HasKey(b => b.UserID);
             modelBuilder.Entity<DealerDetails>().HasKey(b => b.DealerID);
@@ -36,17 +33,17 @@ namespace CarParkingBookingDatabase.BookingDBContext
                 // Configuring the primary key
                 entity.HasKey(v => v.VehicleId);
 
-                // Configuring the foreign key
-                entity.HasOne(v => v.UserDetails) // Assuming VehicleDetails has a navigation property to User
-                      .WithMany(u => u.VehicleDetails) // Assuming User has a collection of VehicleDetails
-                      .HasForeignKey(v => v.UserID); // Foreign key property in VehicleDetails
+                //// Configuring the foreign key
+                //entity.HasOne(v => v.UserDetails) // Assuming VehicleDetails has a navigation property to User
+                //      .WithMany(u => u.VehicleDetails) // Assuming User has a collection of VehicleDetails
+                //      .HasForeignKey(v => v.UserID); // Foreign key property in VehicleDetails
             });
             modelBuilder.Entity<BookingTripDetails>(entity => {
                 entity.HasKey(t => t.TripId);
 
-                entity.HasOne(o => o.BookingDetails)
-                      .WithMany(u => u.BookingTripDetails)
-                      .HasForeignKey(v => v.BookingID);
+                //entity.HasOne(o => o.BookingDetails)
+                //      .WithMany(u => u.BookingTripDetails)
+                //      .HasForeignKey(v => v.BookingID);
             });
 
             base.OnModelCreating(modelBuilder);
@@ -65,32 +62,6 @@ namespace CarParkingBookingDatabase.BookingDBContext
             await SetCustomIds();
             return await base.SaveChangesAsync(cancellationToken);
         }
-
-        //private async Task GenerateIdsAsync(IEnumerable<object> entities, string prefix, Func<object, string> getId, Action<object, string> setId)
-        //{
-        //    // Filter for 'Added' state entities in ChangeTracker
-        //    var entries = ChangeTracker
-        //        .Entries()
-        //        .Where(e => entities.Contains(e.Entity) && e.State == EntityState.Added)
-        //        .Select(e => e.Entity)
-        //        .ToList();
-
-        //    // Determine the current max ID across all entities of this type (async)
-        //    var maxId = entities
-        //        .OfType<object>()
-        //        .Select(getId)
-        //        .Where(id => id != null)
-        //        .OrderByDescending(id => int.Parse(id.Split('-')[1]))
-        //        .FirstOrDefault();
-
-        //    var currentIdNumber = maxId != null ? int.Parse(maxId.Split('-')[1]) : 0;
-
-        //    // Assign new IDs to each entity
-        //    foreach (var entity in entries)
-        //    {
-        //        setId(entity, $"{prefix}-{++currentIdNumber}");
-        //    }
-        //}
 
 
         private async Task SetCustomIds()

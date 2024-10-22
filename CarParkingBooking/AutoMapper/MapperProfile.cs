@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using CarParkingBookingDatabase.DBModel;
+﻿using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
+using CarParkingBookingVM.VM_S;
 using CarParkingBookingVM.VM_S.Booking;
 using CarParkingBookingVM.VM_S.Dealers;
 using CarParkingBookingVM.VM_S.Vehicle;
-using System.Text.Json;
 
 namespace CarParkingBooking.AutoMapper
 {
@@ -24,6 +23,7 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<DealerVM, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.DealerName))
+                .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.DealerEmail))
                 .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerDescription, dest => dest.MapFrom(src => src.DealerDescription))
@@ -60,6 +60,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.DealerPassword, opt => opt.MapFrom(src => src.Password))
                 .ForMember(dest => dest.Rights, opt => opt.MapFrom(src => AccessToUsers.Dealer.ToString())) // Default value
                 .ForMember(dest => dest.DealerDescription, opt => opt.Ignore())
+                .ForMember(dest => dest.DealerStoreName, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerTiming, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerAddress, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerLandmark, opt => opt.Ignore())
@@ -126,6 +127,18 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.UserName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.Email))
                 .ForMember(opt => opt.Rights, dest => dest.MapFrom(src => src.Access)).ReverseMap()              
+                ;
+
+            CreateMap<UserUpdateDetails, UserDetails>()
+                .ForMember(opt => opt.Name,dest=> dest.MapFrom(src => src.Name))
+                .ForMember(opt => opt.UserProfilePicture,dest=> dest.MapFrom(src => ConvertFileToByte(src.ProfilePicture)))
+                .ForMember(opt => opt.Email,dest=> dest.MapFrom(src => src.Email))
+                .ForMember(opt => opt.MobileNumber,dest=> dest.MapFrom(src => src.MobileNumber))
+                .ForMember(opt => opt.Address,dest=> dest.MapFrom(src => src.Address))
+                .ForMember(opt => opt.UserID,dest=> dest.Ignore())
+                .ForMember(opt => opt.Rights,dest=> dest.Ignore())
+                .ForMember(opt => opt.CreatedDate,dest=> dest.Ignore())
+                .ForMember(opt => opt.Password,dest=> dest.Ignore())
                 ;
         }
     }

@@ -29,7 +29,7 @@ namespace CarParkingBookingDatabase.DBModel
         [DataType(DataType.DateTime)]
         public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
-        public virtual ICollection<BookingTripDetails> BookingTripDetails { get; set; }
+        //public virtual ICollection<BookingTripDetails> BookingTripDetails { get; set; }
 
     }
 }
