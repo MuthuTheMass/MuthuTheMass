@@ -129,7 +129,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.Rights, dest => dest.MapFrom(src => src.Access)).ReverseMap()              
                 ;
 
-            CreateMap<UserUpdateDetails, UserDetails>()
+            CreateMap<UserData, UserDetails>()
                 .ForMember(opt => opt.Name,dest=> dest.MapFrom(src => src.Name))
                 .ForMember(opt => opt.UserProfilePicture,dest=> dest.MapFrom(src => ConvertFileToByte(src.ProfilePicture)))
                 .ForMember(opt => opt.Email,dest=> dest.MapFrom(src => src.Email))
@@ -139,6 +139,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.Rights,dest=> dest.Ignore())
                 .ForMember(opt => opt.CreatedDate,dest=> dest.Ignore())
                 .ForMember(opt => opt.Password,dest=> dest.Ignore())
+                .ReverseMap()
                 ;
         }
     }

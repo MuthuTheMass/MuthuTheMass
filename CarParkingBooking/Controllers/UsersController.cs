@@ -16,8 +16,28 @@ namespace CarParkingBooking.Controllers
             userData = _userData;
         }
 
+        [HttpGet("userfull")]
+        public async Task<IActionResult> Get(string userEmail)
+        {
+            var result = await userData.GetSingleUser(userEmail);
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else if (result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
         [HttpPost("updateuser")]
-        public async Task<IActionResult> UpdateuserDetailsAsync(UserUpdateDetails details)
+        public async Task<IActionResult> UpdateuserDetailsAsync([FromQuery]UserData details)
         {
             var result = await userData.UpdateUserData(details);
             if(result != null)

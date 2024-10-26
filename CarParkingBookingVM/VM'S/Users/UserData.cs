@@ -2,7 +2,7 @@
 
 namespace CarParkingBookingVM.VM_S
 {
-    public class UserUpdateDetails
+    public class UserData
     {
         public required string Name { get; set; }
         public required IFormFile ProfilePicture { get; set; }
