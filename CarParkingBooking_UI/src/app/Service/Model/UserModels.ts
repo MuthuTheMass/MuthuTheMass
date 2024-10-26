@@ -20,6 +20,7 @@ export interface DealerSignUp{
 }
 
 export interface LoginResponse{
+  userID:string,
   userName: string,
   email: string,
   access: string,

@@ -77,9 +77,21 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<DealerDetails, AuthorizedDealerLoginVM>()
                 .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.DealerEmail))
+                .ForMember(opt => opt.DealerID, dest => dest.MapFrom(src => src.DealerID))
                 .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.DealerName))
+                .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
+                .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
                 .ReverseMap()
                 ;
+
+            CreateMap<UserDetails, AuthorizedLoginVM>()
+               .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.Email))
+               .ForMember(opt => opt.UserID, dest => dest.MapFrom(src => src.UserID))
+               .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.Name))
+               .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
+               .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
+               .ReverseMap()
+               ;
 
             CreateMap<VehicleDetails, Vehicle_User_VM>()
                 .ForMember(opt => opt.VehicleId, dest => dest.MapFrom(src => src.VehicleId))

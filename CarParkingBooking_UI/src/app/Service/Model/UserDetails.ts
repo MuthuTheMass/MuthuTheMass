@@ -1,4 +1,5 @@
 export interface userDetails{
+    userID:string,
     name: string,
     profilePicture: string,
     email: string,

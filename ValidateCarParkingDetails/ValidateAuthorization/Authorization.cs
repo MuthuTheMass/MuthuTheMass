@@ -74,12 +74,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
                 var data = dBContext.UserDetails.FirstOrDefault(y =>y.Email == login.Email);
                 if (data is not null && data.Password.Equals(login.Password))
                 {
-                    var result = new AuthorizedLoginVM()
-                    {
-                        UserName = data.Name!,
-                        Email = data.Email,
-                        Access = data.Rights
-                    };
+                    var result = mapper.Map<AuthorizedLoginVM>(data);
+
 
                     return Task.FromResult(result);
                 }

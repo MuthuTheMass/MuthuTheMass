@@ -11,7 +11,7 @@ export class BackstoreService {
 
   public dealerData:BehaviorSubject<dealerVM[]> = new BehaviorSubject<dealerVM[]>([]);
   public userDetails:BehaviorSubject<userDetails> = new BehaviorSubject<userDetails>({} as userDetails);
-
+  public VehicleDetails:BehaviorSubject<any> = new BehaviorSubject<any>({})
 
   
 
