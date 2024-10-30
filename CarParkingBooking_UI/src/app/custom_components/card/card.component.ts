@@ -8,7 +8,7 @@ import { Component, Input, input } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-@Input("data") data:any; 
+@Input("data") data:any;
 
 constructor(){
   console.log(this.data);

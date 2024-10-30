@@ -9,7 +9,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     public interface IUserData
     {
         Task<bool?> UpdateUserData(UserData data);
-        Task<UserData?> GetSingleUser(string email);
+        Task<UserDataVM?> GetSingleUser(string email);
     }
 
     public class UsersData : IUserData
@@ -41,13 +41,13 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             }
         }
 
-        public async Task<UserData?> GetSingleUser(string email)
+        public async Task<UserDataVM?> GetSingleUser(string email)
         {
             var IsData = await dBContext.UserDetails.FirstOrDefaultAsync(d => d.Email == email);
 
             if(IsData is not null)
             {
-                var data = mapper.Map<UserData>(IsData);
+                var data = mapper.Map<UserDataVM>(IsData);
                 return data;
             }
             return null;
