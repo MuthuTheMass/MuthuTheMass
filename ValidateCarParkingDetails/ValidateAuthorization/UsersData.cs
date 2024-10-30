@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using CarParkingBookingDatabase.BookingDBContext;
-using CarParkingBookingDatabase.DBModel;
-using CarParkingBookingVM.VM_S;
 using Microsoft.EntityFrameworkCore;
+using CarParkingBookingVM.VM_S;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {
 
     public interface IUserData
     {
-        Task<bool?> UpdateUserData(UserUpdateDetails data); 
+        Task<bool?> UpdateUserData(UserData data);
+        Task<UserDataVM?> GetSingleUser(string email);
     }
 
     public class UsersData : IUserData
@@ -24,7 +24,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         }
 
 
-        public async Task<bool?> UpdateUserData(UserUpdateDetails data)
+        public async Task<bool?> UpdateUserData(UserData data)
         {
             var IsData = await dBContext.UserDetails.FirstOrDefaultAsync(d => d.Email == data.Email);
 
@@ -39,6 +39,18 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             {
                 return false;
             }
+        }
+
+        public async Task<UserDataVM?> GetSingleUser(string email)
+        {
+            var IsData = await dBContext.UserDetails.FirstOrDefaultAsync(d => d.Email == email);
+
+            if(IsData is not null)
+            {
+                var data = mapper.Map<UserDataVM>(IsData);
+                return data;
+            }
+            return null;
         }
     }
 }

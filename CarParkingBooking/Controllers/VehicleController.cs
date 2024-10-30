@@ -17,15 +17,35 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult GetVehicleDetails_UserId([FromQuery] string UserId) 
+        public async Task<IActionResult> GetVehicleDetails_UserId([FromQuery] string UserId) 
         {
-            var result = vehicleData.GetVehicleDetailsBy_UserID(UserId);
-            if ( result.Result?.Count > 0) 
+            var result = await vehicleData.GetVehicleDetailsBy_UserID(UserId, false);
+            if ( result?.Count > 0) 
             {
                 return Ok(result);
 
             }
-            else if(result is null || result.Result?.Count == 0)
+            else if(result?.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+        
+        [HttpGet("halfvehicledetails")]
+        public async Task<IActionResult> GetHalfVehicleDetails_UserId([FromQuery] string UserId) 
+        {
+            var result = await vehicleData.GetVehicleDetailsBy_UserID(UserId, true);
+            if ( result?.Count > 0) 
+            {
+                return Ok(result);
+
+            }
+            else if(result?.Count == 0)
             {
                 return NotFound();
             }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RegLogService } from '../../../reg-log.service';
 import { routes } from '../../../app.routes';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,60 +21,60 @@ export class DregComponent {
   signinto() {
     throw new Error('Method not implemented.');
     }
-  
-  
-  
+
+
+
   register:any;
   login:any;
   regpage:any;
   validate:any;
   router:any;
-  
-  
-  
-  constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService,private auth:UserAuthService) {
+
+
+
+  constructor( _router :Router,private _validate:OrmcontrolValidationServiceService,private auth:UserAuthService) {
       this.router = _router;
       this.validate = _validate;
       this.login=new FormGroup({
         useremail: new FormControl('',Validators.required),
         pass:new FormControl('',Validators.required),
       })
-  
-  
-  
-  
+
+
+
+
       this.regpage=new FormGroup({
           fullname:new FormControl('',Validators.required),
           regemail:new FormControl('',Validators.required),
           mobilenumber:new FormControl('',Validators.required),
           password:new FormControl('',Validators.required),
           confirmpassword:new FormControl('',Validators.required)
-    
-    
+
+
         })
-  
+
     }
-  
-  
+
+
   //   matchPassword(password: string, confirmPassword: string): boolean {
   //     return password === confirmPassword;
   //   }
-  
-  
-  
-  
-  
-  
-  
-  
-      
-      
+
+
+
+
+
+
+
+
+
+
       registerBtn () {
         //TODO : Refactor to typescript
           const container = document.getElementById('container');
       const registerBtn  = document.getElementById('register');
       const loginBtn = document.getElementById('login');
-  
+
         container?.classList.add('active');
           // registerBtn?.addEventListener('click', () => {
           //     if (container) {
@@ -83,14 +82,14 @@ export class DregComponent {
           //     }
           // });
       }
-         
+
       loginBtn() {
         //TODO: Refactor to typescript
           const container  = document.getElementById('container');
       const registerBtn = document.getElementById('register');
       const loginBtn = document.getElementById('login');
-  
-  
+
+
           container?.classList.remove("active");
           // loginBtn?.addEventListener('click', () => {
           //     if (container) {
@@ -98,10 +97,10 @@ export class DregComponent {
           //     }
           // });
       }
-  
-  
+
+
       signUp(){
-  
+
           if(this.regpage.valid){
             let signData ={
               name:this.regpage.value.fullname,
@@ -123,12 +122,12 @@ export class DregComponent {
           else{
             this. checkValidityAndMarkAsTouchedreg();
           }
-        
+
       }
-  
-  
+
+
       logininto(){
-  
+
           if(this.login.valid){
             let loginData ={
               email:this.login.value.useremail,
@@ -141,11 +140,11 @@ export class DregComponent {
             this.checkValidityAndMarkAsTouched();
           }
         }
-     
-  
-      
-   
-  
+
+
+
+
+
       checkValidityAndMarkAsTouched(): void {
         // Loop through all form controls and mark them as touched
         Object.keys(this.login.controls).forEach((controlName) => {
@@ -164,7 +163,7 @@ export class DregComponent {
           }
         });
       }
-  
-  
+
+
   }
-  
+

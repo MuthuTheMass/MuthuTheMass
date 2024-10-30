@@ -15,7 +15,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     public interface IVehicleData
     {
         Task<bool?> UpsertVehicle(string userId,VehicleVM vehicle);
-        Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID);
+        Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials);
         Task<Vehicle_User_VM?> GetVehicleDetailsSingle(string userID,string vehicleId);
         Task<bool?> RemoveVehicle(string userId,string vehicleId);
     }
@@ -30,14 +30,27 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             mapper = _mapper;
         }
 
-        public async Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID)
+        public async Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials)
         {
-            var vehicleData = dbContext.VehicleDetails.Where(v=> v.UserID == userID).ToList();
+            List<VehicleDetails>? vehicleData = await dbContext.VehicleDetails.Where(x => x.UserID == userID).ToListAsync();
 
-            if (vehicleData is not null) 
+            if (vehicleData.Count > 0) 
             {
                 var data = mapper.Map<List<Vehicle_User_VM>>(vehicleData);
-
+                if (halfDetials)
+                { 
+                    var shortData = new List<Vehicle_User_VM>();
+                    foreach (var vehicleDetails in vehicleData)
+                    {
+                        shortData.Add(new Vehicle_User_VM()
+                        {
+                            VehicleNumber = vehicleDetails.VehicleNumber,
+                            VehicleName = vehicleDetails.VehicleName,
+                        });
+                    }
+                    
+                    return shortData;
+                }
                 return data;
             }
             else

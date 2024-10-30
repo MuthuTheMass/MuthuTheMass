@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RegLogService } from '../../../reg-log.service';
 import { routes } from '../../../app.routes';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -32,7 +31,7 @@ router:any;
 
 
 
-constructor(public cs:RegLogService, _router :Router,private _validate:OrmcontrolValidationServiceService , private Login:UserAuthService) {
+constructor(_router :Router,private _validate:OrmcontrolValidationServiceService , private Login:UserAuthService) {
     this.router = _router;
     this.validate = _validate;
     this.login=new FormGroup({
@@ -101,7 +100,7 @@ constructor(public cs:RegLogService, _router :Router,private _validate:Ormcontro
     signin(){
 
         if(this.regpage.valid){
-          let data = { 
+          let data = {
             userName:this.regpage.value.fullname,
             email:this.regpage.value.regemail,
             mobileNumber: this.regpage.value.mobilenumber,

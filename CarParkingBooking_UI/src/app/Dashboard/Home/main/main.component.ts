@@ -66,4 +66,10 @@ sample:number = 3;
         putdata.innerHTML = searchbox?.value;
       }
   }
+
+  ariaValueText(current: number, max: number) {
+		return `${current} out of ${max} hearts`;
+	}
+
+  data:number = 3.9;
 }

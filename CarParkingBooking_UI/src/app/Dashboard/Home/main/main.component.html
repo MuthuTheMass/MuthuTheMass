@@ -118,8 +118,9 @@
               <div class="col-12">{{dealers.dealerStoreName}}</div>
               <div class="col-12">{{dealers.dealerAddress}}</div>
               <div class="col-12">
-                <ngb-rating [(rate)]="dealers.dealerRating" [readonly]="true" [max]="5">
-                </ngb-rating>
+                <!-- <ngb-rating [(rate)]="dealers.dealerRating" [readonly]="true" [max]="5">
+                </ngb-rating> -->
+                
               </div>
             </div>
           </div>
@@ -214,3 +215,18 @@
 <!-- 
 <input class="form-control me-2" type="search" placeholder="Search Location" id="loac" aria-label="Search">
 <button class="btn btn-outline-success" type="submit" id="btnd" (click)="getdata()">Search</button> -->
+
+<ng-template #t let-fill="fill">
+  <i class="bi-heart-fill">
+    <ng-container *ngIf="fill > 0">
+      <i class="bi-heart-fill filled" [style.width.%]="fill"></i>
+    </ng-container>
+  </i>
+</ng-template>
+
+<ngb-rating [(rate)]="data" 
+            [starTemplate]="t" 
+            [readonly]="true" 
+            [max]="5" 
+            [ariaValueText]="ariaValueText">
+</ngb-rating>

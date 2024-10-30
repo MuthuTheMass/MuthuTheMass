@@ -18,3 +18,11 @@ export interface DealerSignUp{
     phoneNo: string,
     password: string
 }
+
+export interface LoginResponse{
+  userID:string,
+  userName: string,
+  email: string,
+  access: string,
+  accessToken:string
+}
