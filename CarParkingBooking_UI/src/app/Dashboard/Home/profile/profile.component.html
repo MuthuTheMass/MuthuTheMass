@@ -171,8 +171,10 @@
 
       <div class="projects">
             <h3>Car Details</h3>
-        @if(bsStore.VehicleData.value.length >0 && datatttt()){
-          <app-card [data]="bsStore.VehicleData.value"></app-card>
+        @if( datatttt()){
+          @for( data of this.bsStore.VehicleData.value;track data.vehicleNumber){
+            <app-card class="mb-5" [data]="data"></app-card>
+          }
         }
         </div>
 

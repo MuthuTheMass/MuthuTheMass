@@ -20,9 +20,9 @@ export class VehicleDetialsService {
   }
 
   halfVehicleDetailsByUserID(userID:string){
-    this.http.get<VehicleModal>(environment.apiUrl+"Vehicle/halfvehicledetails?UserId="+userID).subscribe(
-      (response:VehicleModal)=>{
-        this.bstore.VehicleDetail.next(response);
+    this.http.get<Array<VehicleModal>>(environment.apiUrl+"Vehicle/halfvehicledetails?UserId="+userID).subscribe(
+      (response:Array<VehicleModal>)=>{
+        this.bstore.VehicleData.next(response);
       }
     );
   }

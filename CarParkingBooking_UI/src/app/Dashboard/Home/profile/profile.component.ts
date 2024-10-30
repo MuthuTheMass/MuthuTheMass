@@ -6,6 +6,7 @@ import { UserDetailsService } from '../../../Service/Backend/user-details.servic
 import { BackstoreService } from '../../../Service/store/backstore.service';
 import { LoginResponse } from '../../../Service/Model/UserModels';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
+import { VehicleModal } from '../../../Service/Model/VehicleModal';
 
 @Component({
   selector: 'app-profile',
@@ -15,8 +16,7 @@ import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-
-
+carData:Array<VehicleModal> | undefined;
 
 constructor(
   private router:Router,
@@ -43,7 +43,9 @@ constructor(
 }
 
   datatttt() {
-    return true;
+    var d = this.bsStore.VehicleData.value.length >0 ;
+    this.carData = this.bsStore.VehicleData.value;
+    return d;
   }
 }
 

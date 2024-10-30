@@ -1,4 +1,5 @@
 import { Component, Input, input } from '@angular/core';
+import { VehicleModal } from '../../Service/Model/VehicleModal';
 
 @Component({
   selector: 'app-card',
@@ -8,9 +9,8 @@ import { Component, Input, input } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-@Input("data") data:any;
+@Input("data") data:VehicleModal | undefined;
 
-constructor(){
-  console.log(this.data);
+ngOnInit(): void {
 }
 }
