@@ -42,11 +42,10 @@ export const routes: Routes = [
         },
         {
             path:"profile",component:ProfileComponent,title:"profiledetailes",
-               
-       },
-       {
-            path:"edit",component:EditdetailsComponent,title:"editdetailes"
-       },
+        },
+        {
+            path:"profile/edit/:emailid",component:EditdetailsComponent,title:"editdetailes"
+        },
        
         {
             path:"book",component:MuthubookComponent

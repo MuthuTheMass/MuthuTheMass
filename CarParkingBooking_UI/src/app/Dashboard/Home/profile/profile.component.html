@@ -143,14 +143,16 @@
             @if(this.bsStore.userDetails.value.profilePicture !== null && this.bsStore.userDetails.value.profilePicture !== undefined){
                 <img class="img-thumbnail" [src]="'data:image/jpeg;base64,' + this.bsStore.userDetails.value.profilePicture" alt="wait for the image">
             }
+            <h4>{{this.bsStore.userDetails.value.name}}</h4>
         </div>
 
-        <h4>{{this.bsStore.userDetails.value.name}}</h4>
-         <p>UI Developer</p>
     </div>
     <div class="right">
         <div class="info">
-            <h3>Information</h3>
+        <div class="border-bottom mb-3 pb-2">
+            <label class="col-10 details-title">Information</label>
+            <button class="col-2 btn btn-dark" (click)="userEdit()">EDIT</button>
+        </div>
             <div class="info_data">
                  <div class="data">
                     <h4>Email</h4>

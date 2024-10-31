@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { userDetails } from '../Model/UserDetails';
 import { BackstoreService } from '../store/backstore.service';
+import { Observable } from 'rxjs';
+import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +14,8 @@ export class UserDetailsService {
   constructor(private http:HttpClient,private bstore:BackstoreService) { }
 
 
-  userFullDetails(userId:string){
-    this.http.get<userDetails>(environment.apiUrl+"Users/userfull?userEmail="+userId).subscribe(
-      (response:userDetails) => {
-        this.bstore.userDetails.next(response);
-      },
-    );
+  userFullDetails(userId:string):Observable<userDetails>{
+    return this.http.get<userDetails>(environment.apiUrl+"Users/userfull?userEmail="+userId)
   }
 
 
