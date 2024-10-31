@@ -16,7 +16,6 @@ import { VehicleModal } from '../../../Service/Model/VehicleModal';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-carData:Array<VehicleModal> | undefined;
 
 constructor(
   private router:Router,
@@ -41,12 +40,11 @@ constructor(
 
     this.router.navigate(['main/edit'])
 }
+IScarData() {
+  return this.bsStore.VehicleData.value.length >0;
+}
 
-  datatttt() {
-    var d = this.bsStore.VehicleData.value.length >0 ;
-    this.carData = this.bsStore.VehicleData.value;
-    return d;
-  }
+
 }
 
 

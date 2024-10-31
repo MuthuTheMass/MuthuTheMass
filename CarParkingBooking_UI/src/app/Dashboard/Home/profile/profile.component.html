@@ -139,9 +139,9 @@
 
 <div class="wrapper">
     <div class="left">
-        <div style="height:150px;">
+        <div>
             @if(this.bsStore.userDetails.value.profilePicture !== null && this.bsStore.userDetails.value.profilePicture !== undefined){
-                <img [src]="'data:image/jpeg;base64,' + this.bsStore.userDetails.value.profilePicture" alt="wait for the image" width="100">
+                <img class="img-thumbnail" [src]="'data:image/jpeg;base64,' + this.bsStore.userDetails.value.profilePicture" alt="wait for the image">
             }
         </div>
 
@@ -171,11 +171,13 @@
 
       <div class="projects">
             <h3>Car Details</h3>
-        @if( datatttt()){
-          @for( data of this.bsStore.VehicleData.value;track data.vehicleNumber){
-            <app-card class="mb-5" [data]="data"></app-card>
-          }
-        }
+            <div class="car-details-scroll">
+                @if( IScarData()){
+                    @for( data of this.bsStore.VehicleData.value;track data.vehicleNumber){
+                      <app-card class="mb-5" [data]="data"></app-card>
+                    }
+                  }
+            </div>
         </div>
 
         <!-- <div class="social_media">

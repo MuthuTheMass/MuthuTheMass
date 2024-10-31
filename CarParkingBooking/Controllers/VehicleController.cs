@@ -56,11 +56,29 @@ namespace CarParkingBooking.Controllers
 
         }
 
-        [HttpGet("vehiclesingle")]
-        public IActionResult vehicleDetailsBySingle([FromQuery] string UserId, [FromQuery] string VehileId)
+        //[HttpGet("vehiclesingle")]
+        //public IActionResult vehicleDetailsBySingle([FromQuery] string UserId, [FromQuery] string VehileId)
+        //{
+        //    var result = vehicleData.GetVehicleDetailsSingle(UserId,VehileId);
+        //    if(!string.IsNullOrEmpty(result.Result?.VehicleId))
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else if (result is null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(result);
+        //    }
+        //}
+
+        [HttpGet("onevehicle")]
+        public async Task<IActionResult> OneVehicleData([FromQuery] string vehicleNumber)
         {
-            var result = vehicleData.GetVehicleDetailsSingle(UserId,VehileId);
-            if(!string.IsNullOrEmpty(result.Result?.VehicleId))
+            var result = await vehicleData.GetDetailsByVehicleNumber(vehicleNumber);
+            if (!string.IsNullOrEmpty(result?.VehicleId))
             {
                 return Ok(result);
             }
@@ -72,8 +90,6 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
-
-            
         }
 
         [HttpPost("addvehicle")]

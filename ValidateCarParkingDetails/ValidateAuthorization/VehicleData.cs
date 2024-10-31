@@ -17,6 +17,7 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         Task<bool?> UpsertVehicle(string userId,VehicleVM vehicle);
         Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials);
         Task<Vehicle_User_VM?> GetVehicleDetailsSingle(string userID,string vehicleId);
+        Task<Vehicle_User_VM?> GetDetailsByVehicleNumber(string VehicleNumber);
         Task<bool?> RemoveVehicle(string userId,string vehicleId);
     }
 
@@ -28,6 +29,20 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         {
             dbContext = _dbContext;
             mapper = _mapper;
+        }
+
+        public async Task<Vehicle_User_VM?> GetDetailsByVehicleNumber(string VehicleNumber)
+        {
+            var vehicleData = await dbContext.VehicleDetails.SingleOrDefaultAsync(g=> g.VehicleNumber.Equals(VehicleNumber));
+            if(vehicleData == null)
+            {
+                return mapper.Map<Vehicle_User_VM>(vehicleData);
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public async Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials)
