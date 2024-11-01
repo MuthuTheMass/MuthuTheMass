@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { userDetails } from '../Model/UserDetails';
+import {userDetails, UserUpdateData} from '../Model/UserDetails';
 import { BackstoreService } from '../store/backstore.service';
 import { Observable } from 'rxjs';
 import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
+import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class UserDetailsService {
     return this.http.get<userDetails>(environment.apiUrl+"Users/userfull?userEmail="+userId)
   }
 
+  UpdateData(data:UserUpdateData):Observable<any>{
+    return this.http.post(environment.apiUrl+"Users/updateuser",data,
+      );
+  }
 
 }
