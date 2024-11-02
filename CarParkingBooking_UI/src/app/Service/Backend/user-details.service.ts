@@ -19,7 +19,7 @@ export class UserDetailsService {
     return this.http.get<userDetails>(environment.apiUrl+"Users/userfull?userEmail="+userId)
   }
 
-  UpdateData(data:UserUpdateData):Observable<any>{
+  UpdateData(data:FormData):Observable<any>{
     return this.http.post(environment.apiUrl+"Users/updateuser",data,
       );
   }

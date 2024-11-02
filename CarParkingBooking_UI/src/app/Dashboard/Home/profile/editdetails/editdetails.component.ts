@@ -84,13 +84,22 @@ userImage(event: Event) {
 
     const reader = new FileReader();
       reader.onload = () => {
-        this.editDetail.controls['Image'].setValue( reader.result as string);
+        let result = reader.result as string
+        if(result.includes(',')){
+          result = result.split(',')[1]
+        }
+        this.editDetail.controls['Image'].setValue(result);
       };
     reader.readAsDataURL(file);
 }
 
 defaultPhoto(){
   let photo: string;
+  let y;
+  if(this.editDetail.controls['Image'].value != null ){
+     y = this.editDetail.controls['Image'].value.split(',')[0]
+  }
+
   photo = this.editDetail.controls['Image'].value != null ? 'data:image/jpeg;base64,' + this.editDetail.controls['Image'].value : 'https://bootdey.com/img/Content/avatar/avatar7.png';
   return photo;
 }
@@ -100,18 +109,14 @@ defaultPhoto(){
 
     const file = this.userHelp.base64ToFile(this.editDetail.controls['Image'].value, this.editDetail.controls['Name'].value+'.png');
 
-    const formData = new FormData();
-    formData.append('file', file);
+    let formData = new FormData();
+    formData.append('ProfilePicture', file);
+    formData.append('Name', this.editDetail.controls['Name'].value);
+    formData.append('Email', this.editDetail.controls['Email'].value);
+    formData.append('MobileNumber', this.editDetail.controls['Mobile'].value);
+    formData.append('Address', this.editDetail.controls['Address'].value);
 
-    let updateData={
-      Name:this.editDetail.controls['Name'].value,
-      Email:this.editDetail.controls['Email'].value,
-      MobileNumber:this.editDetail.controls['Mobile'].value,
-      Address:this.editDetail.controls['Address'].value,
-      ProfilePicture:file
-    } as UserUpdateData;
-
-    this.userService.UpdateData(updateData).subscribe(
+    this.userService.UpdateData(formData).subscribe(
       (response:boolean) => {
           console.log(response);
       }
