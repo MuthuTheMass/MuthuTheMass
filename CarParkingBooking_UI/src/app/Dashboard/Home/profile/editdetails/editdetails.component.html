@@ -1,55 +1,67 @@
 <div class="container bootstrap snippets bootdey">
-    <h1 class="text-primary">Edit Profile</h1>
-      <hr>
+
+  <div class="row border-bottom mb-3 mt-5 ">
+    <div class="col-9">
+      <span class="h1 text-primary text-uppercase">Edit Profile</span>
+    </div>
+    <div class="col-3 text-end">
+      <button class="btn btn-info me-2" (click)="UpdateConfirm()">Update</button>
+      <button class="btn btn-outline-warning" (click)="cancel()">Cancel</button>
+    </div>
+
+  </div>
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
-        <div class="text-center">
-          <img id="imgefile" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar img-circle img-thumbnail" alt="avatar">
-         
-          <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" id="input-filed">
+        <div class="row text-center justify-content-center">
+          <img id="imgefile" [src]="defaultPhoto()" class="avatar img-circle img-thumbnail" alt="avatar">
+
+          <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" id="input-filed" (change)="userImage($event)">
         </div>
-        <button class="btn btn-danger" for="input-filed " (click)=" profileimage()">update image</button>
+        <div class="row">
+          <span class="text-danger h6">Note: Please update photo with the file as JPEG, JPG or PNG.</span>
+        </div>
+        <!-- <button  class="btn btn-danger" for="input-filed " (click)=" profileimage()">update image</button> -->
       </div>
-      
+
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <a class="panel-close close" data-dismiss="alert">×</a>
           <i class="fa fa-coffee"></i>
           This is an <strong>.alert</strong>. Use this to show important messages to the user.
         </div>
         <h3>Personal info</h3>
-        
-        <form class="form-horizontal" role="form">
+
+        <form class="form-horizontal" [formGroup]="editDetail"  >
           <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
+            <label class="col-lg-3 control-label">Name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="dey-dey">
+              <input class="form-control" type="text" formControlName="Name" >
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
               <input class="form-control" type="text" value="bootdey">
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
             <label class="col-lg-3 control-label">Mobile:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
+              <input class="form-control" type="text" formControlName="Mobile">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="janesemail@gmail.com">
+              <input class="form-control" type="text" formControlName="Email">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Address:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" placeholder="Address1">
+              <input class="form-control" type="text" formControlName="Address" placeholder="Address1">
             </div>
           </div>
           <!-- <div class="form-group">

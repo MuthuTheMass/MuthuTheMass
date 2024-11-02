@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7fc4b31-b2df-4d16-8788-32eb60da424a" name="Changes" comment="" />
+    <list default="true" id="f7fc4b31-b2df-4d16-8788-32eb60da424a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarParkingBooking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarParkingBooking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarParkingBooking.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/CarParkingBooking.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarParkingBookingDatabase/DBModel/DealerDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CarParkingBookingDatabase/DBModel/DealerDetails.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,28 +25,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Shambalaji-dev"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Shambalaji-dev&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MuthuTheMass/MuthuTheMass.git",
-    "accountId": "12f1b386-fe4b-4969-b065-af5fb1bb7a19"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MuthuTheMass/MuthuTheMass.git&quot;,
+    &quot;accountId&quot;: &quot;12f1b386-fe4b-4969-b065-af5fb1bb7a19&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6f90c6c13479b8c2a5be98f3d75dfc3bd885a055652d8a32904ca2448132949e/Future.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7fcc41fe48c43f71d1476329de953fce8565fcc5dbf3c8c6fdb81c216b19c4/ArgumentNullException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f43939d317dbad4eaca19fbd5e6fffdc8f294581fd83ee8655a0f222b976fc8d/TimeOnly.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -56,8 +57,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.CarParkingBooking: https.executor": "Debug",
+    ".NET Launch Settings Profile.CarParkingBooking: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "feature/1.1/creation__backend",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
@@ -126,6 +128,12 @@
       <updated>1730265694364</updated>
       <workItem from="1730265696281" duration="357000" />
       <workItem from="1730266346664" duration="10625000" />
+      <workItem from="1730393542640" duration="17000" />
+      <workItem from="1730393566554" duration="101000" />
+      <workItem from="1730441038538" duration="42000" />
+      <workItem from="1730441090069" duration="3176000" />
+      <workItem from="1730544618874" duration="555000" />
+      <workItem from="1730545588014" duration="3942000" />
     </task>
     <servers />
   </component>
@@ -146,5 +154,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Controllers/UsersController.cs</url>
+          <line>40</line>
+          <properties documentPath="D:\muthuProject\MuthuTheMass\CarParkingBooking\Controllers\UsersController.cs" containingFunctionPresentation="Method 'UpdateuserDetailsAsync'">
+            <startOffsets>
+              <option value="1048" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1049" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

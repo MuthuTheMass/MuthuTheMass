@@ -6,7 +6,7 @@
     "CarParkingBooking": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:service": 
+        "@schematics/angular:service":
             {
               "skipTests": true
             }
@@ -65,7 +65,7 @@
             }
           },
           "defaultConfiguration": "production"
-          
+
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -99,6 +99,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

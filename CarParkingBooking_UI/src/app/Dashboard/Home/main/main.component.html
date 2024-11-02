@@ -27,13 +27,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <input type="date" class="date"> 
+            <input type="date" class="date">
           </li>
           <li class="rlarrow">
             <img src="..\assets\left-rightarrow.png">
           </li>
           <li class="nav-item-end" >
-            <input type="date" class="date"> 
+            <input type="date" class="date">
           </li>
         </ul> -->
         <form class="d-flex">
@@ -50,7 +50,7 @@
         <div class="col-lg-8 vh-100 " >
           <!-- <div class="dealerdata">
             <p class="data-box">
-           <a href="main/artical"> Muthu Car parking 
+           <a href="main/artical"> Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
           </a>
          </p>
@@ -61,55 +61,55 @@
           <i class="fa fa-star checked"></i>
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
-          
+
       </div>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
 
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div>
           <div class="dealerdata">
             <p class="data-box">
-            Muthu Car parking 
+            Muthu Car parking
             chennai-perambu,sembuim,janaki raman street
             </p>
           </div> -->
@@ -120,7 +120,8 @@
               <div class="col-12">
                 <!-- <ngb-rating [(rate)]="dealers.dealerRating" [readonly]="true" [max]="5">
                 </ngb-rating> -->
-                
+                <rating [(ngModel)]="rating" [max]="5" ></rating>
+                <span *ngIf="rating">You rated this: {{ rating }}</span>
               </div>
             </div>
           </div>
@@ -130,9 +131,9 @@
         </div>
       </div>
     </div>
-  
+
   </section>
-  
+
 </div>
 
 
@@ -171,11 +172,11 @@
         </div>
       </li>
     </div>
-    
 
 
 
-   
+
+
   </div> -->
 
 
@@ -212,7 +213,7 @@
 
 
 
-<!-- 
+<!--
 <input class="form-control me-2" type="search" placeholder="Search Location" id="loac" aria-label="Search">
 <button class="btn btn-outline-success" type="submit" id="btnd" (click)="getdata()">Search</button> -->
 
@@ -224,9 +225,3 @@
   </i>
 </ng-template>
 
-<ngb-rating [(rate)]="data" 
-            [starTemplate]="t" 
-            [readonly]="true" 
-            [max]="5" 
-            [ariaValueText]="ariaValueText">
-</ngb-rating>

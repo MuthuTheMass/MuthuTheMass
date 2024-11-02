@@ -7,6 +7,7 @@ import { BackstoreService } from '../../../Service/store/backstore.service';
 import { LoginResponse } from '../../../Service/Model/UserModels';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 import { VehicleModal } from '../../../Service/Model/VehicleModal';
+import { userDetails } from '../../../Service/Model/UserDetails';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ import { VehicleModal } from '../../../Service/Model/VehicleModal';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-carData:Array<VehicleModal> | undefined;
+
 
 constructor(
   private router:Router,
@@ -30,7 +31,11 @@ constructor(
     const userData = localStorage.getItem("User");
     if(userData !== null){
       let data = JSON.parse(userData) as LoginResponse;
-      this.userDetails.userFullDetails(data.email);
+      this.userDetails.userFullDetails(data.email).subscribe(
+        (response:userDetails) => {
+          this.bsStore.userDetails.next(response);
+        },
+      );;
       this.vehicleDetails.halfVehicleDetailsByUserID(data.userID);
     }
   }
@@ -41,12 +46,15 @@ constructor(
 
     this.router.navigate(['main/edit'])
 }
+IScarData() {
+  return this.bsStore.VehicleData.value.length >0;
+}
 
-  datatttt() {
-    var d = this.bsStore.VehicleData.value.length >0 ;
-    this.carData = this.bsStore.VehicleData.value;
-    return d;
+userEdit() {
+    this.router.navigate(["main/profile/edit",this.bsStore.userDetails.value.email])
   }
+
+
 }
 
 

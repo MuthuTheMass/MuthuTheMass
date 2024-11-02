@@ -6,3 +6,11 @@ export interface userDetails{
     mobileNumber: string,
     address: string
 }
+
+export interface UserUpdateData {
+  Address: string,
+  Email: string,
+  MobileNumber: string,
+  Name: string,
+  ProfilePicture: File
+}
