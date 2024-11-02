@@ -11,10 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f7fc4b31-b2df-4d16-8788-32eb60da424a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CarParkingBooking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarParkingBooking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CarParkingBookingVM/VM'S/Users/UserData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CarParkingBookingVM/VM'S/Users/UserData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CarParkingBooking_UI/src/app/Dashboard/Home/profile/editdetails/editdetails.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CarParkingBooking_UI/src/app/Dashboard/Home/profile/editdetails/editdetails.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CarParkingBooking_UI/src/app/Service/Backend/user-details.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CarParkingBooking_UI/src/app/Service/Backend/user-details.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarParkingBooking.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/CarParkingBooking.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarParkingBookingDatabase/DBModel/DealerDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CarParkingBookingDatabase/DBModel/DealerDetails.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +38,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6f90c6c13479b8c2a5be98f3d75dfc3bd885a055652d8a32904ca2448132949e/Future.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7fcc41fe48c43f71d1476329de953fce8565fcc5dbf3c8c6fdb81c216b19c4/ArgumentNullException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f43939d317dbad4eaca19fbd5e6fffdc8f294581fd83ee8655a0f222b976fc8d/TimeOnly.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -60,22 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.CarParkingBooking: https.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/1.1/creation__backend&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.CarParkingBooking: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "feature/1.1/creation__backend",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CarParkingBooking: https">
     <configuration name="CarParkingBooking: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CarParkingBooking.csproj" />
@@ -138,7 +133,7 @@
       <workItem from="1730441038538" duration="42000" />
       <workItem from="1730441090069" duration="3176000" />
       <workItem from="1730544618874" duration="555000" />
-      <workItem from="1730545588014" duration="2228000" />
+      <workItem from="1730545588014" duration="3942000" />
     </task>
     <servers />
   </component>
