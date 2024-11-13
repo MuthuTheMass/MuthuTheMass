@@ -46,6 +46,10 @@ namespace CarParkingBookingDatabase.BookingDBContext
                 //      .HasForeignKey(v => v.BookingID);
             });
 
+            modelBuilder.Entity<UserDetails>().HasData(
+                new UserDetails() { UserID="User-1", Email="balaji@gmail.com",Password="balaji",Name="balaji",MobileNumber="7896541235" }
+                );
+
             base.OnModelCreating(modelBuilder);
 
 

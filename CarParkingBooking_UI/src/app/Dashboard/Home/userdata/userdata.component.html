@@ -1,46 +1,79 @@
 <div class="card">
-    <div class="left-container">
-      <!-- <img src="" alt="Profile Image">
+  <div class="left-container">
+    <!-- <img src="" alt="Profile Image">
       <p>Vichle picture</p> -->
-      <h1>Vechile Image</h1>
-      <video #video width="200" height="150" autoplay></video>
-      <button (click)="capturePhoto()">Capture Photo</button>
-      <canvas #canvas width="640" height="480" style="display: none;"></canvas>
-      <img #photo alt="Captured Image" />
+    <h1>Vechile Image</h1>
+    <video #video width="200" height="150" autoplay></video>
+    <button (click)="capturePhoto()">Capture Photo</button>
+    <canvas #canvas width="640" height="480" style="display: none"></canvas>
+    <img #photo alt="Captured Image" />
 
-      <div class="d-grid gap-2 col-4 mx-auto">
-        <button class="btn btn-primary" type="button" id="ebtnn"  (click)="Erecepit()">Confirm Booking</button>
-      </div>
+    <div class="d-grid gap-2 col-4 mx-auto">
+      <button
+        class="btn btn-primary"
+        type="button"
+        id="ebtnn"
+        (click)="Erecepit()"
+      >
+        Confirm Booking
+      </button>
     </div>
-    <div class="right-container">
-      
-      <form>
-        <h3>Vechile Detailes</h3>
-        
-        <tr>
-          <td>Vechile Number</td>
-            <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-          </tr>
-          <tr>
-            <td>Vechile Number</td>
-            <div class="mb-3">
-              <input class="form-control" type="file" id="formFile">
-              
-            </div>
-            </tr>
-          <tr>
-            <td>Owner Name</td>
-              <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-            </tr>
-            <tr>
-            <td> Driver Number</td>
-            <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-          </tr>
-        <tr>
-          <td>viechle Modal</td>
-          <td>
-            
-            <!-- <div class="dropdown">
+  </div>
+  <div class="right-container">
+    <form [formGroup]="vehicleDetials">
+      <h3>Vechile Detailes</h3>
+
+      <tr>
+        <td>Vechile Number</td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            formControlName="VehicleNumber"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Vechile Number Image</td>
+        <div class="mb-3">
+          <input 
+            class="form-control" 
+            type="file" 
+            id="formFile"
+            formControlName="VehicleNumberImage"
+            />
+        </div>
+      </tr>
+      <tr>
+        <td>Owner Name</td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            formControlName="OwnerName"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Driver Number</td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            formControlName="DriverNumber"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>viechle Modal</td>
+        <td>
+          <!-- <div class="dropdown">
             <button (click)="vechilemodal()" class="dropbtn">Dropdown</button>
             <div id="myDropdown" class="dropdown-content">
               <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()">
@@ -53,31 +86,53 @@
               <a href="#tools">Tools</a>
             </div>
           </div> -->
-        
 
-          
-            <div class="autocomplete">
-              <input id="myInput" class="form-control" type="text" name="myCountry" placeholder="Country">
-            </div> 
+          <div class="autocomplete">
+            <input
+              id="myInput"
+              class="form-control"
+              type="text"
+              name="myCountry"
+              placeholder="Country"
+              formControlName="vehicleModal"
+            />
+          </div>
         </td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td><input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-        </tr>
-        <tr>
-          <td>Date</td>
-          <td><input type="date" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-        </tr>
-        <tr>
-          <td>Time</td>
-          <td><input type="time" class="form-control"  aria-label="Username" aria-describedby="basic-addon1"></td>
-        </tr>
-        
-      
-      </form>
+      </tr>
+      <tr>
+        <td>Mobile Number</td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            formControlName="mobileNumber"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>
+          <input
+            type="date"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Time</td>
+        <td>
+          <input
+            type="time"
+            class="form-control"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </td>
+      </tr>
+    </form>
   </div>
-  
-  
-  
-  
+</div>

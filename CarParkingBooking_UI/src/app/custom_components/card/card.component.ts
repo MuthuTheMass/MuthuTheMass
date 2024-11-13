@@ -1,5 +1,7 @@
 import { Component, Input, input } from '@angular/core';
 import { VehicleModal } from '../../Service/Model/VehicleModal';
+import { Router } from '@angular/router';
+import { BackstoreService } from '../../Service/store/backstore.service';
 
 @Component({
   selector: 'app-card',
@@ -9,8 +11,25 @@ import { VehicleModal } from '../../Service/Model/VehicleModal';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
+
 @Input("data") data:VehicleModal | undefined;
+
+constructor(
+  private _route:Router,
+  private _backStore:BackstoreService
+
+) {
+
+  
+}
 
 ngOnInit(): void {
 }
+
+navigateEditVehicle(vehicleNumber:string | undefined) {
+  let emailId:string = this._backStore.userDetails.getValue().userID;
+  this._route.navigate(['main/uservehicle'],{ queryParams: { emailId: emailId, vehicleId: vehicleNumber } });
+
+  }
+
 }

@@ -6,10 +6,6 @@
     "CarParkingBooking": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:service":
-            {
-              "skipTests": true
-            }
       },
       "root": "",
       "sourceRoot": "src",

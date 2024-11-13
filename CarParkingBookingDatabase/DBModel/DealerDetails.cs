@@ -17,7 +17,7 @@ namespace CarParkingBookingDatabase.DBModel
 
         public byte[]? DealerProfilePicture { get; set; }
 
-        public string DealerStoreName { get; set; }
+        public string? DealerStoreName { get; set; }
 
         [DataType(DataType.Text)]
         public required string DealerEmail { get; set; }

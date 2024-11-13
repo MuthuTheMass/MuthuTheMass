@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BackstoreService } from '../store/backstore.service';
 import { environment } from '../../../environments/environment';
@@ -25,5 +25,13 @@ export class VehicleDetialsService {
         this.bstore.VehicleData.next(response);
       }
     );
+  }
+
+
+  getVehicleSingleByUserIDAndVehicleNumber(userId:string,vehicleNumber:string){
+    const params = new HttpParams()
+                  .set('userId',userId)
+                  .set('vehicleNumber',vehicleNumber);
+    return this.http.get(environment.apiUrl+"Vehicle/onevehicle",{params});
   }
 }
