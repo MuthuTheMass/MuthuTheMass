@@ -26,9 +26,9 @@ export const routes: Routes = [
 {
    path:"Dreg",component:DregComponent,title:"Dealer-login"
 },
-{
-    path:"**",component:PagenotfoundComponent,title:"something went wrong"
-},
+// {
+//     path:"**",component:PagenotfoundComponent,title:"something went wrong"
+// },
 
 
 
@@ -50,7 +50,7 @@ export const routes: Routes = [
         {
             path:"profile/edit/:emailid",component:EditdetailsComponent,title:"editdetailes"
         },
-       
+
         {
             path:"book",component:MuthubookComponent
         },
