@@ -1,4 +1,5 @@
 export interface dealerVM{
+dealerStoreName: any
 parkingaddress: any
   dealerName: string,
   dealerEmail: string,
