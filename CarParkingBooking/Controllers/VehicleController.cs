@@ -75,9 +75,9 @@ namespace CarParkingBooking.Controllers
         //}
 
         [HttpGet("onevehicle")]
-        public async Task<IActionResult> OneVehicleData([FromQuery] string vehicleNumber)
+        public async Task<IActionResult> OneVehicleData([FromQuery]string userId, [FromQuery]string vehicleNumber)
         {
-            var result = await vehicleData.GetDetailsByVehicleNumber(vehicleNumber);
+            var result = await vehicleData.GetDetailsByVehicleNumber(userId, vehicleNumber);
             if (!string.IsNullOrEmpty(result?.VehicleId))
             {
                 return Ok(result);

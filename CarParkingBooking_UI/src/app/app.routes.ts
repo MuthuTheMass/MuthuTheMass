@@ -13,6 +13,7 @@ import { DregComponent } from './Dashboard/Dealer/dreg/dreg.component';
 import { ProfileComponent } from './Dashboard/Home/profile/profile.component';
 import { EditdetailsComponent } from './Dashboard/Home/profile/editdetails/editdetails.component';
 import { SampleBackendComponent } from './sample-backend/sample-backend.component';
+import { PagenotfoundComponent } from './custom_components/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,9 @@ export const routes: Routes = [
 {
    path:"Dreg",component:DregComponent,title:"Dealer-login"
 },
+// {
+//     path:"**",component:PagenotfoundComponent,title:"something went wrong"
+// },
 
 
 
@@ -46,19 +50,19 @@ export const routes: Routes = [
         {
             path:"profile/edit/:emailid",component:EditdetailsComponent,title:"editdetailes"
         },
-       
+
         {
             path:"book",component:MuthubookComponent
         },
         {
-            path:"user",component:UserdataComponent
+            path:"uservehicle",component:UserdataComponent
         },
         {
             path:"erecepit",component:EReceiptComponent
         },
-        {
-            path:"nav",component:NavbarComponent,title:"navbar"
-        },
+        // {
+        //     path:"nav",component:NavbarComponent,title:"navbar"
+        // },
     ]
 }
 

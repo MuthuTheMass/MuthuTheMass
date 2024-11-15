@@ -57,7 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.CarParkingBooking: https.executor": "Run",
+    ".NET Launch Settings Profile.CarParkingBooking: https.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "feature/1.1/creation__backend",
@@ -133,7 +133,8 @@
       <workItem from="1730441038538" duration="42000" />
       <workItem from="1730441090069" duration="3176000" />
       <workItem from="1730544618874" duration="555000" />
-      <workItem from="1730545588014" duration="3942000" />
+      <workItem from="1730545588014" duration="5143000" />
+      <workItem from="1730608144173" duration="2427000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,126 @@
+/* Reset and basic styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #0b3d91; /* Deep blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.error-code {
+    font-size: 10rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.number {
+    font-weight: bold;
+    position: relative;
+}
+
+.first {
+    color: #f4b400; /* Yellow */
+    text-shadow: 5px 5px 0 #c39000;
+}
+
+.zero {
+    color: #ffffff; /* White */
+    text-shadow: 5px 5px 0 #b3b3b3;
+}
+
+.second {
+    color: #ea4335; /* Red */
+    text-shadow: 5px 5px 0 #b32e2e;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.buttons {
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 2px solid white;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: white;
+    color: #0b3d91;
+}
+
+/* Floating shapes styling */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevents interaction */
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    background-color: white;
+    opacity: 0.7;
+    animation: float 5s infinite ease-in-out;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    background-color: #f4b400; /* Yellow */
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    top: 60%;
+    left: 30%;
+    background-color: #ea4335; /* Red */
+}
+
+.flag {
+    width: 10px;
+    height: 100px;
+    top: 40%;
+    left: 70%;
+    background-color: #34a853; /* Green */
+}
+
+/* Animation for floating shapes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

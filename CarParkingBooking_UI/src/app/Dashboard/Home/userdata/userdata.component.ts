@@ -1,18 +1,27 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { routes } from '../../../app.routes';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 
 @Component({
   selector: 'app-userdata',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './userdata.component.html',
   styleUrl: './userdata.component.css'
 })
 export class UserdataComponent {
-
+  @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
+  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('photo') photoRef!: ElementRef<HTMLImageElement>;
+  editVehicleDetails!: any;
+  vehicleDetials!: FormGroup;
   
-constructor( private router:Router) {
+constructor( 
+  private router:Router,
+  private activateRoute:ActivatedRoute,
+  private backVehicle:VehicleDetialsService) {
   
 }
 
@@ -37,11 +46,31 @@ constructor( private router:Router) {
   // }
 
 
+ ngOnInit():void{
+  this.activateRoute.queryParamMap.subscribe(params => {
+    this.editVehicleDetails = { emailid: params.get('emailId'), vehicleId: params.get('vehicleId')}
+    this.backVehicle.getVehicleSingleByUserIDAndVehicleNumber(this.editVehicleDetails.emailId,this.editVehicleDetails.vehicleId).subscribe(
+      (next)=>{
+        console.log(next);
+      }
+    )
+  });
+  if(this.editVehicleDetails.emailId!=null){
+    
+  }
+
+  this.vehicleDetials = new FormGroup({
+    VehicleNumber:new FormControl(),
+    VehicleNumberImage:new FormControl(),
+    OwnerName:new FormControl(),
+    DriverNumber: new FormControl(),
+    vehicleModal:new FormControl(),
+    mobileNumber: new FormControl(),
+  });
+
+ }
 
 
-  @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('photo') photoRef!: ElementRef<HTMLImageElement>;
 
   ngAfterViewInit() {
     this.setupCamera();
@@ -83,3 +112,7 @@ constructor( private router:Router) {
 
 
 }
+function next(value: Object): void {
+  throw new Error('Function not implemented.');
+}
+
