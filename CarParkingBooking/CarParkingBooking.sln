@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarParkingBookingDatabase",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access", "Data Access", "{FC12E8C0-24D9-42CB-AC02-746CE3023211}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseMigrator", "..\DatabaseMigrator\DatabaseMigrator.csproj", "{798461DE-CC22-4193-A3BB-8C3F0339B7C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{53273B31-DED3-47B2-B459-18477A1CAC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53273B31-DED3-47B2-B459-18477A1CAC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53273B31-DED3-47B2-B459-18477A1CAC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{798461DE-CC22-4193-A3BB-8C3F0339B7C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798461DE-CC22-4193-A3BB-8C3F0339B7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798461DE-CC22-4193-A3BB-8C3F0339B7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798461DE-CC22-4193-A3BB-8C3F0339B7C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{53273B31-DED3-47B2-B459-18477A1CAC55} = {FC12E8C0-24D9-42CB-AC02-746CE3023211}
+		{798461DE-CC22-4193-A3BB-8C3F0339B7C2} = {FC12E8C0-24D9-42CB-AC02-746CE3023211}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A74A352-05A9-49BB-91F7-BD24F01A679E}

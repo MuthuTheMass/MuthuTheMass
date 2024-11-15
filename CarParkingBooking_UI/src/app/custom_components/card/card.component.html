@@ -1,0 +1,10 @@
+<div class="row border p-2 rounded mb-2">
+    <div class="col-9 d-flex align-items-center">
+        <span class="col-5">{{data?.vehicleNumber}}</span>
+        <span class="col-3">{{data?.vehicleName}}</span>
+        <!-- <span class="col-3"></span> -->
+    </div>
+    <div class="col-3">
+        <button class="btn btn-outline-info" (click)="navigateEditVehicle(data?.vehicleNumber)">Details</button>
+    </div>
+</div>

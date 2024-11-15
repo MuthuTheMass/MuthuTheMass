@@ -15,8 +15,9 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
     public interface IVehicleData
     {
         Task<bool?> UpsertVehicle(string userId,VehicleVM vehicle);
-        Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID);
+        Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials);
         Task<Vehicle_User_VM?> GetVehicleDetailsSingle(string userID,string vehicleId);
+        Task<Vehicle_User_VM?> GetDetailsByVehicleNumber(string userId, string vehicleNumber);
         Task<bool?> RemoveVehicle(string userId,string vehicleId);
     }
 
@@ -30,14 +31,43 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             mapper = _mapper;
         }
 
-        public async Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID)
+        public async Task<Vehicle_User_VM?> GetDetailsByVehicleNumber(string userId,string vehicleNumber)
         {
-            var vehicleData = dbContext.VehicleDetails.Where(v=> v.UserID == userID).ToList();
+            var vehicleData = await dbContext.VehicleDetails.SingleOrDefaultAsync(g=> 
+                                                                                  g.VehicleNumber.Equals(vehicleNumber) &&
+                                                                                  g.UserID.Equals(userId));
+            if(vehicleData != null)
+            {
+                return mapper.Map<Vehicle_User_VM>(vehicleData);
+            }
+            else
+            {
+                return null;
+            }
 
-            if (vehicleData is not null) 
+        }
+
+        public async Task<List<Vehicle_User_VM>?> GetVehicleDetailsBy_UserID(string userID,bool halfDetials)
+        {
+            List<VehicleDetails>? vehicleData = await dbContext.VehicleDetails.Where(x => x.UserID == userID).ToListAsync();
+
+            if (vehicleData.Count > 0) 
             {
                 var data = mapper.Map<List<Vehicle_User_VM>>(vehicleData);
-
+                if (halfDetials)
+                { 
+                    var shortData = new List<Vehicle_User_VM>();
+                    foreach (var vehicleDetails in vehicleData)
+                    {
+                        shortData.Add(new Vehicle_User_VM()
+                        {
+                            VehicleNumber = vehicleDetails.VehicleNumber,
+                            VehicleName = vehicleDetails.VehicleName,
+                        });
+                    }
+                    
+                    return shortData;
+                }
                 return data;
             }
             else

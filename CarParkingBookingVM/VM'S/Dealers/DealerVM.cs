@@ -73,12 +73,12 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public string? Start
         {
             get => _start?.ToString("hh:mm tt");
-            set => _start = value is not null ? TimeOnly.ParseExact(value, "hh:mm tt", null) : null;
+            set => _start = value is not null ? VM_S_Helper.VM_S_Helper.TimeConverter(value) : null;
         }
         public string? Stop 
         {
             get => _stop?.ToString("hh:mm tt");
-            set => _stop = value is not null ? TimeOnly.ParseExact(value, "hh:mm tt", null) : null;
+            set => _stop = value is not null ? VM_S_Helper.VM_S_Helper.TimeConverter(value) : null;
         }
     }
 
@@ -91,6 +91,5 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public string DealerPhoneNo { get; set; } = string.Empty;
     }
 
-   
 
 }

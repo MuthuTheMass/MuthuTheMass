@@ -41,7 +41,6 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<BookingDetails, BookingVM>()
                 .ForMember(opt => opt.User_ID, dest => dest.MapFrom(src => src.User_ID))
                 .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
-                .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
                 .ForMember(opt => opt.Driver_Name, dest => dest.MapFrom(src => src.Driver_Name))
                 .ForMember(opt => opt.Driver_PhoneNumber, dest => dest.MapFrom(src => src.Driver_PhoneNumber))
                 .ForMember(opt => opt.ArrivingTime, dest => dest.MapFrom(src => src.ArrivingTime))
@@ -76,9 +75,21 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<DealerDetails, AuthorizedDealerLoginVM>()
                 .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.DealerEmail))
+                .ForMember(opt => opt.DealerID, dest => dest.MapFrom(src => src.DealerID))
                 .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.DealerName))
+                .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
+                .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
                 .ReverseMap()
                 ;
+
+            CreateMap<UserDetails, AuthorizedLoginVM>()
+               .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.Email))
+               .ForMember(opt => opt.UserID, dest => dest.MapFrom(src => src.UserID))
+               .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.Name))
+               .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
+               .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
+               .ReverseMap()
+               ;
 
             CreateMap<VehicleDetails, Vehicle_User_VM>()
                 .ForMember(opt => opt.VehicleId, dest => dest.MapFrom(src => src.VehicleId))
@@ -127,6 +138,38 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.Email))
                 .ForMember(opt => opt.Rights, dest => dest.MapFrom(src => src.Access)).ReverseMap()              
                 ;
+
+            CreateMap<UserData, UserDetails>()
+                .ForMember(opt => opt.Name,dest=> dest.MapFrom(src => src.Name))
+                .ForMember(opt => opt.UserProfilePicture,dest=> dest.MapFrom(src => ConvertFileToByte(src.ProfilePicture)))
+                .ForMember(opt => opt.Email,dest=> dest.MapFrom(src => src.Email))
+                .ForMember(opt => opt.MobileNumber,dest=> dest.MapFrom(src => src.MobileNumber))
+                .ForMember(opt => opt.Address,dest=> dest.MapFrom(src => src.Address))
+                .ForMember(opt => opt.UserID,dest=> dest.Ignore())
+                .ForMember(opt => opt.Rights,dest=> dest.Ignore())
+                .ForMember(opt => opt.CreatedDate,dest=> dest.Ignore())
+                .ForMember(opt => opt.Password,dest=> dest.Ignore())
+                .ReverseMap()
+                ;
+            CreateMap<UserDetails,UserData >()
+                .ForMember(opt => opt.ProfilePicture, dest => dest.MapFrom(src => ConvertByteToFromFile(src.UserProfilePicture)));
+            
+            CreateMap<UserDataVM, UserDetails>()
+                .ForMember(opt => opt.Name,dest=> dest.MapFrom(src => src.Name))
+                //.ForMember(opt => opt.UserProfilePicture,dest=> dest.MapFrom(src => ConvertFileToByte(src.ProfilePicture)))
+                .ForMember(opt => opt.Email,dest=> dest.MapFrom(src => src.Email))
+                .ForMember(opt => opt.MobileNumber,dest=> dest.MapFrom(src => src.MobileNumber))
+                .ForMember(opt => opt.Address,dest=> dest.MapFrom(src => src.Address))
+                .ForMember(opt => opt.UserID,dest=> dest.Ignore())
+                .ForMember(opt => opt.Rights,dest=> dest.Ignore())
+                .ForMember(opt => opt.CreatedDate,dest=> dest.Ignore())
+                .ForMember(opt => opt.Password,dest=> dest.Ignore())
+                .ReverseMap()
+                ;
+
+            CreateMap<UserDetails, UserDataVM>()
+                .ForMember(opt => opt.ProfilePicture, dest => dest.MapFrom(src => ConvertByteToString(src.UserProfilePicture)));
+
         }
     }
 }

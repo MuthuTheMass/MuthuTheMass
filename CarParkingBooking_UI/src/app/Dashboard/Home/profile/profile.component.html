@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                         
+
                     <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -120,63 +120,74 @@
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                         </li>
                         <li>
-                            
+
                         </li>
                     </ul> -->
                 <!-- </div>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-primary" (click)=" editdata()">Edit profile</button>
-             </div>   
-           
+             </div>
+
         </div>
-    </form>  
-        
+    </form>
+
 </div> -->
 
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
+
 <div class="wrapper">
     <div class="left">
-        <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100">
-        <h4>Alex William</h4>
-         <p>UI Developer</p>
+        <div>
+            @if(this.bsStore.userDetails.value.profilePicture !== null && this.bsStore.userDetails.value.profilePicture !== undefined){
+                <img class="img-thumbnail" [src]="'data:image/jpeg;base64,' + this.bsStore.userDetails.value.profilePicture" alt="wait for the image">
+            }
+            <h4>{{this.bsStore.userDetails.value.name}}</h4>
+        </div>
+
     </div>
     <div class="right">
         <div class="info">
-            <h3>Information</h3>
+        <div class="border-bottom mb-3 pb-2">
+            <label class="col-10 details-title">Information</label>
+            <button class="col-2 btn btn-dark" (click)="userEdit()">EDIT</button>
+        </div>
             <div class="info_data">
                  <div class="data">
                     <h4>Email</h4>
-                    <p>alexgmail.com</p>
+                    <p>{{this.bsStore.userDetails.value.email}}</p>
                  </div>
                  <div class="data">
                    <h4>Phone</h4>
-                    <p>0001-213-998761</p>
-              </div>
-            </div>
-        </div>
-      
-      <div class="projects">
-            <h3>Projects</h3>
-            <div class="projects_data">
-                 <div class="data">
-                    <h4>Recent</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p>{{this.bsStore.userDetails.value.mobileNumber}}</p>
                  </div>
-                 <div class="data">
-                   <h4>Most Viewed</h4>
-                    <p>dolor sit amet.</p>
-              </div>
+            </div>
+            <div class="info_data">
+                <div class="data">
+                   <h4>Address</h4>
+                   <p>{{this.bsStore.userDetails.value.address}}</p>
+                </div>
+           </div>
+        </div>
+
+      <div class="projects">
+            <h3>Car Details</h3>
+            <div class="car-details-scroll">
+                @if( IScarData()){
+                    @for( data of this.bsStore.VehicleData.value;track data.vehicleNumber){
+                      <app-card class="mb-5" [data]="data"></app-card>
+                    }
+                  }
             </div>
         </div>
-      
-        <div class="social_media">
+
+        <!-- <div class="social_media">
             <ul>
               <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
               <li><a href="#"><i class="fab fa-twitter"></i></a></li>
               <li><a href="#"><i class="fab fa-instagram"></i></a></li>
           </ul>
-      </div>
+      </div> -->
     </div>
 </div>
