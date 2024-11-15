@@ -210,7 +210,7 @@ namespace CarParkingBookingDatabase.BookingDBContext
                     DealerGPSLocation = "URL",
                     DealerLandmark = "Landmark",
                     DealerRating = "3.3",
-                    DealerTiming = "{\"monday\": {\"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"tuesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"wednesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"thursday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"friday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"saturday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"sunday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"alwaysAvailable\": \"false\"}",
+                    DealerTiming = "{\"monday\": {\"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"tuesday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"wednesday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"thursday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"friday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"saturday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"sunday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"alwaysAvailable\": \"false\"}",
                     DealerStoreName = "MuthuTheMass",
                     DealerOpenOrClosed = false
                 });
