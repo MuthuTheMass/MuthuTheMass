@@ -8,6 +8,7 @@
 
     public class AuthorizedLoginVM
     {
+        public string UserID { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
 
@@ -23,6 +24,7 @@
 
     public class AuthorizedDealerLoginVM
     {
+        public string DealerID { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
 

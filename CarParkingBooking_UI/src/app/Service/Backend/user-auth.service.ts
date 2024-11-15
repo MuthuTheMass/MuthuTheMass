@@ -15,15 +15,13 @@ export class UserAuthService {
   constructor(private http:HttpClient,private router:Router) { }
 
   Login(login:Login) : any{
-    this.http.post(environment.apiUrl+"Authorization/userlogin", login)
-              .subscribe({
-              next: (data) => {
+    this.http.post<LoginResponse>(environment.apiUrl+"Authorization/userlogin", login)
+              .subscribe(
+              (data:LoginResponse) => {
+                    localStorage.clear();
+                    localStorage.setItem("User",JSON.stringify(data));
                     this.router.navigate(['/main']);
-              },
-              error: (error: HttpErrorResponse) => {
-                    alert(`Error: ${error.status} - ${error.message}`);
-              }
-  });
+              });
 
   }
 
@@ -33,15 +31,13 @@ export class UserAuthService {
   }
 
   DealerLogin(login:Login) : any{
-    this.http.post(environment.apiUrl+"Authorization/dealerlogin", login)
-              .subscribe({
-              next: (data) => {
+    this.http.post<LoginResponse>(environment.apiUrl+"Authorization/dealerlogin", login)
+              .subscribe(
+              (data:LoginResponse) => {
+                    localStorage.clear();
+                    localStorage.setItem("Dealer",JSON.stringify(data));
                     this.router.navigate(['/main']);
-              },
-              error: (error: HttpErrorResponse) => {
-                    alert(`Error: ${error.status} - ${error.message}`);
-              }
-  });
+              });
 
   }
 

@@ -128,6 +128,9 @@ namespace CarParkingBookingDatabase.Migrations
                     b.Property<string>("DealerRating")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DealerStoreName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DealerTiming")
                         .HasColumnType("nvarchar(max)");
 

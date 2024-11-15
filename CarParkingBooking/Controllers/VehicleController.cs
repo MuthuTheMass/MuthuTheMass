@@ -17,15 +17,35 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult GetVehicleDetails_UserId([FromQuery] string UserId) 
+        public async Task<IActionResult> GetVehicleDetails_UserId([FromQuery] string UserId) 
         {
-            var result = vehicleData.GetVehicleDetailsBy_UserID(UserId);
-            if ( result.Result?.Count > 0) 
+            var result = await vehicleData.GetVehicleDetailsBy_UserID(UserId, false);
+            if ( result?.Count > 0) 
             {
                 return Ok(result);
 
             }
-            else if(result is null || result.Result?.Count == 0)
+            else if(result?.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+        
+        [HttpGet("halfvehicledetails")]
+        public async Task<IActionResult> GetHalfVehicleDetails_UserId([FromQuery] string UserId) 
+        {
+            var result = await vehicleData.GetVehicleDetailsBy_UserID(UserId, true);
+            if ( result?.Count > 0) 
+            {
+                return Ok(result);
+
+            }
+            else if(result?.Count == 0)
             {
                 return NotFound();
             }
@@ -36,11 +56,29 @@ namespace CarParkingBooking.Controllers
 
         }
 
-        [HttpGet("vehiclesingle")]
-        public IActionResult vehicleDetailsBySingle([FromQuery] string UserId, [FromQuery] string VehileId)
+        //[HttpGet("vehiclesingle")]
+        //public IActionResult vehicleDetailsBySingle([FromQuery] string UserId, [FromQuery] string VehileId)
+        //{
+        //    var result = vehicleData.GetVehicleDetailsSingle(UserId,VehileId);
+        //    if(!string.IsNullOrEmpty(result.Result?.VehicleId))
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else if (result is null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(result);
+        //    }
+        //}
+
+        [HttpGet("onevehicle")]
+        public async Task<IActionResult> OneVehicleData([FromQuery]string userId, [FromQuery]string vehicleNumber)
         {
-            var result = vehicleData.GetVehicleDetailsSingle(UserId,VehileId);
-            if(!string.IsNullOrEmpty(result.Result?.VehicleId))
+            var result = await vehicleData.GetDetailsByVehicleNumber(userId, vehicleNumber);
+            if (!string.IsNullOrEmpty(result?.VehicleId))
             {
                 return Ok(result);
             }
@@ -52,8 +90,6 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
-
-            
         }
 
         [HttpPost("addvehicle")]
