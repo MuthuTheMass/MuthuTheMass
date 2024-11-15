@@ -1,12 +1,8 @@
 ﻿using CarParkingBookingDatabase.DBModel;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Reflection;
-using CarParkingBookingDatabase.dummyData;
 
 namespace CarParkingBookingDatabase.BookingDBContext
 {
-    // public class CarParkingBookingDBContext : IdentityDbContext<UserDetails, IdentityRole<int>, int>    
     public class CarParkingBookingDBContext : DbContext
     {
         public CarParkingBookingDBContext(DbContextOptions<CarParkingBookingDBContext> options)
@@ -35,80 +31,12 @@ namespace CarParkingBookingDatabase.BookingDBContext
             {
                 // Configuring the primary key
                 entity.HasKey(v => v.VehicleId);
-
-                //// Configuring the foreign key
-                //entity.HasOne(v => v.UserDetails) // Assuming VehicleDetails has a navigation property to User
-                //      .WithMany(u => u.VehicleDetails) // Assuming User has a collection of VehicleDetails
-                //      .HasForeignKey(v => v.UserID); // Foreign key property in VehicleDetails
             });
             modelBuilder.Entity<BookingTripDetails>(entity =>
             {
                 entity.HasKey(t => t.TripId);
 
-                //entity.HasOne(o => o.BookingDetails)
-                //      .WithMany(u => u.BookingTripDetails)
-                //      .HasForeignKey(v => v.BookingID);
             });
-
-
-
-            //if (!UserDetails.Any(u => u.UserID.Equals("User-1")))
-            //{
-            //    modelBuilder.Entity<UserDetails>().HasData(
-            //    new UserDetails() { UserID = "User-1", Email = "balaji@gmail.com", Password = "balaji", Name = "balaji", MobileNumber = "7896541235" });
-            //}
-            //if (!DealerDetails.Any(u => u.DealerID.Equals("Dealer-1")))
-            //{
-            //    modelBuilder.Entity<DealerDetails>().HasData(
-            //new DealerDetails()
-            //{
-            //    DealerID = "Dealer-1",
-            //    DealerName = "surya",
-            //    DealerEmail = "surya@gmail.com",
-            //    DealerPassword = "surya",
-            //    DealerPhoneNo = "5912364782",
-            //    CreatedDate = new DateTime(2020, 05, 22),
-            //    DealerAddress = "Address data",
-            //    DealerDescription = "Dealer description",
-            //    DealerGPSLocation = "URL",
-            //    DealerLandmark = "Landmark",
-            //    DealerRating = "3.3",
-            //    DealerTiming = "{\"monday\": {\"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"tuesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"wednesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"thursday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"friday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"saturday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"sunday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"alwaysAvailable\": \"false\"}",
-            //    DealerStoreName = "MuthuTheMass",
-            //    DealerOpenOrClosed = false
-            //});
-            //}
-
-            //if (!BookingDetails.Any(u => u.BookingID.Equals("Booking-1")))
-            //{
-            //    modelBuilder.Entity<BookingDetails>().HasData(
-            //new BookingDetails()
-            //{
-            //    BookingID = "Booking-1",
-            //    ArrivingTime = new DateTime().ToLocalTime(),
-            //    CreatedDate = new DateTime().ToLocalTime().AddHours(-1),
-            //    Dealer_ID = "Dealer-1",
-            //    Driver_Name = "surya",
-            //    Driver_PhoneNumber = "7536984126",
-            //    User_ID = "User-1",
-            //    Vehicle_Id = "Vehicle-1"
-            //});
-            //}
-            //if (!VehicleDetails.Any(u => u.VehicleId.Equals("Vehicle-1")))
-            //{
-            //    modelBuilder.Entity<VehicleDetails>().HasData(
-            //new VehicleDetails()
-            //{
-            //    VehicleId = "Vehicle-1",
-            //    Alternative_Phone_Number = "7896321456",
-            //    CreatedDate = new DateTime().ToLocalTime(),
-            //    VehicleImage = byteArrayImage(),
-            //    UserID = "User-1",
-            //    VehicleName = "swift",
-            //    VehicleNumber = "TN 09 HR 9876"
-            //});
-            //}
-
 
         }
 
@@ -180,10 +108,10 @@ namespace CarParkingBookingDatabase.BookingDBContext
             }
         }
 
-        private static byte[] byteArrayImage()
+        private static byte[] byteArrayImage(string name)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory.Replace("\\DatabaseMigrator\\bin\\Debug\\net8.0\\", "");
-            byte[] byteArray = System.IO.File.ReadAllBytes(Path.Combine(path, @".\CarParkingBookingDatabase\dummyData\OIP.jpg"));
+            string path = AppDomain.CurrentDomain.BaseDirectory.Replace("\\bin\\Debug\\net8.0\\", "");
+            byte[] byteArray = System.IO.File.ReadAllBytes(Path.Combine(path, @".\dummyData\" + name+".jpg"));
             return byteArray;
         }
 
@@ -191,7 +119,7 @@ namespace CarParkingBookingDatabase.BookingDBContext
         {
             if (!UserDetails.Any(u => u.UserID.Equals("User-1")))
             {
-                UserDetails.Add(new UserDetails() { UserID = "User-1", Email = "balaji@gmail.com", Password = "balaji", Name = "balaji", MobileNumber = "7896541235" });
+                UserDetails.Add(new UserDetails() { UserID = "User-1", Email = "balaji@gmail.com", Password = "balaji", Name = "balaji", MobileNumber = "7896541235",UserProfilePicture=byteArrayImage("user"),Address="dubai data, thiruvallur" });
                 SaveChanges();
             }
 
@@ -210,9 +138,10 @@ namespace CarParkingBookingDatabase.BookingDBContext
                     DealerGPSLocation = "URL",
                     DealerLandmark = "Landmark",
                     DealerRating = "3.3",
-                    DealerTiming = "{\"monday\": {\"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"tuesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"wednesday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"thursday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"friday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"saturday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"sunday\": { \"start\": \"6:54 am\", \"stop\": \"5:45 pm\"},\"alwaysAvailable\": \"false\"}",
+                    DealerTiming = "{\"monday\": {\"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"tuesday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"wednesday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"thursday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"friday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"saturday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"sunday\": { \"start\": \"06:54 AM\", \"stop\": \"05:45 PM\"},\"alwaysAvailable\": \"false\"}",
                     DealerStoreName = "MuthuTheMass",
-                    DealerOpenOrClosed = false
+                    DealerOpenOrClosed = false,
+                    DealerProfilePicture = byteArrayImage("dealer"),
                 });
                 SaveChanges();
             }
@@ -240,7 +169,7 @@ namespace CarParkingBookingDatabase.BookingDBContext
                     VehicleId = "Vehicle-1",
                     Alternative_Phone_Number = "7896321456",
                     CreatedDate = DateTime.Now,
-                    VehicleImage = byteArrayImage(),
+                    VehicleImage = byteArrayImage("OIP"),
                     UserID = "User-1",
                     VehicleName = "swift",
                     VehicleNumber = "TN 09 HR 9876"
