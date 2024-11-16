@@ -30,8 +30,8 @@ export class DealerdatasService {
     }
 
      this.mc.post<any>(this.dealerapi+"Dealer/search",body).subscribe(data =>{
-      console.log(data.result)
-      this.bstore.dealerData.next(data.result as dealerVM[]);
+      console.log(data)
+      this.bstore.dealerData.next(data as dealerVM[]);
      });
   }
 

@@ -17,15 +17,15 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("search")]
-        public IActionResult Search(Filter filter)
+        public async Task<IActionResult> Search(Filter filter)
         {
-            var result = dealerData.SearchData(filter);
+            var result = await dealerData.SearchData(filter);
 
-            if (result.Result.Count > 0)
+            if (result.Count > 0)
             {
                 return Ok(result);
             }
-            else if (result.Result.Count == 0)
+            else if (result.Count == 0)
             {
                 return NotFound(result);
             }

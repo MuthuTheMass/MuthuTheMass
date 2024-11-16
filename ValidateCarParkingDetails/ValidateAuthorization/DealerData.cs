@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.BookingDBContext;
-using CarParkingBookingDatabase.DBModel;
-using CarParkingBookingDatabase.SqlHelper;
+using DatabaseMigrator.BookingDBContext;
+using DatabaseMigrator.DBModel;
+using DatabaseMigrator.SqlHelper;
 using CarParkingBookingVM.VM_S.Dealers;
 using Microsoft.EntityFrameworkCore;
 

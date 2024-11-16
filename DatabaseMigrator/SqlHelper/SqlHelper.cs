@@ -1,4 +1,4 @@
-﻿namespace CarParkingBookingDatabase.SqlHelper
+﻿namespace DatabaseMigrator.SqlHelper
 {
     public static class SqlHelper
     {

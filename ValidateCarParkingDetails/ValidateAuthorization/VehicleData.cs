@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.BookingDBContext;
-using CarParkingBookingDatabase.DBModel;
-using CarParkingBookingDatabase.Migrations;
+using DatabaseMigrator.DBModel;
 using CarParkingBookingVM.VM_S.Vehicle;
+using DatabaseMigrator.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization
 {

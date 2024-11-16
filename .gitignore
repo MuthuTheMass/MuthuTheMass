@@ -59,3 +59,9 @@ CarParkingBooking/.vs/
 /DatabaseMigrator/bin/
 /DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.csproj.FileListAbsolute.txt
 /DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.csproj.CoreCompileInputs.cache
+/DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.assets.cache
+/DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.GeneratedMSBuildEditorConfig.editorconfig
+/DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.dgspec.json
+/DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.props
+/DatabaseMigrator/obj/project.assets.json
+/DatabaseMigrator/obj/project.nuget.cache
