@@ -1,7 +1,7 @@
-﻿using CarParkingBookingDatabase.DBModel;
+﻿using DatabaseMigrator.DBModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarParkingBookingDatabase.BookingDBContext
+namespace DatabaseMigrator.BookingDBContext
 {
     public class CarParkingBookingDBContext : DbContext
     {

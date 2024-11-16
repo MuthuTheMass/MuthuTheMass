@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.BookingDBContext;
-using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Login;
 using CarParkingBookingVM.VM_S.Dealers;
+using DatabaseMigrator.BookingDBContext;
+using DatabaseMigrator.DBModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;

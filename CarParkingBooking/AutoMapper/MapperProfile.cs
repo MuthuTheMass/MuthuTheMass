@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.DBModel;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
+using CarParkingBookingVM.VM_S;
 using CarParkingBookingVM.VM_S.Booking;
 using CarParkingBookingVM.VM_S.Dealers;
 using CarParkingBookingVM.VM_S.Vehicle;
+using DatabaseMigrator.DBModel;
 using System.Text.Json;
 
 namespace CarParkingBooking.AutoMapper

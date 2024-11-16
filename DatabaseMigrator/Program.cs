@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using CarParkingBookingDatabase.BookingDBContext;
+using DatabaseMigrator.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

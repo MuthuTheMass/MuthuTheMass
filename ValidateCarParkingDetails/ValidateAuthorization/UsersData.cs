@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.BookingDBContext;
+using DatabaseMigrator.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using CarParkingBookingVM.VM_S;
 

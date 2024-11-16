@@ -2,7 +2,7 @@ using AutoMapper;
 using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBooking.Services_Program;
-using CarParkingBookingDatabase.BookingDBContext;
+using DatabaseMigrator.BookingDBContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

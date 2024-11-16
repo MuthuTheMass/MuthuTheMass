@@ -17,7 +17,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpGet("userfull")]
-        public async Task<IActionResult> Get(string userEmail)
+        public async Task<IActionResult> Get([FromQuery]string userEmail)
         {
             var result = await userData.GetSingleUser(userEmail);
 
