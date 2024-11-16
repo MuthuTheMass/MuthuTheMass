@@ -43,6 +43,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public required string DealerAddress { get; set; }
 
         public required string DealerLandmark { get; set; }
+        public required string DealerStoreName { get; set; }
 
         public required string DealerLocationURL { get; set; }
         public bool DealerOpenOrClosed { get; set; }

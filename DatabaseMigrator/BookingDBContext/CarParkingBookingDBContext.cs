@@ -133,7 +133,7 @@ namespace DatabaseMigrator.BookingDBContext
                     DealerPassword = "surya",
                     DealerPhoneNo = "5912364782",
                     CreatedDate = new DateTime(2020, 05, 22),
-                    DealerAddress = "Address data",
+                    DealerAddress = "william's road, kumbakonam, tamilnadu",
                     DealerDescription = "Dealer description",
                     DealerGPSLocation = "URL",
                     DealerLandmark = "Landmark",
