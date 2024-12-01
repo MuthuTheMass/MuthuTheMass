@@ -6,19 +6,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-::-webkit-scrollbar-track{
-  background-color: rgb(136, 234, 234); 
-  border-radius: 5px;
-  overflow: scroll;
-  
-  
-}
+
+
 
 ::-webkit-scrollbar{
-    width: 5px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#3b7093;
-    border-radius: 20px;
-}
+    display: none;
+  }

@@ -14,6 +14,16 @@ import { ProfileComponent } from './Dashboard/Home/profile/profile.component';
 import { EditdetailsComponent } from './Dashboard/Home/profile/editdetails/editdetails.component';
 import { SampleBackendComponent } from './sample-backend/sample-backend.component';
 import { PagenotfoundComponent } from './custom_components/pagenotfound/pagenotfound.component';
+import { DmainComponent } from './Dashboard/Dealer/dmain/dmain.component';
+import { CustomerdataComponent } from './Dashboard/Dealer/dmain/customerdata/customerdata.component';
+import { OfflinebookingComponent } from './Dashboard/Dealer/dmain/offlinebooking/offlinebooking.component';
+import { OfflineReceptComponent } from './Dashboard/Dealer/dmain/offline-recept/offline-recept.component';
+import { BookingHistoryComponent } from './Dashboard/Dealer/dmain/booking-history/booking-history.component';
+import { PaymentHistoryComponent } from './Dashboard/Dealer/dmain/payment-history/payment-history.component';
+import { DealeraccountComponent } from './Dashboard/Dealer/dmain/dealeraccount/dealeraccount.component';
+import { EditDealerdataComponent } from './Dashboard/Dealer/dmain/edit-dealerdata/edit-dealerdata.component';
+import { AllPaymentComponent } from './Dashboard/Dealer/dmain/all-payment/all-payment.component';
+
 
 export const routes: Routes = [
   {
@@ -29,6 +39,28 @@ export const routes: Routes = [
 // {
 //     path:"**",component:PagenotfoundComponent,title:"something went wrong"
 // },
+
+{
+  path:"dhome",component:DmainComponent,title:"dealermain page",children:[
+    {
+        path:"",component:CustomerdataComponent,title:"home page"
+    },{
+        path:"off-booking",component:OfflinebookingComponent,title:"offline-booking for customer"
+    },{
+        path:"offline-bill",component:OfflineReceptComponent,title:"customer offline bill"
+    },{
+        path:"booking-details",component:BookingHistoryComponent,title:"customer booking history"
+    },{
+        path:"payment-details",component:PaymentHistoryComponent,title:"customer payment history"
+    },{
+        path:"dealer-account",component:DealeraccountComponent,title:"dealer detailes"
+    },{
+        path:"editdealer",component:EditDealerdataComponent,title:"dealerdata"
+    },{
+        path:"allpayment",component:AllPaymentComponent,title:"dealerpayment"
+    }
+  ]
+},
 
 
 

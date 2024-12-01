@@ -1,0 +1,131 @@
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    right: 200px;
+  }
+
+  .navbar{
+    border-bottom: 2px solid rgb(255, 21, 119);
+  }
+  
+  .searchTerm {
+    width: 450px;
+    border: 1px solid rgb(255, 21, 119);
+    border-right: none;
+    padding: 5px;
+    height: 35px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9dbfaf;
+  }
+  .dname {
+    color: white;
+  }
+  .dealerdata {
+    border-bottom: 1px solid white;
+  }
+  
+  .searchTerm:focus {
+    color: #00b4cc;
+  }
+  
+  .searchButton {
+    width: 60px;
+    height: 35px;
+    border: 1px solid  rgb(255, 21, 119);
+    background: #ffffff;
+    text-align: center;
+    color: rgb(255, 21, 119);
+    border-radius: 0 5px 5px 0 !important;
+    cursor: pointer;
+    position: relative;
+    font-size: 20px;
+  }
+  
+  .searchButton:hover{
+    background-color:  rgb(255, 21, 119);
+    color: #fff;
+    border:1px solid white;
+  }
+  
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  
+  .card-single {
+    display: flex;
+    justify-content: space-between;
+    background: #ecd0d0;
+    padding: 2rem;
+    width: 250px;
+    border-radius: 10px;
+    margin-left: 40px;
+  }
+  
+  
+  
+  .card-single div:last-child i {
+  color: rgb(255, 21, 119);
+    font-size: 3rem;
+  }
+  
+  .card-single div:first-child span{
+  
+    color:  rgb(107, 102, 104);
+   }
+   
+   .card-single:last-child {
+    background: rgb(255, 21, 119);
+   }
+   .card-single:last-child  h1{
+    background: rgb(255, 21, 119);
+   }
+  
+  
+   .card-single:last-child div:last-child i,
+   .card-single:last-child  h1,
+   .card-single:last-child div:first-child span
+   {
+    color: #fff;
+   }
+  
+   table{
+    border-collapse:collapse ;
+  
+   }
+  
+   .recent-grid{
+    margin-top: 3.5rem;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 67% auto;
+   }
+   .card{
+    background: #fff;
+   }
+  
+   .card-head{
+    padding: 1rem;
+   }
+    
+   .card-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+   }
+  
+   .card-head button{
+    background:rgb(255, 21, 119);
+    border-radius: 10px;
+    color: #fff;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    border: 1px solid rgb(255, 21, 119);
+   }

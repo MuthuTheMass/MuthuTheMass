@@ -8,10 +8,11 @@ import { BackstoreService } from '../../../Service/store/backstore.service';
 import {RatingModule} from "ngx-bootstrap/rating";
 
 
+
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ArticalComponent,RouterOutlet,RatingModule, FormsModule,CommonModule],
+  imports: [ArticalComponent, RouterOutlet, RatingModule, FormsModule, CommonModule,],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

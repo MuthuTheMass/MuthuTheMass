@@ -1,0 +1,121 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    box-sizing: border-box;
+}
+.container{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p1{
+    position: relative;
+    top: 20px;
+    max-width: 800px;
+    background:rgb(255, 21, 119) ;
+    color: aliceblue;
+    width: 100%;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin: auto;
+}
+.p1 header{
+    font-size: 1.5em;
+    color: #fffcfc;
+    font-weight: 500;
+}
+.p1 .form{
+    margin-top: 20px;
+}
+.p1 .input-box{
+    width: 100%;
+    margin-top: 10px;
+}
+.input-box label{
+    color: #ffffff;
+}
+.form :where(.input-box input,.select-box){
+    position: relative;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #746969;
+    margin-top: 8px;
+    border: 1px solid #020202;
+    border-radius: 6px;
+    padding: 0  15px;
+}
+.input-box input:focus{
+    box-shadow: 0 1px 0  rgba(0,0,0,0.1);
+}
+input[type=text]:hover{
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+  }
+  input[type=text]:focus {
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+    outline-width: 0px;
+  }
+.form .column{
+    display: flex;
+    column-gap: 15px;
+}
+.address :where(input,.select-box){
+    margin-top: 10px;
+}
+.select-box select{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+.form button{
+    height: 45px;
+    width: 30%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: rgb(255, 255, 255);
+    color: rgb(255, 21, 119);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.form button:hover{
+    transform: scale(1.04);
+    box-shadow: -3px -3px 7px #3b413e,3px 3px 5px #636778;
+    background:rgb(255, 21, 119);
+    color: #fff;
+}
+.credit a {
+    text-decoration: none;
+    color: #121212;
+    font-weight: 800;
+}
+  
+.credit {
+    color: #121212;
+    text-align: center;
+    margin-top: 10px;
+    font-family: Verdana,Geneva,Tahoma,sans-serif;
+}
+.credit span{
+    color:#000;
+    font-size:20px;
+} 
+@media screen and (max-width:600px) {
+    .form .column{
+        flex-wrap: wrap;
+    }
+}
+
