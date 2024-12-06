@@ -1,4 +1,4 @@
-﻿using CarParkingBookingDatabase.DBModel;
+﻿using AutoMapper;
 using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
@@ -6,6 +6,8 @@ using CarParkingBookingVM.VM_S;
 using CarParkingBookingVM.VM_S.Booking;
 using CarParkingBookingVM.VM_S.Dealers;
 using CarParkingBookingVM.VM_S.Vehicle;
+using DatabaseMigrator.DBModel;
+using System.Text.Json;
 
 namespace CarParkingBooking.AutoMapper
 {
@@ -23,7 +25,6 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<DealerVM, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.DealerName))
-                .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.DealerEmail))
                 .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerDescription, dest => dest.MapFrom(src => src.DealerDescription))
@@ -31,7 +32,9 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerAddress, dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark, dest => dest.MapFrom(src => src.DealerLandmark))
                 .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => src.DealerLocationURL))
-                .ForMember(opt => opt.DealerRating, dest => dest.MapFrom(src => src.DealerRating));
+                .ForMember(opt => opt.DealerRating, dest => dest.MapFrom(src => src.DealerRating))
+                .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
+                ;
 
             CreateMap<DealerDetails, DealerVM>()
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)))
@@ -59,7 +62,6 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.DealerPassword, opt => opt.MapFrom(src => src.Password))
                 .ForMember(dest => dest.Rights, opt => opt.MapFrom(src => AccessToUsers.Dealer.ToString())) // Default value
                 .ForMember(dest => dest.DealerDescription, opt => opt.Ignore())
-                .ForMember(dest => dest.DealerStoreName, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerTiming, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerAddress, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerLandmark, opt => opt.Ignore())

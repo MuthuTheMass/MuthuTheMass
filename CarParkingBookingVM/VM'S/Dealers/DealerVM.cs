@@ -32,8 +32,6 @@ namespace CarParkingBookingVM.VM_S.Dealers
 
         public required string DealerName { get; set; }
 
-        public required string DealerStoreName { get; set; }
-
         public required string DealerEmail { get; set; }
 
         public required string DealerPhoneNo { get; set; }
@@ -45,6 +43,7 @@ namespace CarParkingBookingVM.VM_S.Dealers
         public required string DealerAddress { get; set; }
 
         public required string DealerLandmark { get; set; }
+        public required string DealerStoreName { get; set; }
 
         public required string DealerLocationURL { get; set; }
         public bool DealerOpenOrClosed { get; set; }

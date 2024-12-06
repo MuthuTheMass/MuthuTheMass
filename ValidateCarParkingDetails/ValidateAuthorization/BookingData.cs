@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using CarParkingBookingDatabase.BookingDBContext;
-using CarParkingBookingDatabase.DBModel;
+using DatabaseMigrator.BookingDBContext;
+using DatabaseMigrator.DBModel;
 using CarParkingBookingVM.VM_S.Booking;
 
 namespace ValidateCarParkingDetails.ValidateAuthorization

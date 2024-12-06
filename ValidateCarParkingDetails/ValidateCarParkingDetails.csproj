@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarParkingBookingDatabase\CarParkingBookingDatabase.csproj" />
     <ProjectReference Include="..\CarParkingBookingVM\CarParkingBookingVM.csproj" />
+    <ProjectReference Include="..\DatabaseMigrator\DatabaseMigrator.csproj" />
   </ItemGroup>
 
 </Project>

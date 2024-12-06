@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkingBookingDatabase.DBModel
+namespace DatabaseMigrator.DBModel
 {
     public class BookingDetails
     {

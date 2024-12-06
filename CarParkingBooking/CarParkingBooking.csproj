@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarParkingBookingVM\CarParkingBookingVM.csproj" />
+    <ProjectReference Include="..\DatabaseMigrator\DatabaseMigrator.csproj" />
     <ProjectReference Include="..\ValidateCarParkingDetails\ValidateCarParkingDetails.csproj" />
   </ItemGroup>
 
