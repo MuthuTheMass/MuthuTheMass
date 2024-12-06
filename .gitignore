@@ -65,3 +65,6 @@ CarParkingBooking/.vs/
 /DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.props
 /DatabaseMigrator/obj/project.assets.json
 /DatabaseMigrator/obj/project.nuget.cache
+/CarParkingBooking/.idea
+/DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.targets
+/DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.targets
