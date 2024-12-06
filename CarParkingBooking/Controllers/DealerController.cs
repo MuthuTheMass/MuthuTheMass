@@ -37,7 +37,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("updatedealer")]
-        public IActionResult Add(DealerVM dealerValue) 
+        public IActionResult AddOrUpdate(DealerVM dealerValue) 
         {
             var result = dealerData.UpsertDealerData(dealerValue);
 

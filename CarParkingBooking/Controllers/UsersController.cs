@@ -37,7 +37,7 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("updateuser")]
-        public async Task<IActionResult> UpdateuserDetailsAsync([FromForm]UserData details)
+        public async Task<IActionResult> UpdateuserDetails([FromForm]UserData details)
         {
             var result = await userData.UpdateUserData(details);
             if(result != null)
