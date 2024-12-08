@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { dealerVM } from '../Model/dealermodal';
 import { BackstoreService } from '../store/backstore.service';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +11,9 @@ import { BackstoreService } from '../store/backstore.service';
 export class DealerdatasService {
 
 
-  dealerapi = "https://localhost:7045/api/";
-
-
- constructor(public mc:HttpClient,public bstore:BackstoreService ){
+ constructor(public httpClient:HttpClient, public backStoreService:BackstoreService ){
 
  }
-
-
-
-
 
   getalluserdata(){
 
@@ -29,9 +23,9 @@ export class DealerdatasService {
       ]
     }
 
-     this.mc.post<any>(this.dealerapi+"Dealer/search",body).subscribe(data =>{
+     this.httpClient.post<any>(environment.apiUrl+"Dealer/search",body).subscribe(data =>{
       console.log(data)
-      this.bstore.dealerData.next(data as dealerVM[]);
+      this.backStoreService.dealerData.next(data as dealerVM[]);
      });
   }
 

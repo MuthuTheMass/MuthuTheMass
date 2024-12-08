@@ -23,7 +23,7 @@ export class MainComponent {
   currentRate: number = 2;
 
 
-  constructor(public ms: DealerdatasService, protected bstore: BackstoreService) {
+  constructor(public dealerDatasService: DealerdatasService, protected backStoreService: BackstoreService) {
 
 
     this.dealerdetails = new FormGroup({
@@ -35,20 +35,16 @@ export class MainComponent {
     });
   }
 
-
-  getalldealerdetails() {
-    this.ms.getalluserdata();
+  ngOnInit():void {
+    this.dealerDatasService.getalluserdata();
   }
-
 
   convertStringToFloat(value: string) {
     return parseFloat(value);
   }
 
 
-  ngOnInit() {
-    this.getalldealerdetails();
-  }
+
 
   getdata() {
     const searchbox = document.getElementById('loac') as HTMLInputElement;

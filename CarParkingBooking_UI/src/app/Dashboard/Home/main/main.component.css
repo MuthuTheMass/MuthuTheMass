@@ -24,7 +24,8 @@
     color: white;
 }
 .dealerdata{
-    border-bottom: 1px solid white;
+  background-color: #87d5dc;
+  border-bottom: 1px solid white;
 }
 
 .searchTerm:focus{
@@ -48,11 +49,9 @@
   width:80%;
 }
 
-
-
 .d-flex{
 padding-top: 5px;
-    
+
 }
 
 /* Split the screen in half */
@@ -66,7 +65,6 @@ padding-top: 5px;
 .left {
   left: 0;
   width: 60%;
-  background-color: #87d5dc;
   overflow: scroll;
 }
 
@@ -77,7 +75,7 @@ padding-top: 5px;
 }
 
 
-/* 
+/*
 .form-control{
     height: 40px;
    width: 500px;
@@ -85,12 +83,12 @@ padding-top: 5px;
 .d-flex{
     margin-left: 200px;
     background: transparent;
-    
+
 }
 
 .d-flex input{
     border-radius: 10px;
-    
+
 }
 
 .rlarrow{
