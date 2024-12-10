@@ -8,7 +8,7 @@ import {VehicleModal} from "../Model/VehicleModal";
 @Injectable({
   providedIn: 'root'
 })
-export class BackstoreService {
+export class BackStoreService {
 
   public dealerData:BehaviorSubject<dealerVM[]> = new BehaviorSubject<dealerVM[]>([]);
   public userDetails:BehaviorSubject<userDetails> = new BehaviorSubject<userDetails>({} as userDetails);

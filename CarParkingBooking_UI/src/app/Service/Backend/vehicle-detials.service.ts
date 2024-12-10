@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BackstoreService } from '../store/backstore.service';
+import { BackStoreService } from '../store/back-store.service';
 import { environment } from '../../../environments/environment';
 import {VehicleModal} from "../Model/VehicleModal";
 
@@ -9,7 +9,7 @@ import {VehicleModal} from "../Model/VehicleModal";
 })
 export class VehicleDetialsService {
 
-  constructor(private http:HttpClient,private bstore:BackstoreService) { }
+  constructor(private http:HttpClient,private bstore:BackStoreService) { }
 
   vehicleDetailsByUserID(userID:string){
     this.http.get(environment.apiUrl+"Vehicle?UserId="+userID).subscribe(

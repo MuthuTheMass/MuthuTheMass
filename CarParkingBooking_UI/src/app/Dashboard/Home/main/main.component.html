@@ -1,22 +1,125 @@
-<!-- <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <form class="d-flex">
-        <nav class="navbar navbar-light bg-light">
-                <span class="nav-item">
-                    <a class="nav-link" id="sdata" ></a>
-                </span>
-            <form class="container-fluid">
-              <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><img src="..\assets\locat1.png" ></span>
-                <input type="text" class="form-control" placeholder="Search Location" id="loac" aria-label="Username" aria-describedby="basic-addon1">
-                <button type="button" class="btn btn-outline-primary" id="btnd" (click)="getdata()">Primary</button>
-              </div>
-            </form>
-          </nav>
-      </form>
-    </div>
-  </nav> -->
+<div class="split left">
+  <div class="centered">
+  <div class="search-area">
+    <nav class="navbar navbar-light bg-light">
+      <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="What are you looking for?">
+           <button type="submit" class="searchButton">
+             <i class="fa fa-search"></i>
+          </button>
+        </div>
+     </div>
+    </nav>
+  </div>
+    <div class="dealerdata">
+    @for (dealerDetails of backStoreService.dealerData.value; track dealerDetails.dealerName){
 
+        <div class="dname">
+          <span><h2>{{ dealerDetails.dealerName }}</h2></span>
+          <p class="data-box">
+            <a href="main/artical"> {{
+                dealerDetails.dealerAddress
+              }}
+            </a>
+          </p>
+        </div>
+
+    }
+    </div>
+
+<!--<div class="dealerdata">-->
+<!--  <div class="dname">-->
+<!--    <span><h2>MuthuParking</h2></span>-->
+<!--    <p class="data-box">-->
+<!--      <a href="main/artical"> Muthu Car parking-->
+<!--       chennai-perambu,sembuim,janaki raman street-->
+<!--     </a>-->
+<!--    </p>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--  <div class="dealerdata">-->
+<!--    <div class="dname">-->
+<!--      <span><h2>MuthuParking</h2></span>-->
+<!--      <p class="data-box">-->
+<!--        <a href="main/artical"> Muthu Car parking-->
+<!--         chennai-perambu,sembuim,janaki raman street-->
+<!--       </a>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="dealerdata">-->
+<!--      <div class="dname">-->
+<!--        <span><h2>MuthuParking</h2></span>-->
+<!--        <p class="data-box">-->
+<!--          <a href="main/artical"> Muthu Car parking-->
+<!--           chennai-perambu,sembuim,janaki raman street-->
+<!--         </a>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--      <div class="dealerdata">-->
+<!--        <div class="dname">-->
+<!--          <span><h2>MuthuParking</h2></span>-->
+<!--          <p class="data-box">-->
+<!--            <a href="main/artical"> Muthu Car parking-->
+<!--             chennai-perambu,sembuim,janaki raman street-->
+<!--           </a>-->
+<!--          </p>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div class="dealerdata">-->
+<!--          <div class="dname">-->
+<!--            <span><h2>MuthuParking</h2></span>-->
+<!--            <p class="data-box">-->
+<!--              <a href="main/artical"> Muthu Car parking-->
+<!--               chennai-perambu,sembuim,janaki raman street-->
+<!--             </a>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--          <div class="dealerdata">-->
+<!--            <div class="dname">-->
+<!--              <span><h2>MuthuParking</h2></span>-->
+<!--              <p class="data-box">-->
+<!--                <a href="main/artical"> Muthu Car parking-->
+<!--                 chennai-perambu,sembuim,janaki raman street-->
+<!--               </a>-->
+<!--              </p>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--            <div class="dealerdata">-->
+<!--              <div class="dname">-->
+<!--                <span><h2>MuthuParking</h2></span>-->
+<!--                <p class="data-box">-->
+<!--                  <a href="main/artical"> Muthu Car parking-->
+<!--                   chennai-perambu,sembuim,janaki raman street-->
+<!--                 </a>-->
+<!--                </p>-->
+<!--              </div>-->
+<!--              </div>-->
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <i class='bx bxs-map' ></i>
@@ -25,17 +128,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <input type="date" class="date">
-          </li>
-          <li class="rlarrow">
-            <img src="..\assets\left-rightarrow.png">
-          </li>
-          <li class="nav-item-end" >
-            <input type="date" class="date">
-          </li>
-        </ul> -->
+
         <form class="d-flex">
             <input type="text" class="form-control" placeholder="Search Location" id="loac" aria-label="Username" aria-describedby="basic-addon1">
             <button type="button" class="btn btn-outline-primary" id="btnd" (click)="getdata()">Search</button>
@@ -64,158 +157,6 @@
 
       </div>
           </div>
-          <!-- <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div>
-          <div class="dealerdata">
-            <p class="data-box">
-            Muthu Car parking
-            chennai-perambu,sembuim,janaki raman street
-            </p>
-          </div> -->
-          <div class="dealerdata"*ngFor="let dealers of bstore.dealerData.value">
-            <div class="data-box">
-              <div class="col-12">
-                <a href="main/artical">{{dealers.dealerStoreName}}</a>
-              </div>
-              <div class="col-12">{{dealers.dealerAddress}}</div>
-              <div class="col-12">
-                <rating [(ngModel)]="rating" [max]="5" ></rating>
-                <span *ngIf="rating">You rated this: {{ rating }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 vh-100 ">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-</div>
-
-
-
-
-
-  <!-- <div class="parkinglist">
-    <div class="parkul">
-      <li>
-        <div class="parkbody">
-        <span class="parking-name">
-        <h3>Muthu Car Parking</h3>
-       <form>
-    <address>
-      MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP- MLCP - GCC
-      Parking lot in Chennai, Tamil Nadu
-    </address>
-
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-  </form>
-</span>
-        </div>
-      </li>
-      <li>
-        <div class="parkbody">
-
-        </div>
-      </li>
-      <li>
-        <div class="parkbody">
-
-        </div>
-      </li>
-    </div>
-
-
-
-
-
-  </div> -->
-
-
-
-
-
-
-
-  <!-- <div class="rate">
-    <input type="radio" id="star5" name="rate" value="5" />
-    <label for="star5" title="text">5 stars</label>
-    <input type="radio" id="star4" name="rate" value="4" />
-    <label for="star4" title="text">4 stars</label>
-    <input type="radio" id="star3" name="rate" value="3" />
-    <label for="star3" title="text">3 stars</label>
-    <input type="radio" id="star2" name="rate" value="2" />
-    <label for="star2" title="text">2 stars</label>
-    <input type="radio" id="star1" name="rate" value="1" />
-    <label for="star1" title="text">1 star</label>
-  </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<input class="form-control me-2" type="search" placeholder="Search Location" id="loac" aria-label="Search">
-<button class="btn btn-outline-success" type="submit" id="btnd" (click)="getdata()">Search</button> -->
 
 <ng-template #t let-fill="fill">
   <i class="bi-heart-fill">
@@ -224,4 +165,4 @@
     </ng-container>
   </i>
 </ng-template>
-
+ -->

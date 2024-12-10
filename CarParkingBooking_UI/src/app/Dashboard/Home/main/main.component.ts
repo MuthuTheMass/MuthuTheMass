@@ -3,26 +3,27 @@ import { ArticalComponent } from "./artical/artical.component";
 import { RouterOutlet } from '@angular/router';
 import {FormControl, FormGroup, FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DealerdatasService } from '../../../Service/Backend/dealerdatas.service';
-import { BackstoreService } from '../../../Service/store/backstore.service';
 import {RatingModule} from "ngx-bootstrap/rating";
+import {DealerDataService} from "../../../Service/Backend/dealer-data.service";
+import {BackStoreService} from "../../../Service/store/back-store.service";
+
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ArticalComponent,RouterOutlet,RatingModule, FormsModule,CommonModule],
+  imports: [ArticalComponent, RouterOutlet, RatingModule, FormsModule, CommonModule,],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent {
 
-  dealerdetails: DealerdatasService | any;
+  dealerdetails: DealerDataService | any;
   rating: number = 4.5;
   currentRate: number = 2;
 
 
-  constructor(public ms: DealerdatasService, protected bstore: BackstoreService) {
+  constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService) {
 
 
     this.dealerdetails = new FormGroup({
@@ -34,20 +35,16 @@ export class MainComponent {
     });
   }
 
-
-  getalldealerdetails() {
-    this.ms.getalluserdata();
+  ngOnInit():void {
+    this.dealerDataService.getalluserdata();
   }
-
 
   convertStringToFloat(value: string) {
     return parseFloat(value);
   }
 
 
-  ngOnInit() {
-    this.getalldealerdetails();
-  }
+
 
   getdata() {
     const searchbox = document.getElementById('loac') as HTMLInputElement;

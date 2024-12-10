@@ -36,8 +36,20 @@ namespace CarParkingBooking.Controllers
 
         }
 
+        [HttpPost("singledealerdata")]
+        public async Task<IActionResult> SingleDealerData([FromQuery] string email)
+        {
+            var result = await dealerData.SingleDealerDetails(email);
+            
+            if (!string.IsNullOrEmpty(result.DealerEmail))
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("updatedealer")]
-        public IActionResult Add(DealerVM dealerValue) 
+        public IActionResult AddOrUpdate(DealerVM dealerValue) 
         {
             var result = dealerData.UpsertDealerData(dealerValue);
 
@@ -74,5 +86,6 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
         }
+        
     }
 }

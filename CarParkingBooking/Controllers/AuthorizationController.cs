@@ -3,13 +3,7 @@ using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingBookingVM.VM_S.Dealers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using ValidateCarParkingDetails.ValidateAuthorization;
 
 namespace CarParkingBooking.Controllers

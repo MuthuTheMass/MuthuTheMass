@@ -37,7 +37,7 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("updateuser")]
-        public async Task<IActionResult> UpdateuserDetailsAsync([FromForm]UserData details)
+        public async Task<IActionResult> UpdateuserDetails([FromForm]UserData details)
         {
             var result = await userData.UpdateUserData(details);
             if(result != null)
@@ -56,6 +56,19 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet("getAllUsers")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await userData.GetAllUsers();
+
+            if (result.Count > 0)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+            
         }
     }
 }
