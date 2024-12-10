@@ -15,6 +15,8 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         Task<bool?> UpsertDealerData(DealerVM dealerVM);
 
         Task<bool> RemoveDealer(DeleteDealer delete);
+        
+        Task<DealerVM> SingleDealerDetails(string email);
     }
 
     public class DealerData : IDealerData
@@ -117,19 +119,6 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
         }
 
 
-        private string TimingSeperation(string date, int count)
-        {
-            var t = date.Substring(0, date.IndexOf("-"));
-            switch (count)
-            {
-                case 1:
-                    return date.Split("-").First();
-                case 2:
-                    return date.Split("-").Last();
-
-            }
-            return string.Empty;
-        }
 
         public Task<bool> RemoveDealer(DeleteDealer delete)
         {
@@ -148,6 +137,27 @@ namespace ValidateCarParkingDetails.ValidateAuthorization
             }
 
 
+        }
+
+        public async Task<DealerVM> SingleDealerDetails(string email)
+        {
+            var gatherData = await dbContext.DealerDetails.Where(d => d.DealerEmail == email).FirstOrDefaultAsync();
+            return mapper.Map<DealerVM>(gatherData);
+        }
+        
+        
+        private string TimingSeperation(string date, int count)
+        {
+            var t = date.Substring(0, date.IndexOf("-"));
+            switch (count)
+            {
+                case 1:
+                    return date.Split("-").First();
+                case 2:
+                    return date.Split("-").Last();
+
+            }
+            return string.Empty;
         }
     }
 }

@@ -66,6 +66,7 @@ CarParkingBooking/.vs/
 /DatabaseMigrator/obj/project.assets.json
 /DatabaseMigrator/obj/project.nuget.cache
 /CarParkingBooking/.idea
+/DatabaseMigrator/obj
 /DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.targets
 /DatabaseMigrator/obj/DatabaseMigrator.csproj.nuget.g.targets
 /DatabaseMigrator/obj
@@ -73,3 +74,9 @@ CarParkingBooking/.vs/
 /DatabaseMigrator/obj
 /DatabaseMigrator/bin
 /DatabaseMigrator/obj
+*.info
+/DatabaseMigrator/obj
+DatabaseMigrator/obj/rider.project.restore.info
+DatabaseMigrator/obj/rider.project.model.nuget.info
+DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.genruntimeconfig.cache
+DatabaseMigrator/bin/Debug/net8.0/DatabaseMigrator.deps.json

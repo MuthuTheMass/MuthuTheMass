@@ -3,9 +3,9 @@ import { ArticalComponent } from "./artical/artical.component";
 import { RouterOutlet } from '@angular/router';
 import {FormControl, FormGroup, FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DealerdatasService } from '../../../Service/Backend/dealerdatas.service';
-import { BackstoreService } from '../../../Service/store/backstore.service';
 import {RatingModule} from "ngx-bootstrap/rating";
+import {DealerDataService} from "../../../Service/Backend/dealer-data.service";
+import {BackStoreService} from "../../../Service/store/back-store.service";
 
 
 
@@ -18,12 +18,12 @@ import {RatingModule} from "ngx-bootstrap/rating";
 })
 export class MainComponent {
 
-  dealerdetails: DealerdatasService | any;
+  dealerdetails: DealerDataService | any;
   rating: number = 4.5;
   currentRate: number = 2;
 
 
-  constructor(public dealerDatasService: DealerdatasService, protected backStoreService: BackstoreService) {
+  constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService) {
 
 
     this.dealerdetails = new FormGroup({
@@ -36,7 +36,7 @@ export class MainComponent {
   }
 
   ngOnInit():void {
-    this.dealerDatasService.getalluserdata();
+    this.dealerDataService.getalluserdata();
   }
 
   convertStringToFloat(value: string) {

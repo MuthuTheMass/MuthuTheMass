@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {BackStoreService} from "../../../../Service/store/back-store.service";
+import {DealerDataService} from "../../../../Service/Backend/dealer-data.service";
 
 @Component({
   selector: 'app-dealeraccount',
@@ -9,4 +11,13 @@ import { Component } from '@angular/core';
 })
 export class DealeraccountComponent {
 
+  constructor(
+    protected stateStore:BackStoreService,
+    protected dealerService:DealerDataService,
+  ) {
+  }
+
+  ngOnInit() {
+    this.dealerService.getalluserdata()
+  }
 }

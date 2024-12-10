@@ -2,16 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { dealerVM } from '../Model/dealermodal';
-import { BackstoreService } from '../store/backstore.service';
 import {environment} from "../../../environments/environment";
+import {BackStoreService} from "../store/back-store.service";
 
 @Injectable({
   providedIn: 'root',
 })
-export class DealerdatasService {
+export class DealerDataService {
 
 
- constructor(public httpClient:HttpClient, public backStoreService:BackstoreService ){
+ constructor(public httpClient:HttpClient, public backStoreService:BackStoreService ){
 
  }
 

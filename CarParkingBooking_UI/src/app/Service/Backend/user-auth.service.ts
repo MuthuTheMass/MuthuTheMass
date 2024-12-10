@@ -36,7 +36,7 @@ export class UserAuthService {
               (data:LoginResponse) => {
                     localStorage.clear();
                     localStorage.setItem("Dealer",JSON.stringify(data));
-                    this.router.navigate(['/main']);
+                    this.router.navigate(['/dhome']);
               });
 
   }
