@@ -1,9 +1,8 @@
-
 <div class="main-content">
   <header>
     <h2>
-      <label for="">
-        <i class='bx bxs-bar-chart-alt-2' ></i>
+      <label>
+        <i class='bx bxs-bar-chart-alt-2'></i>
       </label>
       Dashboard
     </h2>
@@ -23,45 +22,45 @@
     <div class="cards">
       <div class="card-single">
         <div>
-          <h1>54</h1>
-        <span>Customer</span>
+          <h1>{{userDetails?.length}}</h1>
+          <span>Customer</span>
         </div>
-        
+
         <div>
-          <i class='bx bxs-user' ></i>
+          <i class='bx bxs-user'></i>
         </div>
       </div>
-      
+
       <div class="card-single">
         <div>
           <h1>79</h1>
-        <span>Booking slot</span>
+          <span>Booking slot</span>
         </div>
-        
+
         <div>
           <i class='bx bx-list-check'></i>
         </div>
       </div>
-      
+
       <div class="card-single">
         <div>
           <h1>49</h1>
           <span>Available slot</span>
         </div>
-      
+
         <div>
           <i class="fa-solid fa-car"></i>
         </div>
       </div>
-      
+
       <div class="card-single">
         <div>
           <h1>$100k</h1>
-        <span>Income</span>
+          <span>Income</span>
         </div>
-        
+
         <div>
-          <i class='bx bx-wallet-alt' ></i>
+          <i class='bx bx-wallet-alt'></i>
         </div>
       </div>
     </div>
@@ -71,115 +70,128 @@
         <div class="card">
           <div class="card-head">
             <h2>Recent Booking</h2>
-            <div><div class="wrap">
-              <div class="search">
-                 <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                 <button type="submit" class="searchButton">
-                   <i class="fa fa-search"></i>
-                </button>
+            <div>
+              <div class="wrap">
+                <div class="search">
+                  <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                  <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
               </div>
-           </div>
-           
-          </div>
+
+            </div>
             <button>
-              <a href="/dhome/booking-details">see all</a>  <i class='bx bxs-chevrons-right'></i></button>
+              <a href="/dhome/booking-details">see all</a> <i class='bx bxs-chevrons-right'></i></button>
           </div>
           <div class="card-body">
-<div class="table-responsive">
-  <table width="100%">
-    <thead >
-      <tr>
-        <td>Customer Booking-id</td>
-        <td>Slot Number</td>
-        <td>Confirmed Slot</td>
-        <td>Ongoing-Closed</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status red"></span>
-        Closed</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status green"></span>
-          Open</td>
-      </tr>
-      <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status green"></span>
-        Open</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status red"></span>
-          closed</td>
-      </tr>
-  
-       <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status"></span>
-        Review</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status"></span>
-          Feedback</td>
-      </tr>
-      <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status"></span>
-        Review</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status"></span>
-          Feedback</td>
-      </tr>
-      <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status"></span>
-        Review</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status"></span>
-          Feedback</td>
-      </tr>
-      <tr>
-        <td>History payment</td>
-        <td>pending payment</td>
-        <td>total payment</td>
-        <td><span class="status"></span>
-        Review</td>
-      </tr>
-      <tr>
-        <td>Rating</td>
-        <td>Help</td>
-        <td><span class="status"></span>
-          Feedback</td>
-      </tr>
+            <div class="table-responsive">
+              <table width="100%">
+                <thead>
+                <tr>
+                  <td>Customer Booking-id</td>
+                  <td>Slot Number</td>
+                  <td>Confirmed Slot</td>
+                  <td>Ongoing-Closed</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status red"></span>
+                    Closed
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status green"></span>
+                    Open
+                  </td>
+                </tr>
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status green"></span>
+                    Open
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status red"></span>
+                    closed
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status"></span>
+                    Review
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status"></span>
+                    Feedback
+                  </td>
+                </tr>
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status"></span>
+                    Review
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status"></span>
+                    Feedback
+                  </td>
+                </tr>
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status"></span>
+                    Review
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status"></span>
+                    Feedback
+                  </td>
+                </tr>
+                <tr>
+                  <td>History payment</td>
+                  <td>pending payment</td>
+                  <td>total payment</td>
+                  <td><span class="status"></span>
+                    Review
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating</td>
+                  <td>Help</td>
+                  <td><span class="status"></span>
+                    Feedback
+                  </td>
+                </tr>
 
 
-    </tbody>
-  </table>
-</div>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -188,133 +200,35 @@
         <div class="card">
           <div class="card-head">
             <h2>New custome</h2>
-            <button>See all <i class='bx bxs-chevrons-right'></i></button>
+            <!--            <button>See all <i class='bx bxs-chevrons-right'></i></button>-->
           </div>
           <div class="card-body">
-                 <div class="customer">
-                 <div class="info">
+            @for (user of userDetails; track user?.name){
+              <div class="customer">
+                <div class="info">
                   <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                 <div>
-                  <h4>  suryaprakash p</h4>
-                  <small>CEO Excpert</small>               
-                 </div>
+                  <div>
+                    <h4>{{user.name }}</h4>
+                    <small>{{ user.mobileNumber }}</small>
+                  </div>
                 </div>
                 <div class="contact ">
-                  <i class='bx bx-user-circle' ></i>
-                  <i class='bx bx-message-alt-minus' ></i>
-                  <i class='bx bx-phone' ></i>
+                  <i class='bx bx-user-circle'></i>
+                  <i class='bx bx-message-alt-minus'></i>
+                  <i class='bx bx-phone'></i>
                 </div>
               </div>
-              <div class="customer">
-                <div class="info">
-                 <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                <div>
-                 <h4>  suryaprakash p</h4>
-                 <small>CEO Excpert</small>               
-                </div>
-               </div>
-               <div class="contact ">
-                 <i class='bx bx-user-circle' ></i>
-                 <i class='bx bx-message-alt-minus' ></i>
-                 <i class='bx bx-phone' ></i>
-               </div>
-             </div> <div class="customer">
-              <div class="info">
-               <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-               <h4>  suryaprakash p</h4>
-               <small>CEO Excpert</small>               
-              </div>
-             </div>
-             <div class="contact ">
-               <i class='bx bx-user-circle' ></i>
-               <i class='bx bx-message-alt-minus' ></i>
-               <i class='bx bx-phone' ></i>
-             </div>
-           </div>
-         
-              <div class="customer">
-                <div class="info">
-                 <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                <div>
-                 <h4>  suryaprakash p</h4>
-                 <small>CEO Excpert</small>               
-                </div>
-               </div>
-               <div class="contact ">
-                 <i class='bx bx-user-circle' ></i>
-                 <i class='bx bx-message-alt-minus' ></i>
-                 <i class='bx bx-phone' ></i>
-               </div>
-             </div>
-             <div class="customer">
-              <div class="info">
-               <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-               <h4>  suryaprakash p</h4>
-               <small>CEO Excpert</small>               
-              </div>
-             </div>
-             <div class="contact ">
-               <i class='bx bx-user-circle' ></i>
-               <i class='bx bx-message-alt-minus' ></i>
-               <i class='bx bx-phone' ></i>
-             </div>
-           </div>
-           <div class="customer">
-            <div class="info">
-             <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-            <div>
-             <h4>  suryaprakash p</h4>
-             <small>CEO Excpert</small>               
-            </div>
-           </div>
-           <div class="contact ">
-             <i class='bx bx-user-circle' ></i>
-             <i class='bx bx-message-alt-minus' ></i>
-             <i class='bx bx-phone' ></i>
-           </div>
-         </div> <div class="customer">
-          <div class="info">
-           <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-          <div>
-           <h4>  suryaprakash p</h4>
-           <small>CEO Excpert</small>               
+            }
+
+
+
           </div>
-         </div>
-         <div class="contact ">
-           <i class='bx bx-user-circle' ></i>
-           <i class='bx bx-message-alt-minus' ></i>
-           <i class='bx bx-phone' ></i>
-         </div>
-       </div></div>
-       
-</div>
-</div>
-</div>
+
+        </div>
+      </div>
+    </div>
   </main>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- <div>

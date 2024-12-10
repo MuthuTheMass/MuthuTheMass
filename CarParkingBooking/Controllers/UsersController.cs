@@ -57,5 +57,18 @@ namespace CarParkingBooking.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("getAllUsers")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await userData.GetAllUsers();
+
+            if (result.Count > 0)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+            
+        }
     }
 }

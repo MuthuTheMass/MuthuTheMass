@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import {userDetails, UserUpdateData} from '../Model/UserDetails';
+import {userDetails, userDetailsForDealer, UserUpdateData} from '../Model/UserDetails';
 import { BackStoreService } from '../store/back-store.service';
 import { Observable } from 'rxjs';
 import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
@@ -22,6 +22,10 @@ export class UserDetailsService {
   UpdateData(data:FormData):Observable<any>{
     return this.http.post(environment.apiUrl+"Users/updateuser",data,
       );
+  }
+
+  GetAllUsers():Observable<userDetailsForDealer[]>{
+    return this.http.get<userDetailsForDealer[]>(environment.apiUrl+"Users/getAllUsers");
   }
 
 }
