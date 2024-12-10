@@ -11,7 +11,7 @@
 
 .searchTerm {
   width: 350px;
-  border: 3px solid #fff;
+  border: 1px solid #000000;
   border-right: none;
   padding: 5px;
   height: 35px;
@@ -32,22 +32,21 @@
 
 .searchButton {
   width: 60px;
-  height: 36px;
-  border: 1px solid  rgb(255, 21, 119);
+  height: 35px;
+  border: 1px solid #000000;;
   background: #ffffff;
   text-align: center;
   color: rgb(255, 21, 119);
   border-radius: 0 5px 5px 0 !important;
   cursor: pointer;
   position: relative;
-  bottom: 0.5px;
   font-size: 20px;
 }
 
 .searchButton:hover{
   background-color:  rgb(255, 21, 119);
   color: #fff;
-  border:1px solid white;
+  border:1px solid rgb(0, 0, 0);
 }
 
  table{
