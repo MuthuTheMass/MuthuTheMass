@@ -1,4 +1,4 @@
-﻿using CarParkingBookingVM.VM_S.Vehicle;
+﻿using CarParkingSystem.Application.Dtos.Vehicle;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ValidateCarParkingDetails.ValidateAuthorization;
@@ -93,7 +93,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("addvehicle")]
-        public IActionResult UpsertVehicleDetails([FromQuery] string userId, [FromForm]VehicleVM vehicleDetails)
+        public IActionResult UpsertVehicleDetails([FromQuery] string userId, [FromForm]VehicleDto vehicleDetails)
         {
             var result = vehicleData.UpsertVehicle(userId,vehicleDetails);
             if (result is null)

@@ -1,13 +1,14 @@
-﻿using AutoMapper;
-using CarParkingBookingVM.Authorization;
-using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
-using CarParkingBookingVM.VM_S;
-using CarParkingBookingVM.VM_S.Booking;
-using CarParkingBookingVM.VM_S.Dealers;
-using CarParkingBookingVM.VM_S.Vehicle;
-using DatabaseMigrator.DBModel;
-using System.Text.Json;
+using CarParkingSystem.Application.Dtos.Authorization;
+using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Application.Dtos.Users;
+using CarParkingSystem.Application.Dtos.Vehicle;
+using CarParkingSystem.Domain.Entities.SqlDatabase.DBModel;
+using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+using BookingDetails = CarParkingSystem.Domain.Entities.SqlDatabase.DBModel.BookingDetails;
+
 
 namespace CarParkingBooking.AutoMapper
 {
@@ -16,14 +17,14 @@ namespace CarParkingBooking.AutoMapper
 
         public MapperProfile()
         {
-            CreateMap<UserDetails, SignUpVM>()
+            CreateMap<UserDetails, SignUpDto>()
                 .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.Name))
                 .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.Email))
                 .ForMember(opt => opt.MobileNumber, dest => dest.MapFrom(src => src.MobileNumber))
                 .ForMember(opt => opt.Password, dest => dest.MapFrom(src => src.Password))
                 .ReverseMap();
 
-            CreateMap<DealerVM, DealerDetails>()
+            CreateMap<DealerDto, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.DealerName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.DealerEmail))
                 .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.DealerPhoneNo))
@@ -36,12 +37,12 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
                 ;
 
-            CreateMap<DealerDetails, DealerVM>()
+            CreateMap<DealerDetails, DealerDto>()
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)))
                 .ForMember(opt => opt.DealerLocationURL, dest => dest.MapFrom(src => src.DealerGPSLocation));
 ;
 
-            CreateMap<BookingDetails, BookingVM>()
+            CreateMap<BookingDetails, BookingDto>()
                 .ForMember(opt => opt.User_ID, dest => dest.MapFrom(src => src.User_ID))
                 .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
                 .ForMember(opt => opt.Driver_Name, dest => dest.MapFrom(src => src.Driver_Name))
@@ -55,7 +56,7 @@ namespace CarParkingBooking.AutoMapper
             //    .ForMember(opt => opt.Vehicle_Image, dest => dest.MapFrom(src => convertFileToByte(src.Vehicle_Image)))
             //    ;
 
-            CreateMap<DealerSignUpVM, DealerDetails>()
+            CreateMap<DealerSignUpDto, DealerDetails>()
                 .ForMember(dest => dest.DealerName, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.DealerEmail, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.DealerPhoneNo, opt => opt.MapFrom(src => src.PhoneNo))
@@ -70,13 +71,13 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.DealerOpenOrClosed, opt => opt.Ignore());
 
             // Mapping DealerDetails to DealerSignUpVM
-            CreateMap<DealerDetails, DealerSignUpVM>()
+            CreateMap<DealerDetails, DealerSignUpDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.DealerName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.DealerEmail))
                 .ForMember(dest => dest.PhoneNo, opt => opt.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.DealerPassword));
 
-            CreateMap<DealerDetails, AuthorizedDealerLoginVM>()
+            CreateMap<DealerDetails, AuthorizedDealerLoginDto>()
                 .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.DealerEmail))
                 .ForMember(opt => opt.DealerID, dest => dest.MapFrom(src => src.DealerID))
                 .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.DealerName))
@@ -85,7 +86,7 @@ namespace CarParkingBooking.AutoMapper
                 .ReverseMap()
                 ;
 
-            CreateMap<UserDetails, AuthorizedLoginVM>()
+            CreateMap<UserDetails, AuthorizedLoginDto>()
                .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.Email))
                .ForMember(opt => opt.UserID, dest => dest.MapFrom(src => src.UserID))
                .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.Name))
@@ -116,7 +117,7 @@ namespace CarParkingBooking.AutoMapper
             //    .ForMember(opt => opt.Alternative_Phone_Number, dest => dest.MapFrom(src => src.Alternative_Phone_Number))
             //    ;
 
-            CreateMap<VehicleVM, VehicleDetails>()
+            CreateMap<VehicleDto, VehicleDetails>()
                 .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleNumber))
                 .ForMember(opt => opt.VehicleName, dest => dest.MapFrom(src => src.VehicleName))
                 .ForMember(opt => opt.Alternative_Phone_Number, dest => dest.MapFrom(src => src.Alternative_Phone_Number))
@@ -126,7 +127,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleModel))
                 ;
 
-            CreateMap<VehicleDetails, VehicleVM>()
+            CreateMap<VehicleDetails, VehicleDto>()
                 .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleNumber))
                 .ForMember(opt => opt.VehicleName, dest => dest.MapFrom(src => src.VehicleName))
                 .ForMember(opt => opt.Alternative_Phone_Number, dest => dest.MapFrom(src => src.Alternative_Phone_Number))
@@ -136,13 +137,13 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleModel))
                 ;
 
-            CreateMap<AuthorizedDealerLoginVM, DealerDetails>()
+            CreateMap<AuthorizedDealerLoginDto, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.UserName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.Email))
                 .ForMember(opt => opt.Rights, dest => dest.MapFrom(src => src.Access)).ReverseMap()              
                 ;
 
-            CreateMap<UserData, UserDetails>()
+            CreateMap<UserDataDto, UserDetails>()
                 .ForMember(opt => opt.Name,dest=> dest.MapFrom(src => src.Name))
                 .ForMember(opt => opt.UserProfilePicture,dest=> dest.MapFrom(src => ConvertFileToByte(src.ProfilePicture)))
                 .ForMember(opt => opt.Email,dest=> dest.MapFrom(src => src.Email))
@@ -154,7 +155,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.Password,dest=> dest.Ignore())
                 .ReverseMap()
                 ;
-            CreateMap<UserDetails,UserData >()
+            CreateMap<UserDetails,UserDataDto >()
                 .ForMember(opt => opt.ProfilePicture, dest => dest.MapFrom(src => ConvertByteToFromFile(src.UserProfilePicture)));
             
             CreateMap<UserDataVM, UserDetails>()
@@ -173,6 +174,12 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<UserDetails, UserDataVM>()
                 .ForMember(opt => opt.ProfilePicture, dest => dest.MapFrom(src => ConvertByteToString(src.UserProfilePicture)));
 
+            CreateMap<UserDetails, UserDataForDealer>()
+                .ForMember(c => c.Name, dest => dest.MapFrom(src => src.Name))
+                .ForMember(c => c.Email, dest => dest.MapFrom(src => src.Email))
+                .ForMember(c => c.MobileNumber, dest => dest.MapFrom(src => src.MobileNumber))
+                .ReverseMap()
+                ;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using CarParkingBookingVM.Enums;
-using CarParkingBookingVM.VM_S.Booking;
+using CarParkingSystem.Application.Dtos.Booking;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +21,7 @@ namespace CarParkingBooking.Controllers
 
         [HttpPost("Booking")]
         //[Authorize(Policy = AccessToUser.User)]
-        public async Task<IActionResult> Booking([FromBody]BookingVM booking)
+        public async Task<IActionResult> Booking([FromBody]BookingDto booking)
         {
             var result = await bookingData.AddBooking(booking);
             if (result == true)

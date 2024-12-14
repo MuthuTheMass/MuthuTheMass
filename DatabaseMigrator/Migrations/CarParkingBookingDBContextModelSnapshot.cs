@@ -17,12 +17,12 @@ namespace CarParkingBookingDatabase.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingDetails", b =>
+            modelBuilder.Entity("DatabaseMigrator.DBModel.BookingDetails", b =>
                 {
                     b.Property<string>("BookingID")
                         .ValueGeneratedOnAdd()
@@ -45,6 +45,17 @@ namespace CarParkingBookingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Slot_Confirmation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slot_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slot_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("User_ID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -58,7 +69,7 @@ namespace CarParkingBookingDatabase.Migrations
                     b.ToTable("BookingDetails");
                 });
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.BookingTripDetails", b =>
+            modelBuilder.Entity("DatabaseMigrator.DBModel.BookingTripDetails", b =>
                 {
                     b.Property<string>("TripId")
                         .HasColumnType("nvarchar(450)");
@@ -83,7 +94,7 @@ namespace CarParkingBookingDatabase.Migrations
                     b.ToTable("BookingTripDetails");
                 });
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.DealerDetails", b =>
+            modelBuilder.Entity("DatabaseMigrator.DBModel.DealerDetails", b =>
                 {
                     b.Property<string>("DealerID")
                         .ValueGeneratedOnAdd()
@@ -144,7 +155,7 @@ namespace CarParkingBookingDatabase.Migrations
                     b.ToTable("DealerDetails");
                 });
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.UserDetails", b =>
+            modelBuilder.Entity("DatabaseMigrator.DBModel.UserDetails", b =>
                 {
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
@@ -183,7 +194,7 @@ namespace CarParkingBookingDatabase.Migrations
                     b.ToTable("UserDetails");
                 });
 
-            modelBuilder.Entity("CarParkingBookingDatabase.DBModel.VehicleDetails", b =>
+            modelBuilder.Entity("DatabaseMigrator.DBModel.VehicleDetails", b =>
                 {
                     b.Property<string>("VehicleId")
                         .HasColumnType("nvarchar(450)");

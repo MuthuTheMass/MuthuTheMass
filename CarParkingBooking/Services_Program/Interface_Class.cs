@@ -1,4 +1,5 @@
-﻿using ValidateCarParkingDetails.ValidateAuthorization;
+﻿using CarParkingSystem.Application.Services.ValidateAuthorization;
+using ValidateCarParkingDetails.ValidateAuthorization;
 
 namespace CarParkingBooking.Services_Program
 {

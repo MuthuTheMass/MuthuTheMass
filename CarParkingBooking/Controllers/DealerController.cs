@@ -1,4 +1,4 @@
-﻿using CarParkingBookingVM.VM_S.Dealers;
+﻿using CarParkingSystem.Application.Dtos.Dealers;
 using Microsoft.AspNetCore.Mvc;
 using ValidateCarParkingDetails.ValidateAuthorization;
 
@@ -49,7 +49,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("updatedealer")]
-        public IActionResult AddOrUpdate(DealerVM dealerValue) 
+        public IActionResult AddOrUpdate(DealerDto dealerValue) 
         {
             var result = dealerData.UpsertDealerData(dealerValue);
 

@@ -1,5 +1,5 @@
-﻿using CarParkingBookingVM.VM_S;
-using Microsoft.AspNetCore.Http;
+﻿
+using CarParkingSystem.Application.Dtos.Users;
 using Microsoft.AspNetCore.Mvc;
 using ValidateCarParkingDetails.ValidateAuthorization;
 
@@ -37,7 +37,7 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("updateuser")]
-        public async Task<IActionResult> UpdateuserDetails([FromForm]UserData details)
+        public async Task<IActionResult> UpdateuserDetails([FromForm]UserDataDto details)
         {
             var result = await userData.UpdateUserData(details);
             if(result != null)

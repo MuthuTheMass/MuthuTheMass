@@ -1,8 +1,9 @@
 ﻿using CarParkingBooking.Services_Program;
-using CarParkingBookingVM.Authorization;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
-using CarParkingBookingVM.VM_S.Dealers;
+using CarParkingSystem.Application.Dtos.Authorization;
+using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Application.Services.ValidateAuthorization;
 using Microsoft.AspNetCore.Mvc;
 using ValidateCarParkingDetails.ValidateAuthorization;
 
@@ -20,7 +21,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("signup")]
-        public async Task<ActionResult> SignUp([FromBody] SignUpVM signUp)
+        public async Task<ActionResult> SignUp([FromBody] SignUpDto signUp)
         {
 
             var result = await authorization.InsertLoginDetials(signUp);
@@ -46,9 +47,9 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("userlogin")]
-        public async Task<ActionResult> Login([FromBody] LoginVM loginVM)
+        public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
         {
-            var result = await authorization.VerifyUser(loginVM);
+            var result = await authorization.VerifyUser(loginDto);
             if(result is not null)
             {
                 var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.User });
@@ -66,7 +67,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("dealersignup")]
-        public async Task<IActionResult> DealerSignUp(DealerSignUpVM dealerSignUp)
+        public async Task<IActionResult> DealerSignUp(DealerSignUpDto dealerSignUp)
         {
             var result = await authorization.InsertDealerDetails(dealerSignUp);
             if(result is true)
