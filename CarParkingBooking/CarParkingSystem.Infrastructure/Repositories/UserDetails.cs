@@ -14,11 +14,11 @@ public interface IUserRepository
     Task<bool> DeleteUserByEmailId(string email);
 }
 
-public class UserInformation : IUserRepository
+public class UserRepository : IUserRepository
 {
     private readonly CarParkingBookingDbContext _dbContext;
 
-    public UserInformation(CarParkingBookingDbContext dbContext)
+    public UserRepository(CarParkingBookingDbContext dbContext)
     {
         _dbContext = dbContext; 
     }
