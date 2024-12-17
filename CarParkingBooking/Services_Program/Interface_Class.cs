@@ -12,7 +12,11 @@ namespace CarParkingBooking.Services_Program
             // services.AddTransient<IBookingData, BookingData>();
             // services.AddTransient<IVehicleData, VehicleData>();
             // services.AddTransient<IUserData, UsersData>();
+            
+            //Repository
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDealerRepository, DealerRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
         }
     }
 }
