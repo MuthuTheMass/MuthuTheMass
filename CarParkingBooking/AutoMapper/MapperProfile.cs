@@ -1,13 +1,11 @@
 ﻿using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Authorization;
-using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
 using CarParkingSystem.Domain.Entities.SqlDatabase.DBModel;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
-using BookingDetails = CarParkingSystem.Domain.Entities.SqlDatabase.DBModel.BookingDetails;
 
 
 namespace CarParkingBooking.AutoMapper
@@ -40,16 +38,7 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<DealerDetails, DealerDto>()
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)))
                 .ForMember(opt => opt.DealerLocationURL, dest => dest.MapFrom(src => src.DealerGPSLocation));
-;
 
-            CreateMap<BookingDetails, BookingDto>()
-                .ForMember(opt => opt.User_ID, dest => dest.MapFrom(src => src.User_ID))
-                .ForMember(opt => opt.Vehicle_Id, dest => dest.MapFrom(src => src.Vehicle_Id))
-                .ForMember(opt => opt.Driver_Name, dest => dest.MapFrom(src => src.Driver_Name))
-                .ForMember(opt => opt.Driver_PhoneNumber, dest => dest.MapFrom(src => src.Driver_PhoneNumber))
-                .ForMember(opt => opt.ArrivingTime, dest => dest.MapFrom(src => src.ArrivingTime))
-                .ReverseMap()
-                ;
 
             //CreateMap<BookingVM, BookingDetails>()
             //    .ForMember(opt => opt.RC_Book_File, dest => dest.MapFrom(src => convertFileToByte(src.RC_Book_File)))

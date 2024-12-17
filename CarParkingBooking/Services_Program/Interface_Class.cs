@@ -1,5 +1,5 @@
-﻿using CarParkingSystem.Application.Services.ValidateAuthorization;
-using ValidateCarParkingDetails.ValidateAuthorization;
+﻿
+using CarParkingSystem.Infrastructure.Repositories;
 
 namespace CarParkingBooking.Services_Program
 {
@@ -7,11 +7,12 @@ namespace CarParkingBooking.Services_Program
     {
         public static void SeperateServicies(this IServiceCollection services)
         {
-            services.AddTransient<IAuthorization, Authorization>();
-            services.AddTransient<IDealerData, DealerData>();
-            services.AddTransient<IBookingData, BookingData>();
-            services.AddTransient<IVehicleData, VehicleData>();
-            services.AddTransient<IUserData, UsersData>();
+            // services.AddTransient<IAuthorization, Authorization>();
+            // services.AddTransient<IDealerData, DealerData>();
+            // services.AddTransient<IBookingData, BookingData>();
+            // services.AddTransient<IVehicleData, VehicleData>();
+            // services.AddTransient<IUserData, UsersData>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

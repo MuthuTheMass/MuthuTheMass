@@ -11,12 +11,10 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
         {
         }
 
-
-        public DbSet<BookingDetails> BookingDetails { get; set; }
+        
         public DbSet<DealerDetails> DealerDetails { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<VehicleDetails> VehicleDetails { get; set; }
-        public DbSet<BookingTripDetails> BookingTripDetails { get; set; }
 
 
 
@@ -26,18 +24,12 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<UserDetails>().HasKey(b => b.UserID);
-            modelBuilder.Entity<DealerDetails>().HasKey(b => b.DealerID);
-            modelBuilder.Entity<BookingDetails>().HasKey(b => b.BookingID);
+            modelBuilder.Entity<DealerDetails>().HasKey(b => b.DealerID); ;
             modelBuilder.Entity<VehicleDetails>(entity =>
             {
                 // Configuring the primary key
                 entity.HasKey(v => v.VehicleId);
-            });
-            modelBuilder.Entity<BookingTripDetails>(entity =>
-            {
-                entity.HasKey(t => t.TripId);
-
-            });
+            }); ;
 
         }
 
@@ -60,9 +52,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
             {
                 (typeof(UserDetails), "User", u => ((UserDetails)u).UserID, (u, id) => ((UserDetails)u).UserID = id),
                 (typeof(DealerDetails), "Dealer", d => ((DealerDetails)d).DealerID, (d, id) => ((DealerDetails)d).DealerID = id),
-                (typeof(BookingDetails), "Booking", b => ((BookingDetails)b).BookingID, (b, id) => ((BookingDetails)b).BookingID = id),
                 (typeof(VehicleDetails), "Vehicle", v => ((VehicleDetails)v).VehicleId, (v, id) => ((VehicleDetails)v).VehicleId = id),
-                (typeof(BookingTripDetails), "Trip", v => ((BookingTripDetails)v).TripId, (v, id) => ((BookingTripDetails)v).TripId = id)
             };
 
             foreach (var (entityType, prefix, getId, setId) in details)
@@ -143,26 +133,6 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
                     DealerStoreName = "MuthuTheMass",
                     DealerOpenOrClosed = false,
                     DealerProfilePicture = ByteArrayImage("dealer"),
-                });
-                SaveChanges();
-            }
-
-            if (!BookingDetails.Any(u => u.BookingID.Equals("Booking-1")))
-            {
-                BookingDetails.Add(new BookingDetails()
-                {
-                    BookingID = "Booking-1",
-                    ArrivingTime = DateTime.Now,
-                    CreatedDate = DateTime.Now.AddHours(-1),
-                    Dealer_ID = "Dealer-1",
-                    Driver_Name = "surya",
-                    Driver_PhoneNumber = "7536984126",
-                    User_ID = "User-1",
-                    Vehicle_Id = "Vehicle-1",
-                    Slot_Id = "54",
-                    Slot_Name = "2nd floor",
-                    Slot_Confirmation = ""
-                    
                 });
                 SaveChanges();
             }

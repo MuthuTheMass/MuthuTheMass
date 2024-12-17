@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CarParkingBookingVM.Enums;
 using CarParkingSystem.Infrastructure.Configurations;
 
-namespace CarParkingSystem.Domain.Entities.SqlDatabase.DBModel
+namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
 {
     public class DealerDetails
     {
@@ -45,8 +44,8 @@ namespace CarParkingSystem.Domain.Entities.SqlDatabase.DBModel
         [DataType(DataType.Text)]
         public string? DealerRating { get; set; }
 
-        [DataType(DataType.Text)]
-        public string Rights { get; set; } = AccessToUsers.Dealer.ToString();
+        [DataType(DataType.Text)] 
+        public string Rights { get; set; } = string.Empty; //AccessToUsers.Dealer.ToString();
 
         [DataType(DataType.Text)]
         public bool? DealerOpenOrClosed { get; set; }

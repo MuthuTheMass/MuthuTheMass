@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CarParkingBookingVM.Enums;
 using CarParkingSystem.Infrastructure.Configurations;
 
-namespace CarParkingSystem.Domain.Entities.SqlDatabase.DBModel
+namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
 {
-    //public class UserDetails : IdentityUser<int>
+
     public class UserDetails 
     {
         [Key]
@@ -20,8 +19,9 @@ namespace CarParkingSystem.Domain.Entities.SqlDatabase.DBModel
         public required string MobileNumber { get; set; }
         [DataType(DataType.Password)]
         public required string Password { get; set; }
-        [DataType(DataType.Text)]
-        public string Rights { get; set; } = AccessToUsers.User.ToString();
+
+        [DataType(DataType.Text)] 
+        public string Rights { get; set; } = string.Empty; //AccessToUsers.User.ToString();
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
 

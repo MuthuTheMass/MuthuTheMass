@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
+using Microsoft.Azure.Cosmos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +53,6 @@ builder.Services.AddSwaggerGen(c =>
 GenerateJWTToken.Initialize(builder.Configuration);
 AppSettingValues.Initialize(builder.Configuration);
 
-builder.Services.SeperateServicies();
 
 builder.Services.AddCors(options =>
 {
@@ -85,6 +85,8 @@ builder.Services.AddDbContext<CarParkingBookingDbContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
 
+builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.JwtCosmosConnection));
+
 builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
 {
     mc.AddProfile(new MapperProfile());
@@ -96,6 +98,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
     options.AddPolicy("User", policy => policy.RequireRole("User"));
 });
+
+builder.Services.SeperateServicies();
 
 var app = builder.Build();
 

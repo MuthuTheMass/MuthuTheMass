@@ -10,10 +10,10 @@
     <ItemGroup>
       <Folder Include="Database\CosmosDatabase\" />
       <Folder Include="Database\SQLDatabase\" />
-      <Folder Include="Repositories\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.46.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
         <PrivateAssets>all</PrivateAssets>
@@ -24,6 +24,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
 </Project>

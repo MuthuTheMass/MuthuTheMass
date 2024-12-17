@@ -8,13 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\SqlDatabase\" />
-      <Folder Include="Interfaces\" />
       <Folder Include="Services\" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
 </Project>
