@@ -3,6 +3,7 @@ using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Authorization;
 using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Application.Services.Authorization;
 using CarParkingSystem.Domain.Entities;
 using CarParkingSystem.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -14,18 +15,18 @@ namespace CarParkingBooking.Controllers
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
-        private readonly IUserRepository userRepository;
+        private readonly IAuthorizationService _authorizationService;
 
-        public AuthorizationController(IUserRepository _userRepository)
+        public AuthorizationController(IAuthorizationService authorizationService)
         {
-            userRepository = _userRepository;
+            _authorizationService = authorizationService;
         }
 
-        [HttpPost("signup")]
-        public async Task<ActionResult> SignUp([FromBody] UserInformation signUp)
-        {
+        // [HttpPost("signup")]
+        // public async Task<ActionResult> SignUp([FromBody] UserInformation signUp)
+        //{
             
-            var result = await userRepository.CreateAsync(signUp);
+            // var result = await userRepository.CreateAsync(signUp);
             // if (result is true)
             // {
             //     return Ok(result);
@@ -42,31 +43,30 @@ namespace CarParkingBooking.Controllers
             // {
             //     return BadRequest(result);
             // }
-            return Ok(result);
+            // return Ok(result);
 
 
 
-        }
-
-        // [HttpPost("userlogin")]
-        // public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
-        // {
-        //     var result = await userRepository.VerifyUser(loginDto);
-        //     if(result is not null)
-        //     {
-        //         var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.User });
-        //         result.AccessToken = token;
-        //         return Ok(result);
-        //     }
-        //     else if(result is null)
-        //     {
-        //         return NotFound(result);
-        //     }
-        //     else
-        //     {
-        //         return BadRequest(result);
-        //     }
         // }
+
+        [HttpPost("userlogin")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            var result = await  _authorizationService.UserIsAuthorized(loginDto);
+            if(result is not null)
+            {
+
+                return Ok(result);
+            }
+            else if(result is null)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
         //
         // [HttpPost("dealersignup")]
         // public async Task<IActionResult> DealerSignUp(DealerSignUpDto dealerSignUp)

@@ -66,9 +66,9 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.PhoneNo, opt => opt.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.DealerPassword));
 
-            CreateMap<DealerDetails, AuthorizedDealerLoginDto>()
+            CreateMap<DealerDetails, AuthorizedLoginDto>()
                 .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.DealerEmail))
-                .ForMember(opt => opt.DealerID, dest => dest.MapFrom(src => src.DealerID))
+                .ForMember(opt => opt.ID, dest => dest.MapFrom(src => src.DealerID))
                 .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.DealerName))
                 .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
                 .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
@@ -77,7 +77,7 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<UserDetails, AuthorizedLoginDto>()
                .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.Email))
-               .ForMember(opt => opt.UserID, dest => dest.MapFrom(src => src.UserID))
+               .ForMember(opt => opt.ID, dest => dest.MapFrom(src => src.UserID))
                .ForMember(opt => opt.UserName, dest => dest.MapFrom(src => src.Name))
                .ForMember(opt => opt.Access, dest => dest.MapFrom(src => src.Rights))
                .ForMember(opt => opt.AccessToken, dest => dest.Ignore())
@@ -126,7 +126,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleModel))
                 ;
 
-            CreateMap<AuthorizedDealerLoginDto, DealerDetails>()
+            CreateMap<AuthorizedLoginDto, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.UserName))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.Email))
                 .ForMember(opt => opt.Rights, dest => dest.MapFrom(src => src.Access)).ReverseMap()              

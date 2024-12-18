@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CarParkingSystem.Application.Helper.JWTToken;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using Microsoft.Azure.Cosmos;
 
@@ -50,7 +51,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-GenerateJWTToken.Initialize(builder.Configuration);
+GenerateJwtToken.Initialize(builder.Configuration);
 AppSettingValues.Initialize(builder.Configuration);
 
 

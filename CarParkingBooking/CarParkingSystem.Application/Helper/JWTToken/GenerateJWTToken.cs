@@ -1,11 +1,13 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using CarParkingBooking.Services_Program;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
-namespace CarParkingBooking.Services_Program
+namespace CarParkingSystem.Application.Helper.JWTToken
 {
-    public static class GenerateJWTToken
+    public static class GenerateJwtToken
     {
         private static IConfiguration? configuration;
         public static void Initialize(IConfiguration _configuration)
@@ -13,7 +15,7 @@ namespace CarParkingBooking.Services_Program
             configuration = _configuration;
         }
 
-        public static string GenerateJwtToken(string username, List<string> roles)
+        public static string GenerateJwtTokenToAuthorize(string username, List<string> roles)
         {
             var claims = new List<Claim>
             {

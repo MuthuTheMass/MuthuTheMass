@@ -1,4 +1,5 @@
 ﻿
+using CarParkingSystem.Application.Services.Authorization;
 using CarParkingSystem.Infrastructure.Repositories;
 
 namespace CarParkingBooking.Services_Program
@@ -7,11 +8,8 @@ namespace CarParkingBooking.Services_Program
     {
         public static void SeperateServicies(this IServiceCollection services)
         {
-            // services.AddTransient<IAuthorization, Authorization>();
-            // services.AddTransient<IDealerData, DealerData>();
-            // services.AddTransient<IBookingData, BookingData>();
-            // services.AddTransient<IVehicleData, VehicleData>();
-            // services.AddTransient<IUserData, UsersData>();
+            //Services
+            services.AddScoped<IAuthorizationService, AuthorizeService>();
             
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();
