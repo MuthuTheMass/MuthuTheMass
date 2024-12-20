@@ -18,9 +18,9 @@ public class AuthorizeService : IAuthorizationService
 {
     private readonly IUserRepository _userRepository;
     private readonly IDealerRepository _dealerRepository;
-    private readonly Mapper _mapper;
+    private readonly IMapper _mapper;
 
-    public AuthorizeService(IUserRepository userRepository, IDealerRepository dealerRepository, Mapper mapper)
+    public AuthorizeService(IUserRepository userRepository, IDealerRepository dealerRepository, IMapper mapper)
     {
         _userRepository = userRepository;
         _dealerRepository = dealerRepository;
@@ -29,10 +29,10 @@ public class AuthorizeService : IAuthorizationService
 
     public async Task<AuthorizedLoginDto?> UserIsAuthorized(LoginDto user)
     {
-        UserDetails? isUser = await _userRepository.GetUserByEmail(user.Email);
-        if(isUser is null) return null; 
+        UserDetails? userAvailable = await _userRepository.GetUserByEmail(user.Email);
+        if(userAvailable is null) return null;
 
-        var data = _mapper.Map<AuthorizedLoginDto>(isUser);
+        var data = _mapper.Map<AuthorizedLoginDto>(userAvailable);
         var token =GenerateJwtToken.GenerateJwtTokenToAuthorize(data.UserName, new List<string> { AccessToUser.User });
         data.AccessToken = token;
         return data ;
@@ -40,8 +40,14 @@ public class AuthorizeService : IAuthorizationService
 
     public async Task<AuthorizedLoginDto?> DealerIsAuthorized(LoginDto user)
     {
-        DealerDetails? isDealer = await _dealerRepository.GetUserByEmail(user.Email);
-        if (isDealer is null) return null;
-        return _mapper.Map<AuthorizedLoginDto>(isDealer);
+        DealerDetails? dealerAvailable = await _dealerRepository.GetUserByEmail(user.Email);
+        if (dealerAvailable is null) return null;
+        return new AuthorizedLoginDto()
+        {
+            ID = dealerAvailable.DealerID,
+            Email = user.Email,
+            UserName = dealerAvailable.DealerName,
+            Access = dealerAvailable.Rights
+        };;
     }
 }

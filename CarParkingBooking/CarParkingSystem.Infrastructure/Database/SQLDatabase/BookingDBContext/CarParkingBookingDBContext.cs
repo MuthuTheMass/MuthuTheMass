@@ -102,7 +102,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
         private static byte[] ByteArrayImage(string name)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory.Replace("\\bin\\Debug\\net8.0\\", "");
-            byte[] byteArray = System.IO.File.ReadAllBytes(Path.Combine(path, @".\dummyData\" + name+".jpg"));
+            byte[] byteArray = System.IO.File.ReadAllBytes(Path.Combine(path, @".\Database\SQLDatabase\dummyData\" + name+".jpg"));
             return byteArray;
         }
 

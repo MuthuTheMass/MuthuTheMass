@@ -17,7 +17,7 @@ public class SignUpService : ISignUpService
     private readonly IUserRepository _userRepository;
     private readonly IDealerRepository _dealerRepository;
     private readonly Mapper _mapper;
-    
+
     public SignUpService(IUserRepository userRepository, IDealerRepository dealerRepository, Mapper mapper)
     {
         _userRepository = userRepository;
@@ -45,10 +45,10 @@ public class SignUpService : ISignUpService
         var data = _mapper.Map<UserDetails>(user);
         await _userRepository.CraeteNewUser(data);
         return true;
-
     }
 
-    public async Task<bool?> DealerSignUp(SignUpDto? dealer)
+
+public async Task<bool?> DealerSignUp(SignUpDto? dealer)
     {
         if (dealer == null || 
             string.IsNullOrEmpty(dealer.Password) || 
