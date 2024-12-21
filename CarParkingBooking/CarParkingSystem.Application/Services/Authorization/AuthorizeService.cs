@@ -42,12 +42,10 @@ public class AuthorizeService : IAuthorizationService
     {
         DealerDetails? dealerAvailable = await _dealerRepository.GetUserByEmail(user.Email);
         if (dealerAvailable is null) return null;
-        return new AuthorizedLoginDto()
-        {
-            ID = dealerAvailable.DealerID,
-            Email = user.Email,
-            UserName = dealerAvailable.DealerName,
-            Access = dealerAvailable.Rights
-        };;
+        
+        AuthorizedLoginDto dealerLogin = _mapper.Map<AuthorizedLoginDto>(dealerAvailable);
+        var token = GenerateJwtToken.GenerateJwtTokenToAuthorize(dealerLogin.UserName, new List<string> { AccessToUser.User });
+        dealerLogin.AccessToken = token;
+        return dealerLogin;
     }
 }

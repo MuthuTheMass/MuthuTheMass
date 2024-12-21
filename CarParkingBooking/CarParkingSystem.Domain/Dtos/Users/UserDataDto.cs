@@ -27,4 +27,6 @@ namespace CarParkingSystem.Application.Dtos.Users
         public  string Email { get; set; }
         public  string MobileNumber { get; set; }
     }
+    
+    
 }

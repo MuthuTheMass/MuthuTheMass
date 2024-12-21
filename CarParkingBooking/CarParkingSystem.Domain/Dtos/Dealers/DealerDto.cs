@@ -1,5 +1,5 @@
 ﻿
-using CarParkingSystem.Application.Services.DtoHelper;
+using System.Globalization;
 
 namespace CarParkingSystem.Application.Dtos.Dealers
 {
@@ -17,14 +17,6 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public string value { get; set; }
 
         public string fullValue => $"{key} : {value}";
-    }
-
-    public class DealerSignUpDto
-    {
-        public required string Name { get; set; }
-        public required string Email { get; set; }
-        public required string PhoneNo { get; set; }
-        public required string Password { get; set; }
     }
 
     public class DealerDto
@@ -92,5 +84,36 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public string DealerPhoneNo { get; set; } = string.Empty;
     }
 
+    public static class Dtos_Helper
+    {
+        public static TimeOnly? TimeConverter(string? timeString)
+        {
+            string[] formats = { "h:mm tt", "hh:mm tt", "h:mm t", "hh:mm t" };
 
+            TimeOnly time;
+            if (timeString is not null && TryParseTime(timeString, formats, out time))
+            {
+                return (time);
+            }
+            else
+            {
+                return (null);
+            }
+        }
+
+        private static bool TryParseTime(string timeString, string[] formats, out TimeOnly result)
+        {
+            result = default;
+
+            foreach (var format in formats)
+            {
+                if (TimeOnly.TryParseExact(timeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 }

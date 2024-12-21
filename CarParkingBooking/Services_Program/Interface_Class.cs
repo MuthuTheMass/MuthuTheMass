@@ -1,5 +1,7 @@
 ﻿
 using CarParkingSystem.Application.Services.Authorization;
+using CarParkingSystem.Application.Services.DealerService;
+using CarParkingSystem.Application.Services.UserService;
 using CarParkingSystem.Infrastructure.Repositories;
 
 namespace CarParkingBooking.Services_Program
@@ -10,6 +12,8 @@ namespace CarParkingBooking.Services_Program
         {
             //Services
             services.AddScoped<IAuthorizationService, AuthorizeService>();
+            services.AddScoped<IUserProfile, UserProfile>();
+            services.AddScoped<IDealerProfile, DealerProfile>();
             
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();

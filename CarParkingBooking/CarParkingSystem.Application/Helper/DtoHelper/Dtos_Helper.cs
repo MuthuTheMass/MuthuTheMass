@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace CarParkingSystem.Application.Services.DtoHelper
+namespace CarParkingSystem.Application.Helper.DtoHelper
 {
     public static class Dtos_Helper
     {

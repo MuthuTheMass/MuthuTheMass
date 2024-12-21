@@ -1,6 +1,8 @@
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+using CarParkingSystem.Infrastructure.DtosHelper;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace CarParkingSystem.Infrastructure.Repositories;
 
@@ -10,6 +12,7 @@ public interface IDealerRepository
     Task<DealerDetails?> GetUserByEmail(string email);
     Task<DealerDetails?> GetUserById(string dealerId);
     Task<bool?> GetDealerExists(string dealername);
+    Task<List<DealerDetails>> GetAllDealers(Filters filters);
     Task<bool> CreateDealer(DealerDetails dealer);
     Task<bool> UpdateDealer(DealerDetails dealer);
     Task<bool> DeleteDealer(string? emailId);
@@ -44,7 +47,7 @@ public class DealerRepository : IDealerRepository
     public async Task<bool> CreateDealer(DealerDetails dealer)
     {
         bool? dealerResource = await _dbContext.DealerDetails.AnyAsync(d => d.DealerName == dealer.DealerName);
-        if (dealerResource is not null) return false;
+        if (dealerResource is true) return false;
         await _dbContext.DealerDetails.AddAsync(dealer);
         await _dbContext.SaveChangesAsync();
         return true;
@@ -68,5 +71,14 @@ public class DealerRepository : IDealerRepository
         return true;
 
 
+    }
+
+    public async Task<List<DealerDetails>> GetAllDealers(Filters filters)
+    {
+        //TODO Search area
+
+        List<DealerDetails> queryData = await _dbContext.DealerDetails.ToListAsync();
+
+        return queryData;
     }
 }

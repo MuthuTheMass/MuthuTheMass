@@ -1,13 +1,10 @@
-﻿using CarParkingBooking.Services_Program;
-using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Authorization;
-using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.Authorization;
-using CarParkingSystem.Domain.Entities;
-using CarParkingSystem.Infrastructure.Repositories;
+using CarParkingSystem.Application.Services.DealerService;
+using CarParkingSystem.Application.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.Cosmos;
 
 namespace CarParkingBooking.Controllers
 {
@@ -16,38 +13,38 @@ namespace CarParkingBooking.Controllers
     public class AuthorizationController : ControllerBase
     {
         private readonly IAuthorizationService _authorizationService;
+        private readonly IUserProfile _userProfile;
+        private readonly IDealerProfile _dealerProfile;
 
-        public AuthorizationController(IAuthorizationService authorizationService)
+        public AuthorizationController(IAuthorizationService authorizationService, IUserProfile userProfile, IDealerProfile dealerProfile)
         {
             _authorizationService = authorizationService;
+            _userProfile = userProfile;
+            _dealerProfile = dealerProfile;
         }
 
-        // [HttpPost("signup")]
-        // public async Task<ActionResult> SignUp([FromBody] UserInformation signUp)
-        //{
+         [HttpPost("usersignup")]
+         public async Task<ActionResult> SignUp([FromBody] SignUpDto signUp)
+        {
             
-            // var result = await userRepository.CreateAsync(signUp);
-            // if (result is true)
-            // {
-            //     return Ok(result);
-            // }
-            // else if (result is false)
-            // {
-            //     return UnprocessableEntity(result);
-            // }
-            // else if(result is null)
-            // {
-            //     return Conflict(result);
-            // }
-            // else
-            // {
-            //     return BadRequest(result);
-            // }
-            // return Ok(result);
-
-
-
-        // }
+             var result = await _userProfile.UserSignUp(signUp);
+             if (result is true)
+             {
+                 return Ok(result);
+             }
+             else if (result is false)
+             {
+                 return UnprocessableEntity(result);
+             }
+             else if(result is null)
+             {
+                 return Conflict(result);
+             }
+             else
+             {
+                 return BadRequest(result);
+             }
+        }
 
         [HttpPost("userlogin")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
@@ -67,53 +64,50 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
         }
-        //
-        // [HttpPost("dealersignup")]
-        // public async Task<IActionResult> DealerSignUp(DealerSignUpDto dealerSignUp)
-        // {
-        //     var result = await userRepository.InsertDealerDetails(dealerSignUp);
-        //     if(result is true)
-        //     {
-        //         return Ok(true);
-        //     }
-        //     else if(result is false)
-        //     {
-        //         return UnprocessableEntity(result);
-        //     }
-        //     else if (result is null)
-        //     {
-        //         return Conflict("This user already available");
-        //     }
-        //     else
-        //     {
-        //         return BadRequest(result);
-        //     }
-        //
-        // }
-        //
-        // [HttpPost("dealerlogin")]
-        // public async Task<IActionResult> DealerLogin(DealerLogin dealerLogin)
-        // {
-        //     var data = await userRepository.VerifyDealer(dealerLogin);
-        //     var result = data.Item1;
-        //     if (result is not null)
-        //     {
-        //         var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.Dealer });
-        //         result.AccessToken = token;
-        //         return Ok(result);
-        //     }
-        //     else if (!(bool)data.Item2)
-        //     {
-        //         return Unauthorized("Password doesn't Match.");
-        //     }
-        //     else if (result is null)
-        //     {
-        //         return NotFound(result);
-        //     }
-        //     else
-        //     {
-        //         return BadRequest(result);
-        //     }
-        // }
+        
+        [HttpPost("dealersignup")]
+        public async Task<IActionResult> DealerSignUp(SignUpDto dealerSignUp)
+        {
+            var result = await _dealerProfile.DealerSignUp(dealerSignUp);
+            if(result is true)
+            {
+                return Ok(true);
+            }
+            else if(result is false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else if (result is null)
+            {
+                return Conflict("This user already available");
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        
+        }
+        
+        [HttpPost("dealerlogin")]
+        public async Task<IActionResult> DealerLogin(LoginDto dealerLogin)
+        {
+            var result = await _authorizationService.DealerIsAuthorized(dealerLogin);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            else if (result?.Access is AccessToUser.Dealer)
+            {
+                return Unauthorized("Password doesn't Match.");
+            }
+            else if (result is null)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }

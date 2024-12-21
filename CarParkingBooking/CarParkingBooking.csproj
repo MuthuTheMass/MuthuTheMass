@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="CarParkingSystem.Application\CarParkingSystem.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="ControllerHelper\" />
   </ItemGroup>
 
@@ -72,6 +68,10 @@
     <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\CarParkingSystem.Infrastructure.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\project.assets.json" />
     <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\project.packagespec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="CarParkingSystem.Application\CarParkingSystem.Application.csproj" />
   </ItemGroup>
 
 </Project>

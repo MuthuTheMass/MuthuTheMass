@@ -21,7 +21,10 @@ export class UserAuthService {
                     localStorage.clear();
                     localStorage.setItem("User",JSON.stringify(data));
                     this.router.navigate(['/main']);
-              });
+              },
+                (err:HttpErrorResponse) => {
+                console.log(err);
+                });
 
   }
 

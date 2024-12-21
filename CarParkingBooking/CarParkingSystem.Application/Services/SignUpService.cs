@@ -16,9 +16,9 @@ public class SignUpService : ISignUpService
 {
     private readonly IUserRepository _userRepository;
     private readonly IDealerRepository _dealerRepository;
-    private readonly Mapper _mapper;
+    private readonly IMapper _mapper;
 
-    public SignUpService(IUserRepository userRepository, IDealerRepository dealerRepository, Mapper mapper)
+    public SignUpService(IUserRepository userRepository, IDealerRepository dealerRepository, IMapper mapper)
     {
         _userRepository = userRepository;
         _dealerRepository = dealerRepository;
