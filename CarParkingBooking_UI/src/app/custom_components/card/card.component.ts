@@ -1,5 +1,5 @@
-import { Component, Input, input } from '@angular/core';
-import { VehicleModal } from '../../Service/Model/VehicleModal';
+import {Component, EventEmitter, Input,  Output,} from '@angular/core';
+import {miniVehicleModal,} from '../../Service/Model/VehicleModal';
 import { Router } from '@angular/router';
 import { BackStoreService } from '../../Service/store/back-store.service';
 
@@ -12,7 +12,8 @@ import { BackStoreService } from '../../Service/store/back-store.service';
 })
 export class CardComponent {
 
-@Input("data") data:VehicleModal | undefined;
+@Input("data") data:miniVehicleModal | undefined;
+@Output() editDetails:EventEmitter<string> = new EventEmitter<string>();
 
 constructor(
   private _route:Router,

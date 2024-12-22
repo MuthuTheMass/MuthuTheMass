@@ -53,5 +53,8 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
         [DataType(DataType.DateTime)]
         public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
+        [DataType(DataType.Text)]
+        public bool IsValidUser { get; set; } = false;
+
     }
 }

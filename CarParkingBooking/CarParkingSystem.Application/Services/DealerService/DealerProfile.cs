@@ -11,7 +11,7 @@ public interface IDealerProfile
 {
     Task<bool?> DealerSignUp(SignUpDto dealer);
     
-    Task<List<DealerDto>> GetAllDealersBySearch(Filters filter);
+    Task<List<DealerDto>> GetAllDealersBySearch(Filter filter);
 }
 
 public class DealerProfile : IDealerProfile
@@ -47,9 +47,9 @@ public class DealerProfile : IDealerProfile
         return await _dealerRepository.CreateDealer(data);
     }
 
-    public async Task<List<DealerDto>> GetAllDealersBySearch(Dtos.Dealers.Filters filter)
+    public async Task<List<DealerDto>> GetAllDealersBySearch(Filter filter)
     {
-        var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filters>(filter);
+        var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filter>(filter);
         List<DealerDetails> dealers = await _dealerRepository.GetAllDealers(mapFilter);
         return _mapper.Map<List<DealerDto>>(dealers);
     }

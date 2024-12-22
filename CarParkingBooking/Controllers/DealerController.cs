@@ -17,7 +17,7 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("search")]
-        public async Task<IActionResult> Search(Filters filter)
+        public async Task<IActionResult> Search(Filter filter)
         {
             var result = await dealerData.GetAllDealersBySearch(filter);
 

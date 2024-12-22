@@ -7,8 +7,8 @@ using CarParkingSystem.Application.Dtos.Vehicle;
 using CarParkingSystem.Domain.Entities.SqlDatabase.DBModel;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
 using CarParkingSystem.Infrastructure.DtosHelper;
-using Filter = CarParkingSystem.Application.Dtos.Dealers.Filters;
-using Filters = CarParkingSystem.Infrastructure.DtosHelper.Filters;
+using Filter = CarParkingSystem.Application.Dtos.Dealers;
+using Filters = CarParkingSystem.Infrastructure.DtosHelper;
 
 
 namespace CarParkingBooking.AutoMapper
@@ -173,7 +173,21 @@ namespace CarParkingBooking.AutoMapper
                 .ReverseMap()
                 ;
 
-            CreateMap<Filters,Filter>()
+            CreateMap<Filters.Filter,Filter.Filter>()
+                .ForMember(opt => opt.searchFrom,dest => dest.MapFrom(src => src.searchFrom))
+                .ForMember(opt => opt.filters,dest => dest.MapFrom(src => src.filters))
+                .ReverseMap();
+
+            CreateMap<Filters.Filters, Filter.Filters>()
+                .ForMember(opt => opt.key, dest => dest.MapFrom((src) => src.key))
+                .ForMember(opt => opt.value, dest => dest.MapFrom((src) => src.value))
+                .ForMember(opt => opt.fullValue,dest =>dest.MapFrom(src => src.fullValue))
+                .ReverseMap();
+
+            CreateMap<VehicleDetails,Vehicle_Single_User_VM>()
+                .ForMember(opt => opt.VehicleNumber,dest => dest.MapFrom(src => src.VehicleNumber))
+                .ForMember(opt => opt.VehicleName,dest => dest.MapFrom(src => src.VehicleName))
+                .ForMember(opt => opt.VehicleId,dest => dest.MapFrom(src => src.VehicleId))
                 .ReverseMap();
         }
     }

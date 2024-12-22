@@ -1,6 +1,6 @@
 ﻿namespace CarParkingSystem.Infrastructure.DtosHelper
 {
-    public class Filter
+        public class Filter
         {
             public string searchFrom { get; set; }
 

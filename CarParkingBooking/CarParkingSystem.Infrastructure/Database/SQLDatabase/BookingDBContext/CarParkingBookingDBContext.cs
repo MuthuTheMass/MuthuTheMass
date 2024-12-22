@@ -110,7 +110,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
         {
             if (!UserDetails.Any(u => u.UserID.Equals("User-1")))
             {
-                UserDetails.Add(new UserDetails() { UserID = "User-1", Email = "balaji@gmail.com", Password = "balaji", Name = "balaji", MobileNumber = "7896541235",UserProfilePicture=ByteArrayImage("user"),Address="dubai data, thiruvallur" });
+                UserDetails.Add(new UserDetails() { UserID = "User-1", Email = "balaji@gmail.com", Password = "balaji", Name = "balaji", MobileNumber = "7896541235",UserProfilePicture=ByteArrayImage("user"),Address="dubai data, thiruvallur",Rights="User" });
                 SaveChanges();
             }
 
@@ -133,6 +133,8 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
                     DealerStoreName = "MuthuTheMass",
                     DealerOpenOrClosed = false,
                     DealerProfilePicture = ByteArrayImage("dealer"),
+                    IsValidUser = true,
+                    Rights = "Dealer"
                 });
                 SaveChanges();
             }

@@ -2,6 +2,8 @@ using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
 using CarParkingSystem.Infrastructure.DtosHelper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace CarParkingSystem.Infrastructure.Repositories;
@@ -12,7 +14,7 @@ public interface IDealerRepository
     Task<DealerDetails?> GetUserByEmail(string email);
     Task<DealerDetails?> GetUserById(string dealerId);
     Task<bool?> GetDealerExists(string dealername);
-    Task<List<DealerDetails>> GetAllDealers(Filters filters);
+    Task<List<DealerDetails>?> GetAllDealers(Filter filters);
     Task<bool> CreateDealer(DealerDetails dealer);
     Task<bool> UpdateDealer(DealerDetails dealer);
     Task<bool> DeleteDealer(string? emailId);
@@ -48,6 +50,7 @@ public class DealerRepository : IDealerRepository
     {
         bool? dealerResource = await _dbContext.DealerDetails.AnyAsync(d => d.DealerName == dealer.DealerName);
         if (dealerResource is true) return false;
+        dealer.IsValidUser = AreRequiredFieldsFilled(dealerResource);
         await _dbContext.DealerDetails.AddAsync(dealer);
         await _dbContext.SaveChangesAsync();
         return true;
@@ -57,6 +60,7 @@ public class DealerRepository : IDealerRepository
     {
         bool? dealerResource = await _dbContext.DealerDetails.AnyAsync(d => d.DealerName == dealer.DealerName);
         if (dealerResource is null) return false;
+        dealer.IsValidUser = AreRequiredFieldsFilled(dealerResource);
         _dbContext.DealerDetails.Update(dealer);
         await _dbContext.SaveChangesAsync();
         return false;
@@ -73,12 +77,56 @@ public class DealerRepository : IDealerRepository
 
     }
 
-    public async Task<List<DealerDetails>> GetAllDealers(Filters filters)
+    public async Task<List<DealerDetails>?> GetAllDealers(Filter filters)
     {
+        List<DealerDetails>? queryData = null;
         //TODO Search area
+        foreach (var filter  in filters.filters)
+        {
+            if(filter.key == "Address")
+            {
+                queryData = await _dbContext.DealerDetails.Where(d => d.DealerAddress.Contains(filter.value))
+                                                          .Where(d=> d.IsValidUser == true)
+                                                          .ToListAsync();
 
-        List<DealerDetails> queryData = await _dbContext.DealerDetails.ToListAsync();
+            }
+        }
+
+        if(filters.filters.Count == 0)
+        {
+            queryData = await _dbContext.DealerDetails
+                                            .Where(d => d.IsValidUser == true)
+                                            .ToListAsync();
+        }
 
         return queryData;
+    }
+
+    private bool AreRequiredFieldsFilled<T>(T obj)
+    {
+        if (obj == null)
+            throw new ArgumentNullException(nameof(obj));
+
+        // Get all properties of the object
+        var properties = typeof(T).GetProperties();
+
+        foreach (var property in properties)
+        {
+            // Check if the property is marked as required
+            var isRequired = property.GetCustomAttributes(typeof(RequiredAttribute), false).Any();
+
+            if (isRequired)
+            {
+                var value = property.GetValue(obj);
+
+                // Check if the value is null or empty (for strings)
+                if (value == null || (value is string str && string.IsNullOrWhiteSpace(str)))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
