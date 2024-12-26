@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CarParkingSystem.Application.Dtos.Vehicle;
+using Microsoft.AspNetCore.Http;
 
 namespace CarParkingSystem.Application.Dtos.Users
 {
@@ -18,6 +19,7 @@ namespace CarParkingSystem.Application.Dtos.Users
         public required string Email { get; set; }
         public required string MobileNumber { get; set; }
         public required string Address { get; set; }
+        public required List<Vehicle_Single_User_VM> carDetails { get; set; }
     }
 
 

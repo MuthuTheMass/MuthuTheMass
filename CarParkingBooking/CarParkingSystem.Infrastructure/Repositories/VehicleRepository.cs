@@ -9,6 +9,7 @@ public interface IVehicleRepository
 {
     Task<VehicleDetails?> GetVehicleById(string vehicleId);
     Task<List<VehicleDetails>>? GetVehicleByName(string name);
+    Task<List<VehicleDetails>> GetVehicleByUserId(string userId); 
     Task<bool> AddVehicle(VehicleDetails vehicle);
     Task<bool> UpdateVehicle(VehicleDetails vehicle);
     Task<bool> DeleteVehicle(string vehicleId);
@@ -65,5 +66,11 @@ public class VehicleRepository : IVehicleRepository
         _dbContext.VehicleDetails.RemoveRange(vehicleResource);
         await _dbContext.SaveChangesAsync();
         return true;
+    }
+
+    public async Task<List<VehicleDetails>> GetVehicleByUserId(string userId)
+    {
+       var vehicleResource = await _dbContext.VehicleDetails.Where(v => v.UserID == userId).ToListAsync();
+       return vehicleResource;
     }
 }
