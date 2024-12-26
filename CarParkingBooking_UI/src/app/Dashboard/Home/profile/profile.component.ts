@@ -35,8 +35,8 @@ constructor(
         (response:userDetails) => {
           this.bsStore.userDetails.next(response);
         },
-      );;
-      this.vehicleDetails.halfVehicleDetailsByUserID(data.userID);
+      );
+      //this.vehicleDetails.halfVehicleDetailsByUserID(data.userID);
     }
   }
 
@@ -47,7 +47,7 @@ constructor(
     this.router.navigate(['main/edit'])
 }
 IScarData() {
-  return this.bsStore.VehicleData.value.length >0;
+  return this.bsStore?.userDetails?.value?.carDetails?.length >0;
 }
 
 userEdit() {
@@ -55,6 +55,9 @@ userEdit() {
   }
 
 
+  editDetails($event: string) {
+    console.log($event);
+  }
 }
 
 

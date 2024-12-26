@@ -1382,10 +1382,7 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
-          "CarParkingBookingVM.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "CarParkingBookingVM.dll": {}
         }
       }
     }

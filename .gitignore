@@ -80,3 +80,8 @@ DatabaseMigrator/obj/rider.project.restore.info
 DatabaseMigrator/obj/rider.project.model.nuget.info
 DatabaseMigrator/obj/Debug/net8.0/DatabaseMigrator.genruntimeconfig.cache
 DatabaseMigrator/bin/Debug/net8.0/DatabaseMigrator.deps.json
+/CarParkingBooking/CarParkingSystem.Infrastructure/obj
+/CarParkingBooking/CarParkingSystem.Domain/obj
+/CarParkingBooking/CarParkingSystem.Application/obj
+/CarParkingBooking/CarParkingSystem.Application/bin/Debug/net8.0
+/CarParkingBooking/CarParkingSystem.Domain/bin/Debug/net8.0
