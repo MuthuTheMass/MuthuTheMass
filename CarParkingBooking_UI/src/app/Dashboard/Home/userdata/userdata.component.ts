@@ -101,10 +101,8 @@ constructor(
  
   
   
-   Erecepit(){
-
-
-      this.router.navigate(['/main/erecepit']);
+  userconfirmbooking(){
+      this.router.navigate(['/main/confirmbooking']);
     
   }
   
