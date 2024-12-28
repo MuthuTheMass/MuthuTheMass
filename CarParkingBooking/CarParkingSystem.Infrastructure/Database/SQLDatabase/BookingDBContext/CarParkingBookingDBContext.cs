@@ -1,5 +1,4 @@
-﻿using CarParkingSystem.Domain.Entities.SqlDatabase.DBModel;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+﻿using CarParkingSystem.Domain.Entities.SQL;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext

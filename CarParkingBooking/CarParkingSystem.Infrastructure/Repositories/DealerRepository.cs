@@ -1,5 +1,5 @@
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
 using CarParkingSystem.Infrastructure.DtosHelper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;

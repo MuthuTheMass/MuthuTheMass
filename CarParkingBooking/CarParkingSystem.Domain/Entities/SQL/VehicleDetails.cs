@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CarParkingSystem.Infrastructure.Configurations;
+﻿using CarParkingSystem.Domain.Helper;
+using System.ComponentModel.DataAnnotations;
 
-namespace CarParkingSystem.Domain.Entities.SqlDatabase.DBModel
+namespace CarParkingSystem.Domain.Entities.SQL
 {
     public class VehicleDetails
     {

@@ -1,4 +1,4 @@
-﻿namespace CarParkingSystem.Infrastructure.Configurations
+﻿namespace CarParkingSystem.Domain.Helper
 {
     public static class DateTiming
     {

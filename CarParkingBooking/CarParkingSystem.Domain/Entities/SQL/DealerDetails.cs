@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CarParkingSystem.Domain.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CarParkingSystem.Infrastructure.Configurations;
 
-namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
+namespace CarParkingSystem.Domain.Entities.SQL
 {
     public class DealerDetails
     {
@@ -22,7 +22,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
 
         [DataType(DataType.Text)]
         public required string DealerPhoneNo { get; set; }
-        
+
         [DataType(DataType.Text)]
         public required string DealerPassword { get; set; }
 
@@ -44,7 +44,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
         [DataType(DataType.Text)]
         public string? DealerRating { get; set; }
 
-        [DataType(DataType.Text)] 
+        [DataType(DataType.Text)]
         public string Rights { get; set; } = string.Empty; //AccessToUsers.Dealer.ToString();
 
         [DataType(DataType.Text)]

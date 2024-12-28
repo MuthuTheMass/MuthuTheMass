@@ -1,6 +1,6 @@
 using AutoMapper;
 using CarParkingBookingVM.Login;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
