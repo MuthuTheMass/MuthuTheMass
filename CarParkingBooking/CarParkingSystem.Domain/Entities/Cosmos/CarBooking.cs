@@ -5,7 +5,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
     public class CarBooking
     {
         //BookingId
-        public required string id { get; set; }
+        public string id { get; set; }
 
         // id-dealerid-customerid
         public string? PartitionId { get; set; }
@@ -16,11 +16,9 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public string? VehicleId { get; set; }
 
-        public required string BookingSource { get; set; }
+        public string BookingSource { get; set; }
 
-        public int MyProperty { get; set; }
-
-        public required CarBookingDates BookingDate { get; set; }
+        public CarBookingDates BookingDate { get; set; }
 
         public string? CreatedDate { get; set; }
 
@@ -32,7 +30,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public string? AdvanceAmount { get; set; }
 
-        public required Status BookingStatus { get; set; }
+        public Status BookingStatus { get; set; }
     }
 
     public class CarBookingDates

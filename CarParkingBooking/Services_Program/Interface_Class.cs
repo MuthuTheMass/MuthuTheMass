@@ -1,5 +1,6 @@
 ﻿
 using CarParkingSystem.Application.Services.Authorization;
+using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Application.Services.DealerService;
 using CarParkingSystem.Application.Services.UserService;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
@@ -19,6 +20,8 @@ namespace CarParkingBooking.Services_Program
             services.AddScoped<IAuthorizationService, AuthorizeService>();
             services.AddScoped<IUserProfile, UserProfile>();
             services.AddScoped<IDealerProfile, DealerProfile>();
+            services.AddScoped<IUserBookingService, UserBookingService>();
+
             
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();

@@ -88,7 +88,7 @@ builder.Services.AddDbContext<CarParkingBookingDbContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
 
-builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.JwtCosmosConnection));
+builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.CosmosConnection));
 
 builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
 {

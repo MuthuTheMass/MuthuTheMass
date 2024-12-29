@@ -12,7 +12,7 @@ namespace CarParkingSystem.Application.Configuration
         public static string? JwtSecretKey { get; set; }
         public static string? JwtSqlConnection { get; set; }
 
-        public static string? JwtCosmosConnection { get; set; }
+        public static string? CosmosConnection { get; set; }
         //public static string? AuthSqlConnection { get; set; }
 
         public static void Initialize(IConfiguration _configuration)
@@ -22,21 +22,20 @@ namespace CarParkingSystem.Application.Configuration
             JwtAudience = configuration?["Authentication:Audience"]!;
             JwtSecretKey = configuration?["Authentication:SecretKey"]!;
             JwtSqlConnection = configuration?.GetConnectionString("MyDbConnection")!;
-            JwtCosmosConnection = configuration?.GetConnectionString("CosmosDb")!;
+            CosmosConnection = configuration?.GetConnectionString("CosmosDb")!;
             //AuthSqlConnection = configuration?.GetConnectionString("AuthDbConnection")!;
         }
 
         public static IServiceCollection AddCosmosClient(this IServiceCollection services, IConfiguration configuration)
         {
             // Read the Primary Connection String from the configuration
-            var connectionString = configuration["CosmosDb:PrimaryConnectionString"];
-            if (string.IsNullOrWhiteSpace(connectionString))
+            if (string.IsNullOrWhiteSpace(CosmosConnection))
             {
                 throw new ArgumentException("CosmosDb:PrimaryConnectionString is not configured properly in appsettings.json");
             }
 
             // Register the CosmosClient as a singleton service
-            services.AddSingleton(serviceProvider => new CosmosClient(connectionString));
+            services.AddSingleton(serviceProvider => new CosmosClient(CosmosConnection));
 
             return services;
         }

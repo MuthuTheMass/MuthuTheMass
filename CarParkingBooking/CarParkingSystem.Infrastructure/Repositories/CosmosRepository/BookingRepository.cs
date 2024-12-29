@@ -1,7 +1,6 @@
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
 using Microsoft.Azure.Cosmos;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 
@@ -9,7 +8,7 @@ public interface IBookingRepository
 {
     Task<CarBooking> GetBooking(string bookingId, string dealerId, string customerId);
     Task<CarBooking> GetByBooking(string bookingId);
-    Task<CarBooking> AddBookingDetails(CarBooking carBooking);
+    Task<bool> AddBookingDetails(CarBooking carBooking);
     Task<CarBooking> UpdateBookingDetails(CarBooking carBooking);
     Task<bool> DeleteBookingDetails(string bookingId, string dealerId, string customerId);
 }
@@ -25,10 +24,13 @@ public class BookingRepository : IBookingRepository
         Container = _cosmosClientFactory.GetOrCreateContainerAsync("CarParkingSystem", "BookingData", "/PartitionId").GetAwaiter().GetResult();
     }
 
-    public async Task<CarBooking> AddBookingDetails(CarBooking carBooking)
+    public async Task<bool> AddBookingDetails(CarBooking carBooking)
     {
-        var result = await Container.CreateItemAsync(carBooking);
-        return result;
+        var id = await _cosmosClientFactory.GetNextBookingIdAsync("booking_counter");
+        PartitionKey partitionKey = new PartitionKey($"{id}_{carBooking.DealerId}_{carBooking.CustomerId}");
+        carBooking.PartitionId = partitionKey.ToString();
+        var result = await Container.CreateItemAsync(carBooking,partitionKey);
+        return result.Resource.DealerId == carBooking.DealerId;
     }
 
     public async Task<bool> DeleteBookingDetails(string bookingId, string dealerId, string customerId)

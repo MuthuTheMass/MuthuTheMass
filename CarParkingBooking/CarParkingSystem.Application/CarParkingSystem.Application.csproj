@@ -19,8 +19,4 @@
       <ProjectReference Include="..\CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Services\BookingService\" />
-    </ItemGroup>
-
 </Project>
