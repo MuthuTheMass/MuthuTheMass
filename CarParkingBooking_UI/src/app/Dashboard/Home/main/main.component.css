@@ -1,162 +1,280 @@
-@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body{
+  background:#dcdcdc;
+  margin-top:20px;}
 
 
 
-.search {
+
+.widget-26 {
+  color: #3c4142;
+  font-weight: 400;
+}
+
+.widget-26 tr:first-child td {
+  border: 0;
+}
+
+.widget-26 .widget-26-job-emp-img img {
+  width: 35px;
+  height: 35px;
+
+}
+
+.widget-26 .widget-26-job-title {
+  min-width: 200px;
+}
+
+.widget-26 .widget-26-job-title a {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #3c4142;
+  line-height: 1.5;
+}
+
+.widget-26 .widget-26-job-title a:hover {
+  color: #68CBD7;
+  text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .employer-name {
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #3c4142;
+  font-size: 0.8125rem;
+  color: #3c4142;
+}
+
+.widget-26 .widget-26-job-title .employer-name:hover {
+  color: #68CBD7;
+  text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .time {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info {
+  min-width: 100px;
+  font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info p {
+  line-height: 1.5;
+  color: #3c4142;
+  font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-info .location {
+  color: #3c4142;
+}
+
+.widget-26 .widget-26-job-salary {
+  min-width: 70px;
+  font-weight: 400;
+  color: #3c4142;
+  font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-category {
+  padding: .5rem;
+  display: inline-flex;
+  white-space: nowrap;
+  border-radius: 15px;
+}
+
+.widget-26 .widget-26-job-category .indicator {
+  width: 13px;
+  height: 13px;
+  margin-right: .5rem;
+  float: left;
+  border-radius: 50%;
+}
+
+.widget-26 .widget-26-job-category span {
+  font-size: 0.8125rem;
+  color: #3c4142;
+  font-weight: 600;
+}
+
+.widget-26 .widget-26-job-starred svg {
+  width: 20px;
+  height: 20px;
+  color: #fd8b2c;
+}
+
+.widget-26 .widget-26-job-starred svg.starred {
+  fill: #fd8b2c;
+}
+.bg-soft-base {
+  background-color: #e1f5f7;
+}
+.bg-soft-warning {
+  background-color: #fff4e1;
+}
+.bg-soft-success {
+  background-color: #d1f6f2;
+}
+.bg-soft-danger {
+  background-color: #fedce0;
+}
+.bg-soft-info {
+  background-color: #d7efff;
+}
+
+
+.search-form {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1rem;
+
+}
+
+.search-form input {
+  height: 100%;
+  border: 0;
+  display: block;
   width: 100%;
+  padding: 1rem;
+  height: 100%;
+  font-size: 1rem;
+}
+.search-form input:focus{
+  box-shadow: none;
+
+}
+.search-form select:focus {
+  box-shadow: none;
+}
+.col-lg-6 select:focus {
+  box-shadow: none;
+}
+
+.search-form select {
+  background: transparent;
+  border: 0;
+  padding: 1rem;
+  height: 100%;
+  font-size: 1rem;
+}
+
+.search-form button:hover {
+  background: #0b3d91;
+  color: #fff;
+  overflow: hidden;
+}
+
+
+
+.search-form button {
+  height: 100%;
+  width: 85%;
+  border: none;
+  font-size: 1rem;
+}
+
+.search-form button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.search-body {
+  margin-bottom: 1.5rem;
+}
+
+.search-body .search-filters .filter-list {
+  margin-bottom: 1.3rem;
+}
+
+.search-body .search-filters .filter-list .title {
+  color: #3c4142;
+  margin-bottom: 1rem;
+}
+
+.search-body .search-filters .filter-list .filter-text {
+  color: #727686;
+}
+
+.search-body .search-result .result-header {
+  margin-bottom: 2rem;
+}
+
+.search-body .search-result .result-header .records {
+  color: #3c4142;
+}
+
+.search-body .search-result .result-header .result-actions {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting {
+  display: flex;
+  align-items: center;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting span {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting select {
+  color: #68CBD7;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting select option {
+  color: #3c4142;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .search-body .search-filters {
+    display: flex;
+  }
+  .search-body .search-filters .filter-list {
+    margin-right: 1rem;
+  }
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+
+@media (min-width: 992px){
+  .col-lg-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+.card {
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.card {
   position: relative;
   display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 36px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-  margin-left: 40px;
-}
-.dname{
-    color: white;
-}
-.dealerdata{
-    border-bottom: 1px solid white;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
-}
-
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width:80%;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid #e6e4e9;
+  border-radius: 8px;
 }
 
 
 
-.d-flex{
-padding-top: 5px;
-    
-}
-
-/* Split the screen in half */
-.split {
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-}
-
-/* Control the left side */
-.left {
-  left: 0;
-  width: 60%;
-  background-color: #87d5dc;
-  overflow: scroll;
-}
-
-/* Control the right side */
-.right {
-  right: 0;
-  width: 40%;
-}
 
 
-/* 
-.form-control{
-    height: 40px;
-   width: 500px;
-}
-.d-flex{
-    margin-left: 200px;
-    background: transparent;
-    
-}
 
-.d-flex input{
-    border-radius: 10px;
-    
-}
 
-.rlarrow{
-    margin-top: 5px ;
-    margin-left: 20px;
-}
 
-.date{
-    width: 200px;
-    height: 40px;
-    color: white;
-    padding-left: 20px;
-    box-shadow: 0 5px 5px 0.5px;
-    background: linear-gradient(to right,#09ffff,#6652da);
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    border-radius: 10px;
-}
-
-.parkinglist{
-    margin-top: 30px;
-    margin-left: 80px;
-}
-.fa{
-    position: relative;
-    bottom: 10px;
-}
-
-.parkbody{
-    width: 90%;
-    height: 130px;
-    border: 1px solid black;
-    border-radius: 30px;
-    box-sizing: border-box;
-    box-shadow: 0.3px 3px 3px 0.2px;
-}
-
-.parkul li{
-    list-style: none;
-    padding-top: 10px;
-}
-
-.parking-name{
-    position: relative;
-    top: 10px;
-    left: 15px;
-}
-
-.checked {
-    color: orange;
-  }
-
-.dealerdata{
-    margin-top: 10px;
-    border: 1px solid rgb(97, 75, 224);
-    width: 100%;
-    height: 80px;
-    border-radius:8px;
-    font-family: cursive;
-    font-weight: 600;
-    background: linear-gradient(to right,#01a9ac,#01dbdf);
-    box-sizing: border-box;
-    box-shadow: 0px 1px 10px 1px;
-}
-
-.btn{
-    margin-left: 10px;
-} */
