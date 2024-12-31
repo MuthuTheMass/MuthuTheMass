@@ -17,16 +17,34 @@ export class DealerDataService {
 
   getalluserdata(){
 
+   var loc = this.getUserLocation();
+
     var body = {
       "searchFrom": "string",
       "filters": [
-      ]
+      ],
+      "userLocation":loc
     }
 
      this.httpClient.post<any>(environment.apiUrl+"Dealer/search",body).subscribe(data =>{
       console.log(data)
       this.backStoreService.dealerData.next(data as dealerVM[]);
      });
+  }
+
+  public getUserLocation(): any {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          const userLocation = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }
+          return userLocation;
+        });
+    }
+
+    return null;
   }
 
 }

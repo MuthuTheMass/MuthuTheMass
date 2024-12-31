@@ -1,4 +1,5 @@
 using CarParkingSystem.Domain.Entities.SQL;
+using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.DtosHelper;
 using Microsoft.EntityFrameworkCore;
@@ -80,7 +81,11 @@ public class DealerRepository : IDealerRepository
     public async Task<List<DealerDetails>?> GetAllDealers(Filter filters)
     {
         List<DealerDetails>? queryData = null;
+
         //TODO Search area
+
+        if (filters.userLocation.Latitude is 0 && filters.userLocation.Longitude is 0) return queryData;
+
         foreach (var filter  in filters.filters)
         {
             if(filter.key == "Address")
@@ -96,6 +101,7 @@ public class DealerRepository : IDealerRepository
         {
             queryData = await _dbContext.DealerDetails
                                             .Where(d => d.IsValidUser == true)
+                                            .Where(d => GetLocation.IsLocationWithinRadius(d.DealerGPSLocation,filters.userLocation,3).GetAwaiter().GetResult())
                                             .ToListAsync();
         }
 
