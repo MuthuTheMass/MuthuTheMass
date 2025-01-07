@@ -19,7 +19,7 @@ export class DealeraccountComponent {
    handleButtonClick = (e: Event): void => {
   const target = e.target as HTMLButtonElement;
   const targetSection = target.getAttribute("data-section");
-  
+
   if (!targetSection) return;
 
   const section = document.querySelector<HTMLElement>(targetSection);
@@ -49,7 +49,7 @@ buttonforevent(){
   this.buttons.forEach(btn => {
     btn.addEventListener("click", this.handleButtonClick);
   });
-  
+
 }
 
 

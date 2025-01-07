@@ -175,8 +175,8 @@
             <h3>Car Details</h3>
             <div class="car-details-scroll">
                 @if( IScarData()){
-                    @for( data of this.bsStore.VehicleData.value;track data.vehicleNumber){
-                      <app-card class="mb-5" [data]="data"></app-card>
+                    @for( data of this.bsStore.userDetails.value.carDetails;track data.vehicleName){
+                      <app-card class="mb-5" [data]="data" (editDetails)="editDetails($event)"></app-card>
                     }
                   }
             </div>

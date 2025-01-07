@@ -9,11 +9,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.46.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -22,9 +23,55 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarParkingBookingVM\CarParkingBookingVM.csproj" />
-    <ProjectReference Include="..\DatabaseMigrator\DatabaseMigrator.csproj" />
-    <ProjectReference Include="..\ValidateCarParkingDetails\ValidateCarParkingDetails.csproj" />
+    <Folder Include="ControllerHelper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="CosmosDBMigration\**" />
+    <Compile Remove="CarParkingSystem.Domain\**" />
+    <Compile Remove="CarParkingSystem.Application\**" />
+    <Compile Remove="CarParkingSystem.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="CosmosDBMigration\**" />
+    <EmbeddedResource Remove="CarParkingSystem.Domain\**" />
+    <EmbeddedResource Remove="CarParkingSystem.Application\**" />
+    <EmbeddedResource Remove="CarParkingSystem.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="CosmosDBMigration\**" />
+    <Content Remove="CarParkingSystem.Domain\**" />
+    <Content Remove="CarParkingSystem.Application\**" />
+    <Content Remove="CarParkingSystem.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CosmosDBMigration\**" />
+    <None Remove="CarParkingSystem.Domain\**" />
+    <None Remove="CarParkingSystem.Application\**" />
+    <None Remove="CarParkingSystem.Infrastructure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="CosmosDBMigration\obj\CosmosDBMigration.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="CosmosDBMigration\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="CosmosDBMigration\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Domain\obj\CarParkingSystem.Domain.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Domain\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Domain\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Domain\obj\Debug\net8.0\CarParkingSystem.Domain.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Application\obj\CarParkingSystem.Application.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Application\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Application\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\CarParkingSystem.Infrastructure.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="CarParkingSystem.Infrastructure\obj\project.packagespec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="CarParkingSystem.Application\CarParkingSystem.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
-﻿using CarParkingBookingVM.VM_S;
-using Microsoft.AspNetCore.Http;
+﻿
+using CarParkingSystem.Application.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
-using ValidateCarParkingDetails.ValidateAuthorization;
 
 namespace CarParkingBooking.Controllers
 {
@@ -9,17 +8,17 @@ namespace CarParkingBooking.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserData userData;
+        private readonly IUserProfile _userData;
 
-        public UsersController(IUserData _userData)
+        public UsersController(IUserProfile userData)
         {
-            userData = _userData;
+            _userData = userData;
         }
 
         [HttpGet("userfull")]
-        public async Task<IActionResult> Get([FromQuery]string userEmail)
+        public async Task<IActionResult> Get([FromQuery] string userEmail)
         {
-            var result = await userData.GetSingleUser(userEmail);
+            var result = await _userData.GetSingleUserDetails(userEmail);
 
             if (result != null)
             {
@@ -36,26 +35,39 @@ namespace CarParkingBooking.Controllers
         }
 
 
-        [HttpPost("updateuser")]
-        public async Task<IActionResult> UpdateuserDetailsAsync([FromForm]UserData details)
-        {
-            var result = await userData.UpdateUserData(details);
-            if(result != null)
-            {
-                return Ok(result);
-            }
-            else if(result == null)
-            {
-                return NotFound();
-            }
-            else if(result == false)
-            {
-                return UnprocessableEntity();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
+        //[HttpPost("updateuser")]
+        //public async Task<IActionResult> UpdateuserDetails([FromForm] UserDataDto details)
+        //{
+        //    var result = await _userData.UpdateUserData(details);
+        //    if (result != null)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else if (result == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else if (result == false)
+        //    {
+        //        return UnprocessableEntity();
+        //    }
+        //    else
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
+
+        //[HttpGet("getAllUsers")]
+        //public async Task<IActionResult> GetAllUsers()
+        //{
+        //    var result = await _userData.GetAllUsers();
+
+        //    if (result.Count > 0)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest();
+
+        //}
     }
 }

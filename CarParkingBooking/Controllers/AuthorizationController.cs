@@ -1,16 +1,10 @@
-﻿using CarParkingBooking.Services_Program;
-using CarParkingBookingVM.Authorization;
-using CarParkingBookingVM.Enums;
+﻿using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
-using CarParkingBookingVM.VM_S.Dealers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using CarParkingSystem.Application.Dtos.Authorization;
+using CarParkingSystem.Application.Services.Authorization;
+using CarParkingSystem.Application.Services.DealerService;
+using CarParkingSystem.Application.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using ValidateCarParkingDetails.ValidateAuthorization;
 
 namespace CarParkingBooking.Controllers
 {
@@ -18,47 +12,47 @@ namespace CarParkingBooking.Controllers
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
-        private readonly IAuthorization authorization;
+        private readonly IAuthorizationService _authorizationService;
+        private readonly IUserProfile _userProfile;
+        private readonly IDealerProfile _dealerProfile;
 
-        public AuthorizationController(IAuthorization _authorization)
+        public AuthorizationController(IAuthorizationService authorizationService, IUserProfile userProfile, IDealerProfile dealerProfile)
         {
-            authorization = _authorization;
+            _authorizationService = authorizationService;
+            _userProfile = userProfile;
+            _dealerProfile = dealerProfile;
         }
 
-        [HttpPost("signup")]
-        public async Task<ActionResult> SignUp([FromBody] SignUpVM signUp)
+         [HttpPost("usersignup")]
+         public async Task<ActionResult> SignUp([FromBody] SignUpDto signUp)
         {
-
-            var result = await authorization.InsertLoginDetials(signUp);
-            if (result is true)
-            {
-                return Ok(result);
-            }
-            else if (result is false)
-            {
-                return UnprocessableEntity(result);
-            }
-            else if(result is null)
-            {
-                return Conflict(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-
-
-
+            
+             var result = await _userProfile.UserSignUp(signUp);
+             if (result is true)
+             {
+                 return Ok(result);
+             }
+             else if (result is false)
+             {
+                 return UnprocessableEntity(result);
+             }
+             else if(result is null)
+             {
+                 return Conflict(result);
+             }
+             else
+             {
+                 return BadRequest(result);
+             }
         }
 
         [HttpPost("userlogin")]
-        public async Task<ActionResult> Login([FromBody] LoginVM loginVM)
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
-            var result = await authorization.VerifyUser(loginVM);
+            var result = await  _authorizationService.UserIsAuthorized(loginDto);
             if(result is not null)
             {
-                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.User });
-                result.AccessToken = token;
+
                 return Ok(result);
             }
             else if(result is null)
@@ -70,11 +64,11 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
         }
-
+        
         [HttpPost("dealersignup")]
-        public async Task<IActionResult> DealerSignUp(DealerSignUpVM dealerSignUp)
+        public async Task<IActionResult> DealerSignUp(SignUpDto dealerSignUp)
         {
-            var result = await authorization.InsertDealerDetails(dealerSignUp);
+            var result = await _dealerProfile.DealerSignUp(dealerSignUp);
             if(result is true)
             {
                 return Ok(true);
@@ -91,21 +85,18 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
-
+        
         }
-
+        
         [HttpPost("dealerlogin")]
-        public async Task<IActionResult> DealerLogin(DealerLogin dealerLogin)
+        public async Task<IActionResult> DealerLogin(LoginDto dealerLogin)
         {
-            var data = await authorization.VerifyDealer(dealerLogin);
-            var result = data.Item1;
+            var result = await _authorizationService.DealerIsAuthorized(dealerLogin);
             if (result is not null)
             {
-                var token = GenerateJWTToken.GenerateJwtToken(result.UserName, new List<string> { AccessToUser.Dealer });
-                result.AccessToken = token;
                 return Ok(result);
             }
-            else if (!(bool)data.Item2)
+            else if (result?.Access is AccessToUser.Dealer)
             {
                 return Unauthorized("Password doesn't Match.");
             }

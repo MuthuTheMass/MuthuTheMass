@@ -8,3 +8,9 @@
   vehicleModel: string,
   alternative_Phone_Number: string
 }
+
+export interface miniVehicleModal {
+    vehicleId :string,
+    vehicleName : string,
+    vehicleNumber:string,
+}

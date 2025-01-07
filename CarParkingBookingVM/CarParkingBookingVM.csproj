@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="VM'S\" />
+    <Folder Include="VM'S_Helper\" />
+  </ItemGroup>
+
 </Project>

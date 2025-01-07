@@ -1,7 +1,7 @@
-import { Component, Input, input } from '@angular/core';
-import { VehicleModal } from '../../Service/Model/VehicleModal';
+import {Component, EventEmitter, Input,  Output,} from '@angular/core';
+import {miniVehicleModal,} from '../../Service/Model/VehicleModal';
 import { Router } from '@angular/router';
-import { BackstoreService } from '../../Service/store/backstore.service';
+import { BackStoreService } from '../../Service/store/back-store.service';
 
 @Component({
   selector: 'app-card',
@@ -12,15 +12,16 @@ import { BackstoreService } from '../../Service/store/backstore.service';
 })
 export class CardComponent {
 
-@Input("data") data:VehicleModal | undefined;
+@Input("data") data:miniVehicleModal | undefined;
+@Output() editDetails:EventEmitter<string> = new EventEmitter<string>();
 
 constructor(
   private _route:Router,
-  private _backStore:BackstoreService
+  private _backStore:BackStoreService
 
 ) {
 
-  
+
 }
 
 ngOnInit(): void {
