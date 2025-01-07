@@ -39,9 +39,6 @@ export const routes: Routes = [
 {
    path:"Dreg",component:DregComponent,title:"Dealer-login"
 },
-// {
-//     path:"**",component:PagenotfoundComponent,title:"something went wrong"
-// },
 
 {
   path:"dhome",component:DmainComponent,title:"dealermain page",children:[
@@ -105,11 +102,12 @@ export const routes: Routes = [
         //     path:"confirmbooking",component:UserConfirmBookingComponent,title:"user-confirm-booking"
         // }
 
-        // {
-        //     path:"nav",component:NavbarComponent,title:"navbar"
-        // },
+
     ]
-}
+},
+  {
+    path:"**",component:PagenotfoundComponent,title:"something went wrong"
+  },
 
 
 ];
