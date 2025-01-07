@@ -9,7 +9,7 @@
   .navbar{
     border-bottom: 2px solid rgb(255, 21, 119);
   }
-  
+
   .searchTerm {
     width: 450px;
     border: 1px solid rgb(255, 21, 119);
@@ -26,11 +26,11 @@
   .dealerdata {
     border-bottom: 1px solid white;
   }
-  
+
   .searchTerm:focus {
     color: #00b4cc;
   }
-  
+
   .searchButton {
     width: 60px;
     height: 35px;
@@ -43,21 +43,21 @@
     position: relative;
     font-size: 20px;
   }
-  
+
   .searchButton:hover{
     background-color:  rgb(255, 21, 119);
     color: #fff;
     border:1px solid white;
   }
-  
+
   .cards{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
     margin-top: 1rem;
   }
-  
-  
+
+
   .card-single {
     display: flex;
     justify-content: space-between;
@@ -67,39 +67,70 @@
     border-radius: 10px;
     margin-left: 40px;
   }
-  
-  
-  
+
+
+
   .card-single div:last-child i {
   color: rgb(255, 21, 119);
     font-size: 3rem;
   }
-  
+
   .card-single div:first-child span{
-  
+
     color:  rgb(107, 102, 104);
    }
-   
+
    .card-single:last-child {
     background: rgb(255, 21, 119);
    }
    .card-single:last-child  h1{
     background: rgb(255, 21, 119);
    }
-  
-  
+
+
    .card-single:last-child div:last-child i,
    .card-single:last-child  h1,
    .card-single:last-child div:first-child span
    {
     color: #fff;
    }
-  
+
+
+@media only screen and (max-width: 960px){
+
+  .cards{
+    grid-template-columns: repeat(3,1fr);
+  }
+  .recent-grid{
+    grid-template-columns: 60% 40%;
+  }
+}
+@media only screen and (max-width: 768px){
+
+  .cards{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .recent-grid{
+    grid-template-columns: 100%;
+  }
+  .search-wrapper{
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px){
+
+  .cards{
+    grid-template-columns: 100%;
+  }
+
+}
+
+
    table{
     border-collapse:collapse ;
-  
+
    }
-  
+
    .recent-grid{
     margin-top: 3.5rem;
     display: grid;
@@ -109,18 +140,18 @@
    .card{
     background: #fff;
    }
-  
+
    .card-head{
     padding: 1rem;
    }
-    
+
    .card-head{
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0f0f0;
    }
-  
+
    .card-head button{
     background:rgb(255, 21, 119);
     border-radius: 10px;
