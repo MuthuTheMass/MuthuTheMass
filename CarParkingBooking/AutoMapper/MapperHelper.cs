@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using CarParkingBookingVM.VM_S.Booking;
-using CarParkingBookingVM.VM_S.Dealers;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text.Json;
+using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Application.Dtos.Dealers;
 
 namespace CarParkingBooking.AutoMapper
 {

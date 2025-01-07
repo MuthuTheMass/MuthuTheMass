@@ -23,6 +23,12 @@ import { PaymentHistoryComponent } from './Dashboard/Dealer/dmain/payment-histor
 import { DealeraccountComponent } from './Dashboard/Dealer/dmain/dealeraccount/dealeraccount.component';
 import { EditDealerdataComponent } from './Dashboard/Dealer/dmain/edit-dealerdata/edit-dealerdata.component';
 import { AllPaymentComponent } from './Dashboard/Dealer/dmain/all-payment/all-payment.component';
+import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
+import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
+import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
+import {
+  UserPaymentHistoryComponent
+} from "./Dashboard/home-navebar/user-payment-history/user-payment-history.component";
 
 
 export const routes: Routes = [
@@ -36,9 +42,6 @@ export const routes: Routes = [
 {
    path:"Dreg",component:DregComponent,title:"Dealer-login"
 },
-// {
-//     path:"**",component:PagenotfoundComponent,title:"something went wrong"
-// },
 
 {
   path:"dhome",component:DmainComponent,title:"dealermain page",children:[
@@ -77,6 +80,15 @@ export const routes: Routes = [
             ]
         },
         {
+            path:"about",component:ZenparkAboutComponent,title:"zenparkabout-info"
+        },
+        {
+             path:"customerhistory",component:UserBookingHistoryComponent,title:"user-booking-info-"
+        },
+    {
+      path: "userpaymenthistory",component:UserPaymentHistoryComponent,title:"user-payment-history"
+    },
+        {
             path:"profile",component:ProfileComponent,title:"profiledetailes",
         },
         {
@@ -91,12 +103,16 @@ export const routes: Routes = [
         },
         {
             path:"erecepit",component:EReceiptComponent
-        },
-        // {
-        //     path:"nav",component:NavbarComponent,title:"navbar"
-        // },
+        },{
+            path:"confirmbooking",component:UserConfirmBookingComponent,title:"user-confirm-booking"
+        }
+
+
     ]
-}
+},
+  {
+    path:"**",component:PagenotfoundComponent,title:"something went wrong"
+  },
 
 
 ];

@@ -1,8 +1,7 @@
 <div class="card">
   <div class="left-container">
-    <!-- <img src="" alt="Profile Image">
-      <p>Vichle picture</p> -->
-    <h1>Vechile Image</h1>
+
+    <h1>Vehicle Image</h1>
     <video #video width="200" height="150" autoplay></video>
     <button (click)="capturePhoto()">Capture Photo</button>
     <canvas #canvas width="640" height="480" style="display: none"></canvas>
@@ -13,7 +12,7 @@
         class="btn btn-primary"
         type="button"
         id="ebtnn"
-        (click)="Erecepit()"
+        (click)="userconfirmbooking()"
       >
         Confirm Booking
       </button>
@@ -21,10 +20,10 @@
   </div>
   <div class="right-container">
     <form [formGroup]="vehicleDetials">
-      <h3>Vechile Detailes</h3>
+      <h3>Vehicle Details</h3>
 
       <tr>
-        <td>Vechile Number</td>
+        <td>Vehicle Number</td>
         <td>
           <input
             type="text"
@@ -36,11 +35,11 @@
         </td>
       </tr>
       <tr>
-        <td>Vechile Number Image</td>
+        <td>Vehicle Number Image</td>
         <div class="mb-3">
-          <input 
-            class="form-control" 
-            type="file" 
+          <input
+            class="form-control"
+            type="file"
             id="formFile"
             formControlName="VehicleNumberImage"
             />
@@ -71,7 +70,7 @@
         </td>
       </tr>
       <tr>
-        <td>viechle Modal</td>
+        <td>vehicle Modal</td>
         <td>
           <!-- <div class="dropdown">
             <button (click)="vechilemodal()" class="dropbtn">Dropdown</button>
