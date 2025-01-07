@@ -5,7 +5,6 @@ using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
 using CarParkingSystem.Domain.Entities.SQL;
-using CarParkingSystem.Infrastructure.DtosHelper;
 using Filter = CarParkingSystem.Application.Dtos.Dealers;
 using Filters = CarParkingSystem.Infrastructure.DtosHelper;
 
