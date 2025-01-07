@@ -86,3 +86,8 @@ DatabaseMigrator/bin/Debug/net8.0/DatabaseMigrator.deps.json
 /CarParkingBooking/CarParkingSystem.Application/bin/Debug/net8.0
 /CarParkingBooking/CarParkingSystem.Domain/bin/Debug/net8.0
 /CarParkingBooking/CarParkingSystem.Infrastructure/bin/Debug/net8.0
+/CarParkingBooking/CarParkingSystem.Application
+/CarParkingBooking/CarParkingSystem.Domain
+/CarParkingBooking/CarParkingSystem.Infrastructure/bin/Debug/net8.0
+/CarParkingBooking/CarParkingSystem.Infrastructure/obj/Debug/net8.0
+/CarParkingBooking/CarParkingSystem.Infrastructure/obj

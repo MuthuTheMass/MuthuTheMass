@@ -1,14 +1,15 @@
 .container-fluid{
-    background-color: #3b7093;
+    background-color:#002147;
     height: 50px;
 
 }
 .navbar{
     margin: 0px;
     padding: 0px;
-    position: static;
+    position: sticky;
+  top: 0;
     width: 100%;
-    
+z-index: 1;
 }
 
 .form-control{
@@ -26,4 +27,5 @@
 .d-flex ul li{
     color: white;
 }
+
 
