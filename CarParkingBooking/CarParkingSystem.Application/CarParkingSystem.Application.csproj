@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CarParkingSystem.Domain\CarParkingSystem.Domain.csproj" />
+      <ProjectReference Include="..\CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

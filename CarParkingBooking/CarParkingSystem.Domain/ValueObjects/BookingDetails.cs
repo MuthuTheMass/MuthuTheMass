@@ -7,3 +7,9 @@ public enum BookingProcessDetails
     VehicleEntered = 2, // vehicle get entered in the parking area
     VehicleExited = 3, // vehicle get out from the parking area
 }
+
+public enum BookingSources
+{
+    Dealer = 0,
+    User = 1,
+}

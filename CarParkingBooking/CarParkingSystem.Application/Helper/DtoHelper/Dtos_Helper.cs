@@ -11,11 +11,11 @@ namespace CarParkingSystem.Application.Helper.DtoHelper
             TimeOnly time;
             if (timeString is not null && TryParseTime(timeString, formats, out time))
             {
-                return(time);
+                return time;
             }
             else
             {
-                return(null);
+                return null;
             }
         }
 

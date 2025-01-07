@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Database\CosmosDatabase\" />
       <Folder Include="Database\SQLDatabase\" />
     </ItemGroup>
 
@@ -25,6 +24,10 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CarParkingSystem.Domain\CarParkingSystem.Domain.csproj" />
     </ItemGroup>
 
 </Project>

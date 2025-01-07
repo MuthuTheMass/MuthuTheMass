@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CarParkingSystem.Infrastructure.Configurations;
+﻿using CarParkingSystem.Domain.Helper;
+using System.ComponentModel.DataAnnotations;
 
-namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
+namespace CarParkingSystem.Domain.Entities.SQL
 {
 
-    public class UserDetails 
+    public class UserDetails
     {
         [Key]
         public required string UserID { get; set; } = string.Empty;
@@ -20,7 +20,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel
         [DataType(DataType.Password)]
         public required string Password { get; set; }
 
-        [DataType(DataType.Text)] 
+        [DataType(DataType.Text)]
         public string Rights { get; set; } = string.Empty; //AccessToUsers.User.ToString();
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }

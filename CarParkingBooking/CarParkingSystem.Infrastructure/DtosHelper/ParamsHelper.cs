@@ -1,10 +1,14 @@
-﻿namespace CarParkingSystem.Infrastructure.DtosHelper
+﻿using CarParkingSystem.Domain.Dtos.Location;
+
+namespace CarParkingSystem.Infrastructure.DtosHelper
 {
         public class Filter
         {
             public string searchFrom { get; set; }
 
             public List<Filters> filters { get; set; }
+
+            public Location? userLocation { get; set; }
         }
 
         public class Filters

@@ -1,20 +1,24 @@
-﻿namespace CarParkingSystem.Application.Dtos.Booking
+﻿using CarParkingSystem.Domain.ValueObjects;
+using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
+
+namespace CarParkingSystem.Application.Dtos.Booking
 {
     public class BookingDto
     {
-        public string User_ID { get; set; }
-        public string Vehicle_Id { get; set; }
-        public string Dealer_ID { get; set; }
-        public string? Alternative_Number { get; set; }
-        public string? Driver_Name { get; set; }
-        public string? Driver_PhoneNumber { get; set; }
-        public DateTime ArrivingTime { get; set; }
-    }
+        public string? DealerId { get; set; }
 
-    public class ImageFile
-    {
-        public byte[] File { get; set; }
-        public string  FileName { get; set; }
-        public string ContentType { get; set; }
+        public string? CustomerId { get; set; }
+
+        public string? VehicleId { get; set; }
+
+        public required BookingSources BookingSource { get; set; }
+
+        public required CarBookingDates BookingDate { get; set; }
+
+        public string? GeneratedQrCode { get; set; }
+
+        public string? AdvanceAmount { get; set; }
+
+        public required Status BookingStatus { get; set; }
     }
 }

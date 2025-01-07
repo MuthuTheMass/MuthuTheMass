@@ -2,7 +2,7 @@ using AutoMapper;
 using CarParkingBookingVM.Enums;
 using CarParkingSystem.Application.Dtos.Authorization;
 using CarParkingSystem.Application.Helper.JWTToken;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Repositories;
 
 

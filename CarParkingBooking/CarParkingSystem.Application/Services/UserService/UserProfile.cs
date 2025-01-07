@@ -2,7 +2,7 @@ using AutoMapper;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel;
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Repositories;
 
 namespace CarParkingSystem.Application.Services.UserService;
