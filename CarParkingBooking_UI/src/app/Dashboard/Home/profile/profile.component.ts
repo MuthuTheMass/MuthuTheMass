@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { EditdetailsComponent } from './editdetails/editdetails.component';
 import { CardComponent } from "../../../custom_components/card/card.component";
 import { UserDetailsService } from '../../../Service/Backend/user-details.service';
-import { BackstoreService } from '../../../Service/store/backstore.service';
+import { BackStoreService } from '../../../Service/store/back-store.service';
 import { LoginResponse } from '../../../Service/Model/UserModels';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 import { VehicleModal } from '../../../Service/Model/VehicleModal';
@@ -22,7 +22,7 @@ export class ProfileComponent {
 constructor(
   private router:Router,
   private userDetails:UserDetailsService,
-  protected bsStore:BackstoreService,
+  protected bsStore:BackStoreService,
   protected vehicleDetails:VehicleDetialsService ){
 
 }
@@ -35,8 +35,8 @@ constructor(
         (response:userDetails) => {
           this.bsStore.userDetails.next(response);
         },
-      );;
-      this.vehicleDetails.halfVehicleDetailsByUserID(data.userID);
+      );
+      //this.vehicleDetails.halfVehicleDetailsByUserID(data.userID);
     }
   }
 
@@ -47,7 +47,7 @@ constructor(
     this.router.navigate(['main/edit'])
 }
 IScarData() {
-  return this.bsStore.VehicleData.value.length >0;
+  return this.bsStore?.userDetails?.value?.carDetails?.length >0;
 }
 
 userEdit() {
@@ -55,6 +55,9 @@ userEdit() {
   }
 
 
+  editDetails($event: string) {
+    console.log($event);
+  }
 }
 
 

@@ -1,3 +1,5 @@
+import {miniVehicleModal} from "./VehicleModal";
+
 export interface userDetails{
     userID:string,
     name: string,
@@ -5,6 +7,7 @@ export interface userDetails{
     email: string,
     mobileNumber: string,
     address: string
+    carDetails:miniVehicleModal[]
 }
 
 export interface UserUpdateData {
@@ -13,4 +16,10 @@ export interface UserUpdateData {
   MobileNumber: string,
   Name: string,
   ProfilePicture: File
+}
+
+export interface userDetailsForDealer{
+  name:string
+  email:string
+  mobileNumber:string
 }

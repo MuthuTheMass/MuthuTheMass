@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { BackstoreService } from '../../../../Service/store/backstore.service';
+import { BackStoreService } from '../../../../Service/store/back-store.service';
 import { UserDetailsService } from '../../../../Service/Backend/user-details.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {userDetails, UserUpdateData} from '../../../../Service/Model/UserDetails';
@@ -18,7 +18,7 @@ export class EditdetailsComponent {
     editDetail!: FormGroup;
 
 constructor(
-    protected bsStore:BackstoreService,
+    protected bsStore:BackStoreService,
     protected userService:UserDetailsService,
     private route: ActivatedRoute,
     private router:Router,

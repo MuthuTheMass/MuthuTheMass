@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import {userDetails, UserUpdateData} from '../Model/UserDetails';
-import { BackstoreService } from '../store/backstore.service';
+import {userDetails, userDetailsForDealer, UserUpdateData} from '../Model/UserDetails';
+import { BackStoreService } from '../store/back-store.service';
 import { Observable } from 'rxjs';
 import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
 import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
@@ -12,7 +12,7 @@ import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 })
 export class UserDetailsService {
 
-  constructor(private http:HttpClient,private bstore:BackstoreService) { }
+  constructor(private http:HttpClient,private bstore:BackStoreService) { }
 
 
   userFullDetails(userId:string):Observable<userDetails>{
@@ -22,6 +22,10 @@ export class UserDetailsService {
   UpdateData(data:FormData):Observable<any>{
     return this.http.post(environment.apiUrl+"Users/updateuser",data,
       );
+  }
+
+  GetAllUsers():Observable<userDetailsForDealer[]>{
+    return this.http.get<userDetailsForDealer[]>(environment.apiUrl+"Users/getAllUsers");
   }
 
 }
