@@ -83,8 +83,8 @@ public class DealerRepository : IDealerRepository
         List<DealerDetails>? queryData = null;
 
         //TODO Search area
-
-        if (filters.userLocation.Latitude is 0 && filters.userLocation.Longitude is 0) return queryData;
+        if(filters.userLocation is null) return queryData;
+        if(filters.userLocation.Latitude is 0 && filters.userLocation.Longitude is 0) return queryData;
 
         foreach (var filter  in filters.filters)
         {
@@ -107,6 +107,10 @@ public class DealerRepository : IDealerRepository
 
         return queryData;
     }
+
+
+
+    #region private methods
 
     private bool AreRequiredFieldsFilled<T>(T obj)
     {
@@ -135,4 +139,6 @@ public class DealerRepository : IDealerRepository
 
         return true;
     }
+
+    #endregion
 }

@@ -36,6 +36,25 @@ namespace CarParkingBooking.Controllers
 
         }
 
+        [HttpGet("dealernewusers")]
+        public async Task<IActionResult> GetAllUserByDealer([FromQuery]string userName)
+        {
+            var result = await dealerData.GetUsersByDealer(userName);
+
+            if (result.Count > 0)
+            {
+                return Ok(result);
+            }
+            else if (result.Count == 0)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
         // [HttpPost("singledealerdata")]
         // public async Task<IActionResult> SingleDealerData([FromQuery] string email)
         // {

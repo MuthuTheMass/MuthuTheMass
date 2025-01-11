@@ -4,6 +4,7 @@ using CarParkingSystem.Application.Dtos.Authorization;
 using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
+using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
 using Filter = CarParkingSystem.Application.Dtos.Dealers;
 using Filters = CarParkingSystem.Infrastructure.DtosHelper;
@@ -186,6 +187,12 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.VehicleNumber,dest => dest.MapFrom(src => src.VehicleNumber))
                 .ForMember(opt => opt.VehicleName,dest => dest.MapFrom(src => src.VehicleName))
                 .ForMember(opt => opt.VehicleId,dest => dest.MapFrom(src => src.VehicleId))
+                .ReverseMap();
+
+            CreateMap<UserDetailsForDealer, UserDetails>()
+                .ForMember(opt => opt.Name,dest => dest.MapFrom(src => src.Name))
+                .ForMember(opt => opt.UserProfilePicture,dest => dest.MapFrom(src =>ConvertFileToByte(src.Picture)))
+                .ForMember(opt => opt.MobileNumber,dest => dest.MapFrom(src => src.MobileNumber))
                 .ReverseMap();
         }
     }

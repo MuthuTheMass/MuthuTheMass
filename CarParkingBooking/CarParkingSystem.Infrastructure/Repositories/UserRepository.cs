@@ -1,5 +1,6 @@
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
+using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarParkingSystem.Infrastructure.Repositories;
@@ -12,14 +13,17 @@ public interface IUserRepository
     Task<bool> UpdateUserByEmailId(UserDetails user);
     Task<bool> CraeteNewUser(UserDetails user);
     Task<bool> DeleteUserByEmailId(string email);
+    Task<List<UserDetails>> GetUserDetailsForDealer(string dealerId);
 }
 
 public class UserRepository : IUserRepository
 {
     private readonly CarParkingBookingDbContext _dbContext;
+    private readonly IBookingRepository _bookingRepository;
 
-    public UserRepository(CarParkingBookingDbContext dbContext)
+    public UserRepository(CarParkingBookingDbContext dbContext,IBookingRepository bookingRepository)
     {
+        _bookingRepository = bookingRepository;
         _dbContext = dbContext; 
     }
     
@@ -79,5 +83,14 @@ public class UserRepository : IUserRepository
         userResource.ForEach(u => _dbContext.UserDetails.Remove(u));
         await _dbContext.SaveChangesAsync();
         return true;
+    }
+
+    public async Task<List<UserDetails>> GetUserDetailsForDealer(string dealerId)
+    {
+        List<UserDetails> userDetails = new List<UserDetails>();
+        var usersId = await _bookingRepository.GetUserByBookingForDealer(dealerId);
+        var userResource = await _dbContext.UserDetails.Where(u => usersId.Contains(u.UserID)).ToListAsync();
+        return userResource;
+        
     }
 }

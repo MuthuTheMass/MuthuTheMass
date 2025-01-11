@@ -1,6 +1,7 @@
 using AutoMapper;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Repositories;
 
@@ -12,17 +13,21 @@ public interface IDealerProfile
     Task<bool?> DealerSignUp(SignUpDto dealer);
     
     Task<List<DealerDto>> GetAllDealersBySearch(Filter filter);
+
+    Task<List<UserDetailsForDealer>> GetUsersByDealer(string userName);
 }
 
 public class DealerProfile : IDealerProfile
 {
     private readonly IDealerRepository _dealerRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     
-    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper)
+    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository)
     {
         _dealerRepository = dealerRepository;
         _mapper = mapper;
+        _userRepository = userRepository;
     }
     
     
@@ -52,5 +57,11 @@ public class DealerProfile : IDealerProfile
         var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filter>(filter);
         List<DealerDetails> dealers = await _dealerRepository.GetAllDealers(mapFilter);
         return _mapper.Map<List<DealerDto>>(dealers);
+    }
+
+    public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string userName)
+    {
+        var userData = await _userRepository.GetUserDetailsForDealer(userName);
+        return _mapper.Map<List<UserDetailsForDealer>>(userData);
     }
 }
