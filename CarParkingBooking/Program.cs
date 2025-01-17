@@ -2,14 +2,14 @@ using AutoMapper;
 using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBooking.Services_Program;
+using CarParkingSystem.Application.Configuration;
+using CarParkingSystem.Application.Helper.JWTToken;
+using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CarParkingSystem.Application.Helper.JWTToken;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
-using Microsoft.Azure.Cosmos;
-using CarParkingSystem.Application.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
