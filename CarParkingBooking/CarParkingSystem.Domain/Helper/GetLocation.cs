@@ -53,15 +53,22 @@ namespace CarParkingSystem.Domain.Helper
         {
             double ToRadians(double degrees) => degrees * (Math.PI / 180);
 
-            const double EarthRadiusKm = 6371.0; // Earth's radius in kilometers
-            double dLat = ToRadians(targetLocation.Latitude - userLocation.Latitude);
-            double dLon = ToRadians(targetLocation.Longitude - userLocation.Longitude);
+            const double EarthRadiusKm = 6371.0; // Mean radius of Earth in kilometers
 
+            // Convert latitude and longitude from degrees to radians
             double lat1 = ToRadians(userLocation.Latitude);
+            double lon1 = ToRadians(userLocation.Longitude);
             double lat2 = ToRadians(targetLocation.Latitude);
+            double lon2 = ToRadians(targetLocation.Longitude);
 
+            // Compute differences
+            double dLat = lat2 - lat1;
+            double dLon = lon2 - lon1;
+
+            // Haversine formula
             double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
+                       Math.Cos(lat1) * Math.Cos(lat2) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             double distance = EarthRadiusKm * c; // Distance in kilometers

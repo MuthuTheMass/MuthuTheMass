@@ -18,21 +18,14 @@ import {BackStoreService} from "../../../Service/store/back-store.service";
 })
 export class MainComponent {
 
-  dealerdetails: DealerDataService | any;
+
   rating: number = 4.5;
   currentRate: number = 2;
 
 
+
   constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService) {
 
-
-    this.dealerdetails = new FormGroup({
-      dealername: new FormControl(),
-      email: new FormControl(),
-      parkingaddress: new FormControl(),
-      starrating: new FormControl()
-
-    });
   }
 
   ngOnInit():void {

@@ -32,6 +32,9 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertTimingString(src.DealerTiming)))
                 .ForMember(opt => opt.DealerAddress, dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark, dest => dest.MapFrom(src => src.DealerLandmark))
+                .ForMember(opt => opt.DealerCity, dest => dest.MapFrom(src => src.DealerCity))
+                .ForMember(opt => opt.DealerState, dest => dest.MapFrom(src => src.DealerState))
+                .ForMember(opt => opt.DealerCountry, dest => dest.MapFrom(src => src.DealerCountry))
                 .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => src.DealerLocationURL))
                 .ForMember(opt => opt.DealerRating, dest => dest.MapFrom(src => src.DealerRating))
                 .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
@@ -57,6 +60,9 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.DealerTiming, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerAddress, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerLandmark, opt => opt.Ignore())
+                .ForMember(dest => dest.DealerCity, opt => opt.Ignore())
+                .ForMember(dest => dest.DealerState, opt => opt.Ignore())
+                .ForMember(dest => dest.DealerCountry, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerGPSLocation, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerRating, opt => opt.Ignore())
                 .ForMember(dest => dest.DealerOpenOrClosed, opt => opt.Ignore());
@@ -175,6 +181,7 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<Filters.Filter,Filter.Filter>()
                 .ForMember(opt => opt.searchFrom,dest => dest.MapFrom(src => src.searchFrom))
                 .ForMember(opt => opt.filters,dest => dest.MapFrom(src => src.filters))
+                .ForMember(opt => opt.userLocation,dest => dest.MapFrom(src => src.userLocation))
                 .ReverseMap();
 
             CreateMap<Filters.Filters, Filter.Filters>()
@@ -193,6 +200,9 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.Name,dest => dest.MapFrom(src => src.Name))
                 .ForMember(opt => opt.UserProfilePicture,dest => dest.MapFrom(src =>ConvertFileToByte(src.Picture)))
                 .ForMember(opt => opt.MobileNumber,dest => dest.MapFrom(src => src.MobileNumber))
+                .ReverseMap();
+            CreateMap<UserDetails, UserDetailsForDealer>()
+                .ForMember(opt => opt.Picture, dest => dest.MapFrom(src => ConvertByteToFromFile(src.UserProfilePicture)))
                 .ReverseMap();
         }
     }

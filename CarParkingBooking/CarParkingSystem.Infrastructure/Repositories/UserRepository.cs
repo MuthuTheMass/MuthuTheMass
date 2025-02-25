@@ -13,18 +13,20 @@ public interface IUserRepository
     Task<bool> UpdateUserByEmailId(UserDetails user);
     Task<bool> CraeteNewUser(UserDetails user);
     Task<bool> DeleteUserByEmailId(string email);
-    Task<List<UserDetails>> GetUserDetailsForDealer(string dealerId);
+    Task<List<UserDetails>> GetUserDetailsForDealer(string emailId);
 }
 
 public class UserRepository : IUserRepository
 {
     private readonly CarParkingBookingDbContext _dbContext;
     private readonly IBookingRepository _bookingRepository;
+    private readonly IDealerRepository _dealerRepository;
 
-    public UserRepository(CarParkingBookingDbContext dbContext,IBookingRepository bookingRepository)
+    public UserRepository(CarParkingBookingDbContext dbContext,IBookingRepository bookingRepository, IDealerRepository dealerRepository)
     {
         _bookingRepository = bookingRepository;
         _dbContext = dbContext; 
+        _dealerRepository = dealerRepository;
     }
     
     public async Task<UserDetails?> GetUserByEmail(string email)
@@ -85,10 +87,11 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public async Task<List<UserDetails>> GetUserDetailsForDealer(string dealerId)
+    public async Task<List<UserDetails>> GetUserDetailsForDealer(string emailId)
     {
         List<UserDetails> userDetails = new List<UserDetails>();
-        var usersId = await _bookingRepository.GetUserByBookingForDealer(dealerId);
+        var dealerIdByEmail = await _dealerRepository.GetUserByEmail(emailId);
+        var usersId = await _bookingRepository.GetUserByBookingForDealer(dealerIdByEmail?.DealerID!);
         var userResource = await _dbContext.UserDetails.Where(u => usersId.Contains(u.UserID)).ToListAsync();
         return userResource;
         

@@ -84,7 +84,6 @@ public class DealerRepository : IDealerRepository
 
         //TODO Search area
         if(filters.userLocation is null) return queryData;
-        if(filters.userLocation.Latitude is 0 && filters.userLocation.Longitude is 0) return queryData;
 
         foreach (var filter  in filters.filters)
         {
@@ -97,17 +96,15 @@ public class DealerRepository : IDealerRepository
             }
         }
 
-        if(filters.filters.Count == 0)
-        {
-            queryData = await _dbContext.DealerDetails
-                                            .Where(d => d.IsValidUser == true)
-                                            .Where(d => GetLocation.IsLocationWithinRadius(d.DealerGPSLocation,filters.userLocation,3).GetAwaiter().GetResult())
-                                            .ToListAsync();
-        }
+        //if(filters.filters.Count == 0)
+        //{
+            queryData = await _dbContext.DealerDetails.Where(d => d.IsValidUser).ToListAsync();
+            //queryData = queryData.Where(d => GetLocation.IsLocationWithinRadius(d.DealerGPSLocation,filters.userLocation, 3).GetAwaiter().GetResult()).ToList();
+        //}
 
         return queryData;
     }
-
+     
 
 
     #region private methods

@@ -36,6 +36,15 @@ namespace CarParkingSystem.Domain.Entities.SQL
         public string? DealerAddress { get; set; }
 
         [DataType(DataType.Text)]
+        public string? DealerCity { get; set; }
+
+        [DataType(DataType.Text)]
+        public string? DealerState {  get; set; }
+
+        [DataType(DataType.Text)]
+        public string? DealerCountry { get; set; }
+
+        [DataType(DataType.Text)]
         public string? DealerLandmark { get; set; }
 
         [DataType(DataType.Text)]

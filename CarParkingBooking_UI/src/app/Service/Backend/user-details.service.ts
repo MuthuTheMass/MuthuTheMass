@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import {userDetails, userDetailsForDealer, UserUpdateData} from '../Model/UserDetails';
 import { BackStoreService } from '../store/back-store.service';
 import { Observable } from 'rxjs';
-import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
 import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
 @Injectable({

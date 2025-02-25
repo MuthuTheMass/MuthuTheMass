@@ -14,7 +14,7 @@ public interface IDealerProfile
     
     Task<List<DealerDto>> GetAllDealersBySearch(Filter filter);
 
-    Task<List<UserDetailsForDealer>> GetUsersByDealer(string userName);
+    Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId);
 }
 
 public class DealerProfile : IDealerProfile
@@ -59,9 +59,9 @@ public class DealerProfile : IDealerProfile
         return _mapper.Map<List<DealerDto>>(dealers);
     }
 
-    public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string userName)
+    public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId)
     {
-        var userData = await _userRepository.GetUserDetailsForDealer(userName);
+        var userData = await _userRepository.GetUserDetailsForDealer(emailId);
         return _mapper.Map<List<UserDetailsForDealer>>(userData);
     }
 }

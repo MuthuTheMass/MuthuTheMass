@@ -1,4 +1,5 @@
 ﻿
+using CarParkingSystem.Domain.Dtos.Location;
 using System.Globalization;
 
 namespace CarParkingSystem.Application.Dtos.Dealers
@@ -9,6 +10,7 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public string searchFrom { get; set; }
 
         public List<Filters> filters { get; set; }
+        public Location userLocation { get; set; }
     }
 
     public class Filters
@@ -35,6 +37,10 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public required string DealerAddress { get; set; }
 
         public required string DealerLandmark { get; set; }
+        public string? DealerCity { get; set; }
+        public string? DealerState { get; set; }
+        public string? DealerCountry { get; set; }
+
         public required string DealerStoreName { get; set; }
 
         public required string DealerLocationURL { get; set; }
