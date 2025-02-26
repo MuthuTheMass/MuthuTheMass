@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\muthumainproject\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj": {}
+    "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj": {}
   },
   "projects": {
-    "E:\\muthumainproject\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj": {
+    "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\muthumainproject\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj",
+        "projectUniqueName": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj",
         "projectName": "CarParkingSystem.Application",
-        "projectPath": "E:\\muthumainproject\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj",
-        "packagesPath": "C:\\Users\\surya parakash\\.nuget\\packages\\",
-        "outputPath": "E:\\muthumainproject\\CarParkingSystem.Application\\obj\\",
+        "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Application\\CarParkingSystem.Application.csproj",
+        "packagesPath": "C:\\Users\\shamb\\.nuget\\packages\\",
+        "outputPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\surya parakash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shamb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
-                "projectPath": "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
+              "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
+                "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
               },
-              "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj": {
-                "projectPath": "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj"
+              "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj": {
+                "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj"
               }
             }
           }
@@ -47,7 +51,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -86,21 +91,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
+    "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj",
+        "projectUniqueName": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj",
         "projectName": "CarParkingSystem.Domain",
-        "projectPath": "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj",
-        "packagesPath": "C:\\Users\\surya parakash\\.nuget\\packages\\",
-        "outputPath": "E:\\muthumainproject\\CarParkingSystem.Domain\\obj\\",
+        "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj",
+        "packagesPath": "C:\\Users\\shamb\\.nuget\\packages\\",
+        "outputPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\surya parakash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shamb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -126,7 +135,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -157,21 +167,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj": {
+    "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
+        "projectUniqueName": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
         "projectName": "CarParkingSystem.Infrastructure",
-        "projectPath": "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\surya parakash\\.nuget\\packages\\",
-        "outputPath": "E:\\muthumainproject\\CarParkingSystem.Infrastructure\\obj\\",
+        "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\shamb\\.nuget\\packages\\",
+        "outputPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\surya parakash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shamb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,8 +200,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
-                "projectPath": "E:\\muthumainproject\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
+              "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
+                "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
               }
             }
           }
@@ -201,7 +215,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -252,7 +267,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
