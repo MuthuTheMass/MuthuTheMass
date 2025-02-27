@@ -1,6 +1,4 @@
-﻿
-using CarParkingSystem.Domain.Dtos.Location;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace CarParkingSystem.Application.Dtos.Dealers
 {
@@ -10,7 +8,10 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public string searchFrom { get; set; }
 
         public List<Filters> filters { get; set; }
-        public Location userLocation { get; set; }
+
+        public int pageNumber { get; set; }
+
+        public int pageSize { get; set; }
     }
 
     public class Filters
@@ -20,6 +21,9 @@ namespace CarParkingSystem.Application.Dtos.Dealers
 
         public string fullValue => $"{key} : {value}";
     }
+
+    public record DealerRecord(List<DealerDto> Data, int TotalDataCount);
+
 
     public class DealerDto
     {

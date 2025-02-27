@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDbContext))]
-    [Migration("20250201135322_address_update_dealer")]
-    partial class address_update_dealer
+    [Migration("20250227132938_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

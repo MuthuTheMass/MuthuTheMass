@@ -128,3 +128,7 @@ DatabaseMigrator/bin/Debug/net8.0/DatabaseMigrator.deps.json
 *.pyd
 /bin/
 
+*.pdb
+*.dll
+*.exe
+*.txt

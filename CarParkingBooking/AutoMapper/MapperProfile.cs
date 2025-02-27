@@ -181,7 +181,8 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<Filters.Filter,Filter.Filter>()
                 .ForMember(opt => opt.searchFrom,dest => dest.MapFrom(src => src.searchFrom))
                 .ForMember(opt => opt.filters,dest => dest.MapFrom(src => src.filters))
-                .ForMember(opt => opt.userLocation,dest => dest.MapFrom(src => src.userLocation))
+                .ForMember(opt => opt.pageNumber,dest => dest.MapFrom(src => src.pageNumber))
+                .ForMember(opt => opt.pageSize,dest => dest.MapFrom(src => src.pageSize))
                 .ReverseMap();
 
             CreateMap<Filters.Filters, Filter.Filters>()

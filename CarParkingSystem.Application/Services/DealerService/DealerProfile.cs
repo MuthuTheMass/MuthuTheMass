@@ -4,6 +4,7 @@ using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Repositories;
+using System.Threading;
 
 namespace CarParkingSystem.Application.Services.DealerService;
 
@@ -12,7 +13,7 @@ public interface IDealerProfile
 {
     Task<bool?> DealerSignUp(SignUpDto dealer);
     
-    Task<List<DealerDto>> GetAllDealersBySearch(Filter filter);
+    Task<DealerRecord> GetAllDealersBySearch(Filter filter);
 
     Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId);
 }
@@ -52,11 +53,12 @@ public class DealerProfile : IDealerProfile
         return await _dealerRepository.CreateDealer(data);
     }
 
-    public async Task<List<DealerDto>> GetAllDealersBySearch(Filter filter)
+    public async Task<DealerRecord> GetAllDealersBySearch(Filter filter)
     {
         var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filter>(filter);
-        List<DealerDetails> dealers = await _dealerRepository.GetAllDealers(mapFilter);
-        return _mapper.Map<List<DealerDto>>(dealers);
+        var dealers = await _dealerRepository.GetAllDealers(mapFilter);
+        
+        return new DealerRecord(_mapper.Map<List<DealerDto>>(dealers.Data),dealers.TotalDataCount);
     }
 
     public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId)

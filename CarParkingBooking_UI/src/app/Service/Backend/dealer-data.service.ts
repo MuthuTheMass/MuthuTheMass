@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { dealerVM } from '../Model/dealermodal';
 import {environment} from "../../../environments/environment";
 import {BackStoreService} from "../store/back-store.service";
@@ -19,77 +19,21 @@ export class DealerDataService {
 
  }
 
-  getalluserdata(){
-
-    let loc;
-    let error:any = "";
-
-  //   this.locationService.getCurrentLocation()
-  //    .then(position => {
-  //      loc = {
-  //       Latitude: position.coords.latitude,
-  //       Longitude: position.coords.longitude
-  //      };
-  //      error = null; // Clear any previous errors
-
-  //      const body = {
-  //       "searchFrom": "string",
-  //       "filters": [],
-  //       "userLocation": loc
-  //     };
-  
-  //     this.httpClient.post<any>(environment.apiUrl+"Dealer/search",body).subscribe(data =>{
-  //       console.log(data)
-  //       this.backStoreService.dealerData.next(data as dealerVM[]);
-  //      });
-  //    })
-  //    .catch(err => {
-  //      error = err.message;
-  //      loc = null; // Clear previous location
-  //    });
-
-  this.locationService.getIPLocation()
-     .then(position => {
-      //  loc = {
-      //   Latitude: position.coords.latitude,
-      //   Longitude: position.coords.longitude
-      //  };
-       error = null; // Clear any previous errors
+  getalluserdata(pageNumber:number,pageSize:number):Observable<dealerVM[]>{
 
        const body = {
         "searchFrom": "string",
         "filters": [],
-        "userLocation": position
+        "pageNumber":pageNumber,
+        "pageSize":pageSize
       };
   
-      this.httpClient.post<any>(environment.apiUrl+"Dealer/search",body).subscribe(data =>{
-        console.log(data)
-        this.backStoreService.dealerData.next(data as dealerVM[]);
-       });
-     })
-     .catch(err => {
-       error = err.message;
-       loc = null; // Clear previous location
-     });
+      return this.httpClient.post<any>(`${environment.apiUrl}Dealer/search`, body);
 
   }
-
-  public getUserLocation(): any {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          const userLocation = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          }
-          return userLocation;
-        });
-    }
-
-    return null;
-  }
-
   getNewUsers(dealerEmailId:string):Observable<any>{
    return this.httpClient.get(environment.apiUrl+"Dealer/dealernewusers?userName="+dealerEmailId);
   }
 }
+
+

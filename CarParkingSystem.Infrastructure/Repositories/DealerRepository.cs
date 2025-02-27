@@ -1,9 +1,7 @@
 using CarParkingSystem.Domain.Entities.SQL;
-using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.DtosHelper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -15,7 +13,7 @@ public interface IDealerRepository
     Task<DealerDetails?> GetUserByEmail(string email);
     Task<DealerDetails?> GetUserById(string dealerId);
     Task<bool?> GetDealerExists(string dealername);
-    Task<List<DealerDetails>?> GetAllDealers(Filter filters);
+    Task<DealerRecord> GetAllDealers(Filter filters);
     Task<bool> CreateDealer(DealerDetails dealer);
     Task<bool> UpdateDealer(DealerDetails dealer);
     Task<bool> DeleteDealer(string? emailId);
@@ -78,31 +76,28 @@ public class DealerRepository : IDealerRepository
 
     }
 
-    public async Task<List<DealerDetails>?> GetAllDealers(Filter filters)
+    public async Task<DealerRecord> GetAllDealers(Filter filters)
     {
-        List<DealerDetails>? queryData = null;
-
-        //TODO Search area
-        if(filters.userLocation is null) return queryData;
+        var query = _dbContext.DealerDetails.AsQueryable();
+        int totalRecords = await query.CountAsync();
 
         foreach (var filter  in filters.filters)
         {
-            if(filter.key == "Address")
+            if (filter.key == "Address")
             {
-                queryData = await _dbContext.DealerDetails.Where(d => d.DealerAddress.Contains(filter.value))
-                                                          .Where(d=> d.IsValidUser == true)
-                                                          .ToListAsync();
+                query = query.Where(d => d.DealerAddress!.Contains(filter.value))
+                             .Where(d => d.IsValidUser == true);
 
             }
         }
+        var dealerDetails = await query.Where(d => d.IsValidUser)
+                                       .OrderBy(d => d.DealerID)
+                                       .Skip((filters.pageNumber - 1) * filters.pageSize)
+                                       .Take(filters.pageSize)
+                                       .ToListAsync(); 
 
-        //if(filters.filters.Count == 0)
-        //{
-            queryData = await _dbContext.DealerDetails.Where(d => d.IsValidUser).ToListAsync();
-            //queryData = queryData.Where(d => GetLocation.IsLocationWithinRadius(d.DealerGPSLocation,filters.userLocation, 3).GetAwaiter().GetResult()).ToList();
-        //}
 
-        return queryData;
+        return new DealerRecord(dealerDetails,totalRecords);
     }
      
 

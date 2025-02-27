@@ -4,7 +4,6 @@ using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDbContext))]
-    [Migration("20241222111322_added_isValidDealer]")]
-    partial class added_isValidDealer
+    partial class CarParkingBookingDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,119 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CarParkingSystem.Domain.Entities.SqlDatabase.DBModel.VehicleDetails", b =>
+            modelBuilder.Entity("CarParkingSystem.Domain.Entities.SQL.DealerDetails", b =>
+                {
+                    b.Property<string>("DealerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DealerAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerCity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerGPSLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerLandmark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("DealerOpenOrClosed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DealerPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerPhoneNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("DealerProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("DealerRating")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerStoreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DealerTiming")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsValidUser")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Rights")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DealerID");
+
+                    b.ToTable("DealerDetails");
+                });
+
+            modelBuilder.Entity("CarParkingSystem.Domain.Entities.SQL.UserDetails", b =>
+                {
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rights")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("UserProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("UserDetails");
+                });
+
+            modelBuilder.Entity("CarParkingSystem.Domain.Entities.SQL.VehicleDetails", b =>
                 {
                     b.Property<string>("VehicleId")
                         .HasColumnType("nvarchar(450)");
@@ -66,109 +175,6 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
                     b.HasKey("VehicleId");
 
                     b.ToTable("VehicleDetails");
-                });
-
-            modelBuilder.Entity("CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel.DealerDetails", b =>
-                {
-                    b.Property<string>("DealerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DealerAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerGPSLocation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerLandmark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("DealerOpenOrClosed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("DealerPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerPhoneNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("DealerProfilePicture")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("DealerRating")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerStoreName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DealerTiming")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsValidUser")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Rights")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DealerID");
-
-                    b.ToTable("DealerDetails");
-                });
-
-            modelBuilder.Entity("CarParkingSystem.Infrastructure.Database.SQLDatabase.DBModel.UserDetails", b =>
-                {
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MobileNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rights")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("UserProfilePicture")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("UserDetails");
                 });
 #pragma warning restore 612, 618
         }

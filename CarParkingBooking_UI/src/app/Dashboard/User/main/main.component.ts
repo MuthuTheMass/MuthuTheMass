@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import { ArticalComponent } from "./artical/artical.component";
-import { RouterOutlet } from '@angular/router';
-import {FormControl, FormGroup, FormsModule} from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {RatingModule} from "ngx-bootstrap/rating";
 import {DealerDataService} from "../../../Service/Backend/dealer-data.service";
 import {BackStoreService} from "../../../Service/store/back-store.service";
+import { dealerVM } from '../../../Service/Model/dealermodal';
 
 
 
@@ -21,7 +20,10 @@ export class MainComponent {
 
   rating: number = 4.5;
   currentRate: number = 2;
-
+  dealers = signal<dealerVM[]>([]);
+  totalItems = signal<number>(0);
+  currentPage = signal<number>(1);
+  itemsPerPage = signal<number>(10);
 
 
   constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService) {
@@ -29,7 +31,24 @@ export class MainComponent {
   }
 
   ngOnInit():void {
-    this.dealerDataService.getalluserdata();
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.dealerDataService.getalluserdata(this.currentPage(), this.itemsPerPage()).subscribe((data: any) => 
+      {
+        this.dealers.set(data.data);
+        this.totalItems.set(data.totalDataCount);
+      });
+  }
+
+  onPageChange(page: number) {
+    this.currentPage.set(page);
+    this.fetchData();
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalItems() / this.itemsPerPage());
   }
 
   convertStringToFloat(value: string) {
