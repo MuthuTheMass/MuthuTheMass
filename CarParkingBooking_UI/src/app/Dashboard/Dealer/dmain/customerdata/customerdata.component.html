@@ -199,7 +199,7 @@
             @for(newUser of userDetails; track newUser){
               <div class="customer">
                 <div class="info">
-                 <img [src]="this.convertionOFImage(newUser.picture)" width="40px" height="40px" alt="">
+                 <img [src]="newUser.picture" width="40px" height="40px" alt="">
                 <div>
                  <h4>{{newUser.name}}</h4>
                  <small>{{newUser.mobileNumber}}</small>

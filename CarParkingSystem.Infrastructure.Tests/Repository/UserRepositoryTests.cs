@@ -3,6 +3,7 @@ using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.Repositories;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
+using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 

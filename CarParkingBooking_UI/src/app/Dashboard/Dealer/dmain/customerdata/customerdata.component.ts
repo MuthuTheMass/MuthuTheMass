@@ -1,4 +1,4 @@
-import {Component, computed} from '@angular/core';
+import {Component} from '@angular/core';
 import {UserDetailsForDealer} from "../../../../Service/Model/UserDetails";
 import {UserDetailsService} from "../../../../Service/Backend/user-details.service";
 import {DealerDataService} from "../../../../Service/Backend/dealer-data.service";
@@ -32,7 +32,9 @@ export class CustomerdataComponent {
       this.bsStore.dealerLoggedData.set(dealerData as any);
       if(dealerData != null){
         this.dealerService.getNewUsers(JSON.parse(dealerData).email).subscribe(
-          (result:any) => {
+          async (result:any) => {
+            var blob = new Blob([result.picture], { type: "image/jpeg" });
+            result.picture = URL.createObjectURL(blob);
             this.userDetails = result;
           },
           (err:any) => {
@@ -41,13 +43,5 @@ export class CustomerdataComponent {
         )
       }
     }
-  }
-
-  convertionOFImage(image:any){
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onloadend = () => {
-      return this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
-    };
   }
 }

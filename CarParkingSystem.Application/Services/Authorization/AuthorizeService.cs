@@ -3,7 +3,7 @@ using CarParkingBookingVM.Enums;
 using CarParkingSystem.Application.Dtos.Authorization;
 using CarParkingSystem.Application.Helper.JWTToken;
 using CarParkingSystem.Domain.Entities.SQL;
-using CarParkingSystem.Infrastructure.Repositories;
+using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
 
 namespace CarParkingSystem.Application.Services.Authorization;

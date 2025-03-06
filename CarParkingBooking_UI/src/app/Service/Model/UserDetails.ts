@@ -21,7 +21,7 @@ export interface UserUpdateData {
 
 export interface UserDetailsForDealer{
   name:string
-  picture:File
+  picture:string
   mobileNumber:string
 }
 

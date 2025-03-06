@@ -4,6 +4,7 @@ using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
 {
     [DbContext(typeof(CarParkingBookingDbContext))]
-    partial class CarParkingBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250306151232_dealer_slots")]
+    partial class dealer_slots
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

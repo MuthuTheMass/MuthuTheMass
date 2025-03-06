@@ -3,7 +3,7 @@ using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarParkingSystem.Infrastructure.Repositories;
+namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
 public interface IUserRepository
 {
@@ -22,13 +22,13 @@ public class UserRepository : IUserRepository
     private readonly IBookingRepository _bookingRepository;
     private readonly IDealerRepository _dealerRepository;
 
-    public UserRepository(CarParkingBookingDbContext dbContext,IBookingRepository bookingRepository, IDealerRepository dealerRepository)
+    public UserRepository(CarParkingBookingDbContext dbContext, IBookingRepository bookingRepository, IDealerRepository dealerRepository)
     {
         _bookingRepository = bookingRepository;
-        _dbContext = dbContext; 
+        _dbContext = dbContext;
         _dealerRepository = dealerRepository;
     }
-    
+
     public async Task<UserDetails?> GetUserByEmail(string email)
     {
         var userResource = await _dbContext.UserDetails.FirstOrDefaultAsync(u => u.Email == email);
@@ -58,7 +58,7 @@ public class UserRepository : IUserRepository
         await _dbContext.SaveChangesAsync();
         return true;
 
-        
+
     }
 
     public async Task<bool> CraeteNewUser(UserDetails user)
@@ -75,7 +75,7 @@ public class UserRepository : IUserRepository
 
     public async Task<bool> DeleteUserByEmailId(string email)
     {
-        var userResource = await _dbContext.UserDetails.Where(u=>u.Email == email).ToListAsync();
+        var userResource = await _dbContext.UserDetails.Where(u => u.Email == email).ToListAsync();
 
         if (userResource.Count == 0)
         {
@@ -97,6 +97,6 @@ public class UserRepository : IUserRepository
         var orderedUserResource = userResource.OrderBy(u => usersData.First(d => d.Name == u.UserID).DateTime)
                                               .ToList();
         return userResource;
-        
+
     }
 }

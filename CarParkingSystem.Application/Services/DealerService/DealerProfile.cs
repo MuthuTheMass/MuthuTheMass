@@ -3,7 +3,7 @@ using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
-using CarParkingSystem.Infrastructure.Repositories;
+using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 using System.Threading;
 
 namespace CarParkingSystem.Application.Services.DealerService;

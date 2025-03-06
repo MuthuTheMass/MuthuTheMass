@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace CarParkingSystem.Infrastructure.Repositories;
+namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
 
 public interface IDealerRepository
@@ -26,7 +26,7 @@ public class DealerRepository : IDealerRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<DealerDetails?> GetUserByEmail(string email)
     {
         var dealerResource = await _dbContext.DealerDetails.FirstOrDefaultAsync(d => d.DealerEmail == email);
@@ -81,7 +81,7 @@ public class DealerRepository : IDealerRepository
         var query = _dbContext.DealerDetails.AsQueryable();
         int totalRecords = await query.CountAsync();
 
-        foreach (var filter  in filters.filters)
+        foreach (var filter in filters.filters)
         {
             if (filter.key == "Address")
             {
@@ -94,12 +94,12 @@ public class DealerRepository : IDealerRepository
                                        .OrderBy(d => d.DealerID)
                                        .Skip((filters.pageNumber - 1) * filters.pageSize)
                                        .Take(filters.pageSize)
-                                       .ToListAsync(); 
+                                       .ToListAsync();
 
 
-        return new DealerRecord(dealerDetails,totalRecords);
+        return new DealerRecord(dealerDetails, totalRecords);
     }
-     
+
 
 
     #region private methods
@@ -122,7 +122,7 @@ public class DealerRepository : IDealerRepository
                 var value = property.GetValue(obj);
 
                 // Check if the value is null or empty (for strings)
-                if (value == null || (value is string str && string.IsNullOrWhiteSpace(str)))
+                if (value == null || value is string str && string.IsNullOrWhiteSpace(str))
                 {
                     return false;
                 }

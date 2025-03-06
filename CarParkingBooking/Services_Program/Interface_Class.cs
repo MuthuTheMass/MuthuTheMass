@@ -4,8 +4,8 @@ using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Application.Services.DealerService;
 using CarParkingSystem.Application.Services.UserService;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
-using CarParkingSystem.Infrastructure.Repositories;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
+using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
 namespace CarParkingBooking.Services_Program
 {
@@ -28,6 +28,8 @@ namespace CarParkingBooking.Services_Program
             services.AddScoped<IDealerRepository, DealerRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IDealerSlotsRepository, DealerSlotsRepository>();
+
 
         }
     }
