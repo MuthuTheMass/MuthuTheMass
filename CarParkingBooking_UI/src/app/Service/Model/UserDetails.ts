@@ -18,8 +18,10 @@ export interface UserUpdateData {
   ProfilePicture: File
 }
 
-export interface userDetailsForDealer{
+
+export interface UserDetailsForDealer{
   name:string
-  email:string
+  picture:File
   mobileNumber:string
 }
+

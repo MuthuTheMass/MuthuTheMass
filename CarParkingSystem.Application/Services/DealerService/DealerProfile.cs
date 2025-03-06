@@ -64,6 +64,7 @@ public class DealerProfile : IDealerProfile
     public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId)
     {
         var userData = await _userRepository.GetUserDetailsForDealer(emailId);
+        
         return _mapper.Map<List<UserDetailsForDealer>>(userData);
     }
 }

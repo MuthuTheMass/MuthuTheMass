@@ -1,5 +1,7 @@
 using Azure;
+using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Helper;
+using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
 using Microsoft.Azure.Cosmos;
@@ -14,7 +16,7 @@ public interface IBookingRepository
     Task<bool> AddBookingDetails(CarBooking carBooking);
     Task<CarBooking> UpdateBookingDetails(CarBooking carBooking);
     Task<bool> DeleteBookingDetails(string bookingId, string dealerId, string customerId);
-    Task<List<string>> GetUserByBookingForDealer(string dealerId);
+    Task<List<UserDetailsNewCustomer>> GetUserByConfirmedBookingForDealer(string dealerId);
 }
 
 public class BookingRepository : IBookingRepository
@@ -73,18 +75,19 @@ public class BookingRepository : IBookingRepository
         return result.Resource;
     }
 
-    public async Task<List<string>> GetUserByBookingForDealer(string dealerId)
+    public async Task<List<UserDetailsNewCustomer?>> GetUserByConfirmedBookingForDealer(string dealerId)
     {
         var queryable = Container.GetItemLinqQueryable<CarBooking>();
-        var iterator = queryable.Where(b => b.DealerId.Equals(dealerId)).Select(u=> u.CustomerId).Distinct().ToFeedIterator();
-        List<string> result = new();
+        var iterator = queryable.Where(b => b.DealerId != null && b.DealerId.Equals(dealerId))
+                                .ToFeedIterator();
+        List<UserDetailsNewCustomer?> result = new();
 
         while (iterator.HasMoreResults)
         {
-            FeedResponse<string> response = await iterator.ReadNextAsync();
+            FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
             foreach (var item in response)
             {
-                result.Add(item);
+                result.Add(new UserDetailsNewCustomer(item.CustomerId,DateTime.Parse(item.CreatedDate)));
             }
         }
         return result;

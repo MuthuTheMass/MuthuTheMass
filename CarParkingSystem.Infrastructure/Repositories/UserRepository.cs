@@ -91,8 +91,11 @@ public class UserRepository : IUserRepository
     {
         List<UserDetails> userDetails = new List<UserDetails>();
         var dealerIdByEmail = await _dealerRepository.GetUserByEmail(emailId);
-        var usersId = await _bookingRepository.GetUserByBookingForDealer(dealerIdByEmail?.DealerID!);
+        var usersData = await _bookingRepository.GetUserByConfirmedBookingForDealer(dealerIdByEmail?.DealerID!);
+        List<string?> usersId = usersData.Select(u => u.Name).ToList();
         var userResource = await _dbContext.UserDetails.Where(u => usersId.Contains(u.UserID)).ToListAsync();
+        var orderedUserResource = userResource.OrderBy(u => usersData.First(d => d.Name == u.UserID).DateTime)
+                                              .ToList();
         return userResource;
         
     }

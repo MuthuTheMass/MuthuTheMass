@@ -8,4 +8,6 @@ namespace CarParkingSystem.Domain.Dtos.Dealers
         public IFormFile Picture { get; set; }
         public string MobileNumber { get; set; }
     }
+
+    public record UserDetailsNewCustomer (string? Name,DateTime? DateTime);
 }

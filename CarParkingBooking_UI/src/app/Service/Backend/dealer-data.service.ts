@@ -32,7 +32,7 @@ export class DealerDataService {
 
   }
   getNewUsers(dealerEmailId:string):Observable<any>{
-   return this.httpClient.get(environment.apiUrl+"Dealer/dealernewusers?userName="+dealerEmailId);
+   return this.httpClient.get(environment.apiUrl+"Dealer/dealernewusers?emailId="+dealerEmailId);
   }
 }
 

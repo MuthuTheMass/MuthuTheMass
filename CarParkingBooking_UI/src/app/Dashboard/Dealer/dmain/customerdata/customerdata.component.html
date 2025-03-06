@@ -195,196 +195,25 @@
             <h2>New custome</h2>
             <!--            <button>See all <i class='bx bxs-chevrons-right'></i></button>-->
           </div>
-          <div class="card-body2">
-                 <div class="customer">
-                 <div class="info">
-                  <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                 <div>
-                  <h4>  suryaprakash p</h4>
-                  <small>CEO Excpert</small>
-                 </div>
-                </div>
-                <div class="contact ">
-                  <i class='bx bx-user-circle'></i>
-                  <i class='bx bx-message-alt-minus'></i>
-                  <i class='bx bx-phone'></i>
-                </div>
-              </div>
+          <div class="card-body2">`
+            @for(newUser of userDetails; track newUser){
               <div class="customer">
                 <div class="info">
-                 <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
+                 <img [src]="this.convertionOFImage(newUser.picture)" width="40px" height="40px" alt="">
                 <div>
-                 <h4>  suryaprakash p</h4>
-                 <small>CEO Excpert</small>
+                 <h4>{{newUser.name}}</h4>
+                 <small>{{newUser.mobileNumber}}</small>
                 </div>
                </div>
                <div class="contact ">
-                 <i class='bx bx-user-circle' ></i>
-                 <i class='bx bx-message-alt-minus' ></i>
-                 <i class='bx bx-phone' ></i>
-               </div>
-             </div> <div class="customer">
-              <div class="info">
-               <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-               <h4>  suryaprakash p</h4>
-               <small>CEO Excpert</small>
-              </div>
-             </div>
-             <div class="contact ">
-               <i class='bx bx-user-circle' ></i>
-               <i class='bx bx-message-alt-minus' ></i>
-               <i class='bx bx-phone' ></i>
-             </div>
-           </div>
-
-              <div class="customer">
-                <div class="info">
-                 <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                <div>
-                 <h4>  suryaprakash p</h4>
-                 <small>CEO Excpert</small>
-                </div>
-               </div>
-               <div class="contact ">
-                 <i class='bx bx-user-circle' ></i>
-                 <i class='bx bx-message-alt-minus' ></i>
-                 <i class='bx bx-phone' ></i>
+                 <i class='bx bx-user-circle'></i>
+                 <i class='bx bx-message-alt-minus'></i>
+                 <i class='bx bx-phone'></i>
                </div>
              </div>
-             <div class="customer">
-              <div class="info">
-               <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-               <h4>  suryaprakash p</h4>
-               <small>CEO Excpert</small>
-              </div>
-             </div>
-             <div class="contact ">
-               <i class='bx bx-user-circle' ></i>
-               <i class='bx bx-message-alt-minus' ></i>
-               <i class='bx bx-phone' ></i>
-             </div>
-           </div>
-           <div class="customer">
-            <div class="info">
-             <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-            <div>
-             <h4>  suryaprakash p</h4>
-             <small>CEO Excpert</small>
-            </div>
-           </div>
-           <div class="contact ">
-             <i class='bx bx-user-circle' ></i>
-             <i class='bx bx-message-alt-minus' ></i>
-             <i class='bx bx-phone' ></i>
-           </div>
-         </div> <div class="customer">
-          <div class="info">
-           <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-          <div>
-           <h4>  suryaprakash p</h4>
-           <small>CEO Excpert</small>
+            }
+                 
           </div>
-         </div>
-         <div class="contact ">
-           <i class='bx bx-user-circle' ></i>
-           <i class='bx bx-message-alt-minus' ></i>
-           <i class='bx bx-phone' ></i>
-         </div>
-       </div>
-            <div class="customer">
-              <div class="info">
-                <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-                <div>
-                  <h4>  suryaprakash p</h4>
-                  <small>CEO Excpert</small>
-                </div>
-              </div>
-              <div class="contact ">
-                <i class='bx bx-user-circle' ></i>
-                <i class='bx bx-message-alt-minus' ></i>
-                <i class='bx bx-phone' ></i>
-              </div>
-            </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div><div class="customer">
-            <div class="info">
-              <img src="..\assets\muthuparking.jpeg" width="40px" height="40px" alt="">
-              <div>
-                <h4>  suryaprakash p</h4>
-                <small>CEO Excpert</small>
-              </div>
-            </div>
-            <div class="contact ">
-              <i class='bx bx-user-circle' ></i>
-              <i class='bx bx-message-alt-minus' ></i>
-              <i class='bx bx-phone' ></i>
-            </div>
-          </div></div>
 
 </div>
 </div>
