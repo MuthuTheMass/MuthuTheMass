@@ -10,11 +10,10 @@ import { LoginResponse } from '../../../Service/Model/BackendUserModels';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-dreg',
-  standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule],
-  templateUrl: './dreg.component.html',
-  styleUrl: './dreg.component.css'
+    selector: 'app-dreg',
+    imports: [ReactiveFormsModule, FormsModule, CommonModule],
+    templateUrl: './dreg.component.html',
+    styleUrl: './dreg.component.css'
 })
 export class DregComponent {
   validators : any;

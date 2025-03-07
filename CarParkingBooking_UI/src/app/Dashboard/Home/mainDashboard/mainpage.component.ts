@@ -4,11 +4,10 @@ import { RouterOutlet } from '@angular/router';
 
 
 @Component({
-  selector: 'app-mainpage',
-  standalone: true,
-  imports: [NavbarComponent,RouterOutlet,],
-  templateUrl: './mainpage.component.html',
-  styleUrl: './mainpage.component.css'
+    selector: 'app-mainpage',
+    imports: [NavbarComponent, RouterOutlet,],
+    templateUrl: './mainpage.component.html',
+    styleUrl: './mainpage.component.css'
 })
 export class MainpageComponent {
 

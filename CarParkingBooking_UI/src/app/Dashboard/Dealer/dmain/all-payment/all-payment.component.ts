@@ -3,11 +3,10 @@ import {userDetails, userDetailsForDealer} from "../../../../Service/Model/UserD
 import {UserDetailsService} from "../../../../Service/Backend/user-details.service";
 
 @Component({
-  selector: 'app-all-payment',
-  standalone: true,
-  imports: [],
-  templateUrl: './all-payment.component.html',
-  styleUrl: './all-payment.component.css'
+    selector: 'app-all-payment',
+    imports: [],
+    templateUrl: './all-payment.component.html',
+    styleUrl: './all-payment.component.css'
 })
 export class AllPaymentComponent {
 

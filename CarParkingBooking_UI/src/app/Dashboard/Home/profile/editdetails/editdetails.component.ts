@@ -7,11 +7,10 @@ import {userDetails, UserUpdateData} from '../../../../Service/Model/UserDetails
 import {UserHelperService} from "../../../../Service/UIService/user-helper.service";
 
 @Component({
-  selector: 'app-editdetails',
-  standalone: true,
-  imports: [ReactiveFormsModule  ],
-  templateUrl: './editdetails.component.html',
-  styleUrl: './editdetails.component.css'
+    selector: 'app-editdetails',
+    imports: [ReactiveFormsModule],
+    templateUrl: './editdetails.component.html',
+    styleUrl: './editdetails.component.css'
 })
 export class EditdetailsComponent {
 

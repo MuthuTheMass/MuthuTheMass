@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { BackStoreService } from '../../Service/store/back-store.service';
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+    selector: 'app-card',
+    imports: [],
+    templateUrl: './card.component.html',
+    styleUrl: './card.component.css'
 })
 export class CardComponent {
 

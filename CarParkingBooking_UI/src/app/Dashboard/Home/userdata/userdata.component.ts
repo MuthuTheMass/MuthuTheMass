@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 
 @Component({
-  selector: 'app-userdata',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './userdata.component.html',
-  styleUrl: './userdata.component.css'
+    selector: 'app-userdata',
+    imports: [ReactiveFormsModule],
+    templateUrl: './userdata.component.html',
+    styleUrl: './userdata.component.css'
 })
 export class UserdataComponent {
   @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;

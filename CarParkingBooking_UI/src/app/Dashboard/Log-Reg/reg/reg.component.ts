@@ -9,11 +9,10 @@ import {} from '@angular/common/http';
 import { Login, SignUp } from '../../../Service/Model/UserModels';
 
 @Component({
-  selector: 'app-reg',
-  standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule],
-  templateUrl: './reg.component.html',
-  styleUrl: './reg.component.css'
+    selector: 'app-reg',
+    imports: [ReactiveFormsModule, FormsModule, CommonModule],
+    templateUrl: './reg.component.html',
+    styleUrl: './reg.component.css'
 })
 export class RegComponent {
 validators : any;

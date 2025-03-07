@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-sample-backend',
-  standalone: true,
-  imports: [],
-  templateUrl: './sample-backend.component.html',
-  styleUrl: './sample-backend.component.css'
+    selector: 'app-sample-backend',
+    imports: [],
+    templateUrl: './sample-backend.component.html',
+    styleUrl: './sample-backend.component.css'
 })
 export class SampleBackendComponent {
 

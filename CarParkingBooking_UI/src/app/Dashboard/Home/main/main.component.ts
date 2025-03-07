@@ -10,11 +10,10 @@ import {BackStoreService} from "../../../Service/store/back-store.service";
 
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [RatingModule, FormsModule, CommonModule,],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+    selector: 'app-main',
+    imports: [RatingModule, FormsModule, CommonModule,],
+    templateUrl: './main.component.html',
+    styleUrl: './main.component.css'
 })
 export class MainComponent {
 

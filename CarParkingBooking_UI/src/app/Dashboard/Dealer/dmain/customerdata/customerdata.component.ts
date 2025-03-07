@@ -3,11 +3,10 @@ import {userDetailsForDealer} from "../../../../Service/Model/UserDetails";
 import {UserDetailsService} from "../../../../Service/Backend/user-details.service";
 
 @Component({
-  selector: 'app-customerdata',
-  standalone: true,
-  imports: [],
-  templateUrl: './customerdata.component.html',
-  styleUrl: './customerdata.component.css'
+    selector: 'app-customerdata',
+    imports: [],
+    templateUrl: './customerdata.component.html',
+    styleUrl: './customerdata.component.css'
 })
 export class CustomerdataComponent {
   userDetails: userDetailsForDealer[] = [] as userDetailsForDealer[];

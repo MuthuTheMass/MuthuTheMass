@@ -10,11 +10,10 @@ import { VehicleModal } from '../../../Service/Model/VehicleModal';
 import { userDetails } from '../../../Service/Model/UserDetails';
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [EditdetailsComponent, CardComponent],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+    selector: 'app-profile',
+    imports: [EditdetailsComponent, CardComponent],
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
 
