@@ -15,20 +15,22 @@ public interface IDealerProfile
     
     Task<DealerRecord> GetAllDealersBySearch(Filter filter);
 
-    Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId);
+    Task<DashboardDetailsForDealer> GetUsersByDealer(string emailId);
 }
 
 public class DealerProfile : IDealerProfile
 {
     private readonly IDealerRepository _dealerRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IDealerSlotsRepository _dealerSlotsRepository;
     private readonly IMapper _mapper;
     
-    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository)
+    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository)
     {
         _dealerRepository = dealerRepository;
         _mapper = mapper;
         _userRepository = userRepository;
+        _dealerSlotsRepository = dealerSlotsRepository;
     }
     
     
@@ -61,10 +63,18 @@ public class DealerProfile : IDealerProfile
         return new DealerRecord(_mapper.Map<List<DealerDto>>(dealers.Data),dealers.TotalDataCount);
     }
 
-    public async Task<List<UserDetailsForDealer>> GetUsersByDealer(string emailId)
+    public async Task<DashboardDetailsForDealer> GetUsersByDealer(string emailId)
     {
+        var data = new DashboardDetailsForDealer();
+
         var userData = await _userRepository.GetUserDetailsForDealer(emailId);
-        
-        return _mapper.Map<List<UserDetailsForDealer>>(userData);
+        var dealerSlotDetails = await _dealerSlotsRepository.GetSlotsByDealerId(emailId);
+
+        data.NewCustomers = _mapper.Map<List<UserDetailsForDealer>>(userData);
+        data.AvailableSlots = dealerSlotDetails.Available_Slots;
+        data.BookedSlots = dealerSlotDetails.Booked_Slots;
+        data.TotalSlots = dealerSlotDetails.Total_Slots;
+
+        return data;
     }
 }

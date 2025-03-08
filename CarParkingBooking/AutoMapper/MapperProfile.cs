@@ -205,6 +205,7 @@ namespace CarParkingBooking.AutoMapper
             CreateMap<UserDetails, UserDetailsForDealer>()
                 .ForMember(opt => opt.Picture, dest => dest.MapFrom(src => ConvertByteToFromFile(src.UserProfilePicture)))
                 .ReverseMap();
+
         }
     }
 }

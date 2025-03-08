@@ -37,7 +37,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpGet("dealernewusers")]
-        public async Task<IActionResult> GetAllUserByDealer([FromQuery]string emailId)
+        public async Task<IActionResult> dealerDashboard([FromQuery]string emailId)
         {
             var result = await dealerData.GetUsersByDealer(emailId);
 

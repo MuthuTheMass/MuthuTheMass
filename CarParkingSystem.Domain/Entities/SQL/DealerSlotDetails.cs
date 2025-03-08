@@ -14,6 +14,8 @@ namespace CarParkingSystem.Domain.Entities.SQL
 
         public string? DealerId { get; set; }
 
+        public string? EmailId { get; set; }
+
         public int Available_Slots { get; set; }
 
         public int Booked_Slots { get; set; }

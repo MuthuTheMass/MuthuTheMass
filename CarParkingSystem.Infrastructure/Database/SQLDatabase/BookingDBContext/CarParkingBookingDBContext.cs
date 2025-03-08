@@ -199,6 +199,7 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext
                 {
                     Id = "Slots-1",
                     DealerId = "Dealer-1",
+                    EmailId = "surya@gmail.com",
                     Available_Slots = Total_Slots - 10,
                     Booked_Slots = Total_Slots - 20,
                     Total_Slots = Total_Slots,

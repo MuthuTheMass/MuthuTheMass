@@ -1,17 +1,18 @@
 ﻿using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
 {
     public interface IDealerSlotsRepository
     {
-        public DealerSlotDetails? GetSlotsByDealerId(string dealerId);
+        Task <DealerSlotDetails?> GetSlotsByDealerId(string dealerId);
 
-        public List<DealerSlotDetails> Get();
+        Task<List<DealerSlotDetails>> Get();
         
-        public bool UpsertDealerSlots(DealerSlotDetails dealerSlotDetails);
+        Task<bool> UpsertDealerSlots(DealerSlotDetails dealerSlotDetails);
 
-        public bool DeleteDealerSlotsByDealerId(string dealerId);
+        Task<bool> DeleteDealerSlotsByDealerId(string dealerId);
     }
 
     public class DealerSlotsRepository : IDealerSlotsRepository
@@ -23,35 +24,35 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
             _dbContext = dbContext;
         }
 
-        public bool DeleteDealerSlotsByDealerId(string dealerId)
+        public async Task<bool> DeleteDealerSlotsByDealerId(string dealerId)
         {
             if(string.IsNullOrEmpty(dealerId))
                 return false;
 
-            var dealerSlotDetails = _dbContext.DealerSlotDetails.FirstOrDefault(d => d.DealerId == dealerId);
+            var dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerId);
             if (dealerSlotDetails == null)
                 return false;
 
             _dbContext.DealerSlotDetails.Remove(dealerSlotDetails);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             return true;
 
         }
 
-        public List<DealerSlotDetails> Get()
+        public async Task<List<DealerSlotDetails>> Get()
         {
-            List<DealerSlotDetails> dealerSlotDetails = _dbContext.DealerSlotDetails.ToList();
+            List<DealerSlotDetails> dealerSlotDetails = await _dbContext.DealerSlotDetails.ToListAsync();
             if(dealerSlotDetails == null || dealerSlotDetails.Count <=0)
                 return new List<DealerSlotDetails>();
             return dealerSlotDetails;
         }
 
-        public DealerSlotDetails? GetSlotsByDealerId(string dealerId)
+        public async Task<DealerSlotDetails?> GetSlotsByDealerId(string dealerId)
         {
             if(string.IsNullOrEmpty(dealerId))
                 return null;
 
-            DealerSlotDetails? dealerSlotDetails = _dbContext.DealerSlotDetails.FirstOrDefault(d => d.DealerId == dealerId);
+            DealerSlotDetails? dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerId);
 
             if(dealerSlotDetails == null)
                 return new DealerSlotDetails() { Id ="none" };
@@ -60,16 +61,16 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
 
         }
 
-        public bool UpsertDealerSlots(DealerSlotDetails dealerSlotDetails)
+        public async Task<bool> UpsertDealerSlots(DealerSlotDetails dealerSlotDetails)
         {
-            if(dealerSlotDetails == null)
+            if (dealerSlotDetails == null)
                 return false;
 
-            var dealerSlot = _dbContext.DealerSlotDetails.FirstOrDefault(d => d.DealerId == dealerSlotDetails.DealerId);
+            var dealerSlot = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerSlotDetails.DealerId);
             if (dealerSlot == null)
             {
-                _dbContext.DealerSlotDetails.Add(dealerSlotDetails);
-                _dbContext.SaveChanges();
+                await _dbContext.DealerSlotDetails.AddAsync(dealerSlotDetails);
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
             else
@@ -77,8 +78,9 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
                 dealerSlot.Available_Slots = dealerSlotDetails.Available_Slots;
                 dealerSlot.Booked_Slots = dealerSlotDetails.Booked_Slots;
                 dealerSlot.Total_Slots = dealerSlotDetails.Total_Slots;
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
+        }
     }
 }

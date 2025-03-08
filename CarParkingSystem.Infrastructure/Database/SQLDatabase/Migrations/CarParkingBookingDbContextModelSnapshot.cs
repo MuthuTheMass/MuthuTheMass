@@ -109,6 +109,9 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
                     b.Property<string>("DealerId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmailId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Total_Slots")
                         .HasColumnType("int");
 
