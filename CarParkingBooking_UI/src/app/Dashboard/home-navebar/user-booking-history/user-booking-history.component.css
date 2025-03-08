@@ -3,7 +3,7 @@
   height: 550px;
   position: relative;
   left: 80px;
-  top: 40px;
+  top: -10px;
    box-shadow: 2px 10px 20px 1px #000;
 }
 .table td{
@@ -20,6 +20,11 @@
   color: #FDC830;
   border-right:1px solid #fff ;
 
+}
+.head-slot{
+  text-align: center;
+  font-size: 35px;
+  font-family: "Poppins", sans-serif;
 }
 
 

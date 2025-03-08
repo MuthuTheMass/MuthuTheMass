@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { ArticalComponent } from "./artical/artical.component";
-import { RouterOutlet } from '@angular/router';
+import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {FormControl, FormGroup, FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {RatingModule} from "ngx-bootstrap/rating";
 import {DealerDataService} from "../../../Service/Backend/dealer-data.service";
 import {BackStoreService} from "../../../Service/store/back-store.service";
+import {routes} from "../../../app.routes";
 
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [RatingModule, FormsModule, CommonModule,],
+  imports: [RatingModule, FormsModule, CommonModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
@@ -23,7 +24,7 @@ export class MainComponent {
   currentRate: number = 2;
 
 
-  constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService) {
+  constructor(public dealerDataService: DealerDataService, protected backStoreService: BackStoreService, private  router: Router) {
 
 
     this.dealerdetails = new FormGroup({
@@ -62,4 +63,9 @@ export class MainComponent {
 
   data: number = 3;
   hoveringOver: any;
+
+
+  dealerdata(){
+    this.router.navigate(['/main/dealer-details']);
+  }
 }

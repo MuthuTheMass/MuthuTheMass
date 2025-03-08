@@ -3,7 +3,7 @@
   height: 550px;
   position: relative;
   left: 80px;
-  top: 40px;
+  top: -10px;
   box-shadow: 2px 10px 20px 1px #000;
 }
 .table td{
@@ -11,6 +11,12 @@
   text-align: center;
   padding: 20px 2px;
 
+}
+
+.head-slot{
+  text-align: center;
+  font-size: 35px;
+  font-family: "Poppins", sans-serif;
 }
 .table  th{
   text-align: center;
