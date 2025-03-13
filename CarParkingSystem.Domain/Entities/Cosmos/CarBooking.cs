@@ -14,15 +14,15 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public string? CustomerId { get; set; }
 
-        public string? VehicleId { get; set; }
+        public VehicleDetails? VehicleInfo { get; set; }
 
         public string BookingSource { get; set; }
 
         public CarBookingDates BookingDate { get; set; }
 
-        public string? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
-        public string? UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
         public bool IsDeleted { get; set; }
 
@@ -31,18 +31,27 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
         public string? AdvanceAmount { get; set; }
 
         public Status BookingStatus { get; set; }
+
+        public string? AllottedSlots { get; set; }
     }
 
     public class CarBookingDates
     {
-        public required string From { get; set; }
+        public required DateTime From { get; set; }
 
-        public required string To { get; set; }
+        public DateTime? To { get; set; }
     }
 
     public class Status
     {
         public BookingProcessDetails State { get; set; }
         public string? Reason { get; set; }
+    }
+
+    public class VehicleDetails
+    {
+        public string VehicleId { get; set; }
+
+        public string VehicleNumber { get; set; }
     }
 }

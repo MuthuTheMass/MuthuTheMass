@@ -41,18 +41,7 @@ namespace CarParkingBooking.Controllers
         {
             var result = await dealerData.GetUsersByDealer(emailId);
 
-            if (result.Count > 0)
-            {
-                return Ok(result);
-            }
-            else if (result.Count == 0)
-            {
-                return NotFound(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
+            return Ok(result);
         }
 
         // [HttpPost("singledealerdata")]

@@ -1,5 +1,6 @@
 using Azure;
 using CarParkingSystem.Domain.Dtos.Dealers;
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
@@ -13,8 +14,9 @@ public interface IBookingRepository
 {
     Task<CarBooking> GetBooking(string bookingId, string dealerId, string customerId);
     Task<CarBooking> GetByBooking(string bookingId);
+    Task<List<CarBooking>> GetBookingByDealer(string dealerId);
     Task<bool> AddBookingDetails(CarBooking carBooking);
-    Task<CarBooking> UpdateBookingDetails(CarBooking carBooking);
+    Task<bool?> UpdateBookingDetails(CarBooking carBooking);
     Task<bool> DeleteBookingDetails(string bookingId, string dealerId, string customerId);
     Task<List<UserDetailsNewCustomer>> GetUserByConfirmedBookingForDealer(string dealerId);
 }
@@ -38,7 +40,7 @@ public class BookingRepository : IBookingRepository
             PartitionKey partitionKey = new PartitionKey($"{id}_{carBooking.DealerId}_{carBooking.CustomerId}");
             carBooking.PartitionId = $"{id}_{carBooking.DealerId}_{carBooking.CustomerId}";
             carBooking.id = id;
-            carBooking.CreatedDate = DateTiming.GetIndianTime().ToString();
+            carBooking.CreatedDate = DateTiming.GetIndianTime();
             var result = await Container.CreateItemAsync(carBooking, partitionKey);
             return result.Resource.DealerId == carBooking.DealerId;
         }
@@ -69,6 +71,25 @@ public class BookingRepository : IBookingRepository
         return result.Resource;
     }
 
+    public async Task<List<CarBooking>> GetBookingByDealer(string dealerId)
+    {
+        var querable = Container.GetItemLinqQueryable<CarBooking>();
+        var iterator = querable.Where(d => d.DealerId == dealerId).OrderBy(o => o.BookingDate)
+                            .ToFeedIterator();
+
+        var result = new List<CarBooking>();
+
+        while (iterator.HasMoreResults)
+        {
+            FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
+            foreach(var item in response)
+            {
+                result.Add(item);           
+            }
+        }
+        return result;
+    }
+
     public async Task<CarBooking> GetByBooking(string bookingId)
     {
         var result = await Container.ReadItemAsync<CarBooking>(bookingId, new PartitionKey(string.Empty));
@@ -87,14 +108,41 @@ public class BookingRepository : IBookingRepository
             FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
             foreach (var item in response)
             {
-                result.Add(new UserDetailsNewCustomer(item.CustomerId,DateTime.Parse(item.CreatedDate)));
+                result.Add(new UserDetailsNewCustomer(item.CustomerId,item.CreatedDate));
             }
         }
         return result;
     }
 
-    public Task<CarBooking> UpdateBookingDetails(CarBooking carBooking)
+    public async Task<bool?> UpdateBookingDetails(CarBooking carBooking)
     {
-        throw new NotImplementedException();
+        var query = Container.GetItemQueryIterator<CarBooking>(
+            new QueryDefinition("SELECT * FROM c WHERE c.id = @id")
+            .WithParameter("@id", carBooking.id)
+        );
+
+        CarBooking? singleBooking = null;
+
+        while (query.HasMoreResults)
+        {
+            foreach (var item in await query.ReadNextAsync())
+            {
+                singleBooking = item;
+                break;
+            }
+        }
+
+        if (singleBooking == null)
+        {
+            Console.WriteLine("User not found.");
+            return false;
+        }
+
+        singleBooking = carBooking;
+
+        await Container.ReplaceItemAsync(singleBooking, singleBooking.id, new PartitionKey(singleBooking.PartitionId));
+
+        Console.WriteLine($"User {carBooking.id} updated successfully.");
+        return true;
     }
 }

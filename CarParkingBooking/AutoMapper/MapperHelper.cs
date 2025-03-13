@@ -96,5 +96,15 @@ namespace CarParkingBooking.AutoMapper
             }
             return null;
         }
+
+        public async Task<string> ConvertIFormFileToBase64String(IFormFile file)
+        {
+            using (var ms = new MemoryStream())
+            {
+                await file.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+                return $"data:image/jpeg;base64,{Convert.ToBase64String(fileBytes)}";
+            }
+        }
     }
 }

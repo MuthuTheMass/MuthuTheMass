@@ -26,7 +26,7 @@ namespace CarParkingSystem.Application.Services.BookingService
             {
                 DealerId = booking.DealerId,
                 CustomerId = booking.CustomerId,
-                VehicleId = booking.VehicleId,
+                VehicleInfo = booking.VehicleInfo,
                 BookingSource = BookingSources.User.ToString(),
                 BookingDate = booking.BookingDate,
                 GeneratedQrCode = booking.GeneratedQrCode,
@@ -35,8 +35,9 @@ namespace CarParkingSystem.Application.Services.BookingService
                 {
                     State = BookingProcessDetails.InProgress,
                     Reason = string.Empty
-                }
-
+                },
+                AllottedSlots = booking.AllottedSlots
+                
             };
 
             var data = await _bookingRepository.AddBookingDetails(carBooking);

@@ -9,7 +9,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
 
         public string? CustomerId { get; set; }
 
-        public string? VehicleId { get; set; }
+        public VehicleDetails? VehicleInfo { get; set; }
 
         public required BookingSources BookingSource { get; set; }
 
@@ -20,5 +20,6 @@ namespace CarParkingSystem.Application.Dtos.Booking
         public string? AdvanceAmount { get; set; }
 
         public required Status BookingStatus { get; set; }
+        public string? AllottedSlots { get; set; }
     }
 }

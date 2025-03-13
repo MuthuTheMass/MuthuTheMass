@@ -19,9 +19,16 @@ export interface UserUpdateData {
 }
 
 
-export interface UserDetailsForDealer{
-  name:string
-  picture:string
-  mobileNumber:string
+export interface DashboardDetailsForDealer {
+  newCustomers?: UserDetailsForDealer[];
+  availableSlots: number;
+  bookedSlots: number;
+  totalSlots: number;
+}
+
+export interface UserDetailsForDealer {
+  name?: string;
+  picture?: File | string | any;
+  mobileNumber?: string;
 }
 

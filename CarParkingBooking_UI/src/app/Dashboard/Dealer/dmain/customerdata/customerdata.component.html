@@ -22,7 +22,7 @@
     <div class="cards">
       <div class="card-single">
         <div>
-          <h1>{{userDetails.length || 0}}</h1>
+          <h1>{{DealerSlots.newCustomers?.length}}</h1>
           <span>Customer</span>
         </div>
 
@@ -33,7 +33,7 @@
 
       <div class="card-single">
         <div>
-          <h1>79</h1>
+          <h1>{{DealerSlots.bookedSlots}}</h1>
           <span>Booking slot</span>
         </div>
 
@@ -44,7 +44,7 @@
 
       <div class="card-single">
         <div>
-          <h1>49</h1>
+          <h1>{{DealerSlots.availableSlots}}</h1>
           <span>Available slot</span>
         </div>
 
@@ -192,15 +192,15 @@
       <div class="customers">
         <div class="card">
           <div class="card-head">
-            <h2>New custome</h2>
+            <h2>New customer</h2>
             <!--            <button>See all <i class='bx bxs-chevrons-right'></i></button>-->
           </div>
           <div class="card-body2">`
-            @for(newUser of userDetails; track newUser){
+            @for(newUser of DealerSlots.newCustomers; track newUser){
               <div class="customer">
                 <div class="info">
-                 <img [src]="newUser.picture" width="40px" height="40px" alt="">
-                <div>
+                  <img [src]="newUser.picture" width="40px" height="40px" class="img-fluid" alt="Image">
+                  <div>
                  <h4>{{newUser.name}}</h4>
                  <small>{{newUser.mobileNumber}}</small>
                 </div>

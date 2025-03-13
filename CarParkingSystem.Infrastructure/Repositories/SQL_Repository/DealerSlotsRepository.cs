@@ -8,6 +8,8 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
     {
         Task <DealerSlotDetails?> GetSlotsByDealerId(string dealerId);
 
+        Task<DealerSlotDetails?> GetSlotsByDealerEmailId(string emailId);
+
         Task<List<DealerSlotDetails>> Get();
         
         Task<bool> UpsertDealerSlots(DealerSlotDetails dealerSlotDetails);
@@ -44,6 +46,19 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
             List<DealerSlotDetails> dealerSlotDetails = await _dbContext.DealerSlotDetails.ToListAsync();
             if(dealerSlotDetails == null || dealerSlotDetails.Count <=0)
                 return new List<DealerSlotDetails>();
+            return dealerSlotDetails;
+        }
+
+        public async Task<DealerSlotDetails?> GetSlotsByDealerEmailId(string emailId)
+        {
+            if (string.IsNullOrEmpty(emailId))
+                return null;
+
+            DealerSlotDetails? dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.EmailId != null && d.EmailId.Equals(emailId));
+
+            if (dealerSlotDetails == null)
+                return new DealerSlotDetails() { Id = "none" };
+
             return dealerSlotDetails;
         }
 
