@@ -72,6 +72,7 @@ public class DealerProfile : IDealerProfile
     {
         var data = new DashboardDetailsForDealer();
         data.NewCustomers = new List<UserDetailForDealer>();
+        data.RecentBookings = new List<RecentBookingInDealerDashBoard>();
         List<UserDetailForDealer> dashbordDetaiuls= new();
         var userData = await _userRepository.GetUserDetailsForDealer(emailId);
         var dealerSlotDetails = await _dealerSlotsRepository.GetSlotsByDealerEmailId(emailId);
@@ -101,8 +102,8 @@ public class DealerProfile : IDealerProfile
 
                     new RecentBookingInDealerDashBoard(
                         item.id,
-                        vehicleDetails?.VehicleId,
-                        DateTime.Parse(item.CreatedDate),
+                        item.VehicleInfo.VehicleNumber,
+                        item.CreatedDate,
                         item.BookingStatus.State.ToString(),
                         item.AllottedSlots,
                         item.GeneratedQrCode

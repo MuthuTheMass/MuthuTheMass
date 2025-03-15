@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {DashboardDetailsForDealer, UserDetailsForDealer} from "../../../../Service/Model/UserDetails";
+import {DashboardDetailsForDealer, RecentBookingInDealerDashBoard, UserDetailsForDealer} from "../../../../Service/Model/UserDetails";
 import {UserDetailsService} from "../../../../Service/Backend/user-details.service";
 import {DealerDataService} from "../../../../Service/Backend/dealer-data.service";
 import {BackStoreService} from "../../../../Service/store/back-store.service";
 import { DomSanitizer } from '@angular/platform-browser';
+import { DatePipe, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-customerdata',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './customerdata.component.html',
   styleUrl: './customerdata.component.css'
 })
 export class CustomerdataComponent implements OnInit {
-  DealerSlots:DashboardDetailsForDealer = { newCustomers:[] as UserDetailsForDealer[]} as DashboardDetailsForDealer;
+  DealerSlots:DashboardDetailsForDealer = { newCustomers:[] as UserDetailsForDealer[] ,recentBookings:[] as RecentBookingInDealerDashBoard[]} as DashboardDetailsForDealer;
 
   constructor(
     private userService: UserDetailsService,
@@ -28,12 +29,12 @@ export class CustomerdataComponent implements OnInit {
 
   getDealerDashboard(){
     if(this.bsStore.dealerLoggedData().email == undefined){
-      var dealerData = localStorage.getItem("Dealer");
+      var dealerData = JSON.parse(localStorage.getItem("Dealer") ?? {} as any);
       this.bsStore.dealerLoggedData.set(dealerData as any);
     }
     if(this.bsStore.dealerLoggedData() != null){
       this.dealerService.getNewUsers(this.bsStore.dealerLoggedData().email).subscribe(
-        async (result:DashboardDetailsForDealer) => {
+        (result:DashboardDetailsForDealer) => {
           this.DealerSlots = result;
           this.DealerSlots.newCustomers?.forEach(element => {
             if(element.picture != null){

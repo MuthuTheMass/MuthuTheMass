@@ -1,7 +1,9 @@
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
+using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
 using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
+using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,19 +12,7 @@ namespace CarParkingSystem.Infrastructure;
 
 public class Program
 {
-    private readonly IConfigurationRoot Configuration;
-    public Program()
-    {
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true); // Load your appsettings.json
-        Configuration = builder.Build();
-    }
-
-    static readonly CosmosClient client = new("AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
-    static readonly string dbId = "CarParkingSystem", containerId = "BookingData";
-
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         // Configure DbContext options
         var optionsBuilder = new DbContextOptionsBuilder<CarParkingBookingDbContext>();
@@ -37,14 +27,15 @@ public class Program
             dbContext.SeedData();
         }
 
-        SeedBookingData().ForEach(async booking => await Add(booking));
+        CosmosClient cosmosClient = new CosmosClient("AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+        ICosmosClientFactory cosmosClientFactory = new CosmosClientFactory(cosmosClient);
+        IBookingRepository bookingRepository = new BookingRepository(cosmosClientFactory);
+
+        var bookingTasks = SeedBookingData().Select(booking => bookingRepository.AddBookingDetails(booking));
+        await Task.WhenAll(bookingTasks);
 
         Console.WriteLine("DB Done");
     }
-
-    public static async Task Add<T>(T item) =>
-          await client.GetContainer(dbId, containerId).CreateItemAsync(item);
-
 
     public static List<CarBooking> SeedBookingData()
     {
@@ -52,7 +43,7 @@ public class Program
         {
             new CarBooking
             {
-                id = "booking-1",
+                //id = "booking-1",
                 PartitionId = "booking-1_Dealer-1_User-1",
                 DealerId = "Dealer-1",
                 CustomerId = "User-1",
@@ -81,7 +72,7 @@ public class Program
             },
             new CarBooking
             {
-                id = "booking-2",
+                //id = "booking-2",
                 PartitionId = "booking-2_Dealer-2_User-2",
                 DealerId = "Dealer-2",
                 CustomerId = "User-2",
