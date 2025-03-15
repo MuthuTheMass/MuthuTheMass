@@ -28,4 +28,22 @@ z-index: 1;
     color: white;
 }
 
+.sprofile{
+  margin-right: 20px;
+  font-size: 18px;
+  font-family: "Arial Narrow", Arial, sans-serif;
+
+}
+a{
+  text-decoration: none;
+}
+
+.navbar-nav .nav-item:hover{
+  background: #fff;
+  border-radius: 10px;
+}
+
+.nav-item a:hover{
+  color: #0b3d91;
+}
 

@@ -29,6 +29,7 @@ import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-
 import {
   UserPaymentHistoryComponent
 } from "./Dashboard/home-navebar/user-payment-history/user-payment-history.component";
+import {DealeDetailsComponent} from "./Dashboard/Home/main/deale-details/deale-details.component";
 
 
 export const routes: Routes = [
@@ -98,6 +99,9 @@ export const routes: Routes = [
         {
             path:"book",component:MuthubookComponent
         },
+    {
+      path:"dealer-details",component:DealeDetailsComponent,title:"dealerdetails"
+    },
         {
             path:"uservehicle",component:UserdataComponent
         },
