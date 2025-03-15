@@ -21,11 +21,11 @@ namespace CarParkingBooking.Controllers
         {
             var result = await dealerData.GetAllDealersBySearch(filter);
 
-            if (result.Count > 0)
+            if (result.Data.Count > 0)
             {
                 return Ok(result);
             }
-            else if (result.Count == 0)
+            else if (result.Data.Count == 0)
             {
                 return NotFound(result);
             }
@@ -34,6 +34,14 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
 
+        }
+
+        [HttpGet("dealernewusers")]
+        public async Task<IActionResult> dealerDashboard([FromQuery]string emailId)
+        {
+            var result = await dealerData.GetUsersByDealer(emailId);
+
+            return Ok(result);
         }
 
         // [HttpPost("singledealerdata")]

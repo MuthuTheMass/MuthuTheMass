@@ -1,10 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import {userDetails, userDetailsForDealer, UserUpdateData} from '../Model/UserDetails';
+import {userDetails, UserDetailsForDealer, UserUpdateData} from '../Model/UserDetails';
 import { BackStoreService } from '../store/back-store.service';
 import { Observable } from 'rxjs';
-import { UserdataComponent } from '../../Dashboard/Home/userdata/userdata.component';
 import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
 @Injectable({
@@ -24,8 +23,8 @@ export class UserDetailsService {
       );
   }
 
-  GetAllUsers():Observable<userDetailsForDealer[]>{
-    return this.http.get<userDetailsForDealer[]>(environment.apiUrl+"Users/getAllUsers");
+  GetAllUsers():Observable<UserDetailsForDealer[]>{
+    return this.http.get<UserDetailsForDealer[]>(environment.apiUrl+"Users/getAllUsers");
   }
 
 }

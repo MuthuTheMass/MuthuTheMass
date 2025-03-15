@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../Model/BackendUserModels';
 import { environment } from '../../../environments/environment';
+import {BackStoreService} from "../store/back-store.service";
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,9 @@ import { environment } from '../../../environments/environment';
 })
 export class UserAuthService {
 
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http:HttpClient,
+              private router:Router,
+              private bsStore:BackStoreService) { }
 
   Login(login:Login) : any{
     this.http.post<LoginResponse>(environment.apiUrl+"Authorization/userlogin", login)
@@ -39,6 +42,7 @@ export class UserAuthService {
               (data:LoginResponse) => {
                     localStorage.clear();
                     localStorage.setItem("Dealer",JSON.stringify(data));
+                    this.bsStore.dealerLoggedData.set(data)
                     this.router.navigate(['/dhome']);
               });
 

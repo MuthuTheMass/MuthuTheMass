@@ -18,8 +18,28 @@ export interface UserUpdateData {
   ProfilePicture: File
 }
 
-export interface userDetailsForDealer{
-  name:string
-  email:string
-  mobileNumber:string
+
+export interface DashboardDetailsForDealer {
+  newCustomers?: UserDetailsForDealer[];
+  availableSlots: number;
+  bookedSlots: number;
+  totalSlots: number;
+  recentBookings?: RecentBookingInDealerDashBoard[];
+
 }
+
+export interface UserDetailsForDealer {
+  name?: string;
+  picture?: File | string | any;
+  mobileNumber?: string;
+}
+
+export interface RecentBookingInDealerDashBoard {
+  bookingID: string;
+  vehicleNumber: string;
+  date: Date | null;
+  status: string;
+  slot_Number: string;
+  qRCode: string;
+}
+
