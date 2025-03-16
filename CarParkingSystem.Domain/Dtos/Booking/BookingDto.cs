@@ -9,7 +9,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
 
         public string? CustomerId { get; set; }
 
-        public VehicleDetails? VehicleInfo { get; set; }
+        public VehicleInformation? VehicleInfo { get; set; }
 
         public required BookingSources BookingSource { get; set; }
 

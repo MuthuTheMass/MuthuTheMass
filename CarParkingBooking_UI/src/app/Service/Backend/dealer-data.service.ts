@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { dealerVM } from '../Model/dealermodal';
+import { dealerVM, offlinebookingVM } from '../Model/dealermodal';
 import {environment} from "../../../environments/environment";
 import {BackStoreService} from "../store/back-store.service";
 import {LocationService} from "../UIService/location.service";
@@ -10,7 +10,6 @@ import {LocationService} from "../UIService/location.service";
   providedIn: 'root',
 })
 export class DealerDataService {
-
 
  constructor(
    public httpClient:HttpClient,
@@ -34,6 +33,16 @@ export class DealerDataService {
   getNewUsers(dealerEmailId:string):Observable<any>{
    return this.httpClient.get(environment.apiUrl+"Dealer/dealernewusers?emailId="+dealerEmailId);
   }
+
+  BookingByOffline(data:offlinebookingVM):Observable<any>{
+    data.dealerEmailId = this.backStoreService.dealerLoggedData().email;
+    return this.httpClient.post(environment.apiUrl+"Dealer/OfflineBooking",data);
+  }
+
+  getRecentBooking(email: string):Observable<any> {
+    return this.httpClient.get(environment.apiUrl+"Dealer/DealerBookings?emailId="+email);
+  }
+
 }
 
 

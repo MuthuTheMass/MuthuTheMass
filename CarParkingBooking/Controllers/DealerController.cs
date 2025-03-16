@@ -1,5 +1,7 @@
 ﻿using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.DealerService;
+using CarParkingSystem.Domain.Dtos.Dealers;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkingBooking.Controllers
@@ -44,56 +46,43 @@ namespace CarParkingBooking.Controllers
             return Ok(result);
         }
 
-        // [HttpPost("singledealerdata")]
-        // public async Task<IActionResult> SingleDealerData([FromQuery] string email)
-        // {
-        //     var result = await dealerData.SingleDealerDetails(email);
-        //     
-        //     if (!string.IsNullOrEmpty(result.DealerEmail))
-        //     {
-        //         return Ok(result);
-        //     }
-        //     return BadRequest(result);
-        // }
-        //
-        // [HttpPost("updatedealer")]
-        // public IActionResult AddOrUpdate(DealerDto dealerValue) 
-        // {
-        //     var result = dealerData.UpsertDealerData(dealerValue);
-        //
-        //     if (result.Result == true)
-        //     {
-        //         return Ok(result);
-        //     }
-        //     else if(result.Result == null)
-        //     {
-        //         return Conflict("User Doesn't exists.");
-        //     }
-        //     else
-        //     {
-        //         return BadRequest(result);
-        //     }
-        //
-        // }
-        //
-        // [HttpDelete]
-        // public IActionResult Delete(DeleteDealer deleteDealer) 
-        // {
-        //     var result = dealerData.RemoveDealer(deleteDealer);
-        //
-        //     if (result.Result == true) 
-        //     {
-        //         return Ok(result);
-        //     }
-        //     else if(result.Result == false)
-        //     {
-        //         return NotFound(result);
-        //     }
-        //     else
-        //     {
-        //         return BadRequest(result);
-        //     }
-        // }
-        
+        [HttpPost("OfflineBooking")]
+        public async Task<IActionResult> OfflineBooking(OfflineBooking offlineBooking)
+        {
+            var result = await dealerData.DealerBookingOffline(offlineBooking);
+            if (result == true)
+            {
+                return Ok(result);
+            }
+            else if (result == false)
+            {
+                return BadRequest(result);
+            }
+            else
+            {
+                return NotFound(result);
+            }
+        }
+
+        [HttpGet("DealerBookings")]
+        public async Task<IActionResult> GetAllBookingDetails([FromQuery] string emailId)
+        {
+            var result = await dealerData.GetAllBookingsByDealerEmailId(emailId);
+            if(result.Count >= 0)
+            {
+                return Ok(result);
+            }
+            else if(result is null)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+      
+
     }
 }
