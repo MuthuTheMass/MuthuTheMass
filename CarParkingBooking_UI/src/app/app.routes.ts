@@ -15,12 +15,12 @@ import { EditDealerdataComponent } from './Dashboard/Dealer/dmain/edit-dealerdat
 import { AllPaymentComponent } from './Dashboard/Dealer/dmain/all-payment/all-payment.component';
 import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
 import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
-import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
+import { UserConfirmBookingComponent } from './Dashboard/User/main/user-confirm-booking/user-confirm-booking.component';
 import {
   UserPaymentHistoryComponent
 } from "./Dashboard/home-navebar/user-payment-history/user-payment-history.component";
 import {MainComponent} from "./Dashboard/User/main/main.component";
-import {MainpageComponent} from "./Dashboard/User/mainDashboard/mainpage.component";
+import {MainpageComponent} from "./Dashboard/User/components-mainpage-joiner/mainpage.component";
 import {ArticalComponent} from "./Dashboard/User/main/artical/artical.component";
 import {BalajiarComponent} from "./Dashboard/User/main/balajiar/balajiar.component";
 import {ProfileComponent} from "./Dashboard/User/profile/profile.component";
@@ -28,6 +28,7 @@ import {EditdetailsComponent} from "./Dashboard/User/profile/editdetails/editdet
 import {MuthubookComponent} from "./Dashboard/User/muthubook/muthubook.component";
 import {UserdataComponent} from "./Dashboard/User/userdata/userdata.component";
 import {EReceiptComponent} from "./Dashboard/User/e-receipt/e-receipt.component";
+import {DealeDetailsComponent} from "./Dashboard/User/main/deale-details/deale-details.component";
 // import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
 // import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
 // import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
@@ -102,6 +103,12 @@ export const routes: Routes = [
         {
             path:"book",component:MuthubookComponent
         },
+    {
+      path:"dealer-details",component:DealeDetailsComponent,title:"dealerdetails"
+    },
+    {
+      path:"confirmbooking",component:UserConfirmBookingComponent,title:"confirm-booking"
+    },
         {
             path:"uservehicle",component:UserdataComponent
         },
