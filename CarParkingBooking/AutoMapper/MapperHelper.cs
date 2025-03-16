@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using System.IO;
-using System.Text.Json;
-using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Dtos.Dealers;
+using Newtonsoft.Json;
 
 namespace CarParkingBooking.AutoMapper
 {
@@ -32,38 +29,38 @@ namespace CarParkingBooking.AutoMapper
 
         }
 
-        public string convertFileToByte(IFormFile file)
-        {
-            ImageFile image;
+        //public string convertFileToByte(IFormFile file)
+        //{
+        //    ImageFile image;
 
-            using (var steam = new MemoryStream())
-            {
-                file.CopyTo(steam);
-                image = new()
-                {
-                    File = steam.ToArray(),
-                    FileName = file.FileName,
-                    ContentType = file.ContentType
-                };
-            }
+        //    using (var steam = new MemoryStream())
+        //    {
+        //        file.CopyTo(steam);
+        //        image = new()
+        //        {
+        //            File = steam.ToArray(),
+        //            FileName = file.FileName,
+        //            ContentType = file.ContentType
+        //        };
+        //    }
 
-            return JsonConvert.SerializeObject(image);
-        }
+        //    return JsonConvert.SerializeObject(image);
+        //}
 
-        public IFormFile convertByteToFromFile(string file)
-        {
-            ImageFile? image = JsonConvert.DeserializeObject<ImageFile>(file);
+        //public IFormFile convertByteToFromFile(string file)
+        //{
+        //    ImageFile? image = JsonConvert.DeserializeObject<ImageFile>(file);
 
-            var stream = new MemoryStream(image!.File);
+        //    var stream = new MemoryStream(image!.File);
 
-            IFormFile formFile = new FormFile(stream,0,image.File.Length,"file",image.FileName) 
-            {
-                Headers = new HeaderDictionary(),
-                ContentType = image.ContentType
-            };
+        //    IFormFile formFile = new FormFile(stream,0,image.File.Length,"file",image.FileName) 
+        //    {
+        //        Headers = new HeaderDictionary(),
+        //        ContentType = image.ContentType
+        //    };
 
-            return formFile;
-        }
+        //    return formFile;
+        //}
 
         public byte[] ConvertFileToByte(IFormFile file)
         {
@@ -98,6 +95,16 @@ namespace CarParkingBooking.AutoMapper
                 return Convert.ToBase64String(bytes);
             }
             return null;
+        }
+
+        public async Task<string> ConvertIFormFileToBase64String(IFormFile file)
+        {
+            using (var ms = new MemoryStream())
+            {
+                await file.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+                return $"data:image/jpeg;base64,{Convert.ToBase64String(fileBytes)}";
+            }
         }
     }
 }

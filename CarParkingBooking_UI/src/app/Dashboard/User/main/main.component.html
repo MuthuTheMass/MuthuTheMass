@@ -1,0 +1,274 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 card-margin">
+      <div class="card search-form">
+        <div class="card-body p-0">
+          <form id="search-form">
+            <div class="row">
+              <div class="col-12">
+                <div class="row no-gutters">
+                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Location</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                    <input type="text" placeholder="Search..." class="form-control" id="search" name="search">
+                  </div>
+                  <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                    <button type="submit" class="btn btn-base">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-margin">
+        <div class="card-body">
+          <div class="row search-body">
+            <div class="col-lg-12">
+              <div class="search-result">
+                <div class="result-header">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="records"> result: <b>{{totalItems()}}</b></div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="result-actions">
+                        <!-- <div class="result-sorting">
+                          <span>Sort By:</span>
+                          <select class="form-control border-0" id="exampleOption">
+                            <option value="1">Opening Time <i class='bx bxs-chevron-down' ></i></option>
+                            <option value="2">Day Time</option>
+                            <option value="3">Full Time(24hr) </option>
+                          </select>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="result-body">
+                  <div class="table-responsive">
+                    <table class="table widget-26">
+                      <tbody>
+                      
+                        @for( dealer of dealers(); track dealer)
+                        {
+                          <tr>
+                          <td>
+                            <div class="widget-26-job-title">
+                              <a href="#">{{dealer.dealerStoreName}}</a>
+                              <!-- <p class="m-0"><a href="#" class="employer-name">Axiom Corp.</a> <span class="text-muted time">1 days ago</span></p> -->
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-job-info">
+                              <p class="type m-0">{{dealer.dealerCity}}</p>
+                              <p class="text-muted m-0">in <span class="location">{{dealer.dealerLandmark}}</span></p>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-job-salary">{{dealer.dealerRating}}</div>
+                          </td>
+                          <td class="text-end pe-5">
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                            >
+                              Booking
+                            </button>
+                            
+                          </td>
+                        </tr>
+                        }
+                        
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item" [class.disabled]="currentPage() === 1">
+                <a class="page-link" (click)="onPageChange(currentPage() - 1)">« Prev</a>
+              </li>
+          
+              <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+                  [class.active]="currentPage() === i + 1" [ngStyle]="{'pointer-events': currentPage() === i + 1 ? 'none' : 'auto'}">
+                <a class="page-link" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+              </li>
+          
+              <li class="page-item" [class.disabled]="currentPage() === totalPages">
+                <a class="page-link" (click)="onPageChange(currentPage() + 1)">Next »</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="split left">-->
+<!--  <div class="centered">-->
+<!--  <div>-->
+<!--    <nav class="navbar navbar-light bg-light">-->
+<!--      <div class="wrap">-->
+<!--        <div class="search">-->
+<!--           <input type="text" class="searchTerm" placeholder="What are you looking for?">-->
+<!--           <button type="submit" class="searchButton">-->
+<!--             <i class="fa fa-search"></i>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--     </div>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--<div class="dealerdata">-->
+<!--<div class="dname">-->
+<!--  <span><h2>MuthuParking</h2></span>-->
+<!--  <p class="data-box">-->
+<!--    <a href="main/artical"> Muthu Car parking-->
+<!--     chennai-perambu,sembuim,janaki raman street-->
+<!--   </a>-->
+<!--  </p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="dealerdata">-->
+<!--  <div class="dname">-->
+<!--    <span><h2>MuthuParking</h2></span>-->
+<!--    <p class="data-box">-->
+<!--      <a href="main/artical"> Muthu Car parking-->
+<!--       chennai-perambu,sembuim,janaki raman street-->
+<!--     </a>-->
+<!--    </p>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--  <div class="dealerdata">-->
+<!--    <div class="dname">-->
+<!--      <span><h2>MuthuParking</h2></span>-->
+<!--      <p class="data-box">-->
+<!--        <a href="main/artical"> Muthu Car parking-->
+<!--         chennai-perambu,sembuim,janaki raman street-->
+<!--       </a>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="dealerdata">-->
+<!--      <div class="dname">-->
+<!--        <span><h2>MuthuParking</h2></span>-->
+<!--        <p class="data-box">-->
+<!--          <a href="main/artical"> Muthu Car parking-->
+<!--           chennai-perambu,sembuim,janaki raman street-->
+<!--         </a>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--      <div class="dealerdata">-->
+<!--        <div class="dname">-->
+<!--          <span><h2>MuthuParking</h2></span>-->
+<!--          <p class="data-box">-->
+<!--            <a href="main/artical"> Muthu Car parking-->
+<!--             chennai-perambu,sembuim,janaki raman street-->
+<!--           </a>-->
+<!--          </p>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div class="dealerdata">-->
+<!--          <div class="dname">-->
+<!--            <span><h2>MuthuParking</h2></span>-->
+<!--            <p class="data-box">-->
+<!--              <a href="main/artical"> Muthu Car parking-->
+<!--               chennai-perambu,sembuim,janaki raman street-->
+<!--             </a>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--          <div class="dealerdata">-->
+<!--            <div class="dname">-->
+<!--              <span><h2>MuthuParking</h2></span>-->
+<!--              <p class="data-box">-->
+<!--                <a href="main/artical"> Muthu Car parking-->
+<!--                 chennai-perambu,sembuim,janaki raman street-->
+<!--               </a>-->
+<!--              </p>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--            <div class="dealerdata">-->
+<!--              <div class="dname">-->
+<!--                <span><h2>MuthuParking</h2></span>-->
+<!--                <p class="data-box">-->
+<!--                  <a href="main/artical"> Muthu Car parking-->
+<!--                   chennai-perambu,sembuim,janaki raman street-->
+<!--                 </a>-->
+<!--                </p>-->
+<!--              </div>-->
+<!--              </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="split right">-->
+<!--  <div class="centered">-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+

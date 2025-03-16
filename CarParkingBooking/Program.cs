@@ -2,13 +2,14 @@ using AutoMapper;
 using CarParkingBooking.AutoMapper;
 using CarParkingBooking.ExceptionHandler;
 using CarParkingBooking.Services_Program;
+using CarParkingSystem.Application.Configuration;
+using CarParkingSystem.Application.Helper.JWTToken;
+using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CarParkingSystem.Application.Helper.JWTToken;
-using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
-using Microsoft.Azure.Cosmos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +54,7 @@ builder.Services.AddSwaggerGen(c =>
 
 GenerateJwtToken.Initialize(builder.Configuration);
 AppSettingValues.Initialize(builder.Configuration);
+builder.Services.AddCosmosClient(builder.Configuration);
 
 
 builder.Services.AddCors(options =>
@@ -86,7 +88,7 @@ builder.Services.AddDbContext<CarParkingBookingDbContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
     );
 
-builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.JwtCosmosConnection));
+builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.CosmosConnection));
 
 builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
 {
