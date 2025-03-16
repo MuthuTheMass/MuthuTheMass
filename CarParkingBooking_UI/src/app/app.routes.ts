@@ -1,17 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RegComponent } from './Dashboard/Log-Reg/reg/reg.component';
-import { MainComponent } from './Dashboard/Home/main/main.component';
-import { MainpageComponent } from './Dashboard/Home/mainDashboard/mainpage.component';
-import { NavbarComponent } from './Dashboard/Home/navbar/navbar.component';
-import { ArticalComponent } from './Dashboard/Home/main/artical/artical.component';
-import { BalajiarComponent } from './Dashboard/Home/main/balajiar/balajiar.component';
-import { MuthubookComponent } from './Dashboard/Home/muthubook/muthubook.component';
-import { UserdataComponent } from './Dashboard/Home/userdata/userdata.component';
-import { EReceiptComponent } from './Dashboard/Home/e-receipt/e-receipt.component';
 import { DregComponent } from './Dashboard/Dealer/dreg/dreg.component';
-import { ProfileComponent } from './Dashboard/Home/profile/profile.component';
-import { EditdetailsComponent } from './Dashboard/Home/profile/editdetails/editdetails.component';
 import { SampleBackendComponent } from './sample-backend/sample-backend.component';
 import { PagenotfoundComponent } from './custom_components/pagenotfound/pagenotfound.component';
 import { DmainComponent } from './Dashboard/Dealer/dmain/dmain.component';
@@ -29,7 +19,18 @@ import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-
 import {
   UserPaymentHistoryComponent
 } from "./Dashboard/home-navebar/user-payment-history/user-payment-history.component";
-import {DealeDetailsComponent} from "./Dashboard/Home/main/deale-details/deale-details.component";
+import {MainComponent} from "./Dashboard/User/main/main.component";
+import {MainpageComponent} from "./Dashboard/User/mainDashboard/mainpage.component";
+import {ArticalComponent} from "./Dashboard/User/main/artical/artical.component";
+import {BalajiarComponent} from "./Dashboard/User/main/balajiar/balajiar.component";
+import {ProfileComponent} from "./Dashboard/User/profile/profile.component";
+import {EditdetailsComponent} from "./Dashboard/User/profile/editdetails/editdetails.component";
+import {MuthubookComponent} from "./Dashboard/User/muthubook/muthubook.component";
+import {UserdataComponent} from "./Dashboard/User/userdata/userdata.component";
+import {EReceiptComponent} from "./Dashboard/User/e-receipt/e-receipt.component";
+// import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
+// import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
+// import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
 
 
 export const routes: Routes = [
@@ -101,19 +102,12 @@ export const routes: Routes = [
         {
             path:"book",component:MuthubookComponent
         },
-    {
-      path:"dealer-details",component:DealeDetailsComponent,title:"dealerdetails"
-    },
         {
             path:"uservehicle",component:UserdataComponent
         },
         {
             path:"erecepit",component:EReceiptComponent
-        },{
-            path:"confirmbooking",component:UserConfirmBookingComponent,title:"user-confirm-booking"
-        }
-
-
+        },
     ]
 },
   {
