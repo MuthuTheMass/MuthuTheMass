@@ -69,6 +69,8 @@ export const routes: Routes = [
 
 
 {
+
+
     path:"main",component:MainpageComponent,title:"mainpage",children :[
         {
             path:"",component:MainComponent,title:"homepage",children:[
