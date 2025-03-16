@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ArticalComponent } from "./artical/artical.component";
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {FormControl, FormGroup, FormsModule} from '@angular/forms';
