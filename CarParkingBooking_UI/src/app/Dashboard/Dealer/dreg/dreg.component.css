@@ -313,3 +313,49 @@
     transition: all 0.3s;
   }
 }
+
+
+
+
+
+.btn-log{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.btn-log span{
+  position: relative;
+  z-index: 2;
+}
+
+.btn-log:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-radius: 5px;
+  background:linear-gradient(to right, blue, red);
+  transition: all .35s;
+}
+
+.btn-log:hover{
+  color: #fff;
+}
+
+.btn-log:hover:after{
+  width: 100%;
+}

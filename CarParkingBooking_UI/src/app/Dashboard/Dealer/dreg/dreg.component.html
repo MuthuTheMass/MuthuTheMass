@@ -128,20 +128,22 @@
       <div class="toggle-container">
         <div class="toggle">
           <div class="toggle-panel toggle-left">
-            <h1>Welcom to ParkZone!</h1>
+            <h1>Welcome to ParkZone!</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button class="hidden" id="login" (click)="loginBtn()">
-              Sign In
-            </button>
+            <div class="wrapper">
+              <a  class="btn-log" i (click)="loginBtn()"><span>SIGN IN!</span></a>
+            </div>
           </div>
           <div class="toggle-panel toggle-right">
-            <h1>Hello, Welcom to ParkZone!</h1>
+            <h1>Hello, Welcome to ParkZone!</h1>
             <p>
               Register with your personal details to use all of site features
             </p>
-            <button class="hidden" id="register" (click)="registerBtn()">
-              Sign Up
-            </button>
+
+            <div class="wrapper">
+              <a  class="btn-log" i (click)="registerBtn()"><span>SIGN UP!</span></a>
+            </div>
+
           </div>
         </div>
       </div>
