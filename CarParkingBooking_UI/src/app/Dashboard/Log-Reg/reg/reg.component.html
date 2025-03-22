@@ -1,3 +1,6 @@
+<div class="bg-blure">
+
+
 <div class="fullbody">
   <div class="halfbody">
     <div class="container" id="container">
@@ -77,14 +80,30 @@
         <form [formGroup]="login">
           <h1>Sign In</h1>
           <div class="social-icons">
-            <a
-              href="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi58N6e_IiIAxX1iK8BHYjJAaAQPAgJ"
-              class="icon"
-              ><i class="fa-brands fa-google-plus-g"></i
-            ></a>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="button-container">
+
+              <div class="glass-btn blue-btn">
+                <!--<div class="content">
+                  h
+                </div> -->
+                <img src="https://i.postimg.cc/DwbWDQTx/facebook.png" alt="facebook" style="width: 3em;">
+              </div>
+
+              <div class="glass-btn red-btn">
+                <!-- <div class="content">
+                  e
+                </div> -->
+                <img src="/assets/google-logo-9826.png" alt="youtube" style="width: 2em;">
+              </div>
+
+              <div class="glass-btn amber-btn">
+                <!-- <div class="content">
+                  y
+                </div> -->
+                <img src="/assets/512x512-logo-27148.png" alt="soundcloud" style="width: 2em;">
+              </div>
+
+            </div>
           </div>
           <span> Or use your email Password </span>
 
@@ -120,23 +139,27 @@
       <div class="toggle-container">
         <div class="toggle">
           <div class="toggle-panel toggle-left">
-            <h1>Welcome to Zenpark!</h1>
+            <h1>Welcome to ParkZone!</h1>
             <p>Enter your personal details to use all of site features</p>
-            <button class="hidden" id="login" (click)="loginBtn()">
-              Sign In
-            </button>
+            <div class="wrapper">
+              <a href="#" class="btn-log" (click)="loginBtn()"><span>SIGN IN!</span></a>
+            </div>
+
+
+
           </div>
           <div class="toggle-panel toggle-right">
-            <h1>Hello, Welcome to Zenpark!</h1>
+            <h1>Hello, Welcome to ParkZone!</h1>
             <p>
               Register with your personal details to use all of site features
             </p>
-            <button class="hidden" id="register" (click)="registerBtn()">
-              Sign Up
-            </button>
+            <div class="wrapper">
+              <a href="#" class="btn-log" (click)="registerBtn()"><span>SIGN UP!</span></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
