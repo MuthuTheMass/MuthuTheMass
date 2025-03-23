@@ -1,3 +1,12 @@
 /.vs 
 /obj
 /CosmosDBMigration/
+# Ignore all bin and obj folders
+bin/
+obj/
+
+# Ignore specific files
+*.exe
+*.pdb
+*.json
+

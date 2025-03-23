@@ -17,7 +17,7 @@ namespace CarParkingSystem.Application.Tests.Services
             _userRepository = new Mock<IUserRepository>();
             _dealerSlotsRepository = new Mock<IDealerSlotsRepository>();
             _mapper = new Mock<IMapper>();
-            Sut = new DealerProfile(_dealerRepository.Object, _mapper.Object, _userRepository.Object, _dealerSlotsRepository.Object);
+            //Sut = new DealerProfile(_dealerRepository.Object, _mapper.Object, _userRepository.Object, _dealerSlotsRepository.Object);
         }
 
         #region DealerDashboard

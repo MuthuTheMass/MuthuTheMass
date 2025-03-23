@@ -22,22 +22,36 @@
               <th>Date</th>
               <th>Status</th>
               <th>Slot Number</th>
-              <th>Booking Details</th>
               <th>QR Code</th>
-
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td data-label="Event Name">12647</td>
-
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">22/12/2021</td>
-              <td data-label="Seats Available">Processing...</td>
-              <td data-label="slot number">--</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__active">Pending...</a></td>
-            </tr>
-            <tr>
+              @for(booking of bookingData(); track booking){
+                <tr>
+                  <td data-label="Booking Id">{{booking.bookingID}}</td>
+                  <td data-label="Vehicle Number">{{booking.vehicleNumber}}</td>
+                  <td data-label="Date">{{booking.date}}</td>
+                  <td data-label="Status">{{booking.status}}</td>
+                  <td data-label="Slot Number">{{booking.slot_Number}}</td>
+                  <td data-label="QR Code">{{booking.qRCode}}</td>
+                  <td data-label="Actions">
+                    <div class="dropdown">
+                      <button class="btn btn-primary " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis fa-flip-horizontal"></i>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Detail View</a></li>
+                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                      </ul>
+                    </div>
+                    
+                  </td>
+                </tr>
+              }
+            
+            <!-- <tr>
               <td data-label="Event Name">Music</td>
               <td data-label="Total Seats">TN 18 AY 2345</td>
               <td data-label="Event Date">29/12/2021</td>
@@ -110,7 +124,7 @@
               <td data-label="Seats Available">0</td>
               <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
 
-            </tr>
+            </tr> -->
             </tbody>
           </table>
         </div>

@@ -37,8 +37,8 @@ public class BookingRepository : IBookingRepository
         try
         {
             var id = await _cosmosClientFactory.GetNextBookingIdAsync("booking_counter");
-            PartitionKey partitionKey = new PartitionKey($"{id}_{carBooking.DealerId}_{carBooking.CustomerId}");
-            carBooking.PartitionId = $"{id}_{carBooking.DealerId}_{carBooking.CustomerId}";
+            PartitionKey partitionKey = new PartitionKey($"{id}_{carBooking.DealerId}_{carBooking.CustomerData.CustomerId}");
+            carBooking.PartitionId = $"{id}_{carBooking.DealerId}_{carBooking.CustomerData.CustomerId}";
             carBooking.id = id;
             carBooking.CreatedDate = DateTiming.GetIndianTime();
             var result = await Container.CreateItemAsync(carBooking, partitionKey);
@@ -108,7 +108,7 @@ public class BookingRepository : IBookingRepository
             FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
             foreach (var item in response)
             {
-                result.Add(new UserDetailsNewCustomer(item.CustomerId,item.CreatedDate));
+                result.Add(new UserDetailsNewCustomer(item.CustomerData.CustomerId,item.CreatedDate));
             }
         }
         return result;

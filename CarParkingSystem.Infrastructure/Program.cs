@@ -6,7 +6,6 @@ using CarParkingSystem.Infrastructure.Database.SQLDatabase.BookingDBContext;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace CarParkingSystem.Infrastructure;
 
@@ -44,10 +43,19 @@ public class Program
             new CarBooking
             {
                 //id = "booking-1",
-                PartitionId = "booking-1_Dealer-1_User-1",
+                //PartitionId = "booking-1_Dealer-1_User-1",
                 DealerId = "Dealer-1",
-                CustomerId = "User-1",
-                VehicleInfo = new VehicleDetails
+                CustomerData = new CustomerUserDetails()
+                { CustomerId = "User-1",
+                CustomerAddress = "Chennai",
+                CustomerEmail = "balaji@gmail.com",
+                CustomerMobileNumber = "9876543210",
+                CustomerName = "Balaji",
+                CustomerAuthorityOfIssue = "RTO",
+                CustomerProof = "Aadhar",
+                CustomerProofNumber = "1234567890"
+                },
+                VehicleInfo = new VehicleInformation
                 {
                     VehicleId = "Vehicle-1",
                     VehicleNumber = "TN 01 2345"
@@ -73,10 +81,19 @@ public class Program
             new CarBooking
             {
                 //id = "booking-2",
-                PartitionId = "booking-2_Dealer-2_User-2",
+                //PartitionId = "booking-2_Dealer-2_User-2",
                 DealerId = "Dealer-2",
-                CustomerId = "User-2",
-                VehicleInfo = new VehicleDetails
+                CustomerData = new CustomerUserDetails()
+                { CustomerId = "User-2",
+                CustomerAddress = "Chennai",
+                CustomerEmail = "muthu@gmail.com",
+                CustomerMobileNumber = "9876543210",
+                CustomerName = "Muthu",
+                CustomerAuthorityOfIssue = "RTO",
+                CustomerProof = "Aadhar",
+                CustomerProofNumber = "1234567890"
+                },
+                VehicleInfo = new VehicleInformation
                 {
                     VehicleId = "Vehicle-2",
                     VehicleNumber = "TN 02 3456"
