@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a199e90a5a31f5b92d3174862dbe623a73f4026e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61a3df02b848a2e816b9b8f9ddd6527a667034f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

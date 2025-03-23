@@ -17,6 +17,7 @@ import { Login, SignUp } from '../../../Service/Model/UserModels';
 })
 export class RegComponent {
 validators : any;
+loader:boolean = false;
 signinto() {
   throw new Error('Method not implemented.');
   }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RazorpaybuttonComponent } from './razorpaybutton/razorpaybutton.component';
 
 @Component({
   selector: 'app-e-receipt',
   standalone: true,
-  imports: [],
+  imports: [RazorpaybuttonComponent],
   templateUrl: './e-receipt.component.html',
   styleUrl: './e-receipt.component.css'
 })
