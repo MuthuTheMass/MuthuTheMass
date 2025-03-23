@@ -1,4 +1,6 @@
 using Azure;
+using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
+using CarParkingBooking.QRCodeGenerator.Generator;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
@@ -14,6 +16,7 @@ public interface IBookingRepository
 {
     Task<CarBooking> GetBooking(string bookingId, string dealerId, string customerId);
     Task<CarBooking> GetByBooking(string bookingId);
+    Task<CarBooking?> GetBookingByQR(string EncryptedId);
     Task<List<CarBooking>> GetBookingByDealer(string dealerId);
     Task<bool> AddBookingDetails(CarBooking carBooking);
     Task<bool?> UpdateBookingDetails(CarBooking carBooking);
@@ -24,12 +27,16 @@ public interface IBookingRepository
 public class BookingRepository : IBookingRepository
 {
     private readonly ICosmosClientFactory _cosmosClientFactory;
+    private readonly IEncryptionService _encryptService;
+    private readonly IQrCodeService _qrCodeService;
     private Container Container;
 
-    public BookingRepository(ICosmosClientFactory cosmosClientFactory)
+    public BookingRepository(ICosmosClientFactory cosmosClientFactory, IEncryptionService encryptService,IQrCodeService qrCodeService)
     {
         _cosmosClientFactory = cosmosClientFactory;
         Container = _cosmosClientFactory.GetOrCreateContainerAsync("CarParkingSystem", "BookingData", "/PartitionId").GetAwaiter().GetResult();
+        _encryptService = encryptService;
+        _qrCodeService = qrCodeService;
     }
 
     public async Task<bool> AddBookingDetails(CarBooking carBooking)
@@ -37,6 +44,8 @@ public class BookingRepository : IBookingRepository
         try
         {
             var id = await _cosmosClientFactory.GetNextBookingIdAsync("booking_counter");
+            carBooking.EncryptedBookingId = await _encryptService.EncryptAsync(id);
+            carBooking.GeneratedQrCode = await _qrCodeService.GenerateQrCode(carBooking.EncryptedBookingId);
             PartitionKey partitionKey = new PartitionKey($"{id}_{carBooking.DealerId}_{carBooking.CustomerData.CustomerId}");
             carBooking.PartitionId = $"{id}_{carBooking.DealerId}_{carBooking.CustomerData.CustomerId}";
             carBooking.id = id;
@@ -88,6 +97,24 @@ public class BookingRepository : IBookingRepository
             }
         }
         return result;
+    }
+
+    public async Task<CarBooking?> GetBookingByQR(string EncryptedId)
+    {
+        var querable = Container.GetItemLinqQueryable<CarBooking>();
+        var iterator = querable.Where(d => d.EncryptedBookingId == EncryptedId)
+                            .ToFeedIterator();
+        var result = new List<CarBooking>();
+
+        while (iterator.HasMoreResults)
+        {
+            FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
+            foreach (var item in response)
+            {
+                result.Add(item);
+            }
+        }
+        return result.SingleOrDefault() ?? null;
     }
 
     public async Task<CarBooking> GetByBooking(string bookingId)

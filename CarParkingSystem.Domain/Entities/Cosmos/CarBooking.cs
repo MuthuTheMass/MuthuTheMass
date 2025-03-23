@@ -9,6 +9,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         // id-dealerid-customerid
         public string? PartitionId { get; set; }
+        public string EncryptedBookingId { get; set; }
 
         public string? DealerId { get; set; }
 
@@ -26,7 +27,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public bool IsDeleted { get; set; }
 
-        public string? GeneratedQrCode { get; set; }
+        public byte[]? GeneratedQrCode { get; set; }
 
         public string? AdvanceAmount { get; set; }
 

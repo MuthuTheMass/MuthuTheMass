@@ -15,7 +15,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
 
         public required CarBookingDates BookingDate { get; set; }
 
-        public string? GeneratedQrCode { get; set; }
+        public byte[]? GeneratedQrCode { get; set; }
 
         public string? AdvanceAmount { get; set; }
 

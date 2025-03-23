@@ -28,13 +28,13 @@ namespace CarParkingSystem.Application.Services.BookingService
 
         public async Task<bool> AddBooking(BookingDto booking)
         {
-            var UserDetails = await _userRepository.GetUserByEmail(booking.CustomerId);
+            var UserDetails = await _userRepository.GetUserByEmail(booking.CustomerId ?? string.Empty);
 
             CarBooking carBooking = new CarBooking()
             {
                 DealerId = booking.DealerId,
                 CustomerData = _mapper.Map<CustomerUserDetails>(UserDetails),
-                VehicleInfo = booking.VehicleInfo,
+                VehicleInfo = booking.VehicleInfo!,
                 BookingSource = BookingSources.User.ToString(),
                 BookingDate = booking.BookingDate,
                 GeneratedQrCode = booking.GeneratedQrCode,
