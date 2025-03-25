@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, Signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DealerDataService } from '../../../../Service/Backend/dealer-data.service';
 import { BackStoreService } from '../../../../Service/store/back-store.service';
@@ -12,6 +12,7 @@ import { BackStoreService } from '../../../../Service/store/back-store.service';
 })
 export class OfflinebookingComponent implements OnInit {
   bookingForm!: FormGroup;
+  realTimeDate = signal(this.getLocalDateTime());
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +38,10 @@ export class OfflinebookingComponent implements OnInit {
       var dealerData = JSON.parse(localStorage.getItem("Dealer") ?? {} as any);
       this.bsStore.dealerLoggedData.set(dealerData as any);
     }
+
+    setInterval(() => {
+      this.realTimeDate.set(this.getLocalDateTime());
+    }, 1000);
   }
 
   onSubmit(): void {
@@ -52,5 +57,16 @@ export class OfflinebookingComponent implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  private getLocalDateTime(): string {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
   }
 }

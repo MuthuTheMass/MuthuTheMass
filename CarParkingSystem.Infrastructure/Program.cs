@@ -1,3 +1,5 @@
+using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
+using CarParkingBooking.QRCodeGenerator.Generator;
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
@@ -28,7 +30,9 @@ public class Program
 
         CosmosClient cosmosClient = new CosmosClient("AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
         ICosmosClientFactory cosmosClientFactory = new CosmosClientFactory(cosmosClient);
-        IBookingRepository bookingRepository = new BookingRepository(cosmosClientFactory);
+        IEncryptionService _encryptService = new EncryptionService();
+        IQrCodeService _qrCodeService = new QrCodeService();
+        IBookingRepository bookingRepository = new BookingRepository(cosmosClientFactory, _encryptService, _qrCodeService);
 
         var bookingTasks = SeedBookingData().Select(booking => bookingRepository.AddBookingDetails(booking));
         await Task.WhenAll(bookingTasks);
@@ -69,7 +73,7 @@ public class Program
                 CreatedDate = DateTiming.GetIndianTime().AddHours(-5),
                 UpdatedDate = null,
                 IsDeleted = false,
-                GeneratedQrCode = "QR-1",
+                GeneratedQrCode = new byte[0],
                 AdvanceAmount = "1000",
                 BookingStatus = new Status
                 {
@@ -107,7 +111,7 @@ public class Program
                 CreatedDate = DateTiming.GetIndianTime().AddDays(5),
                 UpdatedDate = null,
                 IsDeleted = false,
-                GeneratedQrCode = "QR-2",
+                GeneratedQrCode = new byte[1],
                 AdvanceAmount = "2000",
                 BookingStatus = new Status
                 {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarParkingSystem.Application.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf80276973a6b6d16a15169594f077a9788f0af9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5428c578e5b53b715a2e37b96e68eb1bd9ed465c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarParkingSystem.Application.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarParkingSystem.Application.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

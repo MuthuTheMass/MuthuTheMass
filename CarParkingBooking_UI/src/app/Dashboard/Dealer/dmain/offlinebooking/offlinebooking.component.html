@@ -59,7 +59,7 @@
                 </div>
                 <div class="input-box">
                     <label for="bookingDate">Booking Date</label>
-                    <input formControlName="bookingDate" type="date" />
+                    <input formControlName="bookingDate" type="datetime-local" [(ngModel)]="realTimeDate" readonly />
                 </div>
             </div>
             <button type="submit">Confirm Booking</button>
