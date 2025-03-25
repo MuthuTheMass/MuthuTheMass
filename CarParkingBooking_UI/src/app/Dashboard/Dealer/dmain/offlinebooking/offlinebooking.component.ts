@@ -12,7 +12,6 @@ import { BackStoreService } from '../../../../Service/store/back-store.service';
 })
 export class OfflinebookingComponent implements OnInit {
   bookingForm!: FormGroup;
-  realTimeDate = signal(this.getLocalDateTime());
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +30,7 @@ export class OfflinebookingComponent implements OnInit {
       authorityOfIssue: ['', Validators.required],
       vehicleNumber: ['', Validators.required],
       vehicleModel: ['', Validators.required],
-      bookingDate: ['', Validators.required]
+      bookingDate: [this.getLocalDateTime(), Validators.required]
     });
 
     if(this.bsStore.dealerLoggedData().email == undefined){
@@ -40,7 +39,7 @@ export class OfflinebookingComponent implements OnInit {
     }
 
     setInterval(() => {
-      this.realTimeDate.set(this.getLocalDateTime());
+      this.bookingForm.get('bookingDate')?.setValue(this.getLocalDateTime());
     }, 1000);
   }
 
