@@ -2,11 +2,13 @@ import { Component, signal } from '@angular/core';
 import { RecentBookingInDealerDashBoard } from '../../../../Service/Model/UserDetails';
 import { BackStoreService } from '../../../../Service/store/back-store.service';
 import { DealerDataService } from '../../../../Service/Backend/dealer-data.service';
+import { ModalComponent } from "../../../../shared/modal/modal.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-booking-history',
   standalone: true,
-  imports: [],
+  imports: [ModalComponent],
   templateUrl: './booking-history.component.html',
   styleUrl: './booking-history.component.css'
 })
@@ -17,6 +19,7 @@ export class BookingHistoryComponent {
 
 constructor(private bsStore:BackStoreService,
     private dealerService: DealerDataService,
+    private modalService: NgbModal
 ) {
 
   this.initDetails();
@@ -37,6 +40,19 @@ initDetails(){
       }
   });
   }
+}
+
+ModalOpen(){
+  const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.title = 'My Custom Modal';
+
+    // Listen to close if you need
+    modalRef.closed.subscribe(() => {
+      console.log('Modal closed');
+    });
+    modalRef.dismissed.subscribe(() => {
+      console.log('Modal dismissed');
+    });
 }
   
 }

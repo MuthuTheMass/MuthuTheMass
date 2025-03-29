@@ -1,10 +1,7 @@
-using Azure;
 using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
 using CarParkingBooking.QRCodeGenerator.Generator;
 using CarParkingSystem.Domain.Dtos.Dealers;
-using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
-using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
 using Microsoft.Azure.Cosmos;
