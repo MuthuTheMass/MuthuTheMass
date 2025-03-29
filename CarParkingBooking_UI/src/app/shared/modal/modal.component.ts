@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, Output, signal, TemplateRef, WritableSignal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, signal, TemplateRef, WritableSignal } from '@angular/core';
 import { ModalDismissReasons, NgbActiveModal, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,24 +8,15 @@ import { ModalDismissReasons, NgbActiveModal, NgbDatepickerModule, NgbModal } fr
   standalone:true,
   imports: [NgbDatepickerModule]
 })
-export class ModalComponent implements OnInit {
-  @Input() content:WritableSignal<any> = signal({} as any);
-  @Output() closeResult: WritableSignal<string> = signal('');
+export class ModalComponent {
 
-  constructor(public activeModal: NgbActiveModal) { }
 
-  ngOnInit() {
+
+  @Input() title: string = 'Details';
+  @Input() isOpen: boolean = false;
+  @Output() closed = new EventEmitter<void>();
+
+  closeModal() {
+    this.closed.emit();
   }
-
-  private getDismissReason(reason: any): string {
-		switch (reason) {
-			case ModalDismissReasons.ESC:
-				return 'by pressing ESC';
-			case ModalDismissReasons.BACKDROP_CLICK:
-				return 'by clicking on a backdrop';
-			default:
-				return `with: ${reason}`;
-		}
-	}
-
 }

@@ -4,6 +4,7 @@ import { BackStoreService } from '../../../../Service/store/back-store.service';
 import { DealerDataService } from '../../../../Service/Backend/dealer-data.service';
 import { ModalComponent } from "../../../../shared/modal/modal.component";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalService } from '../../../../shared/service/modal.service';
 
 @Component({
   selector: 'app-booking-history',
@@ -19,7 +20,7 @@ export class BookingHistoryComponent {
 
 constructor(private bsStore:BackStoreService,
     private dealerService: DealerDataService,
-    private modalService: NgbModal
+    private modalService: ModalService
 ) {
 
   this.initDetails();
@@ -42,17 +43,19 @@ initDetails(){
   }
 }
 
-ModalOpen(){
-  const modalRef = this.modalService.open(ModalComponent);
-    modalRef.componentInstance.title = 'My Custom Modal';
+ 
 
-    // Listen to close if you need
-    modalRef.closed.subscribe(() => {
-      console.log('Modal closed');
-    });
-    modalRef.dismissed.subscribe(() => {
-      console.log('Modal dismissed');
-    });
-}
-  
+showModal = false;
+  user = {
+    name: 'John Doe',
+    email: 'john@example.com'
+  };
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }

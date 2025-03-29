@@ -41,7 +41,7 @@
                         <i class="fa-solid fa-ellipsis fa-flip-horizontal"></i>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" (click)="ModalOpen()">Detail View</a></li>
+                        <li><a class="dropdown-item" (click)="openModal()">Detail View</a></li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
                         <li><a class="dropdown-item" href="#">Delete</a></li>
                       </ul>
@@ -133,3 +133,17 @@
     </div>
   </div>
 </div>
+   
+    <app-modal 
+      [isOpen]="showModal" 
+      [title]="'User Details'"
+      (closed)="closeModal()">
+      
+      <!-- Your content here -->
+      <div>
+        <h4>User Information</h4>
+        <p>Name: {{ user.name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <!-- Add more details as needed -->
+      </div>
+    </app-modal>
