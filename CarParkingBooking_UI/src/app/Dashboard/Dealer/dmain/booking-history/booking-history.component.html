@@ -46,7 +46,7 @@
                         <li><a class="dropdown-item" href="#">Delete</a></li>
                       </ul>
                     </div>
-                    
+
                   </td>
                 </tr>
               }
@@ -58,13 +58,13 @@
     </div>
   </div>
 </div>
-   
-    <app-modal 
-      [isOpen]="showModal" 
+
+    <app-modal
+      [isOpen]="showModal"
       [title]="'User Details'"
       (closed)="closeModal()"
       [isLoading]="isSingleBookingDetailAvailable">
-      
+
       <!-- Your content here -->
       <div class="modal-body">
         <div class="container-fluid">
@@ -72,78 +72,78 @@
             <!-- Left Column -->
             <div class="col-md-6">
               <div class="mb-3">
-                <label class="form-label">Booking ID</label>
+                <label class="form-label fw-bold">Booking ID:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().bookingId || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Customer Name</label>
+                <label class="form-label fw-bold">Customer Name:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().customerName || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Email</label>
+                <label class="form-label fw-bold">Email:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().customerEmail || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Phone</label>
+                <label class="form-label fw-bold">Phone:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().customerPhoneNumber || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Vehicle Number</label>
+                <label class="form-label fw-bold">Vehicle Number:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().vehicleNumber || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Vehicle Model</label>
+                <label class="form-label fw-bold">Vehicle Model:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().vehicleModel || 'N/A' }}</div>
               </div>
             </div>
-            
+
             <!-- Right Column -->
             <div class="col-md-6">
               <div class="mb-3">
-                <label class="form-label">Booking Source</label>
+                <label class="form-label fw-bold">Booking Source:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().bookingSource || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">From Date</label>
+                <label class="form-label fw-bold">From Date:</label>
                 <div class="form-control-plaintext">
                   {{ singleBookingDetail().bookingFromDate ? (singleBookingDetail().bookingFromDate | date:'medium') : 'N/A' }}
                 </div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">To Date</label>
+                <label class="form-label fw-bold">To Date:</label>
                 <div class="form-control-plaintext">
                   {{ singleBookingDetail().bookingToDate ? (singleBookingDetail().bookingToDate | date:'medium') : 'N/A' }}
                 </div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Advance Amount</label>
+                <label class="form-label fw-bold">Advance Amount:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().advanceAmount || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Status</label>
+                <label class="form-label fw-bold">Status:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().bookingStatus || 'N/A' }}</div>
               </div>
-              
+
               <div class="mb-3">
-                <label class="form-label">Allotted Slot</label>
+                <label class="form-label fw-bold">Allotted Slot:</label>
                 <div class="form-control-plaintext">{{ singleBookingDetail().allottedSlots || 'N/A' }}</div>
               </div>
             </div>
           </div>
-          
+
           <!-- QR Code Section -->
           <div class="row mt-3" *ngIf="singleBookingDetail()?.qrCode">
             <div class="col-12 text-center">
-              <label class="form-label">QR Code</label>
+              <label class="form-label fw-bold">QR :</label>
               <div class="d-flex justify-content-center">
                 <img [src]="singleBookingDetail().qrCode" alt="Booking QR Code" class="img-fluid" style="max-height: 200px;">
               </div>

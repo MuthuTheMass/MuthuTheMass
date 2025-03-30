@@ -12,32 +12,51 @@
         </div>
         <div class="sidebar-menu">
           <ul>
-            <li><a href="/dhome" class="active">
-              <i class='bx bxs-dashboard'></i>
-              <span>Dashboard</span></a>
+            <li>
+              <a routerLink="/dhome" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class='bx bxs-dashboard'></i>
+                <span>Dashboard</span>
+              </a>
             </li>
-            <li><a href="/dhome/off-booking">
-              <i class='bx bxs-user-detail'></i>
-              <span>Customer</span></a>
+            <li>
+              <a routerLink="/dhome/off-booking" routerLinkActive="active">
+                <i class='bx bxs-user-detail'></i>
+                <span>Customer</span>
+              </a>
             </li>
-            <li><a href="/dhome/booking-details">
-              <i class='bx bxs-book-content' ></i>
-              <span>Booking Details</span></a>
+            <li>
+              <a routerLink="/dhome/booking-details" routerLinkActive="active">
+                <i class='bx bxs-book-content'></i>
+                <span>Booking Details</span>
+              </a>
             </li>
-            <li><a href="/dhome/payment-details">
-              <i class='bx bx-history'></i>
-              <span>Payment History</span></a>
+            <li>
+              <a routerLink="/dhome/payment-details" routerLinkActive="active">
+                <i class='bx bx-history'></i>
+                <span>Payment History</span>
+              </a>
             </li>
-            <li><a href="/dhome/allpayment">
-              <i class='bx bx-receipt' ></i>
-              <span>Inventory</span></a>
+            <li>
+              <a routerLink="/dhome/allpayment" routerLinkActive="active">
+                <i class='bx bx-receipt'></i>
+                <span>Inventory</span>
+              </a>
             </li>
-            <li><a href="/dhome/dealer-account">
-              <i class='bx bxs-user-account' ></i>
-              <span>Account</span></a>
+            <li>
+              <a routerLink="/dhome/scanner" routerLinkActive="active">
+                <i class='bx bx-receipt'></i>
+                <span>QrScanner</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/dhome/dealer-account" routerLinkActive="active">
+                <i class='bx bxs-user-account'></i>
+                <span>Account</span>
+              </a>
             </li>
           </ul>
         </div>
+
       </div>
   </div>
 </div>

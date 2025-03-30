@@ -47,13 +47,13 @@ initDetails(){
   }
 }
 
- 
+
 
 
 
   openModal(bookingId:string) {
     this.showModal = true;
-    
+
     this.dealerService.getSingleBookingDetialByBookingId(bookingId).subscribe({
       next:(result)=>{
         this.singleBookingDetail.set(result);
@@ -68,5 +68,6 @@ initDetails(){
 
   closeModal() {
     this.showModal = false;
+    this.singleBookingDetail.set({} as CarBookingDetailDto);
   }
 }
