@@ -49,7 +49,7 @@ export class DealerDataService {
   }
 
   getBookingDetialsByQrCode(encryptedQrCode:string):Observable<CarBookingDetailDto>{
-    return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetBookingDetailByQrCode?encryptedQrCode="+encryptedQrCode);
+    return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetBookingDetailByEncryptedId?EncryptedId="+encryptedQrCode);
   }
 
 }
