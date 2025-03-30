@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {BrowserQRCodeReader, IScannerControls} from "@zxing/browser";
 import {DatePipe} from "@angular/common";
 import {LoadingComponent} from "../loading/loading.component";
@@ -20,7 +20,8 @@ export class QrScannerComponent implements OnInit, OnDestroy {
   error: string | null = null;
   isScanning = false;
   isLoading = false; // Added loading state
-  bookingDetails: any = null;
+  @Input() bookingDetails: boolean = false;
+  @Output() scannedQrCode:EventEmitter<string> = new EventEmitter<string>();
 
   async ngOnInit() {
     await this.initScanner();
@@ -73,13 +74,9 @@ export class QrScannerComponent implements OnInit, OnDestroy {
 
     // Simulate API call (replace with your actual API call)
     setTimeout(() => {
-      this.bookingDetails = {
-        bookingId: 'sample-id',
-        customerName: 'John Doe',
-        vehicleNumber: 'ABC123',
-        bookingFromDate: new Date()
-      };
+      this.bookingDetails = true;
       this.isLoading = false; // Stop loading after data is loaded
+      this.scannedQrCode.emit(data);
     }, 1000);
   }
 
@@ -93,7 +90,7 @@ export class QrScannerComponent implements OnInit, OnDestroy {
 
   restartScanner() {
     this.scannedData = null;
-    this.bookingDetails = null;
+    this.bookingDetails = false;
     this.error = null;
     this.initScanner();
   }
@@ -101,7 +98,7 @@ export class QrScannerComponent implements OnInit, OnDestroy {
   StopBooking(id: string) {
     this.stopScanner();
     this.scannedData = null;
-    this.bookingDetails = null;
+    this.bookingDetails = false;
     this.error = null;
     this.initScanner();
   }

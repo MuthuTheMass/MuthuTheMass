@@ -13,6 +13,8 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<bool> AddBooking(BookingDto booking);
 
         Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId);
+
+        Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId);
     }
 
     public class UserBookingService: IUserBookingService
@@ -52,6 +54,13 @@ namespace CarParkingSystem.Application.Services.BookingService
 
             var data = await _bookingRepository.AddBookingDetails(carBooking);
             return data;
+        }
+
+        public async Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId)
+        {
+            var data = await _bookingRepository.GetBookingByQR(encryptedId);
+            return _mapper.Map<CarBookingDetailDto>(data);
+
         }
 
         public async Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId)

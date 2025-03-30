@@ -34,8 +34,11 @@ public class Program
         IQrCodeService _qrCodeService = new QrCodeService();
         IBookingRepository bookingRepository = new BookingRepository(cosmosClientFactory, _encryptService, _qrCodeService);
 
-        var bookingTasks = SeedBookingData().Select(booking => bookingRepository.AddBookingDetails(booking));
-        await Task.WhenAll(bookingTasks);
+        foreach (var booking in SeedBookingData())
+        {
+            await bookingRepository.AddBookingDetails(booking);
+        }
+
 
         Console.WriteLine("DB Done");
     }

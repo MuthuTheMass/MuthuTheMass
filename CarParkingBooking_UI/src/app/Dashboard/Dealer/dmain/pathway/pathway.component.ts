@@ -1,0 +1,46 @@
+import {Component, signal, WritableSignal} from '@angular/core';
+import {QrScannerComponent} from "../../../../shared/QrScanner/QrScanner.component";
+import {DealerDataService} from "../../../../Service/Backend/dealer-data.service";
+import {CarBookingDetailDto} from "../../../../Service/Model/BookingDealerModal";
+import {DatePipe} from "@angular/common";
+
+@Component({
+  selector: 'app-pathway',
+  standalone: true,
+  imports: [
+    QrScannerComponent,
+    DatePipe
+  ],
+  templateUrl: './pathway.component.html',
+  styleUrl: './pathway.component.css'
+})
+export class PathwayComponent {
+
+  bookingDetail:WritableSignal<CarBookingDetailDto> = signal<CarBookingDetailDto>({} as CarBookingDetailDto);
+  constructor(private DealerData: DealerDataService) {
+  }
+
+  ngOnInit() {
+
+  }
+
+  GetDetails($event: string) {
+    this.DealerData.getBookingDetialsByQrCode($event).subscribe({
+      next: (result: any) => {
+        this.bookingDetail.set(result);
+        console.log(result);
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
+
+  restartScanner() {
+    this.bookingDetail.set({} as CarBookingDetailDto);
+  }
+
+  StopBooking(bookingId: any) {
+
+  }
+}

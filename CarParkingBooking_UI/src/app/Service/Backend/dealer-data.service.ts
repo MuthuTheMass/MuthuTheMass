@@ -27,7 +27,7 @@ export class DealerDataService {
         "pageNumber":pageNumber,
         "pageSize":pageSize
       };
-  
+
       return this.httpClient.post<any>(`${environment.apiUrl}Dealer/search`, body);
 
   }
@@ -46,6 +46,10 @@ export class DealerDataService {
 
   getSingleBookingDetialByBookingId(id:string):Observable<CarBookingDetailDto>{
     return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetSingleBookingDetailByBookingId?bookingId="+id);
+  }
+
+  getBookingDetialsByQrCode(encryptedQrCode:string):Observable<CarBookingDetailDto>{
+    return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetBookingDetailByQrCode?encryptedQrCode="+encryptedQrCode);
   }
 
 }

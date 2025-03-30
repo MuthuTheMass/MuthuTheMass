@@ -22,23 +22,22 @@
 }
 
 @if(bookingDetails){
-  <div class="booking-details mt-3">
-    <h3>Booking Details</h3>
-    <div class="card">
-      <div class="card-body">
-        <p><strong>Booking ID:</strong> {{ bookingDetails.bookingId }}</p>
-        <p><strong>Customer:</strong> {{ bookingDetails.customerName }}</p>
-        <p><strong>Vehicle:</strong> {{ bookingDetails.vehicleNumber }}</p>
-        <p><strong>From:</strong> {{ bookingDetails.bookingFromDate | date }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+
+      </div>
+      <div class="col text-end">
         <button (click)="restartScanner()" class="btn btn-primary mt-2">
           Retry
         </button>
-        <button (click)="StopBooking(bookingDetails.bookingId)" class="btn btn-primary mt-2">
-          Parking Completed
-        </button>
       </div>
     </div>
+    <div class="row">
+      <ng-content></ng-content>
+    </div>
   </div>
+
 
 }
 
