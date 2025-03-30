@@ -1,0 +1,48 @@
+<div class="scanner-container container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+  @if (error){
+    <div class="alert alert-danger">
+      {{ error }}
+      <button (click)="restartScanner()" class="btn btn-sm btn-outline-danger ms-2">
+        Try Again
+      </button>
+    </div>
+  }
+
+@if(!bookingDetails && !error){
+  <div class="text-center" >
+
+    <h3>Scan Booking QR Code</h3>
+    @if (isLoading){
+      <app-loading [isloading]="isLoading"></app-loading>
+    }
+    <video id="videoElement" width="900" height="500"></video>
+
+  </div>
+
+}
+
+@if(bookingDetails){
+  <div class="booking-details mt-3">
+    <h3>Booking Details</h3>
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Booking ID:</strong> {{ bookingDetails.bookingId }}</p>
+        <p><strong>Customer:</strong> {{ bookingDetails.customerName }}</p>
+        <p><strong>Vehicle:</strong> {{ bookingDetails.vehicleNumber }}</p>
+        <p><strong>From:</strong> {{ bookingDetails.bookingFromDate | date }}</p>
+        <button (click)="restartScanner()" class="btn btn-primary mt-2">
+          Retry
+        </button>
+        <button (click)="StopBooking(bookingDetails.bookingId)" class="btn btn-primary mt-2">
+          Parking Completed
+        </button>
+      </div>
+    </div>
+  </div>
+
+}
+
+</div>
+
+
+
