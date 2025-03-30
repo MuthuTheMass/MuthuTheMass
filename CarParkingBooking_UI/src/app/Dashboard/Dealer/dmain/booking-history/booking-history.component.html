@@ -62,7 +62,8 @@
     <app-modal 
       [isOpen]="showModal" 
       [title]="'User Details'"
-      (closed)="closeModal()">
+      (closed)="closeModal()"
+      [isLoading]="isSingleBookingDetailAvailable">
       
       <!-- Your content here -->
       <div class="modal-body">

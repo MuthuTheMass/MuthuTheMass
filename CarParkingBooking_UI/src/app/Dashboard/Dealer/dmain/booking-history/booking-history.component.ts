@@ -19,6 +19,8 @@ export class BookingHistoryComponent {
 
   bookingData = signal<RecentBookingInDealerDashBoard[]>([] as RecentBookingInDealerDashBoard[]);
   singleBookingDetail = signal<CarBookingDetailDto>({} as CarBookingDetailDto);
+  showModal:boolean = false;
+  isSingleBookingDetailAvailable:boolean = true;
 
 constructor(private bsStore:BackStoreService,
     private dealerService: DealerDataService,
@@ -47,11 +49,7 @@ initDetails(){
 
  
 
-showModal = false;
-  user = {
-    name: 'John Doe',
-    email: 'john@example.com'
-  };
+
 
   openModal(bookingId:string) {
     this.showModal = true;
@@ -59,6 +57,11 @@ showModal = false;
     this.dealerService.getSingleBookingDetialByBookingId(bookingId).subscribe({
       next:(result)=>{
         this.singleBookingDetail.set(result);
+        this.isSingleBookingDetailAvailable = false;
+      },
+      error:(err)=>{
+        this.isSingleBookingDetailAvailable = true;
+        console.error(err);
       }
     });
   }

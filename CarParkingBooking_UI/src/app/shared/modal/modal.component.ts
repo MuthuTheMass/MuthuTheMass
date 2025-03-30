@@ -11,7 +11,7 @@ import { ModalDismissReasons, NgbActiveModal, NgbDatepickerModule, NgbModal } fr
 export class ModalComponent {
 
 
-
+  @Input() isLoading: boolean = true;
   @Input() title: string = 'Details';
   @Input() isOpen: boolean = false;
   @Output() closed = new EventEmitter<void>();

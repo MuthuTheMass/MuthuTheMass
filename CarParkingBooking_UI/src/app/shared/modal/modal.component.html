@@ -8,10 +8,15 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			<div>
-				
-			</div>
-			<ng-content></ng-content> <!-- Content will be projected here -->
+			@if(isLoading){
+				<div class="container-fluid d-flex justify-content-center align-items-center">
+					<img src="assets\animation\loading.gif" alt="QR Code" class="qr-code">
+				</div>
+			}
+			@else{
+				<ng-content></ng-content> <!-- Content will be projected here -->
+
+			}
 		  </div>
 		</div>
 	  </div>
