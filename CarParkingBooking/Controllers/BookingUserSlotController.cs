@@ -36,5 +36,24 @@ namespace CarParkingBooking.Controllers
 
 
         }
+
+        [HttpGet]
+        [Route(nameof(GetSingleBookingDetailByBookingId))]
+        public async Task<IActionResult> GetSingleBookingDetailByBookingId([FromQuery] string bookingId)
+        {
+            var result = await bookingData.GetSingleBookingDetialByBookingIdAsync(bookingId);
+            if (result?.BookingId is not null)
+            {
+                return Ok(result);
+            }
+            else if (result?.BookingId is null)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }

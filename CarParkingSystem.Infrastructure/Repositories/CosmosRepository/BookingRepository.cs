@@ -6,13 +6,14 @@ using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 
 public interface IBookingRepository
 {
     Task<CarBooking> GetBooking(string bookingId, string dealerId, string customerId);
-    Task<CarBooking> GetByBooking(string bookingId);
+    Task<CarBooking?> GetSingleBooking(string bookingId);
     Task<CarBooking?> GetBookingByQR(string EncryptedId);
     Task<List<CarBooking>> GetBookingByDealer(string dealerId);
     Task<bool> AddBookingDetails(CarBooking carBooking);
@@ -114,10 +115,13 @@ public class BookingRepository : IBookingRepository
         return result.SingleOrDefault() ?? null;
     }
 
-    public async Task<CarBooking> GetByBooking(string bookingId)
+    public async Task<CarBooking?> GetSingleBooking(string bookingId)
     {
-        var result = await Container.ReadItemAsync<CarBooking>(bookingId, new PartitionKey(string.Empty));
-        return result.Resource;
+        var iterator = Container.GetItemLinqQueryable<CarBooking>(true)
+                                .Where(b => b.id == bookingId)
+                                .ToFeedIterator();
+
+        return iterator.HasMoreResults ? (await iterator.ReadNextAsync()).FirstOrDefault() : null;
     }
 
     public async Task<List<UserDetailsNewCustomer?>> GetUserByConfirmedBookingForDealer(string dealerId)

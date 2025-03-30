@@ -41,7 +41,7 @@
                         <i class="fa-solid fa-ellipsis fa-flip-horizontal"></i>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" (click)="openModal()">Detail View</a></li>
+                        <li><a class="dropdown-item" (click)="openModal(booking.bookingID)">Detail View</a></li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
                         <li><a class="dropdown-item" href="#">Delete</a></li>
                       </ul>
@@ -50,81 +50,6 @@
                   </td>
                 </tr>
               }
-            
-            <!-- <tr>
-              <td data-label="Event Name">Music</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">29/12/2021</td>
-              <td data-label="Seats Available">Slot Allocated</td>
-              <td data-label="slot number">12</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__active">On going</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Craft</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">19/12/2021</td>
-              <td data-label="Seats Available">Slot Allocated</td>
-              <td data-label="slot number">14</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Go Kart</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">10/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr>
-            <tr>
-              <td data-label="Event Name">Designing</td>
-              <td data-label="Total Seats">TN 18 AY 2345</td>
-              <td data-label="Event Date">1/12/2021</td>
-              <td data-label="Seats Available">0</td>
-              <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-            </tr> -->
             </tbody>
           </table>
         </div>
@@ -140,10 +65,89 @@
       (closed)="closeModal()">
       
       <!-- Your content here -->
-      <div>
-        <h4>User Information</h4>
-        <p>Name: {{ user.name }}</p>
-        <p>Email: {{ user.email }}</p>
-        <!-- Add more details as needed -->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Booking ID</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().bookingId || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Customer Name</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().customerName || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().customerEmail || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().customerPhoneNumber || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Vehicle Number</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().vehicleNumber || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Vehicle Model</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().vehicleModel || 'N/A' }}</div>
+              </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Booking Source</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().bookingSource || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">From Date</label>
+                <div class="form-control-plaintext">
+                  {{ singleBookingDetail().bookingFromDate ? (singleBookingDetail().bookingFromDate | date:'medium') : 'N/A' }}
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">To Date</label>
+                <div class="form-control-plaintext">
+                  {{ singleBookingDetail().bookingToDate ? (singleBookingDetail().bookingToDate | date:'medium') : 'N/A' }}
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Advance Amount</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().advanceAmount || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().bookingStatus || 'N/A' }}</div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Allotted Slot</label>
+                <div class="form-control-plaintext">{{ singleBookingDetail().allottedSlots || 'N/A' }}</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- QR Code Section -->
+          <div class="row mt-3" *ngIf="singleBookingDetail()?.qrCode">
+            <div class="col-12 text-center">
+              <label class="form-label">QR Code</label>
+              <div class="d-flex justify-content-center">
+                <img [src]="singleBookingDetail().qrCode" alt="Booking QR Code" class="img-fluid" style="max-height: 200px;">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </app-modal>

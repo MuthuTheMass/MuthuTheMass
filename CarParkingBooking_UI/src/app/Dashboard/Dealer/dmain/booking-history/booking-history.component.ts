@@ -5,18 +5,20 @@ import { DealerDataService } from '../../../../Service/Backend/dealer-data.servi
 import { ModalComponent } from "../../../../shared/modal/modal.component";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from '../../../../shared/service/modal.service';
+import { CarBookingDetailDto } from '../../../../Service/Model/BookingDealerModal';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking-history',
   standalone: true,
-  imports: [ModalComponent],
+  imports: [ModalComponent,CommonModule,DatePipe],
   templateUrl: './booking-history.component.html',
   styleUrl: './booking-history.component.css'
 })
 export class BookingHistoryComponent {
 
   bookingData = signal<RecentBookingInDealerDashBoard[]>([] as RecentBookingInDealerDashBoard[]);
-
+  singleBookingDetail = signal<CarBookingDetailDto>({} as CarBookingDetailDto);
 
 constructor(private bsStore:BackStoreService,
     private dealerService: DealerDataService,
@@ -51,8 +53,14 @@ showModal = false;
     email: 'john@example.com'
   };
 
-  openModal() {
+  openModal(bookingId:string) {
     this.showModal = true;
+    
+    this.dealerService.getSingleBookingDetialByBookingId(bookingId).subscribe({
+      next:(result)=>{
+        this.singleBookingDetail.set(result);
+      }
+    });
   }
 
   closeModal() {

@@ -11,6 +11,8 @@ namespace CarParkingSystem.Application.Services.BookingService
     public interface IUserBookingService
     {
         Task<bool> AddBooking(BookingDto booking);
+
+        Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId);
     }
 
     public class UserBookingService: IUserBookingService
@@ -50,6 +52,12 @@ namespace CarParkingSystem.Application.Services.BookingService
 
             var data = await _bookingRepository.AddBookingDetails(carBooking);
             return data;
+        }
+
+        public async Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId)
+        {
+            var data = await _bookingRepository.GetSingleBooking(bookingId);
+            return _mapper.Map<CarBookingDetailDto>(data);
         }
     }
 }

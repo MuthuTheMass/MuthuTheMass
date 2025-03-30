@@ -5,6 +5,7 @@ import { dealerVM, offlinebookingVM } from '../Model/dealermodal';
 import {environment} from "../../../environments/environment";
 import {BackStoreService} from "../store/back-store.service";
 import {LocationService} from "../UIService/location.service";
+import { CarBookingDetailDto } from '../Model/BookingDealerModal';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,10 @@ export class DealerDataService {
 
   getRecentBooking(email: string):Observable<any> {
     return this.httpClient.get(environment.apiUrl+"Dealer/DealerBookings?emailId="+email);
+  }
+
+  getSingleBookingDetialByBookingId(id:string):Observable<CarBookingDetailDto>{
+    return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetSingleBookingDetailByBookingId?bookingId="+id);
   }
 
 }

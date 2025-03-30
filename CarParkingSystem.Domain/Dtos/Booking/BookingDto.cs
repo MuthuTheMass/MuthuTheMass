@@ -22,4 +22,21 @@ namespace CarParkingSystem.Application.Dtos.Booking
         public required Status BookingStatus { get; set; }
         public string? AllottedSlots { get; set; }
     }
+
+    public record CarBookingDetailDto(
+        string? BookingId,
+        string? CustomerId,
+        string? CustomerName,
+        string? CustomerEmail,
+        string? CustomerPhoneNumber,
+        string? VehicleNumber,
+        string? VehicleModel,
+        string? BookingSource,
+        DateTime? BookingFromDate,
+        DateTime? BookingToDate,
+        string? QrCode,
+        string? AdvanceAmount,
+        string? BookingStatus,
+        string? AllottedSlots
+        );
 }
