@@ -71,8 +71,12 @@
             *ngIf="this.validate.validation(this.regpage, 'confirmpassword')"
             >*Confirm password</span
           >
-          <button (click)="signin()">Sign Up</button>
-
+          <button (click)="signin()">Sign Up
+            @if (userSignUpRotate) {
+              <i  class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
+            }
+          </button>
+          
           <span class="Dlog"><a href="Dreg">Dealer Register</a></span>
         </form>
       </div>
@@ -130,8 +134,12 @@
             >Enter The Valid Password</span
           >
           <a href="#">Forget your Password?</a>
-          <button (click)="logininto()">Sign in</button>
-
+          <button (click)="logininto()">Sign in 
+            @if (userSignInRotate) {
+              <i  class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
+            }
+          </button>
+          
           <span class="Dlog"><a href="Dreg">Dealer Login</a></span>
         </form>
       </div>

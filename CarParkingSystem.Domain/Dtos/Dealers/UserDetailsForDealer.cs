@@ -29,6 +29,6 @@ namespace CarParkingSystem.Domain.Dtos.Dealers
         DateTime? Date,
         string Status,
         string Slot_Number,
-        string QRCode
+        byte[] QRCode
         );
 }

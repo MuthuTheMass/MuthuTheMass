@@ -5,8 +5,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { OrmcontrolValidationServiceService } from '../../service/ormcontrol-validation-service.service';
 import { CommonModule } from '@angular/common';
 import { UserAuthService } from '../../../Service/Backend/user-auth.service';
-import {} from '@angular/common/http';
-import { Login, SignUp } from '../../../Service/Model/UserModels';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Login, LoginResponse, SignUp } from '../../../Service/Model/UserModels';
 
 @Component({
   selector: 'app-reg',
@@ -17,6 +17,7 @@ import { Login, SignUp } from '../../../Service/Model/UserModels';
 })
 export class RegComponent {
 validators : any;
+loader:boolean = false;
 signinto() {
   throw new Error('Method not implemented.');
   }
@@ -28,6 +29,8 @@ login:any;
 regpage:any;
 validate:any;
 router:any;
+userSignUpRotate:boolean = false; 
+userSignInRotate: boolean = false;
 
 
 
@@ -98,8 +101,8 @@ constructor(_router :Router,private _validate:OrmcontrolValidationServiceService
 
 
     signin(){
-
         if(this.regpage.valid){
+          this.userSignUpRotate = true;
           let data = {
             userName:this.regpage.value.fullname,
             email:this.regpage.value.regemail,
@@ -110,10 +113,12 @@ constructor(_router :Router,private _validate:OrmcontrolValidationServiceService
 
           this.Login.SignUp(data).then(
             (response: any) => {
+              this.userSignUpRotate = false;
               console.log(response);
               this.loginBtn();
             },
             (error: any) => {
+              this.userSignUpRotate = false;
               console.error(error);
             }
           )
@@ -128,12 +133,23 @@ constructor(_router :Router,private _validate:OrmcontrolValidationServiceService
     logininto(){
 
         if(this.login.valid){
+          this.userSignInRotate = true;
           let data = {
             email:this.login.value.useremail,
             password:this.login.value.pass
           } as Login;
 
-          this.Login.Login(data);
+          this.Login.Login(data).subscribe(
+                        (data) => {
+                              localStorage.clear();
+                              localStorage.setItem("User",JSON.stringify(data));
+                              this.router.navigate(['/main']);
+                              this.userSignInRotate = false;
+                        },
+                          (err:HttpErrorResponse) => {
+                          console.log(err);
+                          this.userSignInRotate = false;
+                          });;
         }
         else{
           this.checkValidityAndMarkAsTouched();

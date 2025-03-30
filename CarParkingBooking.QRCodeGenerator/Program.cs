@@ -4,4 +4,5 @@ using CarParkingBooking.QRCodeGenerator.Generator;
 Console.WriteLine("Hello, World!");
 
 IQrCodeService qrCodeService = new QrCodeService();
-qrCodeService.GenerateQrCode("hello world");
+var G =qrCodeService.GenerateQrCode("hello world").GetAwaiter().GetResult();
+Console.WriteLine(G);

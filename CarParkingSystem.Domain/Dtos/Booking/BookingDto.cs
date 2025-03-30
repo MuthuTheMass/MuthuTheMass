@@ -15,11 +15,28 @@ namespace CarParkingSystem.Application.Dtos.Booking
 
         public required CarBookingDates BookingDate { get; set; }
 
-        public string? GeneratedQrCode { get; set; }
+        public byte[]? GeneratedQrCode { get; set; }
 
         public string? AdvanceAmount { get; set; }
 
         public required Status BookingStatus { get; set; }
         public string? AllottedSlots { get; set; }
     }
+
+    public record CarBookingDetailDto(
+        string? BookingId,
+        string? CustomerId,
+        string? CustomerName,
+        string? CustomerEmail,
+        string? CustomerPhoneNumber,
+        string? VehicleNumber,
+        string? VehicleModel,
+        string? BookingSource,
+        DateTime? BookingFromDate,
+        DateTime? BookingToDate,
+        string? QrCode,
+        string? AdvanceAmount,
+        string? BookingStatus,
+        string? AllottedSlots
+        );
 }

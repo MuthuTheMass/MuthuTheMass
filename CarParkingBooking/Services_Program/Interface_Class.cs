@@ -1,4 +1,6 @@
 ﻿
+using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
+using CarParkingBooking.QRCodeGenerator.Generator;
 using CarParkingSystem.Application.Services.Authorization;
 using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Application.Services.DealerService;
@@ -30,6 +32,11 @@ namespace CarParkingBooking.Services_Program
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IDealerSlotsRepository, DealerSlotsRepository>();
 
+            //Encryption
+            services.AddScoped<IEncryptionService, EncryptionService>();
+
+            //QRCode
+            services.AddScoped<IQrCodeService, QrCodeService>();
 
         }
     }

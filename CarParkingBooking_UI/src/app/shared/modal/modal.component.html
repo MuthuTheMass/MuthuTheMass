@@ -1,0 +1,18 @@
+@if(isOpen){
+	<div class="modal-overlay" (click)="closeModal()">
+		<div class="modal-content" (click)="$event.stopPropagation()">
+		  <div class="modal-header">
+			<h3>{{ title }}</h3>
+			<button class="close-btn" (click)="closeModal()">
+			  <i class="fas fa-times"></i>
+			</button>
+		  </div>
+		  <div class="modal-body">
+        <app-loading [isloading]="isLoading"></app-loading>
+			@if(!isLoading){
+        <ng-content></ng-content> <!-- Content will be projected here -->
+			}
+		  </div>
+		</div>
+	  </div>
+}

@@ -90,6 +90,14 @@ namespace CarParkingBooking.AutoMapper
             return formFile;
         }
 
+        public string? ConvertQrByteToPngString(byte[] file) 
+        {
+            if (file is null) return null;
+
+            return $"data:image/png;base64,{Convert.ToBase64String(file)}" ;
+
+        }
+
         public string? ConvertByteToString(byte[]? bytes)
         {
             if (bytes != null || bytes?.Length > 0)

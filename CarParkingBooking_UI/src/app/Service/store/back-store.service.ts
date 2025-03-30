@@ -1,7 +1,6 @@
 import { Injectable,signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {dealerData, dealerVM} from '../Model/dealermodal';
-import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { userDetails,UserDetailsForDealer } from '../Model/UserDetails';
 import {VehicleModal} from "../Model/VehicleModal";
 import {LoginResponse} from "../Model/BackendUserModels";

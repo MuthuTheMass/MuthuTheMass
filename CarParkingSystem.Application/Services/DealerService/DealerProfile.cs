@@ -144,7 +144,7 @@ public class DealerProfile : IDealerProfile
                 Reason = "Booking InProgress"
             },
             IsDeleted = false,
-            GeneratedQrCode = Guid.NewGuid().ToString(),
+            GeneratedQrCode = null,
             AllottedSlots = null,
             AdvanceAmount = null,
             UpdatedDate = null
