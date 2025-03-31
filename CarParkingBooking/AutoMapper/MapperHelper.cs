@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Domain.Dtos.Dealers;
+using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using Newtonsoft.Json;
 
 namespace CarParkingBooking.AutoMapper
@@ -88,6 +90,14 @@ namespace CarParkingBooking.AutoMapper
             return formFile;
         }
 
+        public string? ConvertQrByteToPngString(byte[] file) 
+        {
+            if (file is null) return null;
+
+            return $"data:image/png;base64,{Convert.ToBase64String(file)}" ;
+
+        }
+
         public string? ConvertByteToString(byte[]? bytes)
         {
             if (bytes != null || bytes?.Length > 0)
@@ -104,6 +114,25 @@ namespace CarParkingBooking.AutoMapper
                 await file.CopyToAsync(ms);
                 var fileBytes = ms.ToArray();
                 return $"data:image/jpeg;base64,{Convert.ToBase64String(fileBytes)}";
+            }
+        }
+
+        public DateTime GetIndianTime()
+        {
+            TimeZoneInfo indianZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, indianZone);
+        }
+
+        public DateTime GetIndianTime(string date)
+        {
+            if (DateTime.TryParse(date, out DateTime parsedDate))
+            {
+                TimeZoneInfo indianZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+                return TimeZoneInfo.ConvertTimeToUtc(parsedDate, indianZone);
+            }
+            else
+            {
+                throw new ArgumentException("Invalid date format", nameof(date));
             }
         }
     }

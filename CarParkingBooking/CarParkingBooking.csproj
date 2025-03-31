@@ -71,6 +71,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarParkingBooking.QRCodeGenerator\CarParkingBooking.QRCodeGenerator.csproj" />
     <ProjectReference Include="..\CarParkingSystem.Application\CarParkingSystem.Application.csproj" />
   </ItemGroup>
 

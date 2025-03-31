@@ -1,12 +1,15 @@
 using AutoMapper;
+using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
+using CarParkingSystem.Domain.Helper;
+using CarParkingSystem.Domain.ValueObjects;
+using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
 using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
-using Microsoft.Azure.Cosmos.Serialization.HybridRow;
-using System.Threading;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarParkingSystem.Application.Services.DealerService;
 
@@ -18,6 +21,11 @@ public interface IDealerProfile
     Task<DealerRecord> GetAllDealersBySearch(Filter filter);
 
     Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId);
+
+    Task<bool> DealerBookingOffline(OfflineBooking offlineBooking);
+
+    Task<List<RecentBookingInDealerDashBoard>> GetAllBookingsByDealerEmailId(string emailId);
+
 }
 
 public class DealerProfile : IDealerProfile
@@ -29,17 +37,122 @@ public class DealerProfile : IDealerProfile
     private readonly IVehicleRepository _vehicleRepository;
     private readonly IMapper _mapper;
     
-    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository,IBookingRepository bookingRepository,IVehicleRepository vehicleRepository)
+    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository,IBookingRepository bookingRepository, IVehicleRepository vehicleRepository)
     {
         _dealerRepository = dealerRepository;
         _mapper = mapper;
         _userRepository = userRepository;
         _dealerSlotsRepository = dealerSlotsRepository;
         _bookingRepository = bookingRepository;
-        _vehicleRepository = vehicleRepository; 
+        _vehicleRepository = vehicleRepository;
     }
-    
-    
+
+    public async Task<bool> DealerBookingOffline(OfflineBooking offlineBooking)
+    {
+        if (offlineBooking == null || offlineBooking.VehicleNumber == null)
+            return false;
+
+        var userInfo = MapToCustomerUserDetails(offlineBooking);
+        var dealerDetails = await _dealerRepository.GetUserByEmail(offlineBooking.DealerEmailId);
+        var customerData = await GetOrCreateCustomerData(offlineBooking, userInfo);
+
+        var carBooking = CreateCarBooking(offlineBooking, dealerDetails, userInfo);
+        await _bookingRepository.AddBookingDetails(carBooking);
+
+        return true;
+    }
+
+    #region DealerBookingOffline() Helper Methods
+    private CustomerUserDetails MapToCustomerUserDetails(OfflineBooking offlineBooking)
+    {
+        return new CustomerUserDetails
+        {
+            CustomerId = string.Empty,
+            CustomerName = offlineBooking.FullName,
+            CustomerMobileNumber = offlineBooking.MobileNumber,
+            CustomerEmail = offlineBooking.Email,
+            CustomerAddress = offlineBooking.Address,
+            CustomerAuthorityOfIssue = offlineBooking.AuthorityOfIssue,
+            CustomerProof = offlineBooking.Proof,
+            CustomerProofNumber = offlineBooking.ProofNumber
+        };
+    }
+
+    private async Task<UserDetails> GetOrCreateCustomerData(OfflineBooking offlineBooking, CustomerUserDetails userInfo)
+    {
+        var customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
+        if (customerData == null || string.IsNullOrEmpty(customerData?.Email))
+        {
+            var newUser = CreateUserDetails(offlineBooking);
+            await _userRepository.CraeteNewUser(newUser);
+            customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
+            userInfo.CustomerId = customerData.UserID;
+        }
+        else
+        {
+            UpdateUserInfo(userInfo, customerData);
+        }
+
+        return customerData;
+    }
+
+    private UserDetails CreateUserDetails(OfflineBooking offlineBooking)
+    {
+        return new UserDetails
+        {
+            UserID = string.Empty,
+            Email = offlineBooking.Email,
+            Address = offlineBooking.Address,
+            CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
+            MobileNumber = offlineBooking.MobileNumber,
+            Name = offlineBooking.FullName,
+            Password = string.Empty,
+            Rights = AccessToUsers.User.ToString(),
+            UserProfilePicture = null
+        };
+    }
+
+    private void UpdateUserInfo(CustomerUserDetails userInfo, UserDetails customerData)
+    {
+        userInfo.CustomerId = customerData.UserID;
+        userInfo.CustomerAddress = customerData.Address;
+        userInfo.CustomerMobileNumber = customerData.MobileNumber;
+        userInfo.CustomerEmail = customerData.Email;
+        userInfo.CustomerName = customerData.Name;
+    }
+
+    private CarBooking CreateCarBooking(OfflineBooking offlineBooking, DealerDetails dealerDetails, CustomerUserDetails userInfo)
+    {
+        return new CarBooking
+        {
+            DealerId = dealerDetails?.DealerID,
+            CustomerData = userInfo,
+            VehicleInfo = new VehicleInformation
+            {
+                VehicleNumber = offlineBooking.VehicleNumber,
+                VehicleModel = offlineBooking.VehicleModel
+            },
+            BookingSource = BookingSources.Dealer.ToString(),
+            BookingDate = new CarBookingDates
+            {
+                From = DateTiming.GetIndianTime(offlineBooking.BookingDate)
+            },
+            CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
+            BookingStatus = new Status
+            {
+                State = BookingProcessDetails.InProgress,
+                Reason = "Booking InProgress"
+            },
+            IsDeleted = false,
+            GeneratedQrCode = null,
+            AllottedSlots = null,
+            AdvanceAmount = null,
+            UpdatedDate = null
+        };
+    }
+
+    #endregion
+
     public async Task<bool?> DealerSignUp(SignUpDto dealer)
     {
         if (dealer == null || 
@@ -95,18 +208,17 @@ public class DealerProfile : IDealerProfile
         if (dealerdata is not null)
         {
             var bookings = await _bookingRepository.GetBookingByDealer(dealerdata.DealerID);
-            var vehicleDetails = await _vehicleRepository.GetVehicleById(dealerdata.DealerID);
             foreach (var item in bookings)
             {
                 data.RecentBookings.Add(
 
                     new RecentBookingInDealerDashBoard(
                         item.id,
-                        item.VehicleInfo.VehicleNumber,
+                        item.VehicleInfo?.VehicleNumber!,
                         item.CreatedDate,
-                        item.BookingStatus.State.ToString(),
-                        item.AllottedSlots,
-                        item.GeneratedQrCode
+                        item.BookingStatus?.State.ToString()!,
+                        item.AllottedSlots!,
+                        item.GeneratedQrCode!
                         )
                     );
             }
@@ -115,5 +227,34 @@ public class DealerProfile : IDealerProfile
 
 
         return data;
+    }
+
+    public async Task<List<RecentBookingInDealerDashBoard>?> GetAllBookingsByDealerEmailId(string emailId)
+    {
+        var data = new List<RecentBookingInDealerDashBoard>();
+        var dealerdata = await _dealerRepository.GetUserByEmail(emailId);
+        if (dealerdata is not null)
+        {
+            var bookings = await _bookingRepository.GetBookingByDealer(dealerdata.DealerID);
+            foreach (var item in bookings)
+            {
+                data.Add(
+
+                    new RecentBookingInDealerDashBoard(
+                        item.id,
+                        item.VehicleInfo?.VehicleNumber!,
+                        item.CreatedDate,
+                        item.BookingStatus?.State.ToString()!,
+                        item.AllottedSlots!,
+                        item.GeneratedQrCode!
+                        )
+                    );
+            }
+            return data;
+        }
+
+        return null;
+
+
     }
 }

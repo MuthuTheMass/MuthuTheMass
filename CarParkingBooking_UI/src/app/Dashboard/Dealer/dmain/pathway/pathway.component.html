@@ -1,0 +1,17 @@
+<app-QrScanner [bookingDetails]="bookingDetail().bookingId != null" (scannedQrCode)="GetDetails($event)">
+    <div class="booking-details mt-3">
+      <h3>Booking Details</h3>
+      <div class="card">
+        <div class="card-body">
+          <p><strong>Booking ID:</strong> {{ bookingDetail().bookingId }}</p>
+          <p><strong>Customer:</strong> {{ bookingDetail().customerName }}</p>
+          <p><strong>Vehicle:</strong> {{ bookingDetail().vehicleNumber }}</p>
+          <p><strong>From:</strong> {{ bookingDetail().bookingFromDate | date }}</p>
+
+          <button (click)="StopBooking(bookingDetail().bookingId)" class="btn btn-primary mt-2">
+            Parking Completed
+          </button>
+        </div>
+      </div>
+    </div>
+</app-QrScanner>

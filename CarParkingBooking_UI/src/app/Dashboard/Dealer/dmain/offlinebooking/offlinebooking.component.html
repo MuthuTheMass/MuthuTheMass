@@ -1,72 +1,68 @@
 <div class="container">
     <div class="p1">
     <header>Booking Slot</header>
-    <form action="#" class="form">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="form">
         <div class="column">
             <div class="input-box">
-                <label for="#">Full Name</label>
-                <input placeholder="Enter your name" required="" type="text" />
+                <label for="fullName">Full Name</label>
+                <input formControlName="fullName" placeholder="Enter your name" required type="text" />
+            </div>
+            
+            <div class="input-box">
+                <label for="email">Email</label>
+                <input formControlName="email" placeholder="Enter your e-mail" required type="email" />
             </div>
             <div class="input-box">
-                <label for="#">Date of Birth</label>
-                <input id="date" name="date" required="" type="date" />
-            </div>
-            <div class="input-box">
-                <label for="#">Email</label>
-                <input placeholder="Enter your e-mail" required="" type="number" />
+                <label for="mobileNumber">Mobile Number</label>
+                <input formControlName="mobileNumber" placeholder="##### #####" required type="text" />
             </div>
         </div>
         <div class="column">
+            
+           
             <div class="input-box">
-                <label for="#">Mobile Number</label>
-                <input placeholder="### ### ####" required="" type="text" />
-            </div>
-            <div class="input-box">
-                <label for="#">Gender</label>
-                <div class="select-box">
-                <select>
-                    <option>Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-                </div>
-            </div>
-            <div class="input-box">
-                <label for="#">Occupation</label>
-                <input placeholder="Enter Occupation" required="" type="text" />
+                <label for="address">Address or Landmark</label>
+                <input formControlName="address" placeholder="Address or Landmark" required type="text" />
             </div>
         </div>
             <br />
             <header>Identity Details</header> <br />
             <div class="column">
                 <div class="input-box">
-                    <label for="#">ID Type</label>
-                    <input placeholder="Eg: laptop" required="" type="text" />
+                    <label for="proof">Proof</label>
+                    <div class="select-box">
+                    <select formControlName="proof">
+                        <option value="">-----</option>
+                        <option value="Aadhaar">Aadhaar</option>
+                        <option value="Driving">Driving</option>
+                        <option value="PanCard">PanCard</option>
+                    </select>
+                    </div>
                 </div>
                 <div class="input-box">
-                    <label for="#">ID Number</label>
-                    <input placeholder="Eg: 292991820" required="" type="text" />
+                    <label for="proofNumber">Proof Number</label>
+                    <input formControlName="proofNumber" placeholder="Proof Number" required type="text" />
                 </div>
                 <div class="input-box">
-                    <label for="#">Authority of Issue</label>
-                    <input placeholder="Enter issue Department" required="" type="text" />
+                    <label for="authorityOfIssue">Authority of Issue</label>
+                    <input formControlName="authorityOfIssue" placeholder="Enter issue Department" required type="text" />
                 </div>
             </div>
             <div class="column">
                 <div class="input-box">
-                    <label for="#">Issue date</label>
-                    <input id="date" name="date" required="" type="date" />
+                    <label for="vehicleNumber">Vehicle Number</label>
+                    <input formControlName="vehicleNumber" placeholder="Vehicle Number" required type="text" />
                 </div>
                 <div class="input-box">
-                    <label for="#">Issue State</label>
-                    <input placeholder="Eg:Tamil Nadu" required="" type="text" />
+                    <label for="vehicleModel">Vehicle Model</label>
+                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020" required type="text" />
                 </div>
                 <div class="input-box">
-                    <label for="#">Expiry Date</label>
-                    <input id="date" name="date" type="date" />
+                    <label for="bookingDate">Booking Date</label>
+                    <input formControlName="bookingDate" type="datetime-local"  readonly />
                 </div>
             </div>
-            <button ><a href="/dhome/offline-bill">Confirm Booking</a></button>
+            <button type="submit">Confirm Booking</button>
         </form>
     </div>
     </div>

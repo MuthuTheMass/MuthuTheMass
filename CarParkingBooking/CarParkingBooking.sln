@@ -19,6 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DEB3F93
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingSystem.Application.Tests", "..\CarParkingSystem.Application.Tests\CarParkingSystem.Application.Tests.csproj", "{92FE617A-C3ED-44D7-A9A6-A34A1F1CED1D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{447C25A4-FD6D-4A9F-A2AA-B402DD8614A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{425142EB-6C7F-418D-B2FF-9896946271D0}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\shamb\Downloads\zenpark.png = C:\Users\shamb\Downloads\zenpark.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingBooking.QRCodeGenerator", "..\CarParkingBooking.QRCodeGenerator\CarParkingBooking.QRCodeGenerator.csproj", "{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +58,10 @@ Global
 		{92FE617A-C3ED-44D7-A9A6-A34A1F1CED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92FE617A-C3ED-44D7-A9A6-A34A1F1CED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92FE617A-C3ED-44D7-A9A6-A34A1F1CED1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +73,9 @@ Global
 		{893AAF08-CB24-4E7B-8142-CCB318EAE2C5} = {1DEB3F93-05D1-4C06-9488-5BA03ECC5310}
 		{1DEB3F93-05D1-4C06-9488-5BA03ECC5310} = {53C7E8C1-0B06-4629-8BBC-D0A9BF794E02}
 		{92FE617A-C3ED-44D7-A9A6-A34A1F1CED1D} = {1DEB3F93-05D1-4C06-9488-5BA03ECC5310}
+		{447C25A4-FD6D-4A9F-A2AA-B402DD8614A1} = {53C7E8C1-0B06-4629-8BBC-D0A9BF794E02}
+		{425142EB-6C7F-418D-B2FF-9896946271D0} = {447C25A4-FD6D-4A9F-A2AA-B402DD8614A1}
+		{3EFDE7E9-BCF6-401A-97CA-D7A221F77E18} = {53C7E8C1-0B06-4629-8BBC-D0A9BF794E02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A74A352-05A9-49BB-91F7-BD24F01A679E}
