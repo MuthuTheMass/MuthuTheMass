@@ -20,7 +20,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
         public string? AdvanceAmount { get; set; }
 
         public required Status BookingStatus { get; set; }
-        public string? AllottedSlots { get; set; }
+        public string? AllottedSlot { get; set; }
     }
 
     public record CarBookingDetailDto(

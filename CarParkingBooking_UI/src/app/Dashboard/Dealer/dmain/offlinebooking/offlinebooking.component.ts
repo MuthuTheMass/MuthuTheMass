@@ -27,7 +27,7 @@ export class OfflinebookingComponent implements OnInit {
       address: ['', Validators.required],
       proof: ['', Validators.required],
       proofNumber: ['', Validators.required],
-      authorityOfIssue: ['', Validators.required],
+      AllotedSlotvb : ['', Validators.required],
       vehicleNumber: ['', Validators.required],
       vehicleModel: ['', Validators.required],
       bookingDate: [this.getLocalDateTime(), Validators.required]
