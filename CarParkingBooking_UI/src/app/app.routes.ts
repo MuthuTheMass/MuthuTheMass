@@ -29,6 +29,7 @@ import {MuthubookComponent} from "./Dashboard/User/muthubook/muthubook.component
 import {UserdataComponent} from "./Dashboard/User/userdata/userdata.component";
 import {EReceiptComponent} from "./Dashboard/User/e-receipt/e-receipt.component";
 import {DealeDetailsComponent} from "./Dashboard/User/main/deale-details/deale-details.component";
+import {CustomerMainpageComponent} from "./customer-mainpage/customer-mainpage.component";
 import {QrScannerComponent} from "./shared/QrScanner/QrScanner.component";
 import {PathwayComponent} from "./Dashboard/Dealer/dmain/pathway/pathway.component";
 // import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
@@ -89,6 +90,9 @@ export const routes: Routes = [
                 }
             ]
         },
+    {
+      path:"userhome",component:CustomerMainpageComponent,title: "homepage"
+    },
         {
             path:"about",component:ZenparkAboutComponent,title:"zenparkabout-info"
         },

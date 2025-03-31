@@ -38,7 +38,7 @@ export class MainComponent {
   }
 
   fetchData() {
-    this.dealerDataService.getalluserdata(this.currentPage(), this.itemsPerPage()).subscribe((data: any) => 
+    this.dealerDataService.getalluserdata(this.currentPage(), this.itemsPerPage()).subscribe((data: any) =>
       {
         this.dealers.set(data.data);
         this.totalItems.set(data.totalDataCount);
@@ -82,4 +82,11 @@ export class MainComponent {
   dealerdata(){
     this.router.navigate(['/main/dealer-details']);
   }
+
+
+
+
+
+
+
 }
