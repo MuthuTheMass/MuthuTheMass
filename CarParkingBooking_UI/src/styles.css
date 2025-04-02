@@ -11,3 +11,9 @@
 ::-webkit-scrollbar{
     display: none;
   }
+
+body{
+  background: url("/assets/pexels-jimbear-2612855.jpg");
+  background-size: cover;
+
+}
