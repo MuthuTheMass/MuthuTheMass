@@ -113,6 +113,9 @@ D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarPa
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Domain.exe
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Infrastructure.deps.json
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Infrastructure.runtimeconfig.json
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingBooking.QRCodeGenerator.deps.json
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingBooking.QRCodeGenerator.runtimeconfig.json
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingBooking.QRCodeGenerator.exe
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Infrastructure.exe
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\Cosmos.CRTCompat.dll
@@ -174,6 +177,7 @@ D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\Syste
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Drawing.Common.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Private.Windows.Core.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Formats.Asn1.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.IO.Pipelines.dll
@@ -184,6 +188,7 @@ D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\Syste
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Text.Json.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\System.Windows.Extensions.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\zxing.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-x64\native\Cosmos.CRTCompat.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Azure.Cosmos.ServiceInterop.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-x64\native\msvcp140.dll
@@ -195,17 +200,17 @@ D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runti
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingBooking.QRCodeGenerator.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Domain.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Infrastructure.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Domain.pdb
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingSystem.Infrastructure.pdb
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\bin\Debug\net8.0\CarParkingBooking.QRCodeGenerator.pdb
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\obj\Debug\net8.0\CarParki.236194A4.Up2Date
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\obj\Debug\net8.0\CarParkingSystem.Application.dll
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Application\obj\Debug\net8.0\refint\CarParkingSystem.Application.dll

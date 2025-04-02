@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 
+
 @Component({
   selector: 'app-userdata',
   standalone: true,
@@ -12,6 +13,7 @@ import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.
   styleUrl: './userdata.component.css'
 })
 export class UserdataComponent {
+
   @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('photo') photoRef!: ElementRef<HTMLImageElement>;

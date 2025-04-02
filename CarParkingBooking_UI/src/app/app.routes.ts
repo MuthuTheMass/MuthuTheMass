@@ -30,6 +30,8 @@ import {UserdataComponent} from "./Dashboard/User/userdata/userdata.component";
 import {EReceiptComponent} from "./Dashboard/User/e-receipt/e-receipt.component";
 import {DealeDetailsComponent} from "./Dashboard/User/main/deale-details/deale-details.component";
 import {CustomerMainpageComponent} from "./customer-mainpage/customer-mainpage.component";
+import {QrScannerComponent} from "./shared/QrScanner/QrScanner.component";
+import {PathwayComponent} from "./Dashboard/Dealer/dmain/pathway/pathway.component";
 // import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
 // import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
 // import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
@@ -65,6 +67,9 @@ export const routes: Routes = [
         path:"editdealer",component:EditDealerdataComponent,title:"dealerdata"
     },{
         path:"allpayment",component:AllPaymentComponent,title:"dealerpayment"
+    },
+    {
+    path:"pathway",component: PathwayComponent,title:"PathWay"
     }
   ]
 },

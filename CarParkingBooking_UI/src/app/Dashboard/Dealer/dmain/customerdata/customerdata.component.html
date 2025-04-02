@@ -70,7 +70,8 @@
         <div class="card">
           <div class="card-head">
             <h2>Recent Booking</h2>
-            <div><div class="wrap">
+            <!-- <div>
+              <div class="wrap">
               <div class="search">
                  <input type="text" class="searchTerm" placeholder="What are you looking for?">
                  <button type="submit" class="searchButton">
@@ -79,7 +80,7 @@
               </div>
            </div>
 
-          </div>
+          </div> -->
             <button>
               <a href="/dhome/booking-details">see all</a> <i class='bx bxs-chevrons-right'></i></button>
           </div>
@@ -93,7 +94,6 @@
                   <th>Date</th>
                   <th>Slot Number</th>
                   <th>Booking Details</th>
-                  <th>QR Code</th>
 
                 </tr>
                 </thead>
@@ -105,85 +105,8 @@
                       <td data-label="Total Seats">{{bookingDetails?.vehicleNumber}}</td>
                       <td data-label="Event Date">{{bookingDetails?.date | date:'yyyy-MM-dd hh:mm:ss a'}}</td>
                       <td data-label="slot number">{{bookingDetails?.slot_Number}}</td>
-                      <td data-label="Booking Status"><a href="#" class="btn btn__active">{{bookingDetails?.status}}</a></td>
-                      <td data-label="QR Code">{{bookingDetails?.qRCode}}</td>
-                    </tr>
+                      <td data-label="Booking Status">{{bookingDetails?.status}}</td>
                   }
-                
-                <!-- <tr>
-                  <td data-label="Event Name">Music</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">29/12/2021</td>
-                  <td data-label="Seats Available">Slot Allocated</td>
-                  <td data-label="slot number">12</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__active">On going</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Craft</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">19/12/2021</td>
-                  <td data-label="Seats Available">Slot Allocated</td>
-                  <td data-label="slot number">14</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Go Kart</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">10/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr>
-                <tr>
-                  <td data-label="Event Name">Designing</td>
-                  <td data-label="Total Seats">TN 18 AY 2345</td>
-                  <td data-label="Event Date">1/12/2021</td>
-                  <td data-label="Seats Available">0</td>
-                  <td data-label="Booking Status"><a href="#" class="btn btn__pledged">closed</a></td>
-
-                </tr> -->
                 </tbody>
               </table>
             </div>

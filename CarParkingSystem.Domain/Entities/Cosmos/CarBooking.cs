@@ -2,23 +2,24 @@
 
 namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 {
-    public class CarBooking
+    public class CarBooking()
     {
         //BookingId
         public string id { get; set; }
 
         // id-dealerid-customerid
         public string? PartitionId { get; set; }
+        public string EncryptedBookingId { get; set; }
 
         public string? DealerId { get; set; }
 
-        public string? CustomerId { get; set; }
+        public required CustomerUserDetails CustomerData { get; set; }
 
-        public VehicleDetails? VehicleInfo { get; set; }
+        public required VehicleInformation VehicleInfo { get; set; }
 
-        public string BookingSource { get; set; }
+        public required string BookingSource { get; set; }
 
-        public CarBookingDates BookingDate { get; set; }
+        public required CarBookingDates BookingDate { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -26,11 +27,11 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public bool IsDeleted { get; set; }
 
-        public string? GeneratedQrCode { get; set; }
+        public byte[]? GeneratedQrCode { get; set; }
 
         public string? AdvanceAmount { get; set; }
 
-        public Status BookingStatus { get; set; }
+        public required Status BookingStatus { get; set; }
 
         public string? AllottedSlots { get; set; }
     }
@@ -48,10 +49,40 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
         public string? Reason { get; set; }
     }
 
-    public class VehicleDetails
+    public class VehicleInformation
     {
+        public VehicleInformation()
+        {
+            VehicleId = string.Empty;
+            VehicleNumber = string.Empty;
+            VehicleModel = string.Empty;
+        }
+
         public string VehicleId { get; set; }
 
         public string VehicleNumber { get; set; }
+
+        public string VehicleModel { get; set; }
+    }
+
+    public class CustomerUserDetails
+    {
+        public CustomerUserDetails()
+        {
+            CustomerName = string.Empty;
+            CustomerId = string.Empty;
+            CustomerEmail = string.Empty;
+            CustomerMobileNumber = string.Empty;
+            CustomerAddress = string.Empty;
+        }
+
+        public string CustomerId { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public string CustomerMobileNumber { get; set; }
+        public string CustomerAddress { get; set; }
+        public string? CustomerProof { get; set; }
+        public string? CustomerProofNumber { get; set; }
+        public string? CustomerAuthorityOfIssue { get; set; }
     }
 }

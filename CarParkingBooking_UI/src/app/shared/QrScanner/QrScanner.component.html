@@ -1,0 +1,47 @@
+<div class="scanner-container container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+  @if (error){
+    <div class="alert alert-danger">
+      {{ error }}
+      <button (click)="restartScanner()" class="btn btn-sm btn-outline-danger ms-2">
+        Try Again
+      </button>
+    </div>
+  }
+
+@if(!bookingDetails && !error){
+  <div class="text-center" >
+
+    <h3>Scan Booking QR Code</h3>
+    @if (isLoading){
+      <app-loading [isloading]="isLoading"></app-loading>
+    }
+    <video id="videoElement" width="900" height="500"></video>
+
+  </div>
+
+}
+
+@if(bookingDetails){
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+
+      </div>
+      <div class="col text-end">
+        <button (click)="restartScanner()" class="btn btn-primary mt-2">
+          Retry
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+
+}
+
+</div>
+
+
+

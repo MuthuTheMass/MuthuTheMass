@@ -8,6 +8,7 @@ import { UserAuthService } from '../../../Service/Backend/user-auth.service';
 import { DealerSignUp, Login, SignUp } from '../../../Service/Model/UserModels';
 import { LoginResponse } from '../../../Service/Model/BackendUserModels';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BackStoreService } from '../../../Service/store/back-store.service';
 
 @Component({
   selector: 'app-dreg',
@@ -18,6 +19,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class DregComponent {
   validators : any;
+
+  dealerSignUpRotate:boolean = false;
+  dealerSignInRotate: boolean = false;
+
   signinto() {
     throw new Error('Method not implemented.');
     }
@@ -27,31 +32,15 @@ export class DregComponent {
   register:any;
   login:any;
   regpage:any;
-  validate:any;
-  router:any;
-
-
-
-  constructor( _router :Router,private _validate:OrmcontrolValidationServiceService,private auth:UserAuthService) {
-      this.router = _router;
-      this.validate = _validate;
-      this.login=new FormGroup({
-        useremail: new FormControl('',Validators.required),
-        pass:new FormControl('',Validators.required),
-      })
 
 
 
 
-      this.regpage=new FormGroup({
-          fullname:new FormControl('',Validators.required),
-          regemail:new FormControl('',Validators.required),
-          mobilenumber:new FormControl('',Validators.required),
-          password:new FormControl('',Validators.required),
-          confirmpassword:new FormControl('',Validators.required)
+  constructor( private router :Router,
+    protected validate:OrmcontrolValidationServiceService,
+    private auth:UserAuthService,
+  private bsStore:BackStoreService) {
 
-
-        })
 
     }
 
@@ -61,7 +50,26 @@ export class DregComponent {
   //   }
 
 
+ngOnInit(): void {
+  
+  this.login=new FormGroup({
+    useremail: new FormControl('',Validators.required),
+    pass:new FormControl('',Validators.required),
+  })
 
+
+
+
+  this.regpage=new FormGroup({
+      fullname:new FormControl('',Validators.required),
+      regemail:new FormControl('',Validators.required),
+      mobilenumber:new FormControl('',Validators.required),
+      password:new FormControl('',Validators.required),
+      confirmpassword:new FormControl('',Validators.required)
+
+
+    })
+}
 
 
 
@@ -100,8 +108,8 @@ export class DregComponent {
 
 
       signUp(){
-
           if(this.regpage.valid){
+            this.dealerSignUpRotate = true
             let signData ={
               name:this.regpage.value.fullname,
               email:this.regpage.value.regemail,
@@ -112,9 +120,12 @@ export class DregComponent {
             this.auth.DealerSignUp(signData).toPromise()
             .then((response: boolean) => {
               console.log(response);
+              this.dealerSignUpRotate = false;
+
             })
             .catch((error: HttpErrorResponse) => {
               console.error(error);
+              this.dealerSignUpRotate = false;
             });
 
             this.loginBtn();
@@ -129,12 +140,26 @@ export class DregComponent {
       logininto(){
 
           if(this.login.valid){
+            this.dealerSignInRotate = true;
             let loginData ={
               email:this.login.value.useremail,
               password:this.login.value.pass,
             } as Login
 
-            this.auth.DealerLogin(loginData);
+            this.auth.DealerLogin(loginData).subscribe(
+                          (data:LoginResponse) => {
+                                localStorage.clear();
+                                localStorage.setItem("Dealer",JSON.stringify(data));
+                                this.bsStore.dealerLoggedData.set(data)
+                                this.router.navigate(['/dhome']);
+                                this.dealerSignInRotate = false;
+                          },
+                          (err:HttpErrorResponse) => {
+                            console.log(err);
+                            this.dealerSignInRotate = false;
+                          },
+                          
+                        );;
           }
           else{
             this.checkValidityAndMarkAsTouched();
