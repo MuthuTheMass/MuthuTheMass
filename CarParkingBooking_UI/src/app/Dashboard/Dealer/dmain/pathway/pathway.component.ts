@@ -3,14 +3,16 @@ import {QrScannerComponent} from "../../../../shared/QrScanner/QrScanner.compone
 import {DealerDataService} from "../../../../Service/Backend/dealer-data.service";
 import {CarBookingDetailDto} from "../../../../Service/Model/BookingDealerModal";
 import {DatePipe} from "@angular/common";
+import { DealerOfflinePaymentComponent } from "./DealerOfflinePayment/DealerOfflinePayment.component";
 
 @Component({
   selector: 'app-pathway',
   standalone: true,
   imports: [
     QrScannerComponent,
-    DatePipe
-  ],
+    DatePipe,
+    DealerOfflinePaymentComponent
+],
   templateUrl: './pathway.component.html',
   styleUrl: './pathway.component.css'
 })
