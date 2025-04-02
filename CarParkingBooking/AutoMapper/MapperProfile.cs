@@ -194,17 +194,17 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.Picture, dest => dest.MapFrom(src => ConvertByteToFromFile(src.UserProfilePicture)))
                 .ReverseMap();
 
-            CreateMap<CarBooking, OfflineBooking>()
-                .ForMember(opt => opt.FullName, dest => dest.MapFrom(src => src.CustomerData.CustomerName))
-                .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.CustomerData.CustomerEmail))
-                .ForMember(opt => opt.MobileNumber, dest => dest.MapFrom(src => src.CustomerData.CustomerMobileNumber))
-                .ForMember(opt => opt.Address, dest => dest.MapFrom(src => src.CustomerData.CustomerAddress))
-                .ForMember(opt => opt.Proof, dest => dest.MapFrom(src => src.CustomerData.CustomerProof))
-                .ForMember(opt => opt.ProofNumber, dest => dest.MapFrom(src => src.CustomerData.CustomerProofNumber))
-                .ForMember(opt => opt.AuthorityOfIssue, dest => dest.MapFrom(src => src.CustomerData.CustomerAuthorityOfIssue))
-                .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleInfo.VehicleNumber))
-                .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleInfo.VehicleModel))
-                .ReverseMap();
+            //CreateMap<CarBooking, OfflineBooking>()
+            //    .ForMember(opt => opt.FullName, dest => dest.MapFrom(src => src.CustomerData.CustomerName))
+            //    .ForMember(opt => opt.Email, dest => dest.MapFrom(src => src.CustomerData.CustomerEmail))
+            //    .ForMember(opt => opt.MobileNumber, dest => dest.MapFrom(src => src.CustomerData.CustomerMobileNumber))
+            //    .ForMember(opt => opt.Address, dest => dest.MapFrom(src => src.CustomerData.CustomerAddress))
+            //    .ForMember(opt => opt.Proof, dest => dest.MapFrom(src => src.CustomerData.CustomerProof))
+            //    .ForMember(opt => opt.ProofNumber, dest => dest.MapFrom(src => src.CustomerData.CustomerProofNumber))
+            //    .ForMember(opt => opt.AuthorityOfIssue, dest => dest.MapFrom(src => src.CustomerData.CustomerAuthorityOfIssue))
+            //    .ForMember(opt => opt.VehicleNumber, dest => dest.MapFrom(src => src.VehicleInfo.VehicleNumber))
+            //    .ForMember(opt => opt.VehicleModel, dest => dest.MapFrom(src => src.VehicleInfo.VehicleModel))
+            //    .ReverseMap();
 
 
             CreateMap<UserDetails, CustomerUserDetails>()

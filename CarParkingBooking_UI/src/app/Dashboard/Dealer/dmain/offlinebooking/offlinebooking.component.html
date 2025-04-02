@@ -5,16 +5,17 @@
         <div class="column">
             <div class="input-box">
                 <label for="fullName">Full Name</label>
-                <input formControlName="fullName" placeholder="Enter your name" required type="text" />
+                <input formControlName="fullName" placeholder="Enter your name"  type="text" />
+                <app-error-message [error]="this.bookingForm.get('fullName')?.errors"></app-error-message>
             </div>
             
             <div class="input-box">
                 <label for="email">Email</label>
-                <input formControlName="email" placeholder="Enter your e-mail" required type="email" />
+                <input formControlName="email" placeholder="Enter your e-mail"  type="email" />
             </div>
             <div class="input-box">
                 <label for="mobileNumber">Mobile Number</label>
-                <input formControlName="mobileNumber" placeholder="##### #####" required type="text" />
+                <input formControlName="mobileNumber" placeholder="##### #####"  type="text" maxlength="10" />
             </div>
         </div>
         <div class="column">
@@ -22,7 +23,7 @@
            
             <div class="input-box">
                 <label for="address">Address or Landmark</label>
-                <input formControlName="address" placeholder="Address or Landmark" required type="text" />
+                <input formControlName="address" placeholder="Address or Landmark"  type="text" />
             </div>
         </div>
             <br />
@@ -41,28 +42,42 @@
                 </div>
                 <div class="input-box">
                     <label for="proofNumber">Proof Number</label>
-                    <input formControlName="proofNumber" placeholder="Proof Number" required type="text" />
+                    <input formControlName="proofNumber" placeholder="Proof Number"  type="text" />
                 </div>
                 <div class="input-box">
                     <label for="authorityOfIssue">Alloted Slot</label>
-                    <input formControlName="AllotedSlot" placeholder="Enter issue Department" required type="text" />
+                    <input formControlName="AllotedSlot" placeholder="Enter issue Department"  type="text" />
                 </div>
             </div>
             <div class="column">
                 <div class="input-box">
                     <label for="vehicleNumber">Vehicle Number</label>
-                    <input formControlName="vehicleNumber" placeholder="Vehicle Number" required type="text" />
+                    <input formControlName="vehicleNumber" placeholder="Vehicle Number"  type="text" />
                 </div>
                 <div class="input-box">
                     <label for="vehicleModel">Vehicle Model</label>
-                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020" required type="text" />
+                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020"  type="text" />
                 </div>
                 <div class="input-box">
                     <label for="bookingDate">Booking Date</label>
                     <input formControlName="bookingDate" type="datetime-local"  readonly />
                 </div>
             </div>
-            <button type="submit">Confirm Booking</button>
+            <div class="column">
+                <div class="input-box">
+                    <label for="advanceAmount">Advance Amount</label>
+                    <input formControlName="advanceAmount" placeholder="₹ Advance Amount"  type="text" />
+                </div>
+                <div class="input-box">
+                    <!-- <label for="vehicleModel">Vehicle Model</label>
+                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020" required type="text" /> -->
+                </div>
+                <div class="input-box">
+                    <!-- <label for="bookingDate">Booking Date</label>
+                    <input formControlName="bookingDate" type="datetime-local"  readonly /> -->
+                </div>
+            </div>
+            <button type="submit" class="confirm" [disabled]="!this.bookingForm.valid">Confirm Booking</button>
         </form>
     </div>
     </div>

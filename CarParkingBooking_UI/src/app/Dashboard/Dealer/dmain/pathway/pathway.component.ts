@@ -25,7 +25,8 @@ export class PathwayComponent {
   }
 
   GetDetails($event: string) {
-    this.DealerData.getBookingDetialsByQrCode($event).subscribe({
+    const encodedId = encodeURIComponent($event);
+    this.DealerData.getBookingDetialsByQrCode(encodedId).subscribe({
       next: (result: any) => {
         this.bookingDetail.set(result);
         console.log(result);

@@ -1,7 +1,9 @@
 using AutoMapper;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
+using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Dtos.Dealers;
+using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
@@ -22,7 +24,7 @@ public interface IDealerProfile
 
     Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId);
 
-    Task<bool> DealerBookingOffline(OfflineBooking offlineBooking);
+    Task<bool> DealerBookingOffline(BookingDto offlineBooking);
 
     Task<List<RecentBookingInDealerDashBoard>> GetAllBookingsByDealerEmailId(string emailId);
 
@@ -35,9 +37,10 @@ public class DealerProfile : IDealerProfile
     private readonly IDealerSlotsRepository _dealerSlotsRepository;
     private readonly IBookingRepository _bookingRepository;
     private readonly IVehicleRepository _vehicleRepository;
+    private readonly IUserBookingService _bookingData;
     private readonly IMapper _mapper;
     
-    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository,IBookingRepository bookingRepository, IVehicleRepository vehicleRepository)
+    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository,IBookingRepository bookingRepository, IVehicleRepository vehicleRepository, IUserBookingService bookingData)
     {
         _dealerRepository = dealerRepository;
         _mapper = mapper;
@@ -45,111 +48,107 @@ public class DealerProfile : IDealerProfile
         _dealerSlotsRepository = dealerSlotsRepository;
         _bookingRepository = bookingRepository;
         _vehicleRepository = vehicleRepository;
+        _bookingData = bookingData;
     }
 
-    public async Task<bool> DealerBookingOffline(OfflineBooking offlineBooking)
+    public async Task<bool> DealerBookingOffline(BookingDto offlineBooking)
     {
-        if (offlineBooking == null || offlineBooking.VehicleNumber == null)
+        if (offlineBooking == null || offlineBooking?.VehicleInfo?.VehicleNumber == null)
             return false;
 
-        var userInfo = MapToCustomerUserDetails(offlineBooking);
-        var dealerDetails = await _dealerRepository.GetUserByEmail(offlineBooking.DealerEmailId);
-        var customerData = await GetOrCreateCustomerData(offlineBooking, userInfo);
-
-        var carBooking = CreateCarBooking(offlineBooking, dealerDetails, userInfo);
-        await _bookingRepository.AddBookingDetails(carBooking);
+        await _bookingData.AddBooking(offlineBooking);
 
         return true;
     }
 
     #region DealerBookingOffline() Helper Methods
-    private CustomerUserDetails MapToCustomerUserDetails(OfflineBooking offlineBooking)
-    {
-        return new CustomerUserDetails
-        {
-            CustomerId = string.Empty,
-            CustomerName = offlineBooking.FullName,
-            CustomerMobileNumber = offlineBooking.MobileNumber,
-            CustomerEmail = offlineBooking.Email,
-            CustomerAddress = offlineBooking.Address,
-            CustomerAuthorityOfIssue = offlineBooking.AuthorityOfIssue,
-            CustomerProof = offlineBooking.Proof,
-            CustomerProofNumber = offlineBooking.ProofNumber
-        };
-    }
+    //private CustomerUserDetails MapToCustomerUserDetails(OfflineBooking offlineBooking)
+    //{
+    //    return new CustomerUserDetails
+    //    {
+    //        CustomerId = string.Empty,
+    //        CustomerName = offlineBooking.FullName,
+    //        CustomerMobileNumber = offlineBooking.MobileNumber,
+    //        CustomerEmail = offlineBooking.Email,
+    //        CustomerAddress = offlineBooking.Address,
+    //        CustomerAuthorityOfIssue = offlineBooking.AuthorityOfIssue,
+    //        CustomerProof = offlineBooking.Proof,
+    //        CustomerProofNumber = offlineBooking.ProofNumber
+    //    };
+    //}
 
-    private async Task<UserDetails> GetOrCreateCustomerData(OfflineBooking offlineBooking, CustomerUserDetails userInfo)
-    {
-        var customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
-        if (customerData == null || string.IsNullOrEmpty(customerData?.Email))
-        {
-            var newUser = CreateUserDetails(offlineBooking);
-            await _userRepository.CraeteNewUser(newUser);
-            customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
-            userInfo.CustomerId = customerData.UserID;
-        }
-        else
-        {
-            UpdateUserInfo(userInfo, customerData);
-        }
+    //private async Task<UserDetails> GetOrCreateCustomerData(OfflineBooking offlineBooking, CustomerUserDetails userInfo)
+    //{
+    //    var customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
+    //    if (customerData == null || string.IsNullOrEmpty(customerData?.Email))
+    //    {
+    //        var newUser = CreateUserDetails(offlineBooking);
+    //        await _userRepository.CraeteNewUser(newUser);
+    //        customerData = await _userRepository.GetUserByEmail(offlineBooking.Email);
+    //        userInfo.CustomerId = customerData.UserID;
+    //    }
+    //    else
+    //    {
+    //        UpdateUserInfo(userInfo, customerData);
+    //    }
 
-        return customerData;
-    }
+    //    return customerData;
+    //}
 
-    private UserDetails CreateUserDetails(OfflineBooking offlineBooking)
-    {
-        return new UserDetails
-        {
-            UserID = string.Empty,
-            Email = offlineBooking.Email,
-            Address = offlineBooking.Address,
-            CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
-            MobileNumber = offlineBooking.MobileNumber,
-            Name = offlineBooking.FullName,
-            Password = string.Empty,
-            Rights = AccessToUsers.User.ToString(),
-            UserProfilePicture = null
-        };
-    }
+    //private UserDetails CreateUserDetails(OfflineBooking offlineBooking)
+    //{
+    //    return new UserDetails
+    //    {
+    //        UserID = string.Empty,
+    //        Email = offlineBooking.Email,
+    //        Address = offlineBooking.Address,
+    //        CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
+    //        MobileNumber = offlineBooking.MobileNumber,
+    //        Name = offlineBooking.FullName,
+    //        Password = string.Empty,
+    //        Rights = AccessToUsers.User.ToString(),
+    //        UserProfilePicture = null
+    //    };
+    //}
 
-    private void UpdateUserInfo(CustomerUserDetails userInfo, UserDetails customerData)
-    {
-        userInfo.CustomerId = customerData.UserID;
-        userInfo.CustomerAddress = customerData.Address;
-        userInfo.CustomerMobileNumber = customerData.MobileNumber;
-        userInfo.CustomerEmail = customerData.Email;
-        userInfo.CustomerName = customerData.Name;
-    }
+    //private void UpdateUserInfo(CustomerUserDetails userInfo, UserDetails customerData)
+    //{
+    //    userInfo.CustomerId = customerData.UserID;
+    //    userInfo.CustomerAddress = customerData.Address;
+    //    userInfo.CustomerMobileNumber = customerData.MobileNumber;
+    //    userInfo.CustomerEmail = customerData.Email;
+    //    userInfo.CustomerName = customerData.Name;
+    //}
 
-    private CarBooking CreateCarBooking(OfflineBooking offlineBooking, DealerDetails dealerDetails, CustomerUserDetails userInfo)
-    {
-        return new CarBooking
-        {
-            DealerId = dealerDetails?.DealerID,
-            CustomerData = userInfo,
-            VehicleInfo = new VehicleInformation
-            {
-                VehicleNumber = offlineBooking.VehicleNumber,
-                VehicleModel = offlineBooking.VehicleModel
-            },
-            BookingSource = BookingSources.Dealer.ToString(),
-            BookingDate = new CarBookingDates
-            {
-                From = DateTiming.GetIndianTime(offlineBooking.BookingDate)
-            },
-            CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
-            BookingStatus = new Status
-            {
-                State = BookingProcessDetails.InProgress,
-                Reason = "Booking InProgress"
-            },
-            IsDeleted = false,
-            GeneratedQrCode = null,
-            AllottedSlots = null,
-            AdvanceAmount = null,
-            UpdatedDate = null
-        };
-    }
+    //private CarBooking CreateCarBooking(OfflineBooking offlineBooking, DealerDetails dealerDetails, CustomerUserDetails userInfo)
+    //{
+    //    return new CarBooking
+    //    {
+    //        DealerId = dealerDetails?.DealerID,
+    //        CustomerData = userInfo,
+    //        VehicleInfo = new VehicleInformation
+    //        {
+    //            VehicleNumber = offlineBooking.VehicleNumber,
+    //            VehicleModel = offlineBooking.VehicleModel
+    //        },
+    //        BookingSource = BookingSources.Dealer.ToString(),
+    //        BookingDate = new CarBookingDates
+    //        {
+    //            From = DateTiming.GetIndianTime(offlineBooking.BookingDate)
+    //        },
+    //        CreatedDate = DateTiming.GetIndianTime(offlineBooking.BookingDate),
+    //        BookingStatus = new Status
+    //        {
+    //            State = BookingProcessDetails.InProgress,
+    //            Reason = "Booking InProgress"
+    //        },
+    //        IsDeleted = false,
+    //        GeneratedQrCode = null,
+    //        AllottedSlots = null,
+    //        AdvanceAmount = null,
+    //        UpdatedDate = null
+    //    };
+    //}
 
     #endregion
 

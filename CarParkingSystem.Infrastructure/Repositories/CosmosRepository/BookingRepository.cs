@@ -99,19 +99,20 @@ public class BookingRepository : IBookingRepository
 
     public async Task<CarBooking?> GetBookingByQR(string EncryptedId)
     {
-        var querable = Container.GetItemLinqQueryable<CarBooking>();
-        var iterator = querable.Where(d => d.EncryptedBookingId == EncryptedId)
-                            .ToFeedIterator();
+        var normalizedId = EncryptedId.Trim().ToLower();
+
+        var iterator = Container.GetItemLinqQueryable<CarBooking>()
+            .Where(d => d.EncryptedBookingId.ToLower() == normalizedId)
+            .ToFeedIterator();
+
         var result = new List<CarBooking>();
 
         while (iterator.HasMoreResults)
         {
-            FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
-            foreach (var item in response)
-            {
-                result.Add(item);
-            }
+            var response = await iterator.ReadNextAsync();
+            result.AddRange(response);
         }
+
         return result.SingleOrDefault() ?? null;
     }
 

@@ -1,4 +1,5 @@
-﻿using CarParkingSystem.Application.Dtos.Dealers;
+﻿using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.DealerService;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -47,7 +48,7 @@ namespace CarParkingBooking.Controllers
         }
 
         [HttpPost("OfflineBooking")]
-        public async Task<IActionResult> OfflineBooking(OfflineBooking offlineBooking)
+        public async Task<IActionResult> OfflineBooking(BookingDto offlineBooking)
         {
             var result = await dealerData.DealerBookingOffline(offlineBooking);
             if (result == true)

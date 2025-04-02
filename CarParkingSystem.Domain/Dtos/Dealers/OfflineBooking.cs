@@ -2,16 +2,18 @@
 {
     public class OfflineBooking
     {
+        public string? DealerId { get; set; }
         public string? DealerEmailId { get; set; }
-        public string? FullName { get; set; }
-        public string? Email { get; set; }
-        public string? MobileNumber { get; set; }
-        public string? Address { get; set; }
-        public string? Proof { get; set; }
-        public string? ProofNumber { get; set; }
-        public string? AuthorityOfIssue { get; set; }
+        public string? CustomerId { get; set; }
+        public string? CustomerName { get; set; }
+        public string? CustomerEmail { get; set; }
+        public string? CustomerMobileNumber { get; set; }
+        public string? CustomerAddress { get; set; }
+        public string? CustomerProof { get; set; }
+        public string? VehicleId { get; set; }
         public string? VehicleNumber { get; set; }
         public string? VehicleModel { get; set; }
-        public string? BookingDate { get; set; }
+        public string? bookingSource { get; set; }
+  
     }
 }

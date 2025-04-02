@@ -31,12 +31,8 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
             // Check or add the database
             if (!_databases.TryGetValue(databaseName, out var database))
             {
-                //_cosmosClient.ClientOptions = new CosmosClientOptions() ;
-                // Fetch or create the database
                 var databaseResponse = await _cosmosClient.CreateDatabaseIfNotExistsAsync(databaseName);
                 database = databaseResponse.Database;
-
-                // Add the database to the cache
                 _databases.TryAdd(databaseName, database);
             }
 
@@ -44,19 +40,39 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
             var containerKey = $"{databaseName}:{containerName}";
             if (!_containers.TryGetValue(containerKey, out var container))
             {
-                // Fetch or create the container
-                var containerResponse = await database.CreateContainerIfNotExistsAsync(
-                    new ContainerProperties
+                try
+                {
+                    // Fetch or create the container with indexing and unique keys
+                    var containerProperties = new ContainerProperties(containerName, partitionKeyPath)
                     {
-                        Id = containerName,
-                        PartitionKeyPath = partitionKeyPath
-                    });
+                        IndexingPolicy = new IndexingPolicy
+                        {
+                            IndexingMode = IndexingMode.Consistent,
+                            IncludedPaths =
+                    {
+                        new IncludedPath { Path = "/*" } // Ensure all fields are indexed
+                    }
+                        },
+                        UniqueKeyPolicy = new UniqueKeyPolicy
+                        {
+                            UniqueKeys =
+                    {
+                        new UniqueKey { Paths = { "/EncryptedBookingId" } } // ✅ Correct way to initialize
+                    }
+                        }
+                    };
 
-                container = containerResponse.Container;
-
-                // Add the container to the cache
-                _containers.TryAdd(containerKey, container);
+                    var containerResponse = await database.CreateContainerIfNotExistsAsync(containerProperties);
+                    container = containerResponse.Container;
+                    _containers.TryAdd(containerKey, container);
+                }
+                catch (CosmosException ex)
+                {
+                    Console.WriteLine($"CosmosDB Error: {ex.StatusCode} - {ex.Message}");
+                    throw;
+                }
             }
+
             return container;
         }
 
