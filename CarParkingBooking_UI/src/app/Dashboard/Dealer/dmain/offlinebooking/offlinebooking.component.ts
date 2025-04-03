@@ -4,6 +4,9 @@ import { DealerDataService } from '../../../../Service/Backend/dealer-data.servi
 import { BackStoreService } from '../../../../Service/store/back-store.service';
 import { BookingDto, BookingProcessDetails, BookingSources, CarBookingDates, CustomerDetails, Status } from '../../../../Service/Model/BookingDealerModal';
 import { ErrorMessageComponent } from "../../../../shared/error-message/error-message.component";
+import {ToastsService} from "../../../../custom_components/error_toast/toasts.service";
+import {ToastVM} from "../../../../Service/Model/notificationVm";
+import {NotificationType} from "../../../../Service/Enums/NotificationType";
 
 @Component({
   selector: 'app-offlinebooking',
@@ -19,6 +22,7 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
     private fb: FormBuilder,
     private dealerService: DealerDataService,
     private bsStore:BackStoreService,
+    private _toastService:ToastsService,
   ) {}
 
   ngOnInit(): void {
@@ -74,7 +78,7 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
       } as CarBookingDates,
       advanceAmount: this.bookingForm.get('proofNumber')?.value,
       bookingStatus:{
-        state: BookingProcessDetails.InProgress,
+        state: BookingProcessDetails.VehicleEntered,
       } as Status,
       allottedSlot: this.bookingForm.get('AllotedSlot')?.value,
     } as BookingDto
@@ -84,9 +88,11 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
       this.dealerService.BookingByOffline(offlinebooking).subscribe({
         next: (result: any) => {
           console.log(result);
+          this._toastService.showToast({message:'Successfully Booking initiated', type:NotificationType.Success} as ToastVM);
         },
         error: (err: any) => {
           console.log(err);
+          this._toastService.showToast({message:'Failed To Initiate Booking Process, Please try again later.', type:NotificationType.Error} as ToastVM);
         }
       });
     } else {
@@ -101,7 +107,7 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
     const day = String(now.getDate()).padStart(2, '0');
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    
+
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   }
 }
