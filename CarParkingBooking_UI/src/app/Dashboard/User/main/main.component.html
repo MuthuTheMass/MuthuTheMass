@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="main.component.css">
 <section class="homecontent">
     <div class="container py-5" id="datalist">
     <div class="row justify-content-center mb-3" id="bg-light">
@@ -25,7 +26,6 @@
                       </form>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -39,205 +39,345 @@
       <div class="col-md-12 col-xl-10">
           <div class="card-body">
             <div class="row">
+              <div class="row-1">
+                <div class="col-4">
+                  <figure class="movie">
+                        <div class="movie__hero">
+                          <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                               </div>
 
-              <figure class="movie">
-                <div class="movie__hero">
-                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                </div>
-                <div class="movie__content">
-                  <div class="movie__title">
-                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
-                    <div class="carsparking__tag movie__tag--1">100%safety</div>
-                    <div class="carsparking__tag movie__tag--2">24/7available</div>
-                  </div>
-                  <p class="carpark__description">
-                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)
-                  </p>
-                  <div class="parktime__details">
-                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                      Feitshans</p>
-                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                <div class="col-8">
+                  <div class="d-flex flex-column bd-highlight mb-3">
+                    <div class="p-1 bd-highlight">
+                      <div class="movie__content">
+                                     <div class="movie__title">
+                                         <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+
+                                       </div></div>
+                    <div class="p-2 bd-highlight">
+                      <p class="carpark__description">
+                      No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                    </p></div>
+                    <div class="p-3 bd-highlight">
+                      <div class="parktime__details">
+                      <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
+                        Feitshans</p>
+                      <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
+                      <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
         </span>$12.52 crores</p>
+                        <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                    </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
-                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-              </figure>
+                  </figure>
+              </div>
+            </div>
+
+<!--              <figure class="movie">-->
+<!--                <div class="movie__hero">-->
+<!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
+<!--                </div>-->
+<!--                <div class="movie__content">-->
+<!--                  <div class="movie__title">-->
+<!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
+<!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
+<!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
+<!--                  </div>-->
+<!--                  <p class="carpark__description">-->
+<!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
+<!--                  </p>-->
+<!--                  <div class="parktime__details">-->
+<!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
+<!--                      Feitshans</p>-->
+<!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
+<!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
+<!--        </span>$12.52 crores</p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
+<!--              </figure>-->
             </div>
           </div>
       </div>
     </div>
 </div>
-  <div class="home-dealerdata">
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-xl-10">
-          <div class="card-body">
-            <div class="row">
-
-              <figure class="movie">
-                <div class="movie__hero">
-                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                </div>
-                <div class="movie__content">
-                  <div class="movie__title">
-                    <h1 class="heading__primary">First Blood Part II <i class="fas fa-fire"></i></h1>
-                    <div class="movie__tag movie__tag--1">#action</div>
-                    <div class="movie__tag movie__tag--2">#thriller</div>
-                  </div>
-                  <p class="movie__description">
-                    First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                    Stallone, who also stars as Vietnam War veteran John Rambo.
-                  </p>
-                  <div class="movie__details">
-                    <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                      Feitshans</p>
-                    <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                    <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                  </div>
-                </div>
-                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-              </figure>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-    <div class="home-dealerdata">
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-xl-10">
-          <div class="card-body">
-            <div class="row">
-
-              <figure class="movie">
-                <div class="movie__hero">
-                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img"></div>
-                <div class="movie__content">
-                  <div class="movie__title">
-                    <h1 class="heading__primary">First Blood Part II <i class="fas fa-fire"></i></h1>
-                    <div class="movie__tag movie__tag--1">#action</div>
-                    <div class="movie__tag movie__tag--2">#thriller</div>
-                  </div>
-                  <p class="movie__description">
-                    First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                    Stallone, who also stars as Vietnam War veteran John Rambo.
-                  </p>
-                  <div class="movie__details">
-                    <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                      Feitshans</p>
-                    <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                    <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                  </div>
-                </div>
-                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-              </figure>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
       <div class="home-dealerdata">
         <div class="row justify-content-center">
           <div class="col-md-12 col-xl-10">
             <div class="card-body">
               <div class="row">
+                <div class="row-1">
+                  <div class="col-4">
+                    <figure class="movie">
+                      <div class="movie__hero">
+                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                      </div>
 
-                <figure class="movie">
-                  <div class="movie__hero">
-                    <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img"></div>
-                  <div class="movie__content">
-                    <div class="movie__title">
-                      <h1 class="heading__primary">First Blood Part II <i class="fas fa-fire"></i></h1>
-                      <div class="movie__tag movie__tag--1">#action</div>
-                      <div class="movie__tag movie__tag--2">#thriller</div>
-                    </div>
-                    <p class="movie__description">
-                      First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                      Stallone, who also stars as Vietnam War veteran John Rambo.
-                    </p>
-                    <div class="movie__details">
-                      <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                        Feitshans</p>
-                      <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                      <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                      <div class="col-8">
+                        <div class="d-flex flex-column bd-highlight mb-3">
+                          <div class="p-1 bd-highlight">
+                            <div class="movie__content">
+                              <div class="movie__title">
+                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+
+                              </div></div>
+                            <div class="p-2 bd-highlight">
+                              <p class="carpark__description">
+                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                              </p></div>
+                            <div class="p-3 bd-highlight">
+                              <div class="parktime__details">
+                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
+                                  Feitshans</p>
+                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
+                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
         </span>$12.52 crores</p>
-                    </div>
+                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
                   </div>
-                  <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                </figure>
+                </div>
+
+                <!--              <figure class="movie">-->
+                <!--                <div class="movie__hero">-->
+                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
+                <!--                </div>-->
+                <!--                <div class="movie__content">-->
+                <!--                  <div class="movie__title">-->
+                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
+                <!--                  </div>-->
+                <!--                  <p class="carpark__description">-->
+                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
+                <!--                  </p>-->
+                <!--                  <div class="parktime__details">-->
+                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
+                <!--                      Feitshans</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
+                <!--        </span>$12.52 crores</p>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
+                <!--              </figure>-->
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="home-dealerdata">
         <div class="row justify-content-center">
           <div class="col-md-12 col-xl-10">
             <div class="card-body">
               <div class="row">
+                <div class="row-1">
+                  <div class="col-4">
+                    <figure class="movie">
+                      <div class="movie__hero">
+                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                      </div>
 
-                <figure class="movie">
-                  <div class="movie__hero">
-                    <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img"> </div>
-                  <div class="movie__content">
-                    <div class="movie__title">
-                      <h1 class="heading__primary">First Blood Part II <i class="fas fa-fire"></i></h1>
-                      <div class="movie__tag movie__tag--1">#action</div>
-                      <div class="movie__tag movie__tag--2">#thriller</div>
-                    </div>
-                    <p class="movie__description">
-                      First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                      Stallone, who also stars as Vietnam War veteran John Rambo.
-                    </p>
-                    <div class="movie__details">
-                      <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                        Feitshans</p>
-                      <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                      <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                      <div class="col-8">
+                        <div class="d-flex flex-column bd-highlight mb-3">
+                          <div class="p-1 bd-highlight">
+                            <div class="movie__content">
+                              <div class="movie__title">
+                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+
+                              </div></div>
+                            <div class="p-2 bd-highlight">
+                              <p class="carpark__description">
+                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                              </p></div>
+                            <div class="p-3 bd-highlight">
+                              <div class="parktime__details">
+                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
+                                  Feitshans</p>
+                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
+                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
         </span>$12.52 crores</p>
-                    </div>
+                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
                   </div>
-                  <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                </figure>
+                </div>
+
+                <!--              <figure class="movie">-->
+                <!--                <div class="movie__hero">-->
+                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
+                <!--                </div>-->
+                <!--                <div class="movie__content">-->
+                <!--                  <div class="movie__title">-->
+                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
+                <!--                  </div>-->
+                <!--                  <p class="carpark__description">-->
+                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
+                <!--                  </p>-->
+                <!--                  <div class="parktime__details">-->
+                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
+                <!--                      Feitshans</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
+                <!--        </span>$12.52 crores</p>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
+                <!--              </figure>-->
               </div>
             </div>
           </div>
         </div>
-      </div>  <div class="home-dealerdata">
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-xl-10">
-          <div class="card-body">
-            <div class="row">
+      </div>
+      <div class="home-dealerdata">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-xl-10">
+            <div class="card-body">
+              <div class="row">
+                <div class="row-1">
+                  <div class="col-4">
+                    <figure class="movie">
+                      <div class="movie__hero">
+                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                      </div>
 
-              <figure class="movie">
-                <div class="movie__hero">
-                  <img src="/assets/Garage_ Size, Functionality, Uses, Furniture And Renovation.jpg" alt="Rambo" class="carslot__img"> </div>
-                <div class="movie__content">
-                  <div class="movie__title">
-                    <h1 class="heading__primary">First Blood Part II <i class="fas fa-fire"></i></h1>
-                    <div class="movie__tag movie__tag--1">#action</div>
-                    <div class="movie__tag movie__tag--2">#thriller</div>
-                  </div>
-                  <p class="movie__description">
-                    First Blood is a 1982 American action film directed by Ted Kotcheff, and co-written by Sylvester
-                    Stallone, who also stars as Vietnam War veteran John Rambo.
-                  </p>
-                  <div class="movie__details">
-                    <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                      Feitshans</p>
-                    <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                    <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                      <div class="col-8">
+                        <div class="d-flex flex-column bd-highlight mb-3">
+                          <div class="p-1 bd-highlight">
+                            <div class="movie__content">
+                              <div class="movie__title">
+                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+
+                              </div></div>
+                            <div class="p-2 bd-highlight">
+                              <p class="carpark__description">
+                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                              </p></div>
+                            <div class="p-3 bd-highlight">
+                              <div class="parktime__details">
+                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
+                                  Feitshans</p>
+                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
+                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
         </span>$12.52 crores</p>
+                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
                   </div>
                 </div>
-                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-              </figure>
+
+                <!--              <figure class="movie">-->
+                <!--                <div class="movie__hero">-->
+                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
+                <!--                </div>-->
+                <!--                <div class="movie__content">-->
+                <!--                  <div class="movie__title">-->
+                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
+                <!--                  </div>-->
+                <!--                  <p class="carpark__description">-->
+                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
+                <!--                  </p>-->
+                <!--                  <div class="parktime__details">-->
+                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
+                <!--                      Feitshans</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
+                <!--        </span>$12.52 crores</p>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
+                <!--              </figure>-->
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="home-dealerdata">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-xl-10">
+            <div class="card-body">
+              <div class="row">
+                <div class="row-1">
+                  <div class="col-4">
+                    <figure class="movie">
+                      <div class="movie__hero">
+                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                      </div>
+
+                      <div class="col-8">
+                        <div class="d-flex flex-column bd-highlight mb-3">
+                          <div class="p-1 bd-highlight">
+                            <div class="movie__content">
+                              <div class="movie__title">
+                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+
+                              </div></div>
+                            <div class="p-2 bd-highlight">
+                              <p class="carpark__description">
+                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                              </p></div>
+                            <div class="p-3 bd-highlight">
+                              <div class="parktime__details">
+                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
+                                  Feitshans</p>
+                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
+                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+        </span>$12.52 crores</p>
+                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+
+                <!--              <figure class="movie">-->
+                <!--                <div class="movie__hero">-->
+                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
+                <!--                </div>-->
+                <!--                <div class="movie__content">-->
+                <!--                  <div class="movie__title">-->
+                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
+                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
+                <!--                  </div>-->
+                <!--                  <p class="carpark__description">-->
+                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
+                <!--                  </p>-->
+                <!--                  <div class="parktime__details">-->
+                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
+                <!--                      Feitshans</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
+                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
+                <!--        </span>$12.52 crores</p>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
+                <!--              </figure>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </section>
