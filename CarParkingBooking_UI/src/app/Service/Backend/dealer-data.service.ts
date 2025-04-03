@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { dealerVM, offlinebookingVM } from '../Model/dealermodal';
+import { dealerVM} from '../Model/dealermodal';
 import {environment} from "../../../environments/environment";
 import {BackStoreService} from "../store/back-store.service";
 import {LocationService} from "../UIService/location.service";
-import { CarBookingDetailDto } from '../Model/BookingDealerModal';
+import { BookingDto, CarBookingDetailDto } from '../Model/BookingDealerModal';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +35,8 @@ export class DealerDataService {
    return this.httpClient.get(environment.apiUrl+"Dealer/dealernewusers?emailId="+dealerEmailId);
   }
 
-  BookingByOffline(data:offlinebookingVM):Observable<any>{
-    data.dealerEmailId = this.backStoreService.dealerLoggedData().email;
+  BookingByOffline(data:BookingDto):Observable<any>{
+    data.dealerEmail = this.backStoreService.dealerLoggedData().email;
     return this.httpClient.post(environment.apiUrl+"Dealer/OfflineBooking",data);
   }
 

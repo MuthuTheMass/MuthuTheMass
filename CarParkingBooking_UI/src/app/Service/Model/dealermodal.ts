@@ -25,16 +25,3 @@ export interface dealerData{
   userName:string
 }
 
-export interface offlinebookingVM{
-  dealerEmailId:string;
-  fullName: string;
-  email: string;
-  mobileNumber: string;
-  address: string;
-  proof: string;
-  proofNumber: string;
-  authorityOfIssue: string;
-  vehicleNumber: string;
-  vehicleModel: string;
-  bookingDate: string;
-}

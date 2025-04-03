@@ -8,9 +8,7 @@
           <p><strong>Vehicle:</strong> {{ bookingDetail().vehicleNumber }}</p>
           <p><strong>From:</strong> {{ bookingDetail().bookingFromDate | date }}</p>
 
-          <button (click)="StopBooking(bookingDetail().bookingId)" class="btn btn-primary mt-2">
-            Parking Completed
-          </button>
+          <app-dealer-offline-payment></app-dealer-offline-payment>
         </div>
       </div>
     </div>

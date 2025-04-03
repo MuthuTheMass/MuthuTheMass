@@ -7,7 +7,11 @@ namespace CarParkingSystem.Application.Dtos.Booking
     {
         public string? DealerId { get; set; }
 
+        public string? DealerEmail { get; set; }
+
         public string? CustomerId { get; set; }
+
+        public CustomerDetails customerDetails { get; set; }
 
         public VehicleInformation? VehicleInfo { get; set; }
 
@@ -20,8 +24,25 @@ namespace CarParkingSystem.Application.Dtos.Booking
         public string? AdvanceAmount { get; set; }
 
         public required Status BookingStatus { get; set; }
-        public string? AllottedSlots { get; set; }
+        public string? AllottedSlot { get; set; }
     }
+
+    public class CustomerDetails
+    {
+        public string CustomerName { get; set; }
+        public string? Email { get; set; }
+        public string MobileNumber { get; set; }
+        public string Address { get; set; }
+        public Proof? Proof { get; set; }
+
+    }
+
+    public class Proof
+    {
+        public string? Type { get; set; }
+        public string? Number { get; set; }
+    }
+
 
     public record CarBookingDetailDto(
         string? BookingId,

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
@@ -21,25 +22,57 @@ namespace CarParkingSystem.Application.Services.BookingService
     {
         private readonly IBookingRepository _bookingRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IDealerRepository _dealerRepository;
         private IMapper _mapper;
 
-        public UserBookingService(IBookingRepository bookingRepository,IUserRepository userRepository,IMapper mapper)
+        public UserBookingService(IBookingRepository bookingRepository,IUserRepository userRepository,IMapper mapper, IDealerRepository DealerRepository)
         {
             _bookingRepository = bookingRepository;
             _userRepository = userRepository;
+            _dealerRepository = DealerRepository;
             _mapper = mapper;
         }
 
         public async Task<bool> AddBooking(BookingDto booking)
         {
             var UserDetails = await _userRepository.GetUserByEmail(booking.CustomerId ?? string.Empty);
+            var DealerDetails = await _dealerRepository.GetUserByEmail(booking?.DealerEmail ?? string.Empty);
+
+            if (UserDetails == null)
+            {
+                UserDetails = new UserDetails()
+                {
+                    UserID = string.Empty,
+                    Email = booking.CustomerId ?? string.Empty,
+                    Name = booking.customerDetails.CustomerName ?? string.Empty,
+                    MobileNumber = string.Empty,
+                    Password = string.Empty,
+                };
+            }
+            if(DealerDetails is null)
+            {
+                DealerDetails = new DealerDetails() { 
+                    DealerEmail = string.Empty,
+                    DealerID=string.Empty,
+                    DealerName=string.Empty,
+                    DealerPhoneNo=string.Empty,
+                    DealerPassword=string.Empty 
+                };
+            }
+            else
+            {
+                booking.DealerId = DealerDetails.DealerID;
+                booking.DealerEmail = DealerDetails.DealerEmail;
+            }
+
+            
 
             CarBooking carBooking = new CarBooking()
             {
                 DealerId = booking.DealerId,
                 CustomerData = _mapper.Map<CustomerUserDetails>(UserDetails),
                 VehicleInfo = booking.VehicleInfo!,
-                BookingSource = BookingSources.User.ToString(),
+                BookingSource = booking.BookingSource.ToString(),
                 BookingDate = booking.BookingDate,
                 GeneratedQrCode = booking.GeneratedQrCode,
                 AdvanceAmount = booking.AdvanceAmount,
@@ -48,7 +81,7 @@ namespace CarParkingSystem.Application.Services.BookingService
                     State = BookingProcessDetails.InProgress,
                     Reason = string.Empty
                 },
-                AllottedSlots = booking.AllottedSlots
+                AllottedSlots = booking.AllottedSlot
                 
             };
 
