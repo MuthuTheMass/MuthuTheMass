@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+
 
 @Component({
   selector: 'app-dmain',
