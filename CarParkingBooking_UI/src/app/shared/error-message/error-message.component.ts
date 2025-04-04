@@ -9,8 +9,11 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorMessageComponent implements OnInit {
+
+  @Input() error?: any;
+
 ngOnInit(): void {
  console.log(this.error);
 }
-@Input() error?: any;
+
 }

@@ -7,13 +7,14 @@ import { ErrorMessageComponent } from "../../../../shared/error-message/error-me
 import {ToastsService} from "../../../../custom_components/error_toast/toasts.service";
 import {ToastVM} from "../../../../Service/Model/notificationVm";
 import {NotificationType} from "../../../../Service/Enums/NotificationType";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-offlinebooking',
   templateUrl: './offlinebooking.component.html',
   styleUrls: ['./offlinebooking.component.css'],
   standalone:true,
-  imports: [ReactiveFormsModule, ErrorMessageComponent]
+  imports: [ReactiveFormsModule, ErrorMessageComponent,NgClass]
 })
 export class OfflinebookingComponent implements OnInit, OnChanges {
   bookingForm!: FormGroup;
@@ -34,7 +35,7 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
       proof: [''], // Optional
       proofNumber: [''], // Optional
       AllotedSlot: ['', Validators.required], // Required
-      vehicleNumber: ['', Validators.required], // Required
+      vehicleNumber: ['', Validators.required,Validators.pattern(/^[A-Z]{2} \d{2} [A-Z]{2} \d{4}$/)], // Required
       vehicleModel: ['', Validators.required], // Required
       bookingDate: [this.getLocalDateTime()], // Optional
       advanceAmount: ['₹', Validators.required], // Required
