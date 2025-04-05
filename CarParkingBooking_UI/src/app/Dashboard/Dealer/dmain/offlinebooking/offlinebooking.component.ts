@@ -16,7 +16,7 @@ import {NgClass} from "@angular/common";
   standalone:true,
   imports: [ReactiveFormsModule, ErrorMessageComponent,NgClass]
 })
-export class OfflinebookingComponent implements OnInit, OnChanges {
+export class OfflinebookingComponent implements OnInit {
   bookingForm!: FormGroup;
 
   constructor(
@@ -28,17 +28,23 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
-      fullName: ['', Validators.required], // Required
-      email: [''], // Optional
-      mobileNumber: ['', [Validators.required, Validators.pattern(/^₹?\d+(\.\d{1,2})?$/)]], // Required
-      address: [''], // Optional
-      proof: [''], // Optional
-      proofNumber: [''], // Optional
-      AllotedSlot: ['', Validators.required], // Required
-      vehicleNumber: ['', Validators.required,Validators.pattern(/^[A-Z]{2} \d{2} [A-Z]{2} \d{4}$/)], // Required
-      vehicleModel: ['', Validators.required], // Required
-      bookingDate: [this.getLocalDateTime()], // Optional
-      advanceAmount: ['₹', Validators.required], // Required
+      fullName: ['', Validators.required],
+      email: [''],
+      mobileNumber: ['', [Validators.required,Validators.pattern(/^\d{10}$/)]],
+      address: [''],
+      proof: [''],
+      proofNumber: [''],
+      AllotedSlot: ['', Validators.required],
+      vehicleNumber: ['', [
+        Validators.required,
+        Validators.pattern(/^[A-Z]{2} \d{2} [A-Z]{2} \d{4}$/)
+      ]],
+      vehicleModel: ['', Validators.required],
+      bookingDate: [this.getLocalDateTime()],
+      advanceAmount: ['₹', [
+        Validators.required,
+        Validators.pattern(/^₹? \d+(\.\d{1,2})?$/)
+      ]],
     });
 
     if(this.bsStore.dealerLoggedData().email == undefined){
@@ -49,10 +55,8 @@ export class OfflinebookingComponent implements OnInit, OnChanges {
     setInterval(() => {
       this.bookingForm.get('bookingDate')?.setValue(this.getLocalDateTime());
     }, 1000);
-  }
 
-  ngOnChanges(): void {
-    console.log(this.bookingForm);
+    console.log('data:',this.bookingForm);
   }
 
   onSubmit(): void {
