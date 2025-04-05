@@ -23,6 +23,7 @@
     "@angular/router": "^18.2.8",
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@ng-bootstrap/ng-bootstrap": "^17.0.1",
+    "@ngx-formly/bootstrap": "^6.3.12",
     "@popperjs/core": "^2.11.8",
     "@zxing/browser": "^0.1.5",
     "@zxing/library": "^0.21.3",

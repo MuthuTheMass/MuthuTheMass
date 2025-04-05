@@ -1,192 +1,214 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-body{
-  background: #fec107;
-  padding: 0 10px;
-}
-.col{
-  position: relative;
-  bottom: 30px;
-}
-.row{
-  background: rgb(255, 21, 119);
-  width: 80%;
-  margin-left: 100px;
-  margin-top: 30px;
-  border-radius: 30px;
-}
-.wrapper{
-  max-width: 500px;
-  width: 100%;
-  background: rgba(225, 172, 172, 0.627);
-  margin: 50px auto;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.125);
-  padding: 30px;
-  border-radius: 30px;
+
+p {
+  color: grey
 }
 
-.row .title{
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #fec107;
+#heading {
   text-transform: uppercase;
+  color: #673AB7;
+  font-weight: normal
+}
+
+#msform {
   text-align: center;
+  position: relative;
+  margin-top: 20px
+
 }
 
-.wrapper .form{
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
   width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative
 }
 
-.wrapper .form .inputfield{
+.form-card {
+  text-align: left
+}
+
+#msform fieldset:not(:first-of-type) {
+  display: none
+}
+
+#msform input,
+#msform textarea {
+  padding: 8px 15px 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  margin-bottom: 25px;
+  margin-top: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  background-color: #ECEFF1;
+  font-size: 16px;
+  letter-spacing: 1px
+}
+
+#msform input:focus,
+#msform textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #673AB7;
+  outline-width: 0
+}
+
+#msform .action-button {
+  width: 100px;
+  background: #673AB7;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 0px 10px 5px;
+  float: right
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+  background-color: #311B92
+}
+
+#msform .action-button-previous {
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px 10px 0px;
+  float: right
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+  background-color: #000000
+}
+
+.card {
+  z-index: 0;
+  border: none;
+  width: 800px;
+  position: relative;
+  right: 100px;
+
+}
+
+.fs-title {
+  font-size: 25px;
+  color: #673AB7;
   margin-bottom: 15px;
-  display: flex;
-  align-items: center;
+  font-weight: normal;
+  text-align: left
 }
 
-.wrapper .form .inputfield label{
-   width: 200px;
-   color: white;
-   margin-right: 10px;
-  font-size: 14px;
+.purple-text {
+  color: #673AB7;
+  font-weight: normal
 }
 
-.wrapper .form .inputfield .input,
-.wrapper .form .inputfield .textarea{
-  width: 100%;
-  outline: none;
-  border: 1px solid #d5dbd9;
+.steps {
+  font-size: 25px;
+  color: gray;
+  margin-bottom: 10px;
+  font-weight: normal;
+  text-align: right
+}
+
+.fieldlabels {
+  color: gray;
+  text-align: left
+}
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: lightgrey
+}
+
+#progressbar .active {
+  color: #673AB7
+}
+
+#progressbar li {
+  list-style-type: none;
   font-size: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.wrapper .form .inputfield .textarea{
-  width: 100%;
-  height: 125px;
-  resize: none;
-}
-
-.wrapper .form .inputfield .custom_select{
+  width: 25%;
+  float: left;
   position: relative;
-  width: 100%;
-  height: 37px;
+  font-weight: 400
 }
 
-.wrapper .form .inputfield .custom_select:before{
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: 10px;
-  border: 8px solid;
-  border-color: #d5dbd9 transparent transparent transparent;
-  pointer-events: none;
+#progressbar #account:before {
+  font-family: FontAwesome;
+  content: "\f13e"
 }
 
-.wrapper .form .inputfield .custom_select select{
-  -webkit-appearance: none;
-  -moz-appearance:   none;
-  appearance:        none;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  border: 0px;
-  padding: 8px 10px;
-  font-size: 15px;
-  border: 1px solid #d5dbd9;
-  border-radius: 3px;
+#progressbar #personal:before {
+  font-family: FontAwesome;
+  content: "\f007"
 }
 
-
-.wrapper .form .inputfield .input:focus,
-.wrapper .form .inputfield .textarea:focus,
-.wrapper .form .inputfield .custom_select select:focus{
-  border: 1px solid #fec107;
+#progressbar #payment:before {
+  font-family: FontAwesome;
+  content: "\f030"
 }
 
-.wrapper .form .inputfield p{
-   font-size: 14px;
-   color: #757575;
+#progressbar #confirm:before {
+  font-family: FontAwesome;
+  content: "\f00c"
 }
-.wrapper .form .inputfield .check{
-  width: 15px;
-  height: 15px;
-  position: relative;
+
+#progressbar li:before {
+  width: 50px;
+  height: 50px;
+  line-height: 45px;
   display: block;
-  cursor: pointer;
+  font-size: 20px;
+  color: #ffffff;
+  background: lightgray;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+  padding: 2px
 }
-.wrapper .form .inputfield .check input[type="checkbox"]{
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-.wrapper .form .inputfield .check .checkmark{
-  width: 15px;
-  height: 15px;
-  border: 1px solid #fec107;
-  display: block;
-  position: relative;
-}
-.wrapper .form .inputfield .check .checkmark:before{
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 2px;
-  width: 5px;
+
+#progressbar li:after {
+  content: '';
+  width: 100%;
   height: 2px;
-  border: 2px solid;
-  border-color: transparent transparent #fff #fff;
-  transform: rotate(-45deg);
-  display: none;
-}
-.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
-  background: #fec107;
+  background: lightgray;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  z-index: -1
 }
 
-.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
-  display: block;
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #673AB7
 }
 
- .inputfield .btn{
+.progress {
+  height: 20px
+}
+
+.progress-bar {
+  background-color: #673AB7
+}
+
+.fit-image {
   width: 100%;
-   padding: 8px 10px;
-  font-size: 15px; 
-  border: 0px;
-  background:  #fec107;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 3px;
-  outline: none;
-  position: relative;
-  right: 250px;
-  bottom: 30px;
-}
-
-.wrapper .form .inputfield .btn:hover{
-  background: #ffd658;
-}
-
-.wrapper .form .inputfield:last-child{
-  margin-bottom: 0;
-}
-
-@media (max-width:420px) {
-  .wrapper .form .inputfield{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .wrapper .form .inputfield label{
-    margin-bottom: 5px;
-  }
-  .wrapper .form .inputfield.terms{
-    flex-direction: row;
-  }
+  object-fit: cover
 }

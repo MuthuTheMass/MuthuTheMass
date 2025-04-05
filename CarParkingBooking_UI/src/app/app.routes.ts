@@ -65,6 +65,9 @@ export const routes: Routes = [
     },{
         path:"dealer-account",component:DealeraccountComponent,title:"dealer detailes"
     },{
+    path:"dprofile",component:EditdetailsComponent,title:"dealer profile edit"
+    }
+    ,{
         path:"editdealer",component:EditDealerdataComponent,title:"dealerdata"
     },{
         path:"allpayment",component:AllPaymentComponent,title:"dealerpayment"
