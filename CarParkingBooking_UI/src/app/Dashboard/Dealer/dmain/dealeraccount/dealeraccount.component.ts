@@ -1,57 +1,48 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dealeraccount',
   standalone: true,
   imports: [],
   templateUrl: './dealeraccount.component.html',
-  styleUrl: './dealeraccount.component.css'
+  styleUrls: ['./dealeraccount.component.css'] // Fixed typo from "styleUrl" to "styleUrls"
 })
 export class DealeraccountComponent {
 
+  constructor(private router: Router) { }
 
-  // Select DOM elements
- buttons = document.querySelectorAll<HTMLButtonElement>(".card-buttons button");
- sections = document.querySelectorAll<HTMLElement>(".card-section");
- card = document.querySelector<HTMLElement>(".card");
+  ngAfterViewInit() { // Moved DOM-related code to ngAfterViewInit lifecycle hook
+    const buttons = document.querySelectorAll(".card-buttons button");
+    const sections = document.querySelectorAll(".card-section");
+    const card = document.querySelector(".card");
 
-// Define event handler
-   handleButtonClick = (e: Event): void => {
-  const target = e.target as HTMLButtonElement;
-  const targetSection = target.getAttribute("data-section");
+    const handleButtonClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+      const targetSection = target.getAttribute("data-section");
+      const section = targetSection ? document.querySelector(targetSection) : null;
 
-  if (!targetSection) return;
+      if (targetSection !== "#about") {
+        card?.classList.add("is-active");
+      } else {
+        card?.classList.remove("is-active");
+      }
 
-  const section = document.querySelector<HTMLElement>(targetSection);
+      card?.setAttribute("data-state", targetSection || "");
+      sections.forEach(s => s.classList.remove("is-active"));
+      buttons.forEach(b => b.classList.remove("is-active"));
+      target.classList.add("is-active");
+      section?.classList.add("is-active");
+    };
 
-  if (!section) return;
-
-  // Update card state and class based on target section
-  if (targetSection !== "#about") {
-    this.card?.classList.add("is-active");
-  } else {
-    this.card?.classList.remove("is-active");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", handleButtonClick);
+    });
   }
 
-  this.card?.setAttribute("data-state", targetSection);
-
-  // Update active state for sections and buttons
-  this.sections.forEach(s => s.classList.remove("is-active"));
-  this.buttons.forEach(b => b.classList.remove("is-active"));
-
-  target.classList.add("is-active");
-  section.classList.add("is-active");
-};
-
-// Add event listeners to buttons
-
-buttonforevent(){
-  this.buttons.forEach(btn => {
-    btn.addEventListener("click", this.handleButtonClick);
-  });
-
+dealereditprofile(){
+  this.router.navigate(['/dhome/editdealer']);
 }
-
 
 
 }

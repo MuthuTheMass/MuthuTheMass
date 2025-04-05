@@ -1,112 +1,106 @@
-<div class="row">
-  <div class="title">
-    Parking Details
-  </div>
-  <div class="col">
-  
-<div class="wrapper">
-
-  <div class="form">
-     <div class="inputfield">
-        <label>First Name</label>
-        <input type="text" class="input">
-     </div>  
-      <div class="inputfield">
-        <label>Last Name</label>
-        <input type="text" class="input">
-     </div>  
-     <div class="inputfield">
-        <label>Password</label>
-        <input type="password" class="input">
-     </div>  
-    <div class="inputfield">
-        <label>Confirm Password</label>
-        <input type="password" class="input">
-     </div> 
-      <div class="inputfield">
-        <label>Gender</label>
-        <div class="custom_select">
-          <select>
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-     </div> 
-      <div class="inputfield">
-        <label>Email Address</label>
-        <input type="text" class="input">
-     </div> 
-    <div class="inputfield">
-        <label>Phone Number</label>
-        <input type="text" class="input">
-     </div> 
-  
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+        <h2 id="heading">Sign Up Your User Account</h2>
+        <p>Fill all form field to go to next step</p>
+        <form id="msform">
+          <!-- progressbar -->
+          <ul id="progressbar">
+            <li class="active" id="account"><strong>Account</strong></li>
+            <li id="personal"><strong>Personal</strong></li>
+            <li id="payment"><strong>Image</strong></li>
+            <li id="confirm"><strong>Finish</strong></li>
+          </ul>
+          <!--          <div class="progress">-->
+          <!--            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>-->
+          <!--          </div> <br> &lt;!&ndash; fieldsets &ndash;&gt;-->
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Account Information:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 1 - 4</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Email: *</label> <input name="email" placeholder="Email Id" type="email"/>
+              <label class="fieldlabels">Username: *</label> <input name="uname" placeholder="UserName" type="text"/>
+              <label class="fieldlabels">Password: *</label> <input name="pwd" placeholder="Password" type="password"/>
+              <label class="fieldlabels">Confirm Password: *</label> <input name="cpwd" placeholder="Confirm Password"
+                                                                            type="password"/>
+            </div>
+            <input class="next action-button" name="next" type="button" value="Next"/>
+          </fieldset>
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Personal Information:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 2 - 4</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">First Name: *</label> <input name="fname" placeholder="First Name"
+                                                                      type="text"/> <label
+              class="fieldlabels">Last Name: *</label> <input name="lname" placeholder="Last Name" type="text"/> <label
+              class="fieldlabels">Contact No.: *</label> <input name="phno" placeholder="Contact No." type="text"/>
+              <label class="fieldlabels">Alternate Contact No.: *</label> <input name="phno_2"
+                                                                                 placeholder="Alternate Contact No."
+                                                                                 type="text"/>
+            </div>
+            <input class="next action-button" name="next" type="button" value="Next"/> <input
+            class="previous action-button-previous"
+            name="previous"
+            type="button"
+            value="Previous"/>
+          </fieldset>
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Image Upload:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 3 - 4</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Upload Your Photo:</label> <input accept="image/*" name="pic" type="file">
+              <label class="fieldlabels">Upload Signature Photo:</label> <input accept="image/*" name="pic" type="file">
+            </div>
+            <input class="next action-button" name="next" type="button" value="Submit"/> <input
+            class="previous action-button-previous"
+            name="previous"
+            type="button"
+            value="Previous"/>
+          </fieldset>
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Finish:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 4 - 4</h2>
+                </div>
+              </div>
+              <br><br>
+              <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+              <div class="row justify-content-center">
+                <div class="col-3"><img class="fit-image" src="https://i.imgur.com/GwStPmg.png"></div>
+              </div>
+              <br><br>
+              <div class="row justify-content-center">
+                <div class="col-7 text-center">
+                  <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
-  <div class="col">
-    
-<div class="wrapper">
-  <div class="form">
-     <div class="inputfield">
-        <label>First Name</label>
-        <input type="text" class="input">
-     </div>  
-      <div class="inputfield">
-        <label>Last Name</label>
-        <input type="text" class="input">
-     </div>  
-     <div class="inputfield">
-        <label>Password</label>
-        <input type="password" class="input">
-     </div>  
-    <div class="inputfield">
-        <label>Confirm Password</label>
-        <input type="password" class="input">
-     </div> 
-      <div class="inputfield">
-        <label>Gender</label>
-        <div class="custom_select">
-          <select>
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-     </div> 
-      <div class="inputfield">
-        <label>Email Address</label>
-        <input type="text" class="input">
-     </div> 
-    <div class="inputfield">
-        <label>Phone Number</label>
-        <input type="text" class="input">
-     </div> 
-  </div>
-  
-</div>
-<div class="inputfield">
-  <input type="submit" value="Save" class="btn">
-</div>
-
-  </div>
-  
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

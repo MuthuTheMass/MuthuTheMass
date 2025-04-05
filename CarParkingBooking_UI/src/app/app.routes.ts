@@ -32,6 +32,7 @@ import {DealeDetailsComponent} from "./Dashboard/User/main/deale-details/deale-d
 import {CustomerMainpageComponent} from "./customer-mainpage/customer-mainpage.component";
 import {QrScannerComponent} from "./shared/QrScanner/QrScanner.component";
 import {PathwayComponent} from "./Dashboard/Dealer/dmain/pathway/pathway.component";
+import {TestComponent} from "./home/test/test.component";
 // import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
 // import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
 // import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
@@ -64,6 +65,9 @@ export const routes: Routes = [
     },{
         path:"dealer-account",component:DealeraccountComponent,title:"dealer detailes"
     },{
+    path:"dprofile",component:EditdetailsComponent,title:"dealer profile edit"
+    }
+    ,{
         path:"editdealer",component:EditDealerdataComponent,title:"dealerdata"
     },{
         path:"allpayment",component:AllPaymentComponent,title:"dealerpayment"
@@ -90,6 +94,9 @@ export const routes: Routes = [
                 }
             ]
         },
+    {
+      path:"testpage",component:TestComponent,title:"testpage",children:[]
+    },
     {
       path:"userhome",component:CustomerMainpageComponent,title: "homepage"
     },
