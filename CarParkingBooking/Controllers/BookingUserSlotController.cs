@@ -1,5 +1,8 @@
-﻿using CarParkingSystem.Application.Dtos.Booking;
+﻿using CarParkingBooking.QRCodeGenerator.PDFGenerator;
+using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Services.BookingService;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkingBooking.Controllers
@@ -9,10 +12,12 @@ namespace CarParkingBooking.Controllers
     public class BookingUserSlotController : ControllerBase
     {
         private readonly IUserBookingService _bookingData;
+        private readonly IGeneratePdf _generatePdf;
 
-        public BookingUserSlotController(IUserBookingService bookingData)
+        public BookingUserSlotController(IUserBookingService bookingData, IGeneratePdf generatePdf)
         {
             _bookingData = bookingData;
+            _generatePdf = generatePdf;
         }
 
 
@@ -33,8 +38,6 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
-
-
         }
 
         [HttpGet]
@@ -73,7 +76,14 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
+        }
 
+        [HttpGet("generate-pdf/{id}")]
+        public async Task<IActionResult> GenerateBookingPdf(string id)
+        {
+            var confirmedBooking = await _bookingData.GetSingleBookingDetialByBookingIdAsync(id);
+            var pdfBytes = await _generatePdf.BookingConfirmation(confirmedBooking);
+            return File(pdfBytes, "application/pdf", $"ZenPark_{confirmedBooking.BookingId}");
         }
     }
 }

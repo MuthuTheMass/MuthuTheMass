@@ -1,6 +1,7 @@
-﻿
-using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
+﻿using CarParkingBooking.QRCodeGenerator.Encription_QRCode_value;
 using CarParkingBooking.QRCodeGenerator.Generator;
+using CarParkingBooking.QRCodeGenerator.PDFGenerator;
+using CarParkingBooking.QRCodeGenerator.PDFGenerator.Builder;
 using CarParkingSystem.Application.Services.Authorization;
 using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Application.Services.DealerService;
@@ -24,7 +25,7 @@ namespace CarParkingBooking.Services_Program
             services.AddScoped<IDealerProfile, DealerProfile>();
             services.AddScoped<IUserBookingService, UserBookingService>();
 
-            
+
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDealerRepository, DealerRepository>();
@@ -38,6 +39,9 @@ namespace CarParkingBooking.Services_Program
             //QRCode
             services.AddScoped<IQrCodeService, QrCodeService>();
 
+            //GeneratePDF
+            services.AddTransient<IGeneratePdf, GeneratePdf>();
+            
         }
     }
 }

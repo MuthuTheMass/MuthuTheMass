@@ -15,11 +15,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarParkingSystem.Application.Services.DealerService;
 
-
 public interface IDealerProfile
 {
     Task<bool?> DealerSignUp(SignUpDto dealer);
-    
+
     Task<DealerRecord> GetAllDealersBySearch(Filter filter);
 
     Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId);
@@ -27,7 +26,6 @@ public interface IDealerProfile
     Task<bool> DealerBookingOffline(BookingDto offlineBooking);
 
     Task<List<RecentBookingInDealerDashBoard>> GetAllBookingsByDealerEmailId(string emailId);
-
 }
 
 public class DealerProfile : IDealerProfile
@@ -39,8 +37,10 @@ public class DealerProfile : IDealerProfile
     private readonly IVehicleRepository _vehicleRepository;
     private readonly IUserBookingService _bookingData;
     private readonly IMapper _mapper;
-    
-    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper,IUserRepository userRepository,IDealerSlotsRepository dealerSlotsRepository,IBookingRepository bookingRepository, IVehicleRepository vehicleRepository, IUserBookingService bookingData)
+
+    public DealerProfile(IDealerRepository dealerRepository, IMapper mapper, IUserRepository userRepository,
+        IDealerSlotsRepository dealerSlotsRepository, IBookingRepository bookingRepository,
+        IVehicleRepository vehicleRepository, IUserBookingService bookingData)
     {
         _dealerRepository = dealerRepository;
         _mapper = mapper;
@@ -62,6 +62,7 @@ public class DealerProfile : IDealerProfile
     }
 
     #region DealerBookingOffline() Helper Methods
+
     //private CustomerUserDetails MapToCustomerUserDetails(OfflineBooking offlineBooking)
     //{
     //    return new CustomerUserDetails
@@ -154,10 +155,10 @@ public class DealerProfile : IDealerProfile
 
     public async Task<bool?> DealerSignUp(SignUpDto dealer)
     {
-        if (dealer == null || 
-            string.IsNullOrEmpty(dealer.Password) || 
-            dealer.MobileNumber?.Length != 10 || 
-            !dealer.Email?.Contains("@") == true || 
+        if (dealer == null ||
+            string.IsNullOrEmpty(dealer.Password) ||
+            dealer.MobileNumber?.Length != 10 ||
+            !dealer.Email?.Contains("@") == true ||
             !dealer.Email!.EndsWith(".com"))
         {
             return false;
@@ -171,13 +172,14 @@ public class DealerProfile : IDealerProfile
 
         var data = _mapper.Map<DealerDetails>(dealer);
         return await _dealerRepository.CreateDealer(data);
-    }  
+    }
+
     public async Task<DealerRecord> GetAllDealersBySearch(Filter filter)
     {
         var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filter>(filter);
         var dealers = await _dealerRepository.GetAllDealers(mapFilter);
-        
-        return new DealerRecord(_mapper.Map<List<DealerDto>>(dealers.Data),dealers.TotalDataCount);
+
+        return new DealerRecord(_mapper.Map<List<DealerDto>>(dealers.Data), dealers.TotalDataCount);
     }
 
     public async Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId)
@@ -185,18 +187,19 @@ public class DealerProfile : IDealerProfile
         var data = new DashboardDetailsForDealer();
         data.NewCustomers = new List<UserDetailForDealer>();
         data.RecentBookings = new List<RecentBookingInDealerDashBoard>();
-        List<UserDetailForDealer> dashbordDetaiuls= new();
+        List<UserDetailForDealer> dashbordDetaiuls = new();
         var userData = await _userRepository.GetUserDetailsForDealer(emailId);
         var dealerSlotDetails = await _dealerSlotsRepository.GetSlotsByDealerEmailId(emailId);
-        userData.ForEach(element => {
+        userData.ForEach(element =>
+        {
             data.NewCustomers?.Add(
                 new UserDetailForDealer(
                     element.Name,
                     Convert.ToBase64String(element.UserProfilePicture ?? []),
                     element.MobileNumber)
-                );
+            );
         });
-        if(dealerSlotDetails is not null)
+        if (dealerSlotDetails is not null)
         {
             data.AvailableSlots = dealerSlotDetails.Available_Slots;
             data.BookedSlots = dealerSlotDetails.Booked_Slots;
@@ -210,7 +213,6 @@ public class DealerProfile : IDealerProfile
             foreach (var item in bookings)
             {
                 data.RecentBookings.Add(
-
                     new RecentBookingInDealerDashBoard(
                         item.id,
                         item.VehicleInfo?.VehicleNumber!,
@@ -218,11 +220,10 @@ public class DealerProfile : IDealerProfile
                         item.BookingStatus?.State.ToString()!,
                         item.AllottedSlots!,
                         item.GeneratedQrCode!
-                        )
-                    );
+                    )
+                );
             }
         }
-
 
 
         return data;
@@ -238,7 +239,6 @@ public class DealerProfile : IDealerProfile
             foreach (var item in bookings)
             {
                 data.Add(
-
                     new RecentBookingInDealerDashBoard(
                         item.id,
                         item.VehicleInfo?.VehicleNumber!,
@@ -246,14 +246,13 @@ public class DealerProfile : IDealerProfile
                         item.BookingStatus?.State.ToString()!,
                         item.AllottedSlots!,
                         item.GeneratedQrCode!
-                        )
-                    );
+                    )
+                );
             }
+
             return data;
         }
 
         return null;
-
-
     }
 }

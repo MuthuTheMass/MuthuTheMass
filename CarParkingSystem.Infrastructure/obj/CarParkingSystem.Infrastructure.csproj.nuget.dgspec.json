@@ -32,7 +32,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
+                "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -58,6 +62,10 @@
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.10, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[3.7.1, )"
             }
           },
           "imports": [

@@ -2,6 +2,8 @@
 using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.DealerService;
 using CarParkingSystem.Domain.Dtos.Dealers;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,15 +34,14 @@ namespace CarParkingBooking.Controllers
             {
                 return NotFound(result);
             }
-            else 
+            else
             {
                 return BadRequest(result);
             }
-
         }
 
         [HttpGet("dealernewusers")]
-        public async Task<IActionResult> dealerDashboard([FromQuery]string emailId)
+        public async Task<IActionResult> dealerDashboard([FromQuery] string emailId)
         {
             var result = await dealerData.GetUsersByDealer(emailId);
 
@@ -69,11 +70,11 @@ namespace CarParkingBooking.Controllers
         public async Task<IActionResult> GetAllBookingDetails([FromQuery] string emailId)
         {
             var result = await dealerData.GetAllBookingsByDealerEmailId(emailId);
-            if(result.Count >= 0)
+            if (result.Count >= 0)
             {
                 return Ok(result);
             }
-            else if(result is null)
+            else if (result is null)
             {
                 return NotFound(result);
             }
@@ -81,9 +82,6 @@ namespace CarParkingBooking.Controllers
             {
                 return BadRequest(result);
             }
-
         }
-      
-
     }
 }

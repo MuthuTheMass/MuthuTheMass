@@ -1,5 +1,4 @@
-﻿
-using CarParkingSystem.Application.Services.UserService;
+﻿using CarParkingSystem.Application.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkingBooking.Controllers

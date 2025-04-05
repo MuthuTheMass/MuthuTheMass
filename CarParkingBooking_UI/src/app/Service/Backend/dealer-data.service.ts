@@ -52,6 +52,10 @@ export class DealerDataService {
     return this.httpClient.get<CarBookingDetailDto>(environment.apiUrl+"BookingUserSlot/GetBookingDetailByEncryptedId?EncryptedId="+encryptedQrCode);
   }
 
+  getPdfOfSingleBooking(bookingId:string):Observable<any>{
+    return this.httpClient.get(environment.apiUrl+"BookingUserSlot/generate-pdf/"+bookingId,{responseType:'blob'});
+  }
+
 }
 
 
