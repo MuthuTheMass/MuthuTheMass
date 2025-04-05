@@ -9,8 +9,7 @@ namespace CarParkingSystem.Domain.Entities.SQL
 {
     public class DealerSlotDetails
     {
-        [Key]
-        public required string Id { get; set; }
+        [Key] public required string Id { get; set; }
 
         public string? DealerId { get; set; }
 

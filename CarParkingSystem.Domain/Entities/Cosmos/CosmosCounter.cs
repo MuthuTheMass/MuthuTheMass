@@ -8,7 +8,7 @@ namespace CarParkingSystem.Domain.Entities.Cosmos
 {
     public class CosmosCounter
     {
-        public required string id { get; set; }  // Fixed ID for the counter document
+        public required string id { get; set; } // Fixed ID for the counter document
         public int currentValue { get; set; }
         public string? PartitionId { get; set; }
     }

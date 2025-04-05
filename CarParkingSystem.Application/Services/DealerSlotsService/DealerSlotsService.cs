@@ -11,7 +11,6 @@ namespace CarParkingSystem.Application.Services.DealerSlotsService
     public interface IDealeaSlotsService
     {
         Task<DealerSlotsRecord> GetSlotDataByEmailId(string emailId);
-
     }
 
 
@@ -26,12 +25,13 @@ namespace CarParkingSystem.Application.Services.DealerSlotsService
 
         public async Task<DealerSlotsRecord?> GetSlotDataByEmailId(string? emailId)
         {
-            if(string.IsNullOrWhiteSpace(emailId))
+            if (string.IsNullOrWhiteSpace(emailId))
                 return null;
 
             var dealerSlotDetails = await _dealerSlotsRepository.GetSlotsByDealerId(emailId);
-            
-            return new DealerSlotsRecord(dealerSlotDetails.DealerId, dealerSlotDetails.Available_Slots, dealerSlotDetails.Booked_Slots, dealerSlotDetails.Total_Slots);
+
+            return new DealerSlotsRecord(dealerSlotDetails.DealerId, dealerSlotDetails.Available_Slots,
+                dealerSlotDetails.Booked_Slots, dealerSlotDetails.Total_Slots);
         }
     }
 }

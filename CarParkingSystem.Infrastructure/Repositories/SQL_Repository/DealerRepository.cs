@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
-
 public interface IDealerRepository
 {
     Task<DealerDetails?> GetUserByEmail(string email);
@@ -22,6 +21,7 @@ public interface IDealerRepository
 public class DealerRepository : IDealerRepository
 {
     private readonly CarParkingBookingDbContext _dbContext;
+
     public DealerRepository(CarParkingBookingDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -67,13 +67,12 @@ public class DealerRepository : IDealerRepository
 
     public async Task<bool> DeleteDealer(string? emailId)
     {
-        List<DealerDetails>? dealerResource = await _dbContext.DealerDetails.Where(d => d.DealerEmail == emailId).ToListAsync();
+        List<DealerDetails>? dealerResource =
+            await _dbContext.DealerDetails.Where(d => d.DealerEmail == emailId).ToListAsync();
         if (dealerResource.Count <= 0) return false;
         _dbContext.DealerDetails.RemoveRange(dealerResource);
         await _dbContext.SaveChangesAsync();
         return true;
-
-
     }
 
     public async Task<DealerRecord> GetAllDealers(Filter filters)
@@ -86,20 +85,19 @@ public class DealerRepository : IDealerRepository
             if (filter.key == "Address")
             {
                 query = query.Where(d => d.DealerAddress!.Contains(filter.value))
-                             .Where(d => d.IsValidUser == true);
-
+                    .Where(d => d.IsValidUser == true);
             }
         }
+
         var dealerDetails = await query.Where(d => d.IsValidUser)
-                                       .OrderBy(d => d.DealerID)
-                                       .Skip((filters.pageNumber - 1) * filters.pageSize)
-                                       .Take(filters.pageSize)
-                                       .ToListAsync();
+            .OrderBy(d => d.DealerID)
+            .Skip((filters.pageNumber - 1) * filters.pageSize)
+            .Take(filters.pageSize)
+            .ToListAsync();
 
 
         return new DealerRecord(dealerDetails, totalRecords);
     }
-
 
 
     #region private methods

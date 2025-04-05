@@ -5,13 +5,13 @@ namespace CarParkingSystem.Application.Dtos.Users
 {
     public class UserDataDto
     {
-        public  string Name { get; set; }
-        public  IFormFile ProfilePicture { get; set; }
-        public  string Email { get; set; }
-        public  string MobileNumber { get; set; }
-        public  string Address { get; set; }
+        public string Name { get; set; }
+        public IFormFile ProfilePicture { get; set; }
+        public string Email { get; set; }
+        public string MobileNumber { get; set; }
+        public string Address { get; set; }
     }
-    
+
     public class UserDataVM
     {
         public required string Name { get; set; }
@@ -25,10 +25,8 @@ namespace CarParkingSystem.Application.Dtos.Users
 
     public class UserDataForDealer
     {
-        public  string Name { get; set; }
-        public  string Email { get; set; }
-        public  string MobileNumber { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string MobileNumber { get; set; }
     }
-    
-    
 }

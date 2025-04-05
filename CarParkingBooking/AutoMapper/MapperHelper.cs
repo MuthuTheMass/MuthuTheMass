@@ -28,7 +28,6 @@ namespace CarParkingBooking.AutoMapper
         {
             Timing? data = JsonConvert.DeserializeObject<Timing>(timing);
             return data;
-
         }
 
         //public string convertFileToByte(IFormFile file)
@@ -90,12 +89,11 @@ namespace CarParkingBooking.AutoMapper
             return formFile;
         }
 
-        public string? ConvertQrByteToPngString(byte[] file) 
+        public string? ConvertQrByteToPngString(byte[] file)
         {
             if (file is null) return null;
 
-            return $"data:image/png;base64,{Convert.ToBase64String(file)}" ;
-
+            return $"data:image/png;base64,{Convert.ToBase64String(file)}";
         }
 
         public string? ConvertByteToString(byte[]? bytes)
@@ -104,6 +102,7 @@ namespace CarParkingBooking.AutoMapper
             {
                 return Convert.ToBase64String(bytes);
             }
+
             return null;
         }
 

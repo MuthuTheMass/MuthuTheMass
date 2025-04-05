@@ -5,9 +5,11 @@ using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 
 namespace CarParkingBooking.AutoMapper.Resolver
 {
-    public class BookingDetailsDtoResolver : ITypeConverter<CarBooking, CarBookingDetailDto>, ITypeConverter<CarBookingDetailDto, CarBooking>
+    public class BookingDetailsDtoResolver : ITypeConverter<CarBooking, CarBookingDetailDto>,
+        ITypeConverter<CarBookingDetailDto, CarBooking>
     {
-        public CarBookingDetailDto Convert(CarBooking source, CarBookingDetailDto destination, ResolutionContext context)
+        public CarBookingDetailDto Convert(CarBooking source, CarBookingDetailDto destination,
+            ResolutionContext context)
         {
             return new CarBookingDetailDto(
                 source.id,
@@ -54,7 +56,9 @@ namespace CarParkingBooking.AutoMapper.Resolver
                 AdvanceAmount = source.AdvanceAmount,
                 BookingStatus = new Status
                 {
-                    State = Enum.TryParse<BookingProcessDetails>(source.BookingStatus, out var state) ? state : BookingProcessDetails.Unknown
+                    State = Enum.TryParse<BookingProcessDetails>(source.BookingStatus, out var state)
+                        ? state
+                        : BookingProcessDetails.Unknown
                 },
                 AllottedSlots = source.AllottedSlots
             };

@@ -8,7 +8,6 @@ using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 
 namespace CarParkingSystem.Application.Services.BookingService
 {
-
     public interface IUserBookingService
     {
         Task<bool> AddBooking(BookingDto booking);
@@ -18,14 +17,15 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId);
     }
 
-    public class UserBookingService: IUserBookingService
+    public class UserBookingService : IUserBookingService
     {
         private readonly IBookingRepository _bookingRepository;
         private readonly IUserRepository _userRepository;
         private readonly IDealerRepository _dealerRepository;
         private IMapper _mapper;
 
-        public UserBookingService(IBookingRepository bookingRepository,IUserRepository userRepository,IMapper mapper, IDealerRepository DealerRepository)
+        public UserBookingService(IBookingRepository bookingRepository, IUserRepository userRepository, IMapper mapper,
+            IDealerRepository DealerRepository)
         {
             _bookingRepository = bookingRepository;
             _userRepository = userRepository;
@@ -49,14 +49,16 @@ namespace CarParkingSystem.Application.Services.BookingService
                     Password = string.Empty,
                 };
             }
-            if(DealerDetails is null)
+
+            if (DealerDetails is null)
             {
-                DealerDetails = new DealerDetails() { 
+                DealerDetails = new DealerDetails()
+                {
                     DealerEmail = string.Empty,
-                    DealerID=string.Empty,
-                    DealerName=string.Empty,
-                    DealerPhoneNo=string.Empty,
-                    DealerPassword=string.Empty 
+                    DealerID = string.Empty,
+                    DealerName = string.Empty,
+                    DealerPhoneNo = string.Empty,
+                    DealerPassword = string.Empty
                 };
             }
             else
@@ -65,7 +67,6 @@ namespace CarParkingSystem.Application.Services.BookingService
                 booking.DealerEmail = DealerDetails.DealerEmail;
             }
 
-            
 
             CarBooking carBooking = new CarBooking()
             {
@@ -82,7 +83,6 @@ namespace CarParkingSystem.Application.Services.BookingService
                     Reason = string.Empty
                 },
                 AllottedSlots = booking.AllottedSlot
-                
             };
 
             var data = await _bookingRepository.AddBookingDetails(carBooking);
@@ -93,7 +93,6 @@ namespace CarParkingSystem.Application.Services.BookingService
         {
             var data = await _bookingRepository.GetBookingByQR(encryptedId);
             return _mapper.Map<CarBookingDetailDto>(data);
-
         }
 
         public async Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId)

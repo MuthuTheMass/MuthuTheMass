@@ -20,7 +20,5 @@
                 throw new ArgumentException("Invalid date format", nameof(date));
             }
         }
-
-
     }
 }
