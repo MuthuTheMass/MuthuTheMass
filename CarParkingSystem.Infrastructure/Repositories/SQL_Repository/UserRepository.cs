@@ -22,7 +22,8 @@ public class UserRepository : IUserRepository
     private readonly IBookingRepository _bookingRepository;
     private readonly IDealerRepository _dealerRepository;
 
-    public UserRepository(CarParkingBookingDbContext dbContext, IBookingRepository bookingRepository, IDealerRepository dealerRepository)
+    public UserRepository(CarParkingBookingDbContext dbContext, IBookingRepository bookingRepository,
+        IDealerRepository dealerRepository)
     {
         _bookingRepository = bookingRepository;
         _dbContext = dbContext;
@@ -54,11 +55,10 @@ public class UserRepository : IUserRepository
         {
             return false;
         }
+
         _dbContext.Update(user);
         await _dbContext.SaveChangesAsync();
         return true;
-
-
     }
 
     public async Task<bool> CraeteNewUser(UserDetails user)
@@ -70,6 +70,7 @@ public class UserRepository : IUserRepository
             await _dbContext.SaveChangesAsync();
             return true;
         }
+
         return false;
     }
 
@@ -95,8 +96,7 @@ public class UserRepository : IUserRepository
         List<string?> usersId = usersData.Select(u => u.Name).ToList();
         var userResource = await _dbContext.UserDetails.Where(u => usersId.Contains(u.UserID)).ToListAsync();
         var orderedUserResource = userResource.OrderBy(u => usersData.First(d => d.Name == u.UserID).DateTime)
-                                              .ToList();
+            .ToList();
         return userResource;
-
     }
 }

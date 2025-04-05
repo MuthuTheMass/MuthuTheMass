@@ -23,10 +23,10 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
         public CosmosClientFactory(CosmosClient cosmosClient)
         {
             _cosmosClient = cosmosClient;
-
         }
 
-        public async Task<Container> GetOrCreateContainerAsync(string databaseName, string containerName, string partitionKeyPath)
+        public async Task<Container> GetOrCreateContainerAsync(string databaseName, string containerName,
+            string partitionKeyPath)
         {
             // Check or add the database
             if (!_databases.TryGetValue(databaseName, out var database))
@@ -49,16 +49,16 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
                         {
                             IndexingMode = IndexingMode.Consistent,
                             IncludedPaths =
-                    {
-                        new IncludedPath { Path = "/*" } // Ensure all fields are indexed
-                    }
+                            {
+                                new IncludedPath { Path = "/*" } // Ensure all fields are indexed
+                            }
                         },
                         UniqueKeyPolicy = new UniqueKeyPolicy
                         {
                             UniqueKeys =
-                    {
-                        new UniqueKey { Paths = { "/EncryptedBookingId" } } // ✅ Correct way to initialize
-                    }
+                            {
+                                new UniqueKey { Paths = { "/EncryptedBookingId" } } // ✅ Correct way to initialize
+                            }
                         }
                     };
 
@@ -93,7 +93,9 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
                 var result = await iterator.ReadNextAsync();
 
                 // If counter document doesn't exist, create it
-                CosmosCounter counter = result.Count > 0 ? result.First() : new CosmosCounter { id = counterId, currentValue = 1,PartitionId = counterId };
+                CosmosCounter counter = result.Count > 0
+                    ? result.First()
+                    : new CosmosCounter { id = counterId, currentValue = 1, PartitionId = counterId };
 
                 // Increment the current value
                 var newBookingId = $"booking-{counter.currentValue}";
@@ -102,7 +104,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
                 counter.currentValue++;
 
                 // Use PartitionKey correctly when performing Upsert
-                var partitionKey = new PartitionKey(counter.id);  // Using the 'id' as the partition key
+                var partitionKey = new PartitionKey(counter.id); // Using the 'id' as the partition key
 
                 // Perform the upsert operation with the correct PartitionKey
                 await container.UpsertItemAsync<CosmosCounter>(counter, partitionKey);
@@ -133,7 +135,9 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
                 var result = await iterator.ReadNextAsync();
 
                 // If counter document doesn't exist, create it
-                CosmosCounter counter = result.Count > 0 ? result.First() : new CosmosCounter { id = counterId, currentValue = 0, PartitionId = counterId };
+                CosmosCounter counter = result.Count > 0
+                    ? result.First()
+                    : new CosmosCounter { id = counterId, currentValue = 0, PartitionId = counterId };
 
                 if (result.Count > 0)
                 {
@@ -141,7 +145,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Factory
                 }
 
                 // Use PartitionKey correctly when performing Upsert
-                var partitionKey = new PartitionKey(counter.id);  // Using the 'id' as the partition key
+                var partitionKey = new PartitionKey(counter.id); // Using the 'id' as the partition key
 
                 // Perform the upsert operation with the correct PartitionKey
                 await container.UpsertItemAsync<CosmosCounter>(counter, partitionKey);

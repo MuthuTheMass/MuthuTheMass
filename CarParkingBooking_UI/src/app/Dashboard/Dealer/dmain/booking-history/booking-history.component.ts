@@ -70,4 +70,17 @@ initDetails(){
     this.showModal = false;
     this.singleBookingDetail.set({} as CarBookingDetailDto);
   }
+
+    protected readonly print = print;
+
+  printBooking(bookingID: string) {
+    this.dealerService.getPdfOfSingleBooking(bookingID).subscribe((blob) => {
+      const fileURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = fileURL;
+      a.download = `ZenPark_${bookingID}.pdf`;
+      a.click();
+      window.URL.revokeObjectURL(fileURL);
+    });
+  }
 }

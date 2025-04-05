@@ -31,7 +31,8 @@ namespace CarParkingSystem.Application.Configuration
             // Read the Primary Connection String from the configuration
             if (string.IsNullOrWhiteSpace(CosmosConnection))
             {
-                throw new ArgumentException("CosmosDb:PrimaryConnectionString is not configured properly in appsettings.json");
+                throw new ArgumentException(
+                    "CosmosDb:PrimaryConnectionString is not configured properly in appsettings.json");
             }
 
             // Register the CosmosClient as a singleton service
@@ -40,6 +41,4 @@ namespace CarParkingSystem.Application.Configuration
             return services;
         }
     }
-
-
 }

@@ -359,3 +359,10 @@ D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\obj\Debug\net8.0\re
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\obj\Debug\net8.0\CarParkingSystem.Infrastructure.pdb
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\obj\Debug\net8.0\CarParkingSystem.Infrastructure.genruntimeconfig.cache
 D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\obj\Debug\net8.0\ref\CarParkingSystem.Infrastructure.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\iTextSharp.LGPLv2.Core.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\SkiaSharp.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+D:\muthuProject\MuthuTheMass\CarParkingSystem.Infrastructure\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {NotificationType} from "../../Service/Enums/NotificationType";
 
 @Component({
   selector: 'app-error-message',
@@ -8,9 +9,22 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrl: './error-message.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ErrorMessageComponent implements OnInit {
-ngOnInit(): void {
- console.log(this.error);
-}
-@Input() error?: any;
+export class ErrorMessageComponent {
+  @Input() error?: any;
+
+
+  get errorMessage(): string {
+    if (!this.error) return ''; // If there's no error, return an empty string (removes the div)
+
+    const errorMessages: Record<string, string> = {
+      required: 'This field is required',
+      minlength: `Minimum length is ${this.error?.minlength?.requiredLength}`,
+      maxlength: `Maximum length is ${this.error?.maxlength?.requiredLength}`,
+      pattern: 'Invalid format'
+    };
+
+    const firstErrorKey = Object.keys(this.error)[0];
+    return errorMessages[firstErrorKey] || 'Invalid field';
+  }
+
 }

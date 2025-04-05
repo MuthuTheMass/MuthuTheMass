@@ -6,12 +6,12 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
 {
     public interface IDealerSlotsRepository
     {
-        Task <DealerSlotDetails?> GetSlotsByDealerId(string dealerId);
+        Task<DealerSlotDetails?> GetSlotsByDealerId(string dealerId);
 
         Task<DealerSlotDetails?> GetSlotsByDealerEmailId(string emailId);
 
         Task<List<DealerSlotDetails>> Get();
-        
+
         Task<bool> UpsertDealerSlots(DealerSlotDetails dealerSlotDetails);
 
         Task<bool> DeleteDealerSlotsByDealerId(string dealerId);
@@ -21,14 +21,14 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
     {
         private readonly CarParkingBookingDbContext _dbContext;
 
-        public DealerSlotsRepository(CarParkingBookingDbContext dbContext) 
+        public DealerSlotsRepository(CarParkingBookingDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         public async Task<bool> DeleteDealerSlotsByDealerId(string dealerId)
         {
-            if(string.IsNullOrEmpty(dealerId))
+            if (string.IsNullOrEmpty(dealerId))
                 return false;
 
             var dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerId);
@@ -38,13 +38,12 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
             _dbContext.DealerSlotDetails.Remove(dealerSlotDetails);
             await _dbContext.SaveChangesAsync();
             return true;
-
         }
 
         public async Task<List<DealerSlotDetails>> Get()
         {
             List<DealerSlotDetails> dealerSlotDetails = await _dbContext.DealerSlotDetails.ToListAsync();
-            if(dealerSlotDetails == null || dealerSlotDetails.Count <=0)
+            if (dealerSlotDetails == null || dealerSlotDetails.Count <= 0)
                 return new List<DealerSlotDetails>();
             return dealerSlotDetails;
         }
@@ -54,7 +53,9 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
             if (string.IsNullOrEmpty(emailId))
                 return null;
 
-            DealerSlotDetails? dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.EmailId != null && d.EmailId.Equals(emailId));
+            DealerSlotDetails? dealerSlotDetails =
+                await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d =>
+                    d.EmailId != null && d.EmailId.Equals(emailId));
 
             if (dealerSlotDetails == null)
                 return new DealerSlotDetails() { Id = "none" };
@@ -64,16 +65,16 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
 
         public async Task<DealerSlotDetails?> GetSlotsByDealerId(string dealerId)
         {
-            if(string.IsNullOrEmpty(dealerId))
+            if (string.IsNullOrEmpty(dealerId))
                 return null;
 
-            DealerSlotDetails? dealerSlotDetails = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerId);
+            DealerSlotDetails? dealerSlotDetails =
+                await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerId);
 
-            if(dealerSlotDetails == null)
-                return new DealerSlotDetails() { Id ="none" };
+            if (dealerSlotDetails == null)
+                return new DealerSlotDetails() { Id = "none" };
 
             return dealerSlotDetails;
-
         }
 
         public async Task<bool> UpsertDealerSlots(DealerSlotDetails dealerSlotDetails)
@@ -81,7 +82,8 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository
             if (dealerSlotDetails == null)
                 return false;
 
-            var dealerSlot = await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerSlotDetails.DealerId);
+            var dealerSlot =
+                await _dbContext.DealerSlotDetails.FirstOrDefaultAsync(d => d.DealerId == dealerSlotDetails.DealerId);
             if (dealerSlot == null)
             {
                 await _dbContext.DealerSlotDetails.AddAsync(dealerSlotDetails);

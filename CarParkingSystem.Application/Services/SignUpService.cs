@@ -48,12 +48,12 @@ public class SignUpService : ISignUpService
     }
 
 
-public async Task<bool?> DealerSignUp(SignUpDto? dealer)
+    public async Task<bool?> DealerSignUp(SignUpDto? dealer)
     {
-        if (dealer == null || 
-            string.IsNullOrEmpty(dealer.Password) || 
-            dealer.MobileNumber?.Length != 10 || 
-            !dealer.Email?.Contains("@") == true || 
+        if (dealer == null ||
+            string.IsNullOrEmpty(dealer.Password) ||
+            dealer.MobileNumber?.Length != 10 ||
+            !dealer.Email?.Contains("@") == true ||
             !dealer.Email!.EndsWith(".com"))
         {
             return false;

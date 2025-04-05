@@ -21,7 +21,7 @@ namespace CarParkingSystem.Domain.Dtos.Dealers
 
     public record UserDetailForDealer(string? Name, string? Picture, string? MobileNumber);
 
-    public record UserDetailsNewCustomer (string? Name,DateTime? DateTime);
+    public record UserDetailsNewCustomer(string? Name, DateTime? DateTime);
 
     public record RecentBookingInDealerDashBoard(
         string BookingID,
@@ -30,5 +30,5 @@ namespace CarParkingSystem.Domain.Dtos.Dealers
         string Status,
         string Slot_Number,
         byte[] QRCode
-        );
+    );
 }

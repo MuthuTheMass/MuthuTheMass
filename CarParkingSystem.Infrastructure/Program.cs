@@ -17,7 +17,8 @@ public class Program
     {
         // Configure DbContext options
         var optionsBuilder = new DbContextOptionsBuilder<CarParkingBookingDbContext>();
-        optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=CarParkingData;Integrated Security=True;Encrypt=False");
+        optionsBuilder.UseSqlServer(
+            "Data Source=.\\SQLEXPRESS;Initial Catalog=CarParkingData;Integrated Security=True;Encrypt=False");
 
         // Create an instance of DbContext
         using (var dbContext = new CarParkingBookingDbContext(optionsBuilder.Options))
@@ -28,11 +29,14 @@ public class Program
             dbContext.SeedData();
         }
 
-        CosmosClient cosmosClient = new CosmosClient("AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+        CosmosClient cosmosClient =
+            new CosmosClient(
+                "AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
         ICosmosClientFactory cosmosClientFactory = new CosmosClientFactory(cosmosClient);
         IEncryptionService _encryptService = new EncryptionService();
         IQrCodeService _qrCodeService = new QrCodeService();
-        IBookingRepository bookingRepository = new BookingRepository(cosmosClientFactory, _encryptService, _qrCodeService);
+        IBookingRepository bookingRepository =
+            new BookingRepository(cosmosClientFactory, _encryptService, _qrCodeService);
 
         foreach (var booking in SeedBookingData())
         {
@@ -53,14 +57,15 @@ public class Program
                 //PartitionId = "booking-1_Dealer-1_User-1",
                 DealerId = "Dealer-1",
                 CustomerData = new CustomerUserDetails()
-                { CustomerId = "User-1",
-                CustomerAddress = "Chennai",
-                CustomerEmail = "balaji@gmail.com",
-                CustomerMobileNumber = "9876543210",
-                CustomerName = "Balaji",
-                CustomerAuthorityOfIssue = "RTO",
-                CustomerProof = "Aadhar",
-                CustomerProofNumber = "1234567890"
+                {
+                    CustomerId = "User-1",
+                    CustomerAddress = "Chennai",
+                    CustomerEmail = "balaji@gmail.com",
+                    CustomerMobileNumber = "9876543210",
+                    CustomerName = "Balaji",
+                    CustomerAuthorityOfIssue = "RTO",
+                    CustomerProof = "Aadhar",
+                    CustomerProofNumber = "1234567890"
                 },
                 VehicleInfo = new VehicleInformation
                 {
@@ -91,14 +96,15 @@ public class Program
                 //PartitionId = "booking-2_Dealer-2_User-2",
                 DealerId = "Dealer-2",
                 CustomerData = new CustomerUserDetails()
-                { CustomerId = "User-2",
-                CustomerAddress = "Chennai",
-                CustomerEmail = "muthu@gmail.com",
-                CustomerMobileNumber = "9876543210",
-                CustomerName = "Muthu",
-                CustomerAuthorityOfIssue = "RTO",
-                CustomerProof = "Aadhar",
-                CustomerProofNumber = "1234567890"
+                {
+                    CustomerId = "User-2",
+                    CustomerAddress = "Chennai",
+                    CustomerEmail = "muthu@gmail.com",
+                    CustomerMobileNumber = "9876543210",
+                    CustomerName = "Muthu",
+                    CustomerAuthorityOfIssue = "RTO",
+                    CustomerProof = "Aadhar",
+                    CustomerProofNumber = "1234567890"
                 },
                 VehicleInfo = new VehicleInformation
                 {

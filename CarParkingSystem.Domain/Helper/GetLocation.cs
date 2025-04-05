@@ -4,7 +4,8 @@ namespace CarParkingSystem.Domain.Helper
 {
     public static class GetLocation
     {
-        public static async Task<bool> IsLocationWithinRadius(string googleMapUrl,Location usrLocation,int radiusInKm = 3)
+        public static async Task<bool> IsLocationWithinRadius(string googleMapUrl, Location usrLocation,
+            int radiusInKm = 3)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -14,7 +15,7 @@ namespace CarParkingSystem.Domain.Helper
                     HttpResponseMessage response = await client.GetAsync(googleMapUrl);
                     string fullUrl = response.RequestMessage.RequestUri.ToString();
 
-                    if(response.RequestMessage.RequestUri is null) return false;
+                    if (response.RequestMessage.RequestUri is null) return false;
 
                     // Check if the URL contains latitude and longitude
                     if (fullUrl.Contains("/@"))
@@ -33,7 +34,6 @@ namespace CarParkingSystem.Domain.Helper
 
                         var result = IsWithinRadius(usrLocation, dealerloc, radiusInKm);
                         return result;
-
                     }
                     else
                     {

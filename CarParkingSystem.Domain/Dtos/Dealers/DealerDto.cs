@@ -2,7 +2,6 @@
 
 namespace CarParkingSystem.Application.Dtos.Dealers
 {
-
     public class Filter
     {
         public string searchFrom { get; set; }
@@ -16,7 +15,7 @@ namespace CarParkingSystem.Application.Dtos.Dealers
 
     public class Filters
     {
-        public string  key { get; set; }
+        public string key { get; set; }
         public string value { get; set; }
 
         public string fullValue => $"{key} : {value}";
@@ -27,7 +26,6 @@ namespace CarParkingSystem.Application.Dtos.Dealers
 
     public class DealerDto
     {
-
         public required string DealerName { get; set; }
 
         public required string DealerEmail { get; set; }
@@ -51,9 +49,7 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public bool DealerOpenOrClosed { get; set; }
 
         public required string DealerRating { get; set; }
-
     }
-
 
 
     public class Timing
@@ -63,7 +59,7 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public moments? Wednesday { get; set; }
         public moments? Thursday { get; set; }
         public moments? Friday { get; set; }
-        public moments? Saturday { get; set;}
+        public moments? Saturday { get; set; }
         public moments? Sunday { get; set; }
         public string alwaysAvailable { get; set; } = string.Empty;
     }
@@ -78,7 +74,8 @@ namespace CarParkingSystem.Application.Dtos.Dealers
             get => _start?.ToString("hh:mm tt");
             set => _start = value is not null ? Dtos_Helper.TimeConverter(value) : null;
         }
-        public string? Stop 
+
+        public string? Stop
         {
             get => _stop?.ToString("hh:mm tt");
             set => _stop = value is not null ? Dtos_Helper.TimeConverter(value) : null;
@@ -117,7 +114,8 @@ namespace CarParkingSystem.Application.Dtos.Dealers
 
             foreach (var format in formats)
             {
-                if (TimeOnly.TryParseExact(timeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                if (TimeOnly.TryParseExact(timeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None,
+                        out result))
                 {
                     return true;
                 }

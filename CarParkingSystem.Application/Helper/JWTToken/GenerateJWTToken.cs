@@ -10,6 +10,7 @@ namespace CarParkingSystem.Application.Helper.JWTToken
     public static class GenerateJwtToken
     {
         private static IConfiguration? configuration;
+
         public static void Initialize(IConfiguration _configuration)
         {
             configuration = _configuration;

@@ -34,7 +34,6 @@ namespace CarParkingSystem.Application.Dtos.Booking
         public string MobileNumber { get; set; }
         public string Address { get; set; }
         public Proof? Proof { get; set; }
-
     }
 
     public class Proof
@@ -59,5 +58,5 @@ namespace CarParkingSystem.Application.Dtos.Booking
         string? AdvanceAmount,
         string? BookingStatus,
         string? AllottedSlots
-        );
+    );
 }

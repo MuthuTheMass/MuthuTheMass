@@ -1,0 +1,5 @@
+
+
+.inputBorder{
+  border: 4px solid var(--error-red) !important;
+}

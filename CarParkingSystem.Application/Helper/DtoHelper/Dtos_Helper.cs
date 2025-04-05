@@ -25,7 +25,8 @@ namespace CarParkingSystem.Application.Helper.DtoHelper
 
             foreach (var format in formats)
             {
-                if (TimeOnly.TryParseExact(timeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                if (TimeOnly.TryParseExact(timeString, format, CultureInfo.InvariantCulture, DateTimeStyles.None,
+                        out result))
                 {
                     return true;
                 }

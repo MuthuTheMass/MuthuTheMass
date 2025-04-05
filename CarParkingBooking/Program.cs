@@ -47,7 +47,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] { }
         }
     });
 });
@@ -61,39 +61,37 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("carparkingorigins",
         builder => builder.WithOrigins("http://localhost:4200")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader());
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
 builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = AppSettingValues.JwtIssuer,
-        ValidAudience = AppSettingValues.JwtAudience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettingValues.JwtSecretKey!))
-    };
-});
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = AppSettingValues.JwtIssuer,
+            ValidAudience = AppSettingValues.JwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettingValues.JwtSecretKey!))
+        };
+    });
 
 builder.Services.AddDbContext<CarParkingBookingDbContext>(opt =>
     opt.UseSqlServer(AppSettingValues.JwtSqlConnection)
-    );
+);
 
 builder.Services.AddSingleton<CosmosClient>(provider => new CosmosClient(AppSettingValues.CosmosConnection));
 
-builder.Services.AddScoped(serviceProvider => new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new MapperProfile());
-}).CreateMapper());
+builder.Services.AddScoped(serviceProvider =>
+    new MapperConfiguration(mc => { mc.AddProfile(new MapperProfile()); }).CreateMapper());
 
 // Role seeding at startup
 builder.Services.AddAuthorization(options =>

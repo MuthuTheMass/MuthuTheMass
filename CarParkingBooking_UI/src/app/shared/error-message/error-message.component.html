@@ -1,1 +1,6 @@
-<label>{{error?.message ? "done":""}}</label>
+@if(errorMessage){
+  <div class="error-message px-1 m-1">
+    {{errorMessage}}
+  </div>
+}
+

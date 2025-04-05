@@ -113,7 +113,7 @@ input[type=text]:hover{
     color: #121212;
     font-weight: 800;
 }
-  
+
 .credit {
     color: #121212;
     text-align: center;
@@ -123,10 +123,12 @@ input[type=text]:hover{
 .credit span{
     color:#000;
     font-size:20px;
-} 
+}
 @media screen and (max-width:600px) {
     .form .column{
         flex-wrap: wrap;
     }
 }
+
+
 

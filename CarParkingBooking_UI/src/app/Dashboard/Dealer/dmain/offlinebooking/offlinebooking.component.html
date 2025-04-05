@@ -5,22 +5,27 @@
         <div class="column">
             <div class="input-box">
                 <label for="fullName">Full Name</label>
-                <input formControlName="fullName" placeholder="Enter your name"  type="text" />
+                <input formControlName="fullName" placeholder="Enter your name"
+                       [ngClass]="{'inputBorder':this.bookingForm.get('fullName')?.errors}"
+                       type="text" />
                 <app-error-message [error]="this.bookingForm.get('fullName')?.errors"></app-error-message>
             </div>
-            
+
             <div class="input-box">
                 <label for="email">Email</label>
                 <input formControlName="email" placeholder="Enter your e-mail"  type="email" />
             </div>
             <div class="input-box">
                 <label for="mobileNumber">Mobile Number</label>
-                <input formControlName="mobileNumber" placeholder="##### #####"  type="text" maxlength="10" />
+                <input formControlName="mobileNumber" placeholder="##### #####"
+                       [ngClass]="{'inputBorder':this.bookingForm.get('mobileNumber')?.errors}"
+                       type="text" maxlength="10" />
+              <app-error-message [error]="this.bookingForm.get('mobileNumber')?.errors"></app-error-message>
             </div>
         </div>
         <div class="column">
-            
-           
+
+
             <div class="input-box">
                 <label for="address">Address or Landmark</label>
                 <input formControlName="address" placeholder="Address or Landmark"  type="text" />
@@ -46,17 +51,29 @@
                 </div>
                 <div class="input-box">
                     <label for="authorityOfIssue">Alloted Slot</label>
-                    <input formControlName="AllotedSlot" placeholder="Enter issue Department"  type="text" />
+                    <input formControlName="AllotedSlot" placeholder="Enter issue Department"
+                           [ngClass]="{'inputBorder':this.bookingForm.get('vehicleNumber')?.errors}"
+                           type="text" />
+                  <app-error-message [error]="this.bookingForm.get('vehicleNumber')?.errors"></app-error-message>
                 </div>
             </div>
             <div class="column">
                 <div class="input-box">
                     <label for="vehicleNumber">Vehicle Number</label>
-                    <input formControlName="vehicleNumber" placeholder="Vehicle Number"  type="text" />
+                    <input formControlName="vehicleNumber" placeholder="Vehicle Number"
+                           [ngClass]="{'inputBorder':this.bookingForm.get('vehicleNumber')?.errors}"
+                           #inputRef
+                           (input)="inputRef.value = inputRef.value.toUpperCase()"
+                           style="text-transform: uppercase"
+                           type="text" />
+                  <app-error-message [error]="this.bookingForm.get('vehicleNumber')?.errors"></app-error-message>
                 </div>
                 <div class="input-box">
                     <label for="vehicleModel">Vehicle Model</label>
-                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020"  type="text" />
+                    <input formControlName="vehicleModel" placeholder="Eg:Tata Nexon 2020"
+                           [ngClass]="{'inputBorder':this.bookingForm.get('vehicleModel')?.errors}"
+                           type="text" />
+                  <app-error-message [error]="this.bookingForm.get('vehicleModel')?.errors"></app-error-message>
                 </div>
                 <div class="input-box">
                     <label for="bookingDate">Booking Date</label>
@@ -66,7 +83,10 @@
             <div class="column">
                 <div class="input-box">
                     <label for="advanceAmount">Advance Amount</label>
-                    <input formControlName="advanceAmount" placeholder="₹ Advance Amount"  type="text" />
+                    <input formControlName="advanceAmount" placeholder="₹ Advance Amount"
+                           [ngClass]="{'inputBorder':this.bookingForm.get('vehicleModel')?.errors}"
+                           type="text" />
+                  <app-error-message [error]="this.bookingForm.get('advanceAmount')?.errors"></app-error-message>
                 </div>
                 <div class="input-box">
                     <!-- <label for="vehicleModel">Vehicle Model</label>

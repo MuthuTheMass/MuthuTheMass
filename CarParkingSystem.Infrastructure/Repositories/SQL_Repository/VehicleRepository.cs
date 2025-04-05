@@ -44,7 +44,6 @@ public class VehicleRepository : IVehicleRepository
         await _dbContext.VehicleDetails.AddAsync(vehicle);
         await _dbContext.SaveChangesAsync();
         return true;
-
     }
 
     public async Task<bool> UpdateVehicle(VehicleDetails vehicle)

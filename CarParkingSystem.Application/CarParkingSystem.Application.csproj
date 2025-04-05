@@ -8,15 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="13.0.1" />
-      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-      <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CarParkingSystem.Domain\CarParkingSystem.Domain.csproj" />
-      <ProjectReference Include="..\CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj" />
+        <ProjectReference Include="..\CarParkingSystem.Domain\CarParkingSystem.Domain.csproj"/>
+        <ProjectReference Include="..\CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>
