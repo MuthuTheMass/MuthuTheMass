@@ -1,20 +1,19 @@
 @import "./CommonStyles/common.css";
 @import "./CommonStyles/colors.css";
 /* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
+::-webkit-scrollbar {
+  display: none;
+}
 
-::-webkit-scrollbar{
-    display: none;
-  }
-
-body{
+body {
   background: url("/assets/pexels-jimbear-2612855.jpg");
   background-size: cover;
 
