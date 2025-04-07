@@ -12,6 +12,8 @@ public interface IUserProfile
     Task<bool?> UserSignUp(SignUpDto user);
 
     Task<UserDataVM> GetSingleUserDetails(string emailId);
+    
+    Task<List<VehicleDetailOfSingle>> GetUserVehicles(string emailId);
 }
 
 public class UserProfile : IUserProfile
@@ -36,6 +38,20 @@ public class UserProfile : IUserProfile
         return _mapper.Map<UserDataVM>(userDetails);
     }
 
+    public async Task<List<VehicleDetailOfSingle>> GetUserVehicles(string emailId)
+    {
+        var user = await _userRepository.GetUserByEmail(emailId);
+        var vehicles = await _vehicleRepository.GetVehicleByUserId(user?.UserID ?? "");
+        var data = vehicles.Select(x => new VehicleDetailOfSingle(
+            x.VehicleId,
+            x.VehicleName,
+            x.VehicleNumber,
+            x.VehicleModel
+            )).ToList();
+        
+        return data;
+    }
+
     public async Task<bool?> UserSignUp(SignUpDto user)
     {
         if (string.IsNullOrEmpty(user.Password) ||
@@ -56,4 +72,6 @@ public class UserProfile : IUserProfile
         await _userRepository.CraeteNewUser(data);
         return true;
     }
+    
+    
 }

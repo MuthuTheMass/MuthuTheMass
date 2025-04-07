@@ -1,0 +1,59 @@
+<div class="image-uploader-container">
+  <!-- Initial Upload State -->
+  @if (!showCropper && !showPreview) {
+    <div class="upload-section">
+      <label class="upload-label">
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          #fileInput
+          class="file-input"
+        >
+        <div class="upload-content">
+          <svg class="upload-icon" viewBox="0 0 24 24">
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+          </svg>
+          <span class="upload-text">Select an Image</span>
+          <span class="upload-hint">JPG, PNG up to 5MB</span>
+        </div>
+      </label>
+    </div>
+  }
+
+  <!-- Cropper State -->
+  @if (showCropper && imageUrl) {
+    <div class="cropper-section">
+      <angular-cropper
+        #angularCropper
+        [imageUrl]="imageUrl"
+        [cropperOptions]="cropperOptions"
+        class="cropper-element"
+      ></angular-cropper>
+
+      <div class="action-buttons">
+        <button type="button" (click)="confirmCrop()" class="btn confirm-btn">
+          Save Crop
+        </button>
+        <button type="button" (click)="cancelCrop()" class="btn cancel-btn">
+          Cancel
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Preview State -->
+  @if (showPreview && croppedImage) {
+    <div class="preview-section">
+      <h3 class="preview-title">Your Cropped Image</h3>
+      <div class="preview-image-container">
+        <img [src]="croppedImage" class="preview-image">
+      </div>
+      <div class="action-buttons">
+        <button type="button" (click)="resetComponent()" class="btn edit-btn">
+          Crop Again
+        </button>
+      </div>
+    </div>
+  }
+</div>

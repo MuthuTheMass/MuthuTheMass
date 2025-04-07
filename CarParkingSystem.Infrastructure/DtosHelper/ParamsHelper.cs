@@ -1,5 +1,4 @@
-﻿using CarParkingSystem.Application.Dtos.Dealers;
-using CarParkingSystem.Domain.Entities.SQL;
+﻿using CarParkingSystem.Domain.Entities.SQL;
 
 namespace CarParkingSystem.Infrastructure.DtosHelper
 {

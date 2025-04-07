@@ -1,7 +1,5 @@
 ﻿// using CarParkingSystem.Application.Dtos.Vehicle;
-// using Microsoft.AspNetCore.Http;
 // using Microsoft.AspNetCore.Mvc;
-// using ValidateCarParkingDetails.ValidateAuthorization;
 //
 // namespace CarParkingBooking.Controllers
 // {
@@ -118,4 +116,4 @@
 //
 //     }
 // }
-
+//

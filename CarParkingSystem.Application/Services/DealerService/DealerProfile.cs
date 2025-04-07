@@ -2,7 +2,6 @@ using AutoMapper;
 using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Booking;
-using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Domain.Entities.SQL;
@@ -22,6 +21,8 @@ public interface IDealerProfile
     Task<DealerRecord> GetAllDealersBySearch(Filter filter);
 
     Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId);
+    
+    Task<DealerDto> GetDealerById(string id);
 
     Task<bool> DealerBookingOffline(BookingDto offlineBooking);
 
@@ -49,6 +50,12 @@ public class DealerProfile : IDealerProfile
         _bookingRepository = bookingRepository;
         _vehicleRepository = vehicleRepository;
         _bookingData = bookingData;
+    }
+
+    public async Task<DealerDto> GetDealerById(string id)
+    {
+        var data = await _dealerRepository.GetDealerById(id);
+        return _mapper.Map<DealerDto>(data);
     }
 
     public async Task<bool> DealerBookingOffline(BookingDto offlineBooking)
@@ -178,8 +185,15 @@ public class DealerProfile : IDealerProfile
     {
         var mapFilter = _mapper.Map<Infrastructure.DtosHelper.Filter>(filter);
         var dealers = await _dealerRepository.GetAllDealers(mapFilter);
-
-        return new DealerRecord(_mapper.Map<List<DealerDto>>(dealers.Data), dealers.TotalDataCount);
+        var mappedData = _mapper.Map<List<DealerDto>>(dealers.Data);
+        var ExactData = mappedData.Select(s => new UserDealerSearch(
+                s.DealerId,
+                s.DealerStoreName,
+                s.DealerAddress,
+                s.OneHourAmount,
+                s.Image)
+        ).ToList();
+        return new DealerRecord(ExactData, dealers.TotalDataCount);
     }
 
     public async Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId)

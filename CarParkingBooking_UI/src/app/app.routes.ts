@@ -29,6 +29,7 @@ import { DealeDetailsComponent } from './Dashboard/User/main/deale-details/deale
 import { CustomerMainpageComponent } from './customer-mainpage/customer-mainpage.component';
 import { PathwayComponent } from './Dashboard/Dealer/dmain/pathway/pathway.component';
 import { TestComponent } from './home/test/test.component';
+import { UserSearchDealerDetailsResolver } from '../resolver/user-search-dealer-details.resolver';
 
 export const routes: Routes = [
   {
@@ -171,6 +172,9 @@ export const routes: Routes = [
       {
         path: 'dealer-details',
         component: DealeDetailsComponent,
+        resolve: {
+          dealerId: UserSearchDealerDetailsResolver,
+        },
         title: 'dealerdetails',
       },
       {

@@ -10,7 +10,7 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 public interface IDealerRepository
 {
     Task<DealerDetails?> GetUserByEmail(string email);
-    Task<DealerDetails?> GetUserById(string dealerId);
+    Task<DealerDetails?> GetDealerById(string dealerId);
     Task<bool?> GetDealerExists(string dealername);
     Task<DealerRecord> GetAllDealers(Filter filters);
     Task<bool> CreateDealer(DealerDetails dealer);
@@ -33,9 +33,9 @@ public class DealerRepository : IDealerRepository
         return dealerResource;
     }
 
-    public async Task<DealerDetails?> GetUserById(string dealerId)
+    public async Task<DealerDetails?> GetDealerById(string dealerId)
     {
-        var dealerResource = await _dbContext.DealerDetails.FirstOrDefaultAsync(d => d.DealerID == dealerId);
+        var dealerResource = await _dbContext.DealerDetails.FirstOrDefaultAsync(d => d.DealerID.ToLower().Contains(dealerId.ToLower()));
         return dealerResource;
     }
 
@@ -78,7 +78,6 @@ public class DealerRepository : IDealerRepository
     public async Task<DealerRecord> GetAllDealers(Filter filters)
     {
         var query = _dbContext.DealerDetails.AsQueryable();
-        int totalRecords = await query.CountAsync();
 
         foreach (var filter in filters.filters)
         {
@@ -91,12 +90,12 @@ public class DealerRepository : IDealerRepository
 
         var dealerDetails = await query.Where(d => d.IsValidUser)
             .OrderBy(d => d.DealerID)
-            .Skip((filters.pageNumber - 1) * filters.pageSize)
-            .Take(filters.pageSize)
+            // .Skip((filters.pageNumber - 1) * filters.pageSize)
+            // .Take(filters.pageSize)
             .ToListAsync();
 
 
-        return new DealerRecord(dealerDetails, totalRecords);
+        return new DealerRecord(dealerDetails, dealerDetails.Count());
     }
 
 

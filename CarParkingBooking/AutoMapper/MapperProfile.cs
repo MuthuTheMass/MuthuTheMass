@@ -3,7 +3,6 @@ using CarParkingBookingVM.Enums;
 using CarParkingBookingVM.Login;
 using CarParkingSystem.Application.Dtos.Authorization;
 using CarParkingSystem.Application.Dtos.Booking;
-using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
 using CarParkingSystem.Domain.Dtos.Dealers;
@@ -11,7 +10,8 @@ using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using System.Globalization;
-using Filter = CarParkingSystem.Application.Dtos.Dealers;
+using Dealers_Filter = CarParkingSystem.Domain.Dtos.Dealers.Filter;
+using Dealers_Filters = CarParkingSystem.Domain.Dtos.Dealers.Filters;
 using Filters = CarParkingSystem.Infrastructure.DtosHelper;
 using VehicleDetails = CarParkingSystem.Domain.Entities.SQL.VehicleDetails;
 
@@ -31,9 +31,11 @@ namespace CarParkingBooking.AutoMapper
 
             CreateMap<DealerDto, DealerDetails>()
                 .ForMember(opt => opt.DealerName, dest => dest.MapFrom(src => src.DealerName))
+                .ForMember(opt => opt.DealerID, dest => dest.MapFrom(src => src.DealerId))
                 .ForMember(opt => opt.DealerEmail, dest => dest.MapFrom(src => src.DealerEmail))
-                .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerDescription, dest => dest.MapFrom(src => src.DealerDescription))
+                .ForMember(opt => opt.DealerProfilePicture, dest => dest.MapFrom(src => ConvertPngStringToQrByte(src.Image)))
+                .ForMember(opt => opt.DealerPhoneNo, dest => dest.MapFrom(src => src.DealerPhoneNo))
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertTimingString(src.DealerTiming)))
                 .ForMember(opt => opt.DealerAddress, dest => dest.MapFrom(src => src.DealerAddress))
                 .ForMember(opt => opt.DealerLandmark, dest => dest.MapFrom(src => src.DealerLandmark))
@@ -43,11 +45,13 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(opt => opt.DealerGPSLocation, dest => dest.MapFrom(src => src.DealerLocationURL))
                 .ForMember(opt => opt.DealerRating, dest => dest.MapFrom(src => src.DealerRating))
                 .ForMember(opt => opt.DealerStoreName, dest => dest.MapFrom(src => src.DealerStoreName))
+                .ForMember(opt => opt.OneHourAmount, dest => dest.MapFrom(src => src.OneHourAmount))
                 ;
 
             CreateMap<DealerDetails, DealerDto>()
                 .ForMember(opt => opt.DealerTiming, dest => dest.MapFrom(src => ConvertStringTiming(src.DealerTiming)))
-                .ForMember(opt => opt.DealerLocationURL, dest => dest.MapFrom(src => src.DealerGPSLocation));
+                .ForMember(opt => opt.DealerLocationURL, dest => dest.MapFrom(src => src.DealerGPSLocation))
+                .ForMember(opt => opt.Image, dest => dest.MapFrom(src =>  ConvertQrByteToPngString(src.DealerProfilePicture)));
 
             CreateMap<SignUpDto, DealerDetails>()
                 .ForMember(dest => dest.DealerName, opt => opt.MapFrom(src => src.UserName))
@@ -173,14 +177,14 @@ namespace CarParkingBooking.AutoMapper
                 .ReverseMap()
                 ;
 
-            CreateMap<Filters.Filter, Filter.Filter>()
+            CreateMap<Filters.Filter, Dealers_Filter>()
                 .ForMember(opt => opt.searchFrom, dest => dest.MapFrom(src => src.searchFrom))
                 .ForMember(opt => opt.filters, dest => dest.MapFrom(src => src.filters))
                 .ForMember(opt => opt.pageNumber, dest => dest.MapFrom(src => src.pageNumber))
                 .ForMember(opt => opt.pageSize, dest => dest.MapFrom(src => src.pageSize))
                 .ReverseMap();
 
-            CreateMap<Filters.Filters, Filter.Filters>()
+            CreateMap<Filters.Filters, Dealers_Filters>()
                 .ForMember(opt => opt.key, dest => dest.MapFrom((src) => src.key))
                 .ForMember(opt => opt.value, dest => dest.MapFrom((src) => src.value))
                 .ForMember(opt => opt.fullValue, dest => dest.MapFrom(src => src.fullValue))

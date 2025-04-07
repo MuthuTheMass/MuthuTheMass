@@ -1,5 +1,4 @@
 ﻿using CarParkingSystem.Application.Dtos.Booking;
-using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Application.Services.DealerService;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using iTextSharp.text;

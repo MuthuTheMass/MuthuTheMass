@@ -86,6 +86,9 @@ namespace CarParkingSystem.Infrastructure.Database.SQLDatabase.Migrations
                     b.Property<bool>("IsValidUser")
                         .HasColumnType("bit");
 
+                    b.Property<decimal?>("OneHourAmount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Rights")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

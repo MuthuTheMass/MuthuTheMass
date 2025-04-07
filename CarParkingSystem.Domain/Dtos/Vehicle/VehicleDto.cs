@@ -31,4 +31,6 @@ namespace CarParkingSystem.Application.Dtos.Vehicle
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }
     }
+    
+    public record VehicleDetailOfSingle(string VehicleId, string VehicleName, string VehicleNumber, string? VehicleModel);
 }
