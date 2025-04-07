@@ -8108,43 +8108,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shamb\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\surya parakash\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
+      "projectUniqueName": "E:\\mortol\\muthu-ui\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
       "projectName": "CarParkingSystem.Infrastructure",
-      "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\shamb\\.nuget\\packages\\",
-      "outputPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Infrastructure\\obj\\",
+      "projectPath": "E:\\mortol\\muthu-ui\\CarParkingSystem.Infrastructure\\CarParkingSystem.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\surya parakash\\.nuget\\packages\\",
+      "outputPath": "E:\\mortol\\muthu-ui\\CarParkingSystem.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\shamb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\surya parakash\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\muthuProject\\MuthuTheMass\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj": {
-              "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj"
+            "E:\\mortol\\muthu-ui\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj": {
+              "projectPath": "E:\\mortol\\muthu-ui\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj"
             },
-            "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
-              "projectPath": "D:\\muthuProject\\MuthuTheMass\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
+            "E:\\mortol\\muthu-ui\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj": {
+              "projectPath": "E:\\mortol\\muthu-ui\\CarParkingSystem.Domain\\CarParkingSystem.Domain.csproj"
             }
           }
         }
@@ -8158,8 +8150,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8218,7 +8209,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

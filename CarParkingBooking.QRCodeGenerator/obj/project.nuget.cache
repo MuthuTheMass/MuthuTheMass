@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EVqfb/2gbhI=",
+  "dgSpecHash": "GzG2m58GdW8=",
   "success": true,
-  "projectFilePath": "D:\\muthuProject\\MuthuTheMass\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj",
+  "projectFilePath": "E:\\mortol\\muthu-ui\\CarParkingBooking.QRCodeGenerator\\CarParkingBooking.QRCodeGenerator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\shamb\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.3\\microsoft.win32.systemevents.9.0.3.nupkg.sha512",
-    "C:\\Users\\shamb\\.nuget\\packages\\system.drawing.common\\9.0.3\\system.drawing.common.9.0.3.nupkg.sha512",
-    "C:\\Users\\shamb\\.nuget\\packages\\zxing.net\\0.16.10\\zxing.net.0.16.10.nupkg.sha512"
+    "C:\\Users\\surya parakash\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.3\\microsoft.win32.systemevents.9.0.3.nupkg.sha512",
+    "C:\\Users\\surya parakash\\.nuget\\packages\\system.drawing.common\\9.0.3\\system.drawing.common.9.0.3.nupkg.sha512",
+    "C:\\Users\\surya parakash\\.nuget\\packages\\zxing.net\\0.16.10\\zxing.net.0.16.10.nupkg.sha512"
   ],
   "logs": []
 }

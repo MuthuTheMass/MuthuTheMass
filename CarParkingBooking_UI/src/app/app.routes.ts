@@ -33,6 +33,7 @@ import {CustomerMainpageComponent} from "./customer-mainpage/customer-mainpage.c
 import {QrScannerComponent} from "./shared/QrScanner/QrScanner.component";
 import {PathwayComponent} from "./Dashboard/Dealer/dmain/pathway/pathway.component";
 import {TestComponent} from "./home/test/test.component";
+import {NotificationComponent} from "./Dashboard/User/notification/notification.component";
 // import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
 // import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
 // import { UserConfirmBookingComponent } from './Dashboard/Home/main/user-confirm-booking/user-confirm-booking.component';
@@ -112,6 +113,9 @@ export const routes: Routes = [
         {
             path:"profile",component:ProfileComponent,title:"profiledetailes",
         },
+    {
+      path:"notification",component:NotificationComponent,title:"notification"
+    },
         {
             path:"profile/edit/:emailid",component:EditdetailsComponent,title:"editdetailes"
         },
