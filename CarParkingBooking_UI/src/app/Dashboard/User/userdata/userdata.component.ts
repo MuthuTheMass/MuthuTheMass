@@ -19,24 +19,24 @@ export class UserdataComponent {
   @ViewChild('photo') photoRef!: ElementRef<HTMLImageElement>;
   editVehicleDetails!: any;
   vehicleDetials!: FormGroup;
-  
-constructor( 
+
+constructor(
   private router:Router,
   private activateRoute:ActivatedRoute,
   private backVehicle:VehicleDetialsService) {
-  
+
 }
 
   // vechilemodal(){
   //   document.getElementById("myDropdown")!.classList.toggle("show");
   // }
-  
+
   // filterFunction() {
   //   const input: HTMLInputElement | null = document.getElementById("myInput") as HTMLInputElement;
   //   const filter: string = input.value.toUpperCase();
   //   const div: HTMLElement | null = document.getElementById("myDropdown");
   //   const a: HTMLAnchorElement[] = Array.from(div!.getElementsByTagName("a"));
-    
+
   //   for (let i: number = 0; i < a.length; i++) {
   //     const txtValue: string = a[i].textContent || a[i].innerText || "";
   //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -58,7 +58,7 @@ constructor(
     )
   });
   if(this.editVehicleDetails.emailId!=null){
-    
+
   }
 
   this.vehicleDetials = new FormGroup({
@@ -100,14 +100,14 @@ constructor(
     }
   }
 
- 
-  
-  
+
+
+
   userconfirmbooking(){
-      this.router.navigate(['/main/confirmbooking']);
-    
+      this.router.navigate(['/main/dealer-details']);
+
   }
-  
+
 
 
 

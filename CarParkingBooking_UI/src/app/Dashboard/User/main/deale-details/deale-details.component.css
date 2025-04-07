@@ -19,6 +19,8 @@
 }
 .btn-car-details{
   margin-left: 50px;
+  position: relative;
+  top:10px;
 }
 
 .btn-secondary{
