@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
   <div class="row justify-content-center">
     <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
       <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
@@ -9,12 +9,10 @@
           <ul id="progressbar">
             <li class="active" id="account"><strong>Account</strong></li>
             <li id="personal"><strong>Personal</strong></li>
+            <li id="car"><strong>Vehicle Info</strong></li>
             <li id="payment"><strong>Image</strong></li>
             <li id="confirm"><strong>Finish</strong></li>
           </ul>
-          <!--          <div class="progress">-->
-          <!--            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>-->
-          <!--          </div> <br> &lt;!&ndash; fieldsets &ndash;&gt;-->
           <fieldset>
             <div class="form-card">
               <div class="row">
@@ -32,6 +30,32 @@
                                                                             type="password"/>
             </div>
             <input class="next action-button" name="next" type="button" value="Next"/>
+          </fieldset>
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Account Information:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 1 - 4</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Parking Area Name : *</label> <input name="email" placeholder="Email Id" type="email"/>
+              <label class="fieldlabels">Address: *</label> <input name="uname" placeholder="UserName" type="text"/>
+              <label class="fieldlabels">Description: *</label>
+              <textarea class="form-control"  rows="3" placeholder="give exactly 80 words "></textarea>
+              <label class="fieldlabels">DAY AND TIME: *</label>
+       <div>
+         <label class="fieldlabels">Monday *</label>
+       </div>
+
+            </div>
+            <input class="next action-button" name="next" type="button" value="Next"/>  <input
+            class="previous action-button-previous"
+            name="previous"
+            type="button"
+            value="Previous"/>
           </fieldset>
           <fieldset>
             <div class="form-card">
