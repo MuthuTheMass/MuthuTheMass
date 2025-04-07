@@ -44,7 +44,7 @@ body,
   background-color: transparent;
   backdrop-filter: blur(10px);
   max-width: 1100px;
-  color: #000;
+  color: #fff;
   height: 600px;
   border: 2px solid white;
   box-shadow: 0 0 30px rgba(0, 0, 0, .15);
@@ -104,4 +104,7 @@ body,
   overflow-y: scroll;
 }
 
-
+h2{
+  text-shadow: 2px 0  #000, -2px 0  #000, 0 2px #000, 0 -2px #000,
+  1px 1px  #000, -1px -1px  #000, 1px -1px  #000, -1px 1px #000;
+}
