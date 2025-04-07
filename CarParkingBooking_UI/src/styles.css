@@ -13,8 +13,8 @@
   display: none;
 }
 
-body {
-  background: url("/assets/pexels-jimbear-2612855.jpg");
-  background-size: cover;
+body{
+  background: url("/assets/anime-car-city.jpg");
+  background-size: 100% 100%;
 
 }

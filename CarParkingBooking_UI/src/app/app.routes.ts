@@ -29,6 +29,8 @@ import { DealeDetailsComponent } from './Dashboard/User/main/deale-details/deale
 import { CustomerMainpageComponent } from './customer-mainpage/customer-mainpage.component';
 import { PathwayComponent } from './Dashboard/Dealer/dmain/pathway/pathway.component';
 import { TestComponent } from './home/test/test.component';
+import { NotificationComponent } from './Dashboard/User/notification/notification.component';
+import { QrScannerComponent } from './shared/QrScanner/QrScanner.component';
 import { UserSearchDealerDetailsResolver } from '../resolver/user-search-dealer-details.resolver';
 
 export const routes: Routes = [
@@ -37,7 +39,6 @@ export const routes: Routes = [
     component: SampleBackendComponent,
     title: 'validation for the backend process only of balaji',
   },
-
   {
     path: '',
     component: RegComponent,
@@ -49,27 +50,18 @@ export const routes: Routes = [
     component: DregComponent,
     title: 'Dealer-login',
   },
-
   {
     path: 'dhome',
     component: DmainComponent,
     title: 'dealermain page',
     children: [
-      {
-        path: '',
-        component: CustomerdataComponent,
-        title: 'home page',
-      },
+      { path: '', component: CustomerdataComponent, title: 'home page' },
       {
         path: 'off-booking',
         component: OfflinebookingComponent,
         title: 'offline-booking for customer',
       },
-      {
-        path: 'offline-bill',
-        component: OfflineReceptComponent,
-        title: 'customer offline bill',
-      },
+      { path: 'offline-bill', component: OfflineReceptComponent, title: 'customer offline bill' },
       {
         path: 'booking-details',
         component: BookingHistoryComponent,
@@ -80,34 +72,13 @@ export const routes: Routes = [
         component: PaymentHistoryComponent,
         title: 'customer payment history',
       },
-      {
-        path: 'dealer-account',
-        component: DealeraccountComponent,
-        title: 'dealer detailes',
-      },
-      {
-        path: 'dprofile',
-        component: EditdetailsComponent,
-        title: 'dealer profile edit',
-      },
-      {
-        path: 'editdealer',
-        component: EditDealerdataComponent,
-        title: 'dealerdata',
-      },
-      {
-        path: 'allpayment',
-        component: AllPaymentComponent,
-        title: 'dealerpayment',
-      },
-      {
-        path: 'pathway',
-        component: PathwayComponent,
-        title: 'PathWay',
-      },
+      { path: 'dealer-account', component: DealeraccountComponent, title: 'dealer detailes' },
+      { path: 'dprofile', component: EditdetailsComponent, title: 'dealer profile edit' },
+      { path: 'editdealer', component: EditDealerdataComponent, title: 'dealerdata' },
+      { path: 'allpayment', component: AllPaymentComponent, title: 'dealerpayment' },
+      { path: 'pathway', component: PathwayComponent, title: 'PathWay' },
     ],
   },
-
   {
     path: 'main',
     component: MainpageComponent,
@@ -118,32 +89,13 @@ export const routes: Routes = [
         component: MainComponent,
         title: 'homepage',
         children: [
-          {
-            path: 'artical',
-            component: ArticalComponent,
-          },
-          {
-            path: 'balaji',
-            component: BalajiarComponent,
-          },
+          { path: 'artical', component: ArticalComponent },
+          { path: 'balaji', component: BalajiarComponent },
         ],
       },
-      {
-        path: 'testpage',
-        component: TestComponent,
-        title: 'testpage',
-        children: [],
-      },
-      {
-        path: 'userhome',
-        component: CustomerMainpageComponent,
-        title: 'homepage',
-      },
-      {
-        path: 'about',
-        component: ZenparkAboutComponent,
-        title: 'zenparkabout-info',
-      },
+      { path: 'testpage', component: TestComponent, title: 'testpage' },
+      { path: 'userhome', component: CustomerMainpageComponent, title: 'homepage' },
+      { path: 'about', component: ZenparkAboutComponent, title: 'zenparkabout-info' },
       {
         path: 'customerhistory',
         component: UserBookingHistoryComponent,
@@ -154,42 +106,19 @@ export const routes: Routes = [
         component: UserPaymentHistoryComponent,
         title: 'user-payment-history',
       },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        title: 'profiledetailes',
-      },
-      {
-        path: 'profile/edit/:emailid',
-        component: EditdetailsComponent,
-        title: 'editdetailes',
-      },
-
-      {
-        path: 'book',
-        component: MuthubookComponent,
-      },
+      { path: 'profile', component: ProfileComponent, title: 'profiledetailes' },
+      { path: 'profile/edit/:emailid', component: EditdetailsComponent, title: 'editdetailes' },
+      { path: 'book', component: MuthubookComponent },
       {
         path: 'dealer-details',
         component: DealeDetailsComponent,
-        resolve: {
-          dealerId: UserSearchDealerDetailsResolver,
-        },
+        resolve: { dealerId: UserSearchDealerDetailsResolver },
         title: 'dealerdetails',
       },
-      {
-        path: 'confirmbooking',
-        component: UserConfirmBookingComponent,
-        title: 'confirm-booking',
-      },
-      {
-        path: 'uservehicle',
-        component: UserdataComponent,
-      },
-      {
-        path: 'erecepit',
-        component: EReceiptComponent,
-      },
+      { path: 'confirmbooking', component: UserConfirmBookingComponent, title: 'confirm-booking' },
+      { path: 'uservehicle', component: UserdataComponent },
+      { path: 'erecepit', component: EReceiptComponent },
+      { path: 'notification', component: NotificationComponent, title: 'notification' },
     ],
   },
   {

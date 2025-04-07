@@ -7,7 +7,6 @@
     padding: 10px;
     width: 100%;
     height: 640px;
-    background-color: #ffffff; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
   .left-container {
@@ -23,7 +22,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-  
+
   .right-container {
     background: linear-gradient(to right,#01a9ac,#01dbdf);
     flex: 1;
@@ -45,7 +44,7 @@
     }
     .left-container{
         flex: 1;
-        max-width:100%; 
+        max-width:100%;
     }
   }
   @media only screen and (max-width: 600px) {
@@ -56,7 +55,7 @@
     }
     .left-container{
         flex: 1;
-        max-width:100%; 
+        max-width:100%;
     }
   }
   img {
@@ -66,7 +65,7 @@
     margin: 10px;
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
   }
-  
+
   h2 {
     font-size: 24px;
     margin-bottom: 5px;
@@ -79,27 +78,27 @@
   .gradienttext{
     background-image: linear-gradient(to right, #ee00ff 0%, #fbff00 100%);
     color: transparent;
-    
+
   }
   p {
     font-size: 18px;
     margin-bottom: 20px;
     color:aliceblue
   }
-  
+
 form{
 position: relative;
 bottom: 50px;
 }
-  
+
   td {
-    
+
     padding: 10px;
     border: none;
     border-radius: 20px;
     color: white;
   }
-  
+
   td:first-child {
     font-weight: bold;
   }
@@ -115,7 +114,7 @@ bottom: 50px;
   margin-top: 10px;
   font-family: Verdana,Geneva,Tahoma,sans-serif;
 }
-       
+
 
 .autocomplete {
   /*the container must be positioned relative:*/

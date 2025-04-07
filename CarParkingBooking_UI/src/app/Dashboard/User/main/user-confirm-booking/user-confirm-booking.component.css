@@ -4,15 +4,17 @@
     align-items: center;
     height: 645px;
     margin: 0;
-    background-color: #f0f0f0;
+
 }
 
 .card {
     position: relative; /* Added */
     width: 600px;
     height: 550px;
-    background: #01a9ac;
-  color: white;
+  background-color: transparent;
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 2px solid white;
+  color: #fff;
     border-radius: 20px;
     overflow: hidden;
     display: flex;
@@ -28,6 +30,8 @@
   bottom: 10px;
   right: 10px;
   font-weight:500;
+  text-shadow: 2px 0  #000, -2px 0  #000, 0 2px #000, 0 -2px #000,
+  1px 1px  #000, -1px -1px  #000, 1px -1px  #000, -1px 1px #000;
 
 }
 
@@ -79,9 +83,9 @@
 
 .back-arrow {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 20px;
+    top: 8px;
+    left: 10px;
+    font-size: 25px;
     color: #fff;
 
 }

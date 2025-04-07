@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
-import { routes } from '../../../../app.routes';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user-confirm-booking',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './user-confirm-booking.component.html',
   styleUrl: './user-confirm-booking.component.css',
 })

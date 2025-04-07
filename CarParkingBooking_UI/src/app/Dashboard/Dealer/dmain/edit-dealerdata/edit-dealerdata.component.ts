@@ -4,7 +4,7 @@ import { DealerBasicInfoComponent } from './dealer-basic-info/dealer-basic-info.
 @Component({
   selector: 'app-edit-dealerdata',
   standalone: true,
-  imports: [DealerBasicInfoComponent],
+  imports: [],
   templateUrl: './edit-dealerdata.component.html',
   styleUrl: './edit-dealerdata.component.css',
 })
