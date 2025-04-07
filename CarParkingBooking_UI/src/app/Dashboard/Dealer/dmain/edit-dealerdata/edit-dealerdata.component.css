@@ -218,3 +218,8 @@ p {
   width: 100%;
   object-fit: cover
 }
+
+
+.col-auto input{
+  width: 200px !important;
+}

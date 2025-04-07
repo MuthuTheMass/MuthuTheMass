@@ -9,7 +9,7 @@
           <ul id="progressbar">
             <li class="active" id="account"><strong>Account</strong></li>
             <li id="personal"><strong>Personal</strong></li>
-            <li id="car"><strong>Vehicle Info</strong></li>
+            <li id="car"><strong>ParkingInfo</strong></li>
             <li id="payment"><strong>Image</strong></li>
             <li id="confirm"><strong>Finish</strong></li>
           </ul>
@@ -20,7 +20,7 @@
                   <h2 class="fs-title">Account Information:</h2>
                 </div>
                 <div class="col-5">
-                  <h2 class="steps">Step 1 - 4</h2>
+                  <h2 class="steps">Step 1 - 5</h2>
                 </div>
               </div>
               <label class="fieldlabels">Email: *</label> <input name="email" placeholder="Email Id" type="email"/>
@@ -38,17 +38,19 @@
                   <h2 class="fs-title">Account Information:</h2>
                 </div>
                 <div class="col-5">
-                  <h2 class="steps">Step 1 - 4</h2>
+                  <h2 class="steps">Step 2 - 5</h2>
                 </div>
               </div>
               <label class="fieldlabels">Parking Area Name : *</label> <input name="email" placeholder="Email Id" type="email"/>
               <label class="fieldlabels">Address: *</label> <input name="uname" placeholder="UserName" type="text"/>
+
+
               <label class="fieldlabels">Description: *</label>
               <textarea class="form-control"  rows="3" placeholder="give exactly 80 words "></textarea>
-              <label class="fieldlabels">DAY AND TIME: *</label>
-       <div>
-         <label class="fieldlabels">Monday *</label>
-       </div>
+
+
+
+
 
             </div>
             <input class="next action-button" name="next" type="button" value="Next"/>  <input
@@ -64,16 +66,57 @@
                   <h2 class="fs-title">Personal Information:</h2>
                 </div>
                 <div class="col-5">
-                  <h2 class="steps">Step 2 - 4</h2>
+                  <h2 class="steps">Step 3 - 5</h2>
                 </div>
               </div>
-              <label class="fieldlabels">First Name: *</label> <input name="fname" placeholder="First Name"
-                                                                      type="text"/> <label
-              class="fieldlabels">Last Name: *</label> <input name="lname" placeholder="Last Name" type="text"/> <label
-              class="fieldlabels">Contact No.: *</label> <input name="phno" placeholder="Contact No." type="text"/>
-              <label class="fieldlabels">Alternate Contact No.: *</label> <input name="phno_2"
-                                                                                 placeholder="Alternate Contact No."
-                                                                                 type="text"/>
+              <label class="fieldlabels">Price List: *</label>
+              <input name="Price" placeholder="Price value" type="text"/>
+              <div >
+
+                <label class="fieldlabels">DAY AND TIME: *</label>
+                <div class="col-auto">
+                  <label class="fieldlabels">Sunday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Monday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Tuesday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Wednesday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Thursday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Friday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+                <div class="col-auto">
+                  <label class="fieldlabels">Saturday : </label>
+                </div>
+                <div class="col-auto">
+                  <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+                </div>
+              </div>
             </div>
             <input class="next action-button" name="next" type="button" value="Next"/> <input
             class="previous action-button-previous"
@@ -88,11 +131,11 @@
                   <h2 class="fs-title">Image Upload:</h2>
                 </div>
                 <div class="col-5">
-                  <h2 class="steps">Step 3 - 4</h2>
+                  <h2 class="steps">Step 4 - 5 </h2>
                 </div>
               </div>
               <label class="fieldlabels">Upload Your Photo:</label> <input accept="image/*" name="pic" type="file">
-              <label class="fieldlabels">Upload Signature Photo:</label> <input accept="image/*" name="pic" type="file">
+              <label class="fieldlabels">Upload Parking Area Licenses:</label> <input accept="file/*" name="pic" type="file">
             </div>
             <input class="next action-button" name="next" type="button" value="Submit"/> <input
             class="previous action-button-previous"
@@ -107,7 +150,7 @@
                   <h2 class="fs-title">Finish:</h2>
                 </div>
                 <div class="col-5">
-                  <h2 class="steps">Step 4 - 4</h2>
+                  <h2 class="steps">Step 5 - 5</h2>
                 </div>
               </div>
               <br><br>
@@ -128,3 +171,31 @@
     </div>
   </div>
 </div>
+<!-- <div class="col-auto">
+           <label class="fieldlabels">Sunday : </label>
+            <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Monday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Tuesday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Wednesday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Thursday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Friday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>
+         <div class="col-auto">
+           <label class="fieldlabels">Saturday : </label>
+           <input type="Time" class="date-input"  placeholder="Time"> To  <input type="time" class="date-input"  placeholder="Time">
+         </div>-->
