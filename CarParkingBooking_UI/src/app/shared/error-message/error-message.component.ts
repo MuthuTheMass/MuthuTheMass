@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import {NotificationType} from "../../Service/Enums/NotificationType";
+import { NotificationType } from '../../Service/Enums/NotificationType';
 
 @Component({
   selector: 'app-error-message',
@@ -12,7 +12,6 @@ import {NotificationType} from "../../Service/Enums/NotificationType";
 export class ErrorMessageComponent {
   @Input() error?: any;
 
-
   get errorMessage(): string {
     if (!this.error) return ''; // If there's no error, return an empty string (removes the div)
 
@@ -20,11 +19,11 @@ export class ErrorMessageComponent {
       required: 'This field is required',
       minlength: `Minimum length is ${this.error?.minlength?.requiredLength}`,
       maxlength: `Maximum length is ${this.error?.maxlength?.requiredLength}`,
-      pattern: 'Invalid format'
+      pattern: 'Invalid format',
+      VehicleCheckBox: 'Please select at least one vehicle',
     };
 
     const firstErrorKey = Object.keys(this.error)[0];
     return errorMessages[firstErrorKey] || 'Invalid field';
   }
-
 }

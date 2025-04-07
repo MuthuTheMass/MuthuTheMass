@@ -7,6 +7,7 @@ namespace CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 public interface IVehicleRepository
 {
     Task<VehicleDetails?> GetVehicleById(string vehicleId);
+    Task<VehicleDetails?> GetVehicleByNumber(string vehicleNumber);
     Task<List<VehicleDetails>>? GetVehicleByName(string name);
     Task<List<VehicleDetails>> GetVehicleByUserId(string userId);
     Task<bool> AddVehicle(VehicleDetails vehicle);
@@ -27,6 +28,12 @@ public class VehicleRepository : IVehicleRepository
     {
         var vehicleResource = await _dbContext.VehicleDetails.FindAsync(vehicleId);
         return vehicleResource;
+    }
+
+    public async Task<VehicleDetails?> GetVehicleByNumber(string vehicleNumber)
+    {
+        var vehicleResource = await _dbContext.VehicleDetails.FirstOrDefaultAsync(v => v.VehicleNumber.Contains(vehicleNumber));
+        return vehicleResource ?? null;
     }
 
     public async Task<List<VehicleDetails>>? GetVehicleByName(string name)

@@ -22,7 +22,7 @@ namespace CarParkingBooking.Controllers
 
 
         [HttpPost("Booking")]
-        //[Authorize(Policy = AccessToUser.User)]
+        //[Authorize(Policy = AccessToUser.Dealer)]
         public async Task<IActionResult> Booking([FromBody] BookingDto booking)
         {
             var result = await _bookingData.AddBooking(booking);
@@ -85,5 +85,36 @@ namespace CarParkingBooking.Controllers
             var pdfBytes = await _generatePdf.BookingConfirmation(confirmedBooking);
             return File(pdfBytes, "application/pdf", $"ZenPark_{confirmedBooking.BookingId}");
         }
+        
+        
+        #region UserSide
+
+        [HttpPost("UserBooking")]
+        public async Task<IActionResult> UserBooking([FromBody] BookingDto booking)
+        {
+            var result = await _bookingData.AddBooking(booking);
+            if (result == true)
+            {
+                return Ok(result);
+            }
+            else if (result == false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpGet("UserBooking")]
+        public async Task<IActionResult> GetBookingDetailByBookingId([FromQuery] DateTime dateTime,
+            [FromQuery] string customerEmail)
+        {
+            var result = await _bookingData.GetSingleBookingAsync(dateTime, customerEmail);
+            return Ok(result);
+        }
+        
+        #endregion
     }
 }

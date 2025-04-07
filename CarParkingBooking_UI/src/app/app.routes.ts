@@ -32,6 +32,7 @@ import { TestComponent } from './home/test/test.component';
 import { NotificationComponent } from './Dashboard/User/notification/notification.component';
 import { QrScannerComponent } from './shared/QrScanner/QrScanner.component';
 import { UserSearchDealerDetailsResolver } from '../resolver/user-search-dealer-details.resolver';
+import { bookingProcessResolver } from '../resolver/booking-process.resolver';
 
 export const routes: Routes = [
   {
@@ -115,7 +116,12 @@ export const routes: Routes = [
         resolve: { dealerId: UserSearchDealerDetailsResolver },
         title: 'dealerdetails',
       },
-      { path: 'confirmbooking', component: UserConfirmBookingComponent, title: 'confirm-booking' },
+      {
+        path: 'confirmbooking',
+        component: UserConfirmBookingComponent,
+        resolve: { booking: bookingProcessResolver },
+        title: 'confirm-booking',
+      },
       { path: 'uservehicle', component: UserdataComponent },
       { path: 'erecepit', component: EReceiptComponent },
       { path: 'notification', component: NotificationComponent, title: 'notification' },

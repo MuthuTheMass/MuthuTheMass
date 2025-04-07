@@ -15,6 +15,8 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId);
 
         Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId);
+        
+        Task<BookingDto> GetSingleBookingAsync(DateTime date,string customerEmail);
     }
 
     public class UserBookingService : IUserBookingService
@@ -22,14 +24,16 @@ namespace CarParkingSystem.Application.Services.BookingService
         private readonly IBookingRepository _bookingRepository;
         private readonly IUserRepository _userRepository;
         private readonly IDealerRepository _dealerRepository;
+        private readonly IVehicleRepository _vehicleRepository;
         private IMapper _mapper;
 
         public UserBookingService(IBookingRepository bookingRepository, IUserRepository userRepository, IMapper mapper,
-            IDealerRepository DealerRepository)
+            IDealerRepository DealerRepository, IVehicleRepository vehicleRepository)
         {
             _bookingRepository = bookingRepository;
             _userRepository = userRepository;
             _dealerRepository = DealerRepository;
+            _vehicleRepository = vehicleRepository;
             _mapper = mapper;
         }
 
@@ -95,10 +99,20 @@ namespace CarParkingSystem.Application.Services.BookingService
             return _mapper.Map<CarBookingDetailDto>(data);
         }
 
+        public async Task<BookingDto> GetSingleBookingAsync(DateTime date, string customerEmail)
+        {
+            var data = await _bookingRepository.GetSingleBookingByDate(date, customerEmail);
+            var vehicleInfo = await _vehicleRepository.GetVehicleByNumber(data.VehicleInfo.VehicleNumber);
+            data.VehicleInfo.VehicleImage = $"data:image/png;base64,{Convert.ToBase64String(vehicleInfo?.VehicleImage)}";
+            return _mapper.Map<BookingDto>(data);
+        }
+
         public async Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId)
         {
             var data = await _bookingRepository.GetSingleBooking(bookingId);
-            return _mapper.Map<CarBookingDetailDto>(data);
+            var vehicleInfo = await _vehicleRepository.GetVehicleByNumber(data.VehicleInfo.VehicleNumber);
+            data.VehicleInfo.VehicleImage = $"data:image/png;base64,{Convert.ToBase64String(vehicleInfo?.VehicleImage)}" ?? null ;
+            return  _mapper.Map<CarBookingDetailDto>(data);
         }
     }
 }

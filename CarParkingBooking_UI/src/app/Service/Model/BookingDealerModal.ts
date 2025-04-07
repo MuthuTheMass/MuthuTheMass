@@ -1,6 +1,6 @@
 export interface BookingDto {
   dealerId?: string;
-  dealerEmail?:string;
+  dealerEmail?: string;
   customerId?: string;
   customerDetails: CustomerDetails;
   vehicleInfo?: VehicleInformation;
@@ -24,6 +24,7 @@ export interface VehicleInformation {
   vehicleId: string;
   vehicleNumber: string;
   vehicleModel: string;
+  vehicleImage?: string;
 }
 
 export interface CarBookingDates {
@@ -55,19 +56,19 @@ export interface Proof {
 }
 
 export interface CarBookingDetailDto {
-    bookingId?: string;
-    customerId?: string;
-    customerName?: string;
-    customerEmail?: string;
-    customerPhoneNumber?: string;
-    vehicleNumber?: string;
-    vehicleModel?: string;
-    bookingSource?: string;
-    bookingFromDate?: Date;
-    bookingToDate?: Date;
-    qrCode?: string;
-    advanceAmount?: string;
-    bookingStatus?: string;
-    allottedSlots?: string;
-  }
-
+  bookingId?: string;
+  customerId?: string;
+  customerName?: string;
+  customerEmail?: string;
+  customerPhoneNumber?: string;
+  vehicleNumber?: string;
+  vehicleModel?: string;
+  vehicleImage?: string;
+  bookingSource?: string;
+  bookingFromDate?: Date;
+  bookingToDate?: Date;
+  qrCode?: string;
+  advanceAmount?: string;
+  bookingStatus?: string;
+  allottedSlots?: string;
+}

@@ -63,6 +63,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
         public string VehicleNumber { get; set; }
 
         public string VehicleModel { get; set; }
+        public string VehicleImage { get; set; }
     }
 
     public class CustomerUserDetails
