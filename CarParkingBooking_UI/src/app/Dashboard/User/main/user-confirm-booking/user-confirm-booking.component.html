@@ -1,51 +1,48 @@
-    <div class="warper">
-    <div class="card">
-      <div >
-        <h3 class="page-title">Booking Slot</h3>
-      </div>
-      <a href="./main/uservehicle"> <i class="fas fa-arrow-left back-arrow"></i> </a> <!-- Back Arrow -->
+<div class="warper">
+  <div class="card">
+    <div>
+      <h3 class="page-title">Booking Slot</h3>
+    </div>
+    <a class="back-arrow" routerLink="/main/dealer-details"><i class="fas fa-arrow-left back-arrow"></i></a>
+    <!-- Back Arrow -->
 
-         <div class="profile">
-           <img id="profile-img" src=".\assets\car.jpg" class="rounded mx-auto d-block" alt="...">
-           <span class="vechile-name">Vehicle Image</span>
-         </div>
-      <hr class="hr hr-blurry" />
-      <form>
+    <div class="profile">
+      <img [src]="bookingDetails()" alt="..." class="rounded mx-auto d-block" id="profile-img">
+      <span class="vechile-name">Vehicle Image</span>
+    </div>
+    <hr class="hr hr-blurry" />
+    <form>
       <div class="receipt-data">
         <span>Name:SURYA PRAKASH P</span>
       </div>
-      <div  class="receipt-data">
+      <div class="receipt-data">
         <span>Booking Id: 1009233</span>
       </div>
-        <div  class="receipt-data">
-          <span>Vechile Modal: Mahindra Bolero</span>
-        </div>
-      <div  class="receipt-data">
+      <div class="receipt-data">
+        <span>Vechile Modal: Mahindra Bolero</span>
+      </div>
+      <div class="receipt-data">
         <span>Vechile Number: TN 18 AY 4324</span>
       </div>
-        <div  class="receipt-data">
-          <span>Booking Date: 10-01-2025</span>
-        </div>
-        <div  class="receipt-data">
-          <span>Booking Time: 10:45 am</span>
-        </div>
+      <div class="receipt-data">
+        <span>Booking Date: 10-01-2025</span>
+      </div>
+      <div class="receipt-data">
+        <span>Booking Time: 10:45 am</span>
+      </div>
 
 
-        <button type="button" class="btn btn-outline-danger" (click)="bookingslot()">Book Your Slot</button>
-      </form>
+      <button (click)="bookingslot()" class="btn btn-outline-danger" type="button">History</button>
+    </form>
 
 
-
-
-
-
-        <!--        <div class="profile-pic">-->
-<!--          <img Src=".\assets\car.jpg" alt=""></div>-->
-<!--        <div class="social-icons">-->
-<!--            <div class="third mt-4">-->
-<!--                <button  class="btn btn-success btn-block"><i class="fa fa-clock-o"></i> Book Now</button>-->
-<!--             </div>-->
-<!--          <h1 style="color: black">lisa my world</h1>-->
-<!--        </div>-->
-    </div>
+    <!--        <div class="profile-pic">-->
+    <!--          <img Src=".\assets\car.jpg" alt=""></div>-->
+    <!--        <div class="social-icons">-->
+    <!--            <div class="third mt-4">-->
+    <!--                <button  class="btn btn-success btn-block"><i class="fa fa-clock-o"></i> Book Now</button>-->
+    <!--             </div>-->
+    <!--          <h1 style="color: black">lisa my world</h1>-->
+    <!--        </div>-->
+  </div>
 </div>

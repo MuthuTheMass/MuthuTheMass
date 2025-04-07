@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CarParkingSystem.Application.Dtos.Dealers;
 using CarParkingSystem.Domain.Dtos.Dealers;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using Newtonsoft.Json;
@@ -89,12 +88,31 @@ namespace CarParkingBooking.AutoMapper
             return formFile;
         }
 
+        #region imageStringOFByte
+
         public string? ConvertQrByteToPngString(byte[] file)
         {
             if (file is null) return null;
 
             return $"data:image/png;base64,{Convert.ToBase64String(file)}";
         }
+        
+        public byte[]? ConvertPngStringToQrByte(string? base64String)
+        {
+            if (string.IsNullOrWhiteSpace(base64String))
+                return null;
+
+            // Remove the data URL prefix if it exists
+            var base64Data = base64String.Contains(",")
+                ? base64String.Split(',')[1]
+                : base64String;
+
+            return Convert.FromBase64String(base64Data);
+        }
+
+        #endregion
+       
+
 
         public string? ConvertByteToString(byte[]? bytes)
         {

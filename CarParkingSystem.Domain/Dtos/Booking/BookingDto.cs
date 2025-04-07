@@ -25,6 +25,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
 
         public required Status BookingStatus { get; set; }
         public string? AllottedSlot { get; set; }
+        
     }
 
     public class CustomerDetails
@@ -51,6 +52,7 @@ namespace CarParkingSystem.Application.Dtos.Booking
         string? CustomerPhoneNumber,
         string? VehicleNumber,
         string? VehicleModel,
+        string? VehicleImage,
         string? BookingSource,
         DateTime? BookingFromDate,
         DateTime? BookingToDate,

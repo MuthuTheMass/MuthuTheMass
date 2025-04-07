@@ -17,10 +17,16 @@ ul,li{
   padding: 0 5px;
   border: 1px solid #fff;
   border-radius: 4px;
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   -webkit-transition: all .5s ease-in-out;
 }
+
+.main li:hover{
+  background: none;
+  color: #000;
+}
+
 
 .main li:nth-child(odd){
 
@@ -376,7 +382,7 @@ ul.search-description {
   width: 160px;
   font-size: 12px;
 }
-button{
+.booking__details {
   border-radius: 8px;
       position: relative;
   left: 35px;
@@ -477,8 +483,36 @@ h1{
   width: 100%;
 }
 
+.hov {
+  position: relative;
+  cursor: pointer;
+}
 
+.hov:hover .main {
+  display: block;
+}
 
+.main li {
+  padding: 8px 16px;
+}
 
+.main li button {
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
+.main li button:hover {
+  background-color: #f1f1f1;
+}
 
+.main li .btn{
+  color: #fff;
+
+}
+
+.main li .btn:hover{
+  color: #000;
+}

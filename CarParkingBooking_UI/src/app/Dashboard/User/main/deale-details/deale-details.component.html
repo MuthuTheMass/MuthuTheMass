@@ -1,131 +1,139 @@
+<div class="card">
+  <div class="row">
 
-  <div class="card">
-    <div class="row">
-      <div class="col-4">
-        <img alt="..." class="img-thumbnail" src="../assets/park1.jpeg">
-        <span><h2>Parkinfo</h2></span>
+    <div class="col-4">
+      <img [src]="dealerDetail().image " alt="..." class="img-thumbnail">
+      <span><h2>{{ dealerDetail().dealerName }}</h2></span>
 
-        <div>
-          <address><b>Address:</b> 466Q+VR7, Sankara Mutt St, Neelam Garden, Bunder Garden, Perambur, Chennai, Tamil
-            Nadu 600011
-          </address>
-        </div>
-        <div class="btn-direction">
-          <button class="btn btn-outline-primary btn-lg" type="button"><i class='bx bxs-direction-right'></i> Direction
-          </button>
-        </div>
+      <div>
+        <address><b>Address:</b> {{ dealerDetail().dealerAddress }}
+        </address>
       </div>
-      <div class="col-8">
-        <div class="d-flex flex-column bd-highlight mb-3">
-          <div class="p-1 bd-highlight">
-            <div><span><h2>Parkinfo</h2></span></div>
-          </div>
-          <div class="p-2 bd-highlight"><span><p>Car parking refers to the act of stopping and leaving a vehicle in a designated area, typically in a parking lot or on the side of a road, where it remains unoccupied; it's a crucial part of car-based travel, and involves finding a suitable parking space, following local regulations, and ensuring the vehicle is properly secured while parked; the availability and cost of parking can significantly impact traffic patterns and urban planning, as large amounts of land are often dedicated to car parking facilities. </p></span>
-          </div>
-          <div class="p-3 bd-highlight">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button aria-controls="flush-collapseOne" aria-expanded="false" class="accordion-button collapsed"
-                          data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" type="button">
-                    Accordion Item #1
-                  </button>
-                </h2>
-                <div aria-labelledby="flush-headingOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample"
-                     id="flush-collapseOne">
-                  <div class="accordion-body">Placeholder content for this accordion, Placeholder content for this
-                    accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content for
-                    this accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content
-                    for this accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder
-                    content for this accordion, PlaceholderPlaceholder content for this accordion,
-                    PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content for this
-                    accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content for
-                    this accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content
-                    for this accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder
-                    content for this accordion, PlaceholderPlaceholder content for this accordion,
-                    PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content for this
-                    accordion, PlaceholderPlaceholder content for this accordion, PlaceholderPlaceholder content for
-                    this accordion,Placeholder content for this accordion,Placeholder content for this
-                    accordion,Placeholder content for this accordion,Placeholder content for this accordion,Placeholder
-                    content for this accordion,Placeholder content for this accordion,Placeholder content for this
-                    accordion,Placeholder content for this accordion,Placeholder content for this accordion,Placeholder
-                    content for this accordion,Placeholder content for this accordion,Placeholder content for this
-                    accordion,which is intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                    first item's accordion body.
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                  <button aria-controls="flush-collapseTwo" aria-expanded="false" class="accordion-button collapsed"
-                          data-bs-target="#flush-collapseTwo" data-bs-toggle="collapse" type="button">
-                    Accordion Item #2
-                  </button>
-                </h2>
-                <div aria-labelledby="flush-headingTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample"
-                     id="flush-collapseTwo">
-                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                    the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine
-                    this being filled with some actual content.
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                  <button aria-controls="flush-collapseThree" aria-expanded="false" class="accordion-button collapsed"
-                          data-bs-target="#flush-collapseThree" data-bs-toggle="collapse"
-                          type="button">
-                    Accordion Item #3
-                  </button>
-                </h2>
-                <div aria-labelledby="flush-headingThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample"
-                     id="flush-collapseThree">
-                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                    the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more
-                    exciting happening here in terms of content, but just filling up the space to make it look, at least
-                    at first glance, a bit more representative of how this would look in a real-world application.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <table class="table">
-                <thead>
-                <tr>
-                  <th scope="col">Previews car details</th>
-                  <th scope="col">Carmodal</th>
-                  <th scope="col">Number</th>
-                  <th scope="col">Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <th scope="row">
-                    <div class="form-check">
-                      <input class="form-check-input" id="flexCheckIndeterminate" type="checkbox" value="">
-                      <label class="form-check-label" for="flexCheckIndeterminate">
-                        Select to Quick Booking
-                      </label>
+      <div class="btn-direction">
+        <button (click)="direction(dealerDetail().dealerLocationURL)" class="btn btn-outline-primary btn-lg"
+                type="button">
+          <i class='bx bxs-direction-right'></i> Direction
+        </button>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="d-flex flex-column bd-highlight mb-3">
+        <div class="p-1 bd-highlight">
+          <div><span><h2>{{ dealerDetail().dealerStoreName }}</h2></span></div>
+        </div>
+        <div class="p-2 bd-highlight"><span>
+          <p>{{ dealerDetail().dealerDescription }} </p></span>
+        </div>
+        <div class="p-3 bd-highlight">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button aria-controls="flush-collapseOne" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" type="button">
+                  Timing
+                </button>
+              </h2>
+              <div aria-labelledby="flush-headingOne" class="accordion-collapse collapse"
+                   data-bs-parent="#accordionFlushExample"
+                   id="flush-collapseOne">
+                <div class="accordion-body">
+                  @for (timing of weekDays; let i = $index; track i) {
+                    <div class="row">
+                      <div class="col-5">{{ timing.day }} :</div>
+                      <div class="col-3 text-end px-1">{{ timing.start }}</div>
+                      <label class="col-1"> to</label>
+                      <div class="col-3 text-start px-1">{{ timing.stop }}</div>
                     </div>
-                  </th>
-                  <td>BMW</td>
-                  <td>TN13AF2343</td>
-                  <td>SURI</td>
-                </tr>
-                </tbody>
-              </table>
-              <div class="btn-car-details">
-                <button (click)="usercarolddata()" class="btn btn-primary btn-lg" type="button">previews car details
-                </button>
-                <button (click)="usercardata()" class="btn btn-secondary btn-lg" i type="button">New car details
-                </button>
+                  }
+                </div>
               </div>
             </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button aria-controls="flush-collapseTwo" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#flush-collapseTwo" data-bs-toggle="collapse" type="button">
+                  Pricing
+                </button>
+              </h2>
+              <div aria-labelledby="flush-headingTwo" class="accordion-collapse collapse"
+                   data-bs-parent="#accordionFlushExample"
+                   id="flush-collapseTwo">
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="col">Per Hours:</div>
+                    <div class="col">{{ dealerDetail().oneHourAmount }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button aria-controls="flush-collapseThree" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#flush-collapseThree" data-bs-toggle="collapse"
+                        type="button">
+                  Car Details
+                </button>
+              </h2>
+              <div aria-labelledby="flush-headingThree" class="accordion-collapse collapse"
+                   data-bs-parent="#accordionFlushExample"
+                   id="flush-collapseThree">
+                <div class="accordion-body py-0">
+                  <div class="row">
+                    <div class="text-end col py-3">
+                      <button (click)="usercardata()" class="btn btn-primary" type="button">Add New car details
+                      </button>
+                    </div>
+                  </div>
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">Previews car details</th>
+                      <th scope="col">Carmodal</th>
+                      <th scope="col">Number</th>
+                      <th scope="col">Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      @for (car of vehicleDetails(); let i = $index; track i) {
+                        <tr>
+                          <th scope="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value=""
+                                     [checked]="selectedVehicleIndex === i"
+                                     (change)="onSelectVehicle(i, car)"
+                                     [id]="'selectVehicle_' + i"
+                              >
+                              <label class="form-check-label" [for]="'selectVehicle_' + i">
+                                Select to Quick Booking
+                              </label>
+                            </div>
+                          </th>
+                          <td>{{ car.vehicleModel ?? 'N/A' }}</td>
+                          <td>{{ car.vehicleNumber ?? 'N/A' }}</td>
+                          <td>{{ car.vehicleName ?? 'N/A' }}</td>
+                        </tr>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="btn-car-details text-end row">
+            <input [(ngModel)]="BookingDate" class="form-control w-50 col mx-3" type="datetime-local">
+            <button (click)="ConfirmBooking()" class="btn btn-success btn-lg col mx-3" type="button">Confirm Booking
+            </button>
+          </div>
+          <div class="row my-4">
+            <app-error-message [error]="VehicleError"></app-error-message>
           </div>
         </div>
+
       </div>
     </div>
   </div>
+</div>
 
 <!--<div class="col-8">-->
 <!--  <div><span><h2>Parkinfo</h2></span></div>-->

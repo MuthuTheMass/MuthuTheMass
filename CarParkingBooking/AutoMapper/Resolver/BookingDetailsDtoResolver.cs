@@ -19,6 +19,7 @@ namespace CarParkingBooking.AutoMapper.Resolver
                 source.CustomerData?.CustomerMobileNumber,
                 source.VehicleInfo?.VehicleNumber,
                 source.VehicleInfo?.VehicleModel,
+                source.VehicleInfo.VehicleImage,
                 source.BookingSource,
                 source.BookingDate?.From,
                 source.BookingDate?.To,

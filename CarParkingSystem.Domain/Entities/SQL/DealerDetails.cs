@@ -47,5 +47,9 @@ namespace CarParkingSystem.Domain.Entities.SQL
         [DataType(DataType.DateTime)] public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
         [DataType(DataType.Text)] public bool IsValidUser { get; set; } = false;
+        
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? OneHourAmount { get; set; }
     }
 }

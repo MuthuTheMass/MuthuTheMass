@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace CarParkingSystem.Application.Dtos.Dealers
+namespace CarParkingSystem.Domain.Dtos.Dealers
 {
     public class Filter
     {
@@ -21,11 +21,12 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public string fullValue => $"{key} : {value}";
     }
 
-    public record DealerRecord(List<DealerDto> Data, int TotalDataCount);
+    public record DealerRecord(List<UserDealerSearch> Data, int TotalDataCount);
 
 
     public class DealerDto
     {
+        public string? DealerId { get; set; }
         public required string DealerName { get; set; }
 
         public required string DealerEmail { get; set; }
@@ -49,6 +50,9 @@ namespace CarParkingSystem.Application.Dtos.Dealers
         public bool DealerOpenOrClosed { get; set; }
 
         public required string DealerRating { get; set; }
+        public string? OneHourAmount { get; set; }
+        public string? Image { get; set; }
+
     }
 
 

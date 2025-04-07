@@ -1,4 +1,9 @@
-﻿using CarParkingSystem.Application.Services.UserService;
+﻿using AutoMapper;
+using CarParkingSystem.Application.Dtos.Users;
+using CarParkingSystem.Application.Services.DealerService;
+using CarParkingSystem.Application.Services.UserService;
+using CarParkingSystem.Domain.Dtos.Dealers;
+using CarParkingSystem.Infrastructure.Repositories.SQL_Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkingBooking.Controllers
@@ -8,10 +13,12 @@ namespace CarParkingBooking.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserProfile _userData;
+        private readonly IDealerProfile _dealerData;
 
-        public UsersController(IUserProfile userData)
+        public UsersController(IUserProfile userData , IDealerProfile dealerData)
         {
             _userData = userData;
+            _dealerData = dealerData;
         }
 
         [HttpGet("userfull")]
@@ -33,40 +40,25 @@ namespace CarParkingBooking.Controllers
             }
         }
 
+        [HttpPost("dealersearch")]
+        public async Task<IActionResult> GetDealerSearch([FromBody] Filter request )
+        {
+            var result = await _dealerData.GetAllDealersBySearch(request);
+            return Ok(result);
+        }
 
-        //[HttpPost("updateuser")]
-        //public async Task<IActionResult> UpdateuserDetails([FromForm] UserDataDto details)
-        //{
-        //    var result = await _userData.UpdateUserData(details);
-        //    if (result != null)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    else if (result == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else if (result == false)
-        //    {
-        //        return UnprocessableEntity();
-        //    }
-        //    else
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+        [HttpGet("FullDealerDetails")]
+        public async Task<IActionResult> GetFullDealerDetails([FromQuery] string dealerId)
+        {
+            var result = await _dealerData.GetDealerById(dealerId);
+            return Ok(result);
+        }
 
-        //[HttpGet("getAllUsers")]
-        //public async Task<IActionResult> GetAllUsers()
-        //{
-        //    var result = await _userData.GetAllUsers();
-
-        //    if (result.Count > 0)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest();
-
-        //}
+        [HttpGet("VehicleDetailsForBooking")]
+        public async Task<IActionResult> GetVehicleDetailsForBooking([FromQuery] string emailId)
+        {
+            var result = await _userData.GetUserVehicles(emailId);
+            return Ok(result);
+        }
     }
 }

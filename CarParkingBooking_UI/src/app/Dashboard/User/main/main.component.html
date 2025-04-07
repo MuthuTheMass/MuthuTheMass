@@ -1,28 +1,30 @@
-<link rel="stylesheet" href="main.component.css">
+<link href="main.component.css" rel="stylesheet">
 <section class="homecontent">
-    <div class="container py-5" id="datalist">
+  <div class="container py-5" id="datalist">
     <div class="row justify-content-center mb-3" id="bg-light">
-        <div class="col-md-12 col-xl-10">
-          <div class="card shadow-0 border rounded-3">
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
           <div class="card-body">
             <div class="row">
               <div class="search-header">
                 <div class="search-box-list">
                   <li class="hov">CITIES!
                     <ul class="main">
-                      <li>Item1</li>
-                      <li>Item2</li>
-                      <li>Item3</li>
-                      <li>Item4</li>
+                      <li>
+                        <button class="btn">Name dealer</button>
+                      </li>
+                      <li>
+                        <button class="btn">Address</button>
+                      </li>
                     </ul>
                   </li>
 
                   <div class="centerbox">
                     <div class="main-form-container">
-                      <form id="" class="" method="post">
-                        <input type="text" class="main-input main-name" name="NAME"  placeholder="Search"  />
-                        <input type="text" class="main-input main-location" name="LOCATION"  />
-                        <input id="main-submit" class="" type="submit" value="Search" />
+                      <form class="" id="" method="post">
+                        <input class="main-input main-name" name="NAME" placeholder="Search" type="text" />
+                        <input class="main-input main-location" name="LOCATION" type="text" />
+                        <input class="" id="main-submit" type="submit" value="Search" />
                       </form>
                     </div>
                   </div>
@@ -34,75 +36,10 @@
       </div>
     </div>
 
-<div class="home-dealerdata">
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-xl-10">
-          <div class="card-body">
-            <div class="row">
-              <div class="row-1">
-                <div class="col-4">
-                  <figure class="movie">
-                        <div class="movie__hero">
-                          <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                               </div>
+    <app-loading [isloading]="dealers().length <= 0" />
 
-                <div class="col-8">
-                  <div class="d-flex flex-column bd-highlight mb-3">
-                    <div class="p-1 bd-highlight">
-                      <div class="movie__content">
-                                     <div class="movie__title">
-                                         <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
 
-                                       </div></div>
-                    <div class="p-2 bd-highlight">
-                      <p class="carpark__description">
-                      No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
-                    </p></div>
-                    <div class="p-3 bd-highlight">
-                      <div class="parktime__details">
-                      <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                        Feitshans</p>
-                      <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                      <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                        <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                    </div>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                  </figure>
-              </div>
-            </div>
-
-<!--              <figure class="movie">-->
-<!--                <div class="movie__hero">-->
-<!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
-<!--                </div>-->
-<!--                <div class="movie__content">-->
-<!--                  <div class="movie__title">-->
-<!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
-<!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
-<!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
-<!--                  </div>-->
-<!--                  <p class="carpark__description">-->
-<!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
-<!--                  </p>-->
-<!--                  <div class="parktime__details">-->
-<!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
-<!--                      Feitshans</p>-->
-<!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
-<!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
-<!--        </span>$12.52 crores</p>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
-<!--              </figure>-->
-            </div>
-          </div>
-      </div>
-    </div>
-</div>
+    @for (carpark of dealers(); let i = $index; track i) {
       <div class="home-dealerdata">
         <div class="row justify-content-center">
           <div class="col-md-12 col-xl-10">
@@ -112,7 +49,7 @@
                   <div class="col-4">
                     <figure class="movie">
                       <div class="movie__hero">
-                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
+                        <img alt="Rambo" class="carslot__img" [src]="carpark.storeImage">
                       </div>
 
                       <div class="col-8">
@@ -120,21 +57,26 @@
                           <div class="p-1 bd-highlight">
                             <div class="movie__content">
                               <div class="movie__title">
-                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
+                                <h1 class="heading__primary">{{ carpark.dealerStoreName }}
+                                  <i class='bx bxs-car-garage'></i></h1>
 
-                              </div></div>
+                              </div>
+                            </div>
                             <div class="p-2 bd-highlight">
                               <p class="carpark__description">
-                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
+                                {{
+                                  carpark.dealerAddress
+                                }}
                               </p></div>
                             <div class="p-3 bd-highlight">
                               <div class="parktime__details">
-                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                                  Feitshans</p>
-                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
+                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h
+                                  00m</p>
+                                <p class="parktime__details"><span class="icons icons-yellow"><i
+                                  class="fas fa-file-invoice-dollar"></i>
+                                    </span>₹ {{ carpark.price }}</p>
+                                <button (click)="BookingSlot(carpark.dealerId)" class="booking__details">BOOK SLOT
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -143,241 +85,13 @@
                     </figure>
                   </div>
                 </div>
-
-                <!--              <figure class="movie">-->
-                <!--                <div class="movie__hero">-->
-                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
-                <!--                </div>-->
-                <!--                <div class="movie__content">-->
-                <!--                  <div class="movie__title">-->
-                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
-                <!--                  </div>-->
-                <!--                  <p class="carpark__description">-->
-                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
-                <!--                  </p>-->
-                <!--                  <div class="parktime__details">-->
-                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
-                <!--                      Feitshans</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
-                <!--        </span>$12.52 crores</p>-->
-                <!--                  </div>-->
-                <!--                </div>-->
-                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
-                <!--              </figure>-->
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="home-dealerdata">
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-xl-10">
-            <div class="card-body">
-              <div class="row">
-                <div class="row-1">
-                  <div class="col-4">
-                    <figure class="movie">
-                      <div class="movie__hero">
-                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                      </div>
+    }
 
-                      <div class="col-8">
-                        <div class="d-flex flex-column bd-highlight mb-3">
-                          <div class="p-1 bd-highlight">
-                            <div class="movie__content">
-                              <div class="movie__title">
-                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
 
-                              </div></div>
-                            <div class="p-2 bd-highlight">
-                              <p class="carpark__description">
-                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
-                              </p></div>
-                            <div class="p-3 bd-highlight">
-                              <div class="parktime__details">
-                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                                  Feitshans</p>
-                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-
-                <!--              <figure class="movie">-->
-                <!--                <div class="movie__hero">-->
-                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
-                <!--                </div>-->
-                <!--                <div class="movie__content">-->
-                <!--                  <div class="movie__title">-->
-                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
-                <!--                  </div>-->
-                <!--                  <p class="carpark__description">-->
-                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
-                <!--                  </p>-->
-                <!--                  <div class="parktime__details">-->
-                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
-                <!--                      Feitshans</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
-                <!--        </span>$12.52 crores</p>-->
-                <!--                  </div>-->
-                <!--                </div>-->
-                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
-                <!--              </figure>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="home-dealerdata">
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-xl-10">
-            <div class="card-body">
-              <div class="row">
-                <div class="row-1">
-                  <div class="col-4">
-                    <figure class="movie">
-                      <div class="movie__hero">
-                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                      </div>
-
-                      <div class="col-8">
-                        <div class="d-flex flex-column bd-highlight mb-3">
-                          <div class="p-1 bd-highlight">
-                            <div class="movie__content">
-                              <div class="movie__title">
-                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
-
-                              </div></div>
-                            <div class="p-2 bd-highlight">
-                              <p class="carpark__description">
-                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
-                              </p></div>
-                            <div class="p-3 bd-highlight">
-                              <div class="parktime__details">
-                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                                  Feitshans</p>
-                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-
-                <!--              <figure class="movie">-->
-                <!--                <div class="movie__hero">-->
-                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
-                <!--                </div>-->
-                <!--                <div class="movie__content">-->
-                <!--                  <div class="movie__title">-->
-                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
-                <!--                  </div>-->
-                <!--                  <p class="carpark__description">-->
-                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
-                <!--                  </p>-->
-                <!--                  <div class="parktime__details">-->
-                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
-                <!--                      Feitshans</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
-                <!--        </span>$12.52 crores</p>-->
-                <!--                  </div>-->
-                <!--                </div>-->
-                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
-                <!--              </figure>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="home-dealerdata">
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-xl-10">
-            <div class="card-body">
-              <div class="row">
-                <div class="row-1">
-                  <div class="col-4">
-                    <figure class="movie">
-                      <div class="movie__hero">
-                        <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">
-                      </div>
-
-                      <div class="col-8">
-                        <div class="d-flex flex-column bd-highlight mb-3">
-                          <div class="p-1 bd-highlight">
-                            <div class="movie__content">
-                              <div class="movie__title">
-                                <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>
-
-                              </div></div>
-                            <div class="p-2 bd-highlight">
-                              <p class="carpark__description">
-                                No 7/602, 7th Block  M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West M S Parking, 7th Block, Mogappair West, M S Parking, 7th Block, Mogappair West, Chennai - 600037 jkbkgbewkbskbn (Near Velammal Vidyalaya School)
-                              </p></div>
-                            <div class="p-3 bd-highlight">
-                              <div class="parktime__details">
-                                <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz
-                                  Feitshans</p>
-                                <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>
-                                <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
-        </span>$12.52 crores</p>
-                                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </figure>
-                  </div>
-                </div>
-
-                <!--              <figure class="movie">-->
-                <!--                <div class="movie__hero">-->
-                <!--                  <img src="/assets/parking-spot-4615361.jpg" alt="Rambo" class="carslot__img">-->
-                <!--                </div>-->
-                <!--                <div class="movie__content">-->
-                <!--                  <div class="movie__title">-->
-                <!--                    <h1 class="heading__primary">MULTILEVEL CAR PARKING - THE GREATER CHENNAI CORP <i class='bx bxs-car-garage'></i></h1>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;1">100%safety</div>-->
-                <!--                    <div class="carsparking__tag movie__tag&#45;&#45;2">24/7available</div>-->
-                <!--                  </div>-->
-                <!--                  <p class="carpark__description">-->
-                <!--                    No 7/602, 7th Block, M S Parking, 7th Block, Mogappair West, Chennai - 600037 (Near Velammal Vidyalaya School)-->
-                <!--                  </p>-->
-                <!--                  <div class="parktime__details">-->
-                <!--                    <p class="parktime__details"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span>Buzz-->
-                <!--                      Feitshans</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>1h 33m</p>-->
-                <!--                    <p class="parktime__details"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>-->
-                <!--        </span>$12.52 crores</p>-->
-                <!--                  </div>-->
-                <!--                </div>-->
-                <!--                <button class="booking__details" (click)="dealerdata()">BOOK SLOT</button>-->
-                <!--              </figure>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
 </section>

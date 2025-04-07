@@ -20,6 +20,8 @@ public interface IBookingRepository
     Task<bool?> UpdateBookingDetails(CarBooking carBooking);
     Task<bool> DeleteBookingDetails(string bookingId, string dealerId, string customerId);
     Task<List<UserDetailsNewCustomer>> GetUserByConfirmedBookingForDealer(string dealerId);
+    
+    Task<CarBooking?> GetSingleBookingByDate(DateTime dateTime, string customerName);
 }
 
 public class BookingRepository : IBookingRepository
@@ -146,6 +148,15 @@ public class BookingRepository : IBookingRepository
         }
 
         return result;
+    }
+
+    public async Task<CarBooking?> GetSingleBookingByDate(DateTime dateTime, string customerName)
+    {
+        var query = Container.GetItemLinqQueryable<CarBooking>();
+        var feedIterator = query
+            .Where(b => b.BookingDate.From == dateTime && b.CustomerData.CustomerEmail.ToLower().Contains(customerName.ToLower())).ToFeedIterator();
+        
+        return feedIterator.HasMoreResults ? (await feedIterator.ReadNextAsync()).FirstOrDefault() : null;
     }
 
     public async Task<bool?> UpdateBookingDetails(CarBooking carBooking)
