@@ -7,12 +7,12 @@
   }
 
   .navbar{
-    border-bottom: 2px solid rgb(255, 21, 119);
+    border-bottom: 2px solid  #0b3d91;
   }
 
   .searchTerm {
     width: 450px;
-    border: 1px solid rgb(255, 21, 119);
+    border: 1px solid  #0b3d91;
     border-right: none;
     padding: 5px;
     height: 35px;
@@ -34,10 +34,10 @@
   .searchButton {
     width: 60px;
     height: 35px;
-    border: 1px solid  rgb(255, 21, 119);
+    border: 1px solid  #0b3d91;
     background: #ffffff;
     text-align: center;
-    color: rgb(255, 21, 119);
+    color:  #0b3d91;
     border-radius: 0 5px 5px 0 !important;
     cursor: pointer;
     position: relative;
@@ -45,7 +45,7 @@
   }
 
   .searchButton:hover{
-    background-color:  rgb(255, 21, 119);
+    background-color:   #0b3d91;
     color: #fff;
     border:1px solid white;
   }
@@ -61,7 +61,7 @@
   .card-single {
     display: flex;
     justify-content: space-between;
-    background: #ecd0d0;
+    background: #6bb0ff;
     padding: 2rem;
     width: 250px;
     border-radius: 10px;
@@ -71,7 +71,7 @@
 
 
   .card-single div:last-child i {
-  color: rgb(255, 21, 119);
+  color:  #0b3d91;
     font-size: 3rem;
   }
 
@@ -81,10 +81,10 @@
    }
 
    .card-single:last-child {
-    background: rgb(255, 21, 119);
+    background:  #0b3d91;
    }
    .card-single:last-child  h1{
-    background: rgb(255, 21, 119);
+    background:  #0b3d91;
    }
 
 
@@ -153,10 +153,10 @@
    }
 
    .card-head button{
-    background:rgb(255, 21, 119);
+    background: #0b3d91;
     border-radius: 10px;
     color: #fff;
     font-size: .8rem;
     padding: .5rem 1rem;
-    border: 1px solid rgb(255, 21, 119);
+    border: 1px solid  #0b3d91;
    }

@@ -35,7 +35,7 @@
   border: 1px solid #000000;;
   background: #ffffff;
   text-align: center;
-  color: rgb(255, 21, 119);
+  color:  #0b3d91;
   border-radius: 0 5px 5px 0 !important;
   cursor: pointer;
   position: relative;
@@ -43,7 +43,7 @@
 }
 
 .searchButton:hover{
-  background-color:  rgb(255, 21, 119);
+  background-color:   #0b3d91;
   color: #fff;
   border:1px solid rgb(0, 0, 0);
 }
@@ -55,7 +55,7 @@ table{
 
 
 .card{
-  background: rgb(255, 21, 119);
+  background:  #0b3d91;
   width: 90%;
   position: relative;
   left: 50px;
@@ -97,7 +97,7 @@ table{
   position: sticky;
   top: -0.1px;
   background:#fff;
-  color: rgb(255, 21, 119);
+  color:  #0b3d91;
 
 
 }
