@@ -1,0 +1,6 @@
+@CarParkingAPI_HostAddress = http://localhost:5140
+
+GET {{CarParkingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
