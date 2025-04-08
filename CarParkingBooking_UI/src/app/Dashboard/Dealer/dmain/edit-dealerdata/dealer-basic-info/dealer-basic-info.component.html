@@ -1,0 +1,32 @@
+<div>
+  <form>
+    <div class="col-12">
+      <div class="col-9">
+        <label>Name</label>
+        <input formControlName="name" placeholder="Enter name" type="text" />
+      </div>
+      <div>
+        <app-image-uploader
+          (canceled)="handleCancel()"
+          (imageConfirmed)="handleImageConfirm($event)"
+        ></app-image-uploader>
+      </div>
+
+    </div>
+    <div>
+      <label>Email</label>
+      <input formControlName="email" placeholder="Enter email" type="email" />
+    </div>
+    <div>
+      <label>Phone</label>
+      <input formControlName="phone" placeholder="Enter phone" type="text" />
+    </div>
+    <div>
+      <label>Address</label>
+      <input formControlName="address" placeholder="Enter address" type="text" />
+    </div>
+    <div>
+      <label></label>
+    </div>
+  </form>
+</div>

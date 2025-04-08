@@ -8,9 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1500;
   }
-  
+
   .modal-content {
     background: white;
     padding: 20px;
@@ -21,7 +21,7 @@
     overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
+
   .modal-header {
     display: flex;
     justify-content: space-between;
@@ -30,7 +30,7 @@
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
   }
-  
+
   .close-btn {
     background: none;
     border: none;
@@ -38,7 +38,7 @@
     cursor: pointer;
     color: #666;
   }
-  
+
   .close-btn:hover {
     color: #333;
   }

@@ -1,11 +1,13 @@
-<div
-      *ngIf="toastMessage$() as toastMessage" 
+@if(toastMessage$().length){
+  @for(toast of toastMessage$();track toastMessage$())
+  {
+    <div
       class="toast-container position-fixed bottom-0 end-0 p-3"
       style="z-index: 1050"
     >
       <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-          <strong class="me-auto">Error</strong>
+          <strong class="me-auto">{{ NotificationType[toast.type] }}</strong>
           <small>just now</small>
           <button
             type="button"
@@ -15,7 +17,11 @@
           ></button>
         </div>
         <div class="toast-body">
-          {{ toastMessage }}
+          {{ toast.message }}
         </div>
       </div>
     </div>
+  }
+
+}
+

@@ -92,7 +92,7 @@ table{
   background:transparent;
   color: #000
 }
-.table  th{
+.table th {
   text-align: center;
   position: sticky;
   top: -0.1px;
@@ -120,4 +120,8 @@ table{
      width: 250px;
 
    }
+}
+
+.dropdown-menu {
+  z-index: 1030; /* Higher than table headers */
 }

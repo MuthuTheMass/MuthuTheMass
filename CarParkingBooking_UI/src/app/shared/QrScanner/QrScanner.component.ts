@@ -1,27 +1,24 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {BrowserQRCodeReader, IScannerControls} from "@zxing/browser";
-import {DatePipe} from "@angular/common";
-import {LoadingComponent} from "../loading/loading.component";
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { BrowserQRCodeReader, IScannerControls } from '@zxing/browser';
+import { DatePipe } from '@angular/common';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-QrScanner',
   templateUrl: './QrScanner.component.html',
   standalone: true,
-  imports: [
-    DatePipe,
-    LoadingComponent
-  ],
-  styleUrls: ['./QrScanner.component.css']
+  imports: [LoadingComponent],
+  styleUrls: ['./QrScanner.component.css'],
 })
 export class QrScannerComponent implements OnInit, OnDestroy {
-  private codeReader: BrowserQRCodeReader | null = null;
-  private scannerControls: IScannerControls | null = null;
   scannedData: string | null = null;
   error: string | null = null;
   isScanning = false;
   isLoading = false; // Added loading state
   @Input() bookingDetails: boolean = false;
-  @Output() scannedQrCode:EventEmitter<string> = new EventEmitter<string>();
+  @Output() scannedQrCode: EventEmitter<string> = new EventEmitter<string>();
+  private codeReader: BrowserQRCodeReader | null = null;
+  private scannerControls: IScannerControls | null = null;
 
   async ngOnInit() {
     await this.initScanner();
@@ -29,6 +26,21 @@ export class QrScannerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.stopScanner();
+  }
+
+  restartScanner() {
+    this.scannedData = null;
+    this.bookingDetails = false;
+    this.error = null;
+    this.initScanner();
+  }
+
+  StopBooking(id: string) {
+    this.stopScanner();
+    this.scannedData = null;
+    this.bookingDetails = false;
+    this.error = null;
+    this.initScanner();
   }
 
   private async initScanner() {
@@ -56,7 +68,7 @@ export class QrScannerComponent implements OnInit, OnDestroy {
             // console.error('Scan error:', error);
             this.isLoading = false;
           }
-        }
+        },
       );
 
       this.isLoading = false; // Stop loading after initialization
@@ -86,20 +98,5 @@ export class QrScannerComponent implements OnInit, OnDestroy {
       this.scannerControls = null;
     }
     this.isScanning = false;
-  }
-
-  restartScanner() {
-    this.scannedData = null;
-    this.bookingDetails = false;
-    this.error = null;
-    this.initScanner();
-  }
-
-  StopBooking(id: string) {
-    this.stopScanner();
-    this.scannedData = null;
-    this.bookingDetails = false;
-    this.error = null;
-    this.initScanner();
   }
 }

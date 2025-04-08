@@ -1,40 +1,49 @@
-export interface dealerVM{
+export interface dealerVM {
+  dealerId: string;
+  dealerName: string;
+  dealerEmail: string;
+  dealerPhoneNo: string;
+  dealerDescription: string;
+  dealerTiming: {
+    monday: DealerTiming;
+    tuesday: DealerTiming;
+    wednesday: DealerTiming;
+    thursday: DealerTiming;
+    friday: DealerTiming;
+    saturday: DealerTiming;
+    sunday: DealerTiming;
+    alwaysAvailable: string;
+  };
+  dealerAddress: string;
+  dealerLandmark: string;
+  dealerCity: string;
+  dealerState: string;
+  dealerCountry: string;
   dealerStoreName: string;
-  parkingaddress: any
-  dealerName: string,
-  dealerEmail: string,
-  dealerPhoneNo: string,
-  dealerDescription: string,
-  dealerStartDate: string,
-  dealerTiming: string,
-  dealerAddress: string,
-  dealerLandmark: string,
-  dealerCity:string,
-  dealerGPSLocation: {
-    latitude: string,
-    longitude: string
-  },
-  dealerRating: number
+  dealerLocationURL: string;
+  dealerOpenOrClosed: boolean;
+  dealerRating: string;
+  oneHourAmount: string;
+  image: string;
 }
 
-export interface dealerData{
-  access:string,
-  accessToken:string,
-  email:string,
-  id:string | null,
-  userName:string
+export interface DealerTiming {
+  start: string;
+  stop: string;
 }
 
-export interface offlinebookingVM{
-  dealerEmailId:string;
-  fullName: string;
+export interface dealerData {
+  access: string;
+  accessToken: string;
   email: string;
-  mobileNumber: string;
-  address: string;
-  proof: string;
-  proofNumber: string;
-  authorityOfIssue: string;
-  vehicleNumber: string;
-  vehicleModel: string;
-  bookingDate: string;
+  id: string | null;
+  userName: string;
+}
+
+export interface UserDealerSearch {
+  dealerId: string;
+  dealerStoreName: string;
+  dealerAddress: string;
+  price: string;
+  storeImage: string;
 }
