@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingAPI", "CarParkingAPI\CarParkingAPI.csproj", "{644DCDE3-79C1-432D-863C-C2090253790C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2DAFD694-35BB-42B4-843E-87ABFDEDE770}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingBooking.QRCodeGenerator", "CarParkingBooking.QRCodeGenerator\CarParkingBooking.QRCodeGenerator.csproj", "{57325A51-AF13-4BEC-B185-BDA06C333F24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarparkingSystem.Application", "CarparkingSystem.Application\CarparkingSystem.Application.csproj", "{1696248E-C84B-4A9E-912B-F978F076BCFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingSystem.Domain", "CarParkingSystem.Domain\CarParkingSystem.Domain.csproj", "{01E001B1-C9B2-40B2-8D2E-5FE662CABA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingSystem.Infrastructure", "CarParkingSystem.Infrastructure\CarParkingSystem.Infrastructure.csproj", "{D6C0711E-ACCC-400B-BABF-1CBA6015B598}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{644DCDE3-79C1-432D-863C-C2090253790C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644DCDE3-79C1-432D-863C-C2090253790C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644DCDE3-79C1-432D-863C-C2090253790C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644DCDE3-79C1-432D-863C-C2090253790C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57325A51-AF13-4BEC-B185-BDA06C333F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57325A51-AF13-4BEC-B185-BDA06C333F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57325A51-AF13-4BEC-B185-BDA06C333F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57325A51-AF13-4BEC-B185-BDA06C333F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1696248E-C84B-4A9E-912B-F978F076BCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1696248E-C84B-4A9E-912B-F978F076BCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1696248E-C84B-4A9E-912B-F978F076BCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1696248E-C84B-4A9E-912B-F978F076BCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E001B1-C9B2-40B2-8D2E-5FE662CABA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E001B1-C9B2-40B2-8D2E-5FE662CABA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E001B1-C9B2-40B2-8D2E-5FE662CABA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E001B1-C9B2-40B2-8D2E-5FE662CABA87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C0711E-ACCC-400B-BABF-1CBA6015B598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C0711E-ACCC-400B-BABF-1CBA6015B598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C0711E-ACCC-400B-BABF-1CBA6015B598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C0711E-ACCC-400B-BABF-1CBA6015B598}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57325A51-AF13-4BEC-B185-BDA06C333F24} = {2DAFD694-35BB-42B4-843E-87ABFDEDE770}
+		{1696248E-C84B-4A9E-912B-F978F076BCFA} = {2DAFD694-35BB-42B4-843E-87ABFDEDE770}
+		{01E001B1-C9B2-40B2-8D2E-5FE662CABA87} = {2DAFD694-35BB-42B4-843E-87ABFDEDE770}
+		{D6C0711E-ACCC-400B-BABF-1CBA6015B598} = {2DAFD694-35BB-42B4-843E-87ABFDEDE770}
+	EndGlobalSection
+EndGlobal
