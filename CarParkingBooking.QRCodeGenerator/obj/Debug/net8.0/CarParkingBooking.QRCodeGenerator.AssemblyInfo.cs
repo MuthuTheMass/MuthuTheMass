@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec60bd4d9cf9dd8db1b431146f3dfadc59ee7eaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efc0b3fe207510f0fa6ca5051e043d64712230c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarParkingBooking.QRCodeGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
