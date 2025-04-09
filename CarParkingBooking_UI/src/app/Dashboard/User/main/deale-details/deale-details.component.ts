@@ -31,8 +31,8 @@ export class DealeDetailsComponent implements OnInit {
   dealerDetail = signal<dealerVM>({} as dealerVM);
   weekDays: { day: string; start: string; stop: string }[] = [];
   vehicleDetails = signal<VehicleDetailOfSingle[]>([]);
-  BookingDate: string = new Date().toLocaleDateString();
-  VehicleError: {} | null = null;
+  BookingDate: string | null = null;
+  Error: {} | null = null;
   selectedVehicleIndex: number | null = null;
   selectedVehicle: VehicleDetailOfSingle | null = null;
   customerDetails = signal<userDetails>({} as userDetails);
@@ -93,10 +93,14 @@ export class DealeDetailsComponent implements OnInit {
 
   ConfirmBooking() {
     if (this.selectedVehicleIndex == null) {
-      this.VehicleError = { VehicleCheckBox: true };
+      this.Error = { VehicleCheckBox: true };
+      return;
+    }
+    if (this.BookingDate == null) {
+      this.Error = { dateTime_Local: true };
       return;
     } else {
-      this.VehicleError = null;
+      this.Error = null;
     }
     console.log(this.customerDetails());
 
@@ -115,7 +119,7 @@ export class DealeDetailsComponent implements OnInit {
       } as CustomerDetails,
       vehicleInfo: {
         vehicleNumber: this.selectedVehicle?.vehicleNumber,
-        vehicleModel: this.selectedVehicle?.vehicleModel,
+        vehicleModel: this.selectedVehicle?.vehicleModel ?? '',
         vehicleImage: '',
       },
       bookingSource: BookingSources.User,
