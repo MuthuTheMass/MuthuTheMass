@@ -20,6 +20,7 @@ export class ErrorMessageComponent {
       minlength: `Minimum length is ${this.error?.minlength?.requiredLength}`,
       maxlength: `Maximum length is ${this.error?.maxlength?.requiredLength}`,
       pattern: 'Invalid format',
+      dateTime_Local: 'Invalid date format',
       VehicleCheckBox: 'Please select at least one vehicle',
     };
 
