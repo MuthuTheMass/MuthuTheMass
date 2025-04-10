@@ -236,6 +236,7 @@ namespace CarParkingBooking.AutoMapper
             
              CreateMap<BookingDto, CarBooking>()
             .ForMember(dest => dest.CustomerData, opt => opt.MapFrom(src => src.customerDetails))
+            .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.BookingId))
             .ForMember(dest => dest.VehicleInfo, opt => opt.MapFrom(src => src.VehicleInfo ?? new VehicleInformation()))
             .ForMember(dest => dest.BookingSource, opt => opt.MapFrom(src => src.BookingSource.ToString()))
             .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate))
@@ -249,7 +250,8 @@ namespace CarParkingBooking.AutoMapper
             .ForMember(dest => dest.EncryptedBookingId, opt => opt.Ignore())
             .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
             .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
-            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false));
+            .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false))
+            .ReverseMap();
 
         CreateMap<CustomerDetails, CustomerUserDetails>()
             .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.CustomerName))
@@ -287,7 +289,8 @@ namespace CarParkingBooking.AutoMapper
             .ForMember(dest => dest.AdvanceAmount, opt => opt.MapFrom(src => src.AdvanceAmount))
             .ForMember(dest => dest.GeneratedQrCode, opt => opt.MapFrom(src => src.GeneratedQrCode))
             .ForMember(dest => dest.DealerEmail, opt => opt.Ignore()) // ← optional: set it manually if needed
-            .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerData.CustomerId));
+            .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerData.CustomerId))
+            .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.id));
 
         }
     }

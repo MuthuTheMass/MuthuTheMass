@@ -1,5 +1,6 @@
 export interface BookingDto {
   dealerId?: string;
+  bookingId?: string;
   dealerEmail?: string;
   customerId?: string;
   customerDetails: CustomerDetails;

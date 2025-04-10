@@ -7,32 +7,59 @@
     <!-- Back Arrow -->
 
     <div class="profile">
-      <img [src]="bookingDetails()" alt="..." class="rounded mx-auto d-block" id="profile-img">
+      <img [src]="bookingDetails()?.vehicleInfo?.vehicleImage ?? '' " alt="..." class="rounded mx-auto d-block"
+           id="profile-img">
       <span class="vechile-name">Vehicle Image</span>
     </div>
     <hr class="hr hr-blurry" />
-    <form>
-      <div class="receipt-data">
-        <span>Name:SURYA PRAKASH P</span>
-      </div>
-      <div class="receipt-data">
-        <span>Booking Id: 1009233</span>
-      </div>
-      <div class="receipt-data">
-        <span>Vechile Modal: Mahindra Bolero</span>
-      </div>
-      <div class="receipt-data">
-        <span>Vechile Number: TN 18 AY 4324</span>
-      </div>
-      <div class="receipt-data">
-        <span>Booking Date: 10-01-2025</span>
-      </div>
-      <div class="receipt-data">
-        <span>Booking Time: 10:45 am</span>
+    <form class="container-fluid">
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Name: </div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().customerDetails.customerName" />
+        </div>
       </div>
 
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Booking Id: </div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().bookingId" />
+        </div>
+      </div>
 
-      <button (click)="bookingslot()" class="btn btn-outline-danger" type="button">History</button>
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Vechile Modal:  </div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().vehicleInfo?.vehicleModel" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Vechile Number:   </div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().vehicleInfo?.vehicleNumber" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Booking From: </div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().bookingDate.from" />
+        </div>
+      </div>
+      
+        <div class="row justify-content-center align-items-center mt-3 g-2">
+          <div class="col">Booking To: </div>
+          <div class="col">
+            <app-value-validators [value]="bookingDetails().bookingDate.to" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mt-3 g-2">
+          <div class="col text-center">
+            <button (click)="bookingslot()" class="btn btn-outline-danger" type="button">History</button>
+          </div>
+        </div>
     </form>
 
 

@@ -7,6 +7,8 @@ namespace CarParkingSystem.Application.Dtos.Booking
     {
         public string? DealerId { get; set; }
 
+        public string? BookingId { get; set; }
+
         public string? DealerEmail { get; set; }
 
         public string? CustomerId { get; set; }
