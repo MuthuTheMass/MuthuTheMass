@@ -10,7 +10,7 @@
 .card {
     position: relative; /* Added */
     width: 600px;
-    height: 550px;
+    height: auto;
   background-color: transparent;
   backdrop-filter: saturate(180%) blur(20px);
   border: 2px solid white;
