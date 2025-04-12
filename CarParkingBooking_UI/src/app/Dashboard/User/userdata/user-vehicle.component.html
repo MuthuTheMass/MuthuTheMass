@@ -1,36 +1,37 @@
 <div class="card">
   <div class="left-container">
-    <h1>Vehicle Image</h1>
-    <video #video width="200" height="150" autoplay></video>
-    <button (click)="capturePhoto()">Capture Photo</button>
-    <canvas #canvas width="640" height="480" style="display: none"></canvas>
-    <img #photo alt="Captured Image" />
+    <!--    <h1>Vehicle Image</h1>-->
+    <!--    <video #video autoplay height="150" width="200"></video>-->
+    <!--    <button (click)="capturePhoto()">Capture Photo</button>-->
+    <!--    <canvas #canvas height="480" style="display: none" width="640"></canvas>-->
+    <!--    <img #photo alt="Captured Image" />-->
 
-    <div class="d-grid gap-2 col-4 mx-auto">
-      <button
-        class="btn btn-primary"
-        type="button"
-        id="ebtnn"
-        (click)="userconfirmbooking()"
-      >
-        Add New Vehicle
-      </button>
+    <!--    <div class="d-grid gap-2 col-4 mx-auto">-->
+    <!--      <button-->
+    <!--        (click)="userconfirmbooking()"-->
+    <!--        class="btn btn-primary"-->
+    <!--        id="ebtnn"-->
+    <!--        type="button"-->
+    <!--      >-->
+    <!--        Add New Vehicle-->
+    <!--      </button>-->
+    <app-camera-capture />
 
-    </div>
+    <!--    </div>-->
   </div>
   <div class="right-container">
-    <form [formGroup]="vehicleDetials">
+    <form [formGroup]="vehicleDetails">
       <h3>Vehicle Details</h3>
 
       <tr>
         <td>Vehicle Number</td>
         <td>
           <input
-            type="text"
-            class="form-control"
-            aria-label="Username"
             aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
             formControlName="VehicleNumber"
+            type="text"
           />
         </td>
       </tr>
@@ -39,9 +40,9 @@
         <div class="mb-3">
           <input
             class="form-control"
-            type="file"
-            id="formFile"
             formControlName="VehicleNumberImage"
+            id="formFile"
+            type="file"
           />
         </div>
       </tr>
@@ -49,11 +50,11 @@
         <td>Owner Name</td>
         <td>
           <input
-            type="text"
-            class="form-control"
-            aria-label="Username"
             aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
             formControlName="OwnerName"
+            type="text"
           />
         </td>
       </tr>
@@ -61,11 +62,11 @@
         <td>Driver Number</td>
         <td>
           <input
-            type="text"
-            class="form-control"
-            aria-label="Username"
             aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
             formControlName="DriverNumber"
+            type="text"
           />
         </td>
       </tr>
@@ -88,12 +89,12 @@
 
           <div class="autocomplete">
             <input
-              id="myInput"
               class="form-control"
-              type="text"
+              formControlName="vehicleModal"
+              id="myInput"
               name="myCountry"
               placeholder="Country"
-              formControlName="vehicleModal"
+              type="text"
             />
           </div>
         </td>
@@ -102,11 +103,11 @@
         <td>Mobile Number</td>
         <td>
           <input
-            type="text"
-            class="form-control"
-            aria-label="Username"
             aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
             formControlName="mobileNumber"
+            type="text"
           />
         </td>
       </tr>

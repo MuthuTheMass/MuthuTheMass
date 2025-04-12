@@ -23,7 +23,7 @@ import { BalajiarComponent } from './Dashboard/User/main/balajiar/balajiar.compo
 import { ProfileComponent } from './Dashboard/User/profile/profile.component';
 import { EditdetailsComponent } from './Dashboard/User/profile/editdetails/editdetails.component';
 import { MuthubookComponent } from './Dashboard/User/muthubook/muthubook.component';
-import { UserdataComponent } from './Dashboard/User/userdata/userdata.component';
+import { UserVehicleComponent } from './Dashboard/User/userdata/user-vehicle.component';
 import { EReceiptComponent } from './Dashboard/User/e-receipt/e-receipt.component';
 import { DealeDetailsComponent } from './Dashboard/User/main/deale-details/deale-details.component';
 import { CustomerMainpageComponent } from './customer-mainpage/customer-mainpage.component';
@@ -122,7 +122,7 @@ export const routes: Routes = [
         resolve: { booking: bookingProcessResolver },
         title: 'confirm-booking',
       },
-      { path: 'uservehicle', component: UserdataComponent },
+      { path: 'uservehicle', component: UserVehicleComponent },
       { path: 'erecepit', component: EReceiptComponent },
       { path: 'notification', component: NotificationComponent, title: 'notification' },
     ],
