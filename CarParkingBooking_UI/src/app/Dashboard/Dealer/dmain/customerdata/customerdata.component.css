@@ -130,7 +130,7 @@ main{
 
 
 .card-single div:last-child i {
-color: rgb(255, 21, 119);
+color: #0b3d91;
   font-size: 3rem;
 }
 
@@ -140,10 +140,10 @@ color: rgb(255, 21, 119);
  }
 
  .card-single:last-child {
-  background: rgb(255, 21, 119);
+  background:  #0b3d91;
  }
  .card-single:last-child  h1{
-  background: rgb(255, 21, 119);
+  background:  #0b3d91;
  }
 
 
@@ -186,12 +186,12 @@ color: rgb(255, 21, 119);
    overflow: scroll;
  }
  .card-head button {
-  background:rgb(255, 21, 119);
+  background: #0b3d91;
   border-radius: 10px;
   color: #fff;
   font-size: .8rem;
   padding: .5rem 1rem;
-  border: 1px solid rgb(255, 21, 119);
+  border: 1px solid #fff;
  }
 
  button a{
@@ -282,7 +282,7 @@ background:transparent;
   text-align: center;
   position: sticky;
   top: -0.1px;
-  background:rgb(255, 21, 119);
+  background: #0b3d91;
   color: #fff;
 
 
