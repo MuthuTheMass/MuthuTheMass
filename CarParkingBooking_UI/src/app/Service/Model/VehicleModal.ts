@@ -2,6 +2,7 @@
   vehicleId: string;
   vehicleName: string;
   vehicleNumber: string;
+  vehicleNumberImage: string;
   vehicleImage: string;
   driverName: string;
   driverPhoneNumber: string;
