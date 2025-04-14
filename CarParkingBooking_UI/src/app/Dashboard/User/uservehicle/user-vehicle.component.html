@@ -5,18 +5,20 @@
         <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
           Vehicle Image
         </div>
+        <app-error-message [error]="isValid('VehicleImage')" />
         <app-camera-capture (imageCaptured)="setImage($event,'VehicleImage')"></app-camera-capture>
       </div>
       <div *slide>
         <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
           Vehicle Number Image
         </div>
+        <app-error-message [error]="isValid('VehicleNumberImage')" />
         <app-camera-capture (imageCaptured)="setImage($event,'VehicleNumberImage')"></app-camera-capture>
       </div>
     </app-sliders>
   </div>
   <div class="right-container d-flex justify-content-center align-items-center">
-    <form [formGroup]="vehicleDetails" class="">
+    <form [formGroup]="vehicleDetails" class="mt-lg-5 pt-4">
       <h3>Vehicle Details</h3>
 
       <tr>
@@ -29,6 +31,7 @@
             formControlName="VehicleNumber"
             type="text"
           />
+          <app-error-message [error]="isValid('VehicleNumber')" />
         </td>
       </tr>
       <tr>
@@ -41,6 +44,20 @@
             formControlName="OwnerName"
             type="text"
           />
+          <app-error-message [error]="isValid('OwnerName')" />
+        </td>
+      </tr>
+      <tr>
+        <td>Driver Name</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="DriverName"
+            class="form-control"
+            formControlName="DriverName"
+            type="text"
+          />
+          <app-error-message [error]="isValid('DriverName')" />
         </td>
       </tr>
       <tr>
@@ -53,25 +70,12 @@
             formControlName="DriverNumber"
             type="text"
           />
+          <app-error-message [error]="isValid('DriverNumber')" />
         </td>
       </tr>
       <tr>
-        <td>vehicle Modal</td>
+        <td>Vehicle Modal</td>
         <td>
-          <!-- <div class="dropdown">
-            <button (click)="vechilemodal()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-              <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()">
-              <a href="#about">About</a>
-              <a href="#base">Base</a>
-              <a href="#blog">Blog</a>
-              <a href="#contact">Contact</a>
-              <a href="#custom">Custom</a>
-              <a href="#support">Support</a>
-              <a href="#tools">Tools</a>
-            </div>
-          </div> -->
-
           <div class="autocomplete">
             <input
               class="form-control"
@@ -81,11 +85,13 @@
               placeholder="Country"
               type="text"
             />
+            <app-error-message [error]="isValid('vehicleModal')" />
           </div>
+
         </td>
       </tr>
       <tr>
-        <td>Mobile Number</td>
+        <td class="">Mobile Number</td>
         <td>
           <input
             aria-describedby="basic-addon1"
@@ -94,11 +100,14 @@
             formControlName="mobileNumber"
             type="text"
           />
+          <app-error-message [error]="isValid('mobileNumber')" />
         </td>
       </tr>
 
-      <button class="btn btn-success mx-3 mt-3"> Add</button>
-      <button class="btn btn-danger mx-3 mt-3"> Cancel</button>
+      <button (click)="confirmAddVehicle()" [disabled]="!this.vehicleDetails.valid" class="btn btn-success mx-3 mt-3">
+        Add
+      </button>
+      <button (click)="cancel()" class="btn btn-danger mx-3 mt-3"> Cancel</button>
     </form>
 
   </div>
