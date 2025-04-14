@@ -9,6 +9,10 @@ import { ValueValidatorsComponent } from '../../../shared/value-validators/value
 import { isValid } from 'ngx-bootstrap/chronos/create/valid';
 import { ErrorMessageComponent } from '../../../shared/error-message/error-message.component';
 import { miniVehicleModal, VehicleModal } from '../../../Service/Model/VehicleModal';
+import { BackStoreService } from '../../../Service/store/back-store.service';
+import { ToastsService } from '../../../custom_components/error_toast/toasts.service';
+import { ToastVM } from '../../../Service/Model/notificationVm';
+import { NotificationType } from '../../../Service/Enums/NotificationType';
 
 @Component({
   selector: 'app-uservehicle',
@@ -33,14 +37,19 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
     private backVehicle: VehicleDetialsService,
     protected commonService: CommonService,
     private vehicleDetailsService: VehicleDetialsService,
+    private bsStore: BackStoreService,
+    private _toastService: ToastsService,
   ) {}
 
   ngOnInit(): void {
     this.vehicleDetails = new FormGroup({
-      VehicleNumber: new FormControl('', [Validators.required]),
+      VehicleNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[A-Z]{2} \d{2} [A-Z]{2} \d{4}$/),
+      ]),
       VehicleNumberImage: new FormControl('', [Validators.required]),
       VehicleImage: new FormControl('', [Validators.required]),
-      OwnerName: new FormControl('', [Validators.required]),
+      VehicleName: new FormControl('', [Validators.required]),
       DriverName: new FormControl(),
       DriverNumber: new FormControl(),
       vehicleModal: new FormControl('', [Validators.required]),
@@ -48,6 +57,7 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
     });
 
     this.InitialEditVehicleDetails();
+    this.bsStore.getUserDetialsByEmailId();
   }
 
   ngAfterViewInit() {}
@@ -66,6 +76,7 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
 
     const vehicleDetail = {
       vehicleNumber: this.vehicleDetails.get('VehicleNumber')?.value,
+      vehicleName: this.vehicleDetails.get('VehicleName')?.value,
       vehicleImage: this.vehicleDetails.get('VehicleImage')?.value,
       vehicleNumberImage: this.vehicleDetails.get('VehicleNumberImage')?.value,
       driverName: this.vehicleDetails.get('OwnerName')?.value,
@@ -74,24 +85,36 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
       alternative_Phone_Number: this.vehicleDetails.get('mobileNumber')?.value,
     } as VehicleModal;
 
-    if (!this.vehicleDetails.errors) {
-      this.vehicleDetailsService.addVehicleDetails(this.editVehicleDetails).subscribe((res) => {
-        if (res.status === 200) {
-          alert('Vehicle Details Added Successfully');
-          this.router.navigate(['/main/dealer-details']);
-        } else {
-          alert('Failed to add vehicle details');
-        }
-      });
-    } else {
-      alert('Please fill all the required fields');
-    }
+    console.log(this.vehicleDetails);
+    console.log(vehicleDetail);
 
-    // this.router.navigate(['/main/dealer-details']);
+    if (!this.vehicleDetails.errors) {
+      this.vehicleDetailsService
+        .addVehicleDetails(vehicleDetail, this.bsStore.userDetails.getValue().email)
+        .subscribe({
+          next: () => {
+            this._toastService.showToast({
+              message: 'Successfully Vehicle Added.',
+              type: NotificationType.Success,
+            } as ToastVM);
+            this.router.navigate(['/main/dealer-details']);
+          },
+          error: (error) => {
+            console.error('Error adding vehicle details:', error);
+            this._toastService.showToast({
+              message: `Error adding vehicle details:${error}`,
+              type: NotificationType.Success,
+            } as ToastVM);
+            alert('Error adding vehicle details');
+          },
+        });
+
+      // this.router.navigate(['/main/dealer-details']);
+    }
   }
 
   setImage($event: string, formControlName: string) {
-    this.vehicleDetails.get(formControlName)?.setValue($event);
+    this.vehicleDetails.get(formControlName)?.setValue($event.split(',')[1]);
   }
 
   cancel() {

@@ -6,7 +6,8 @@ namespace CarParkingSystem.Application.Dtos.Vehicle
     {
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }
-        public IFormFile VehicleImage { get; set; }
+        public string VehicleImage { get; set; }
+        public string VehicleNumberImage { get; set; }
         public string? DriverName { get; set; }
         public string? DriverPhoneNumber { get; set; }
         public string? VehicleModel { get; set; }

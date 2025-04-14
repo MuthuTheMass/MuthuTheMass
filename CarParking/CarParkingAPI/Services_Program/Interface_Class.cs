@@ -2,6 +2,7 @@
 using CarParkingBooking.QRCodeGenerator.Generator;
 using CarParkingBooking.QRCodeGenerator.PDFGenerator;
 using CarParkingBooking.QRCodeGenerator.PDFGenerator.Builder;
+using CarparkingSystem.Application.Services.VehicleService;
 using CarParkingSystem.Application.Services.Authorization;
 using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Application.Services.DealerService;
@@ -24,6 +25,7 @@ namespace CarParkingBooking.Services_Program
             services.AddScoped<IUserProfile, UserProfile>();
             services.AddScoped<IDealerProfile, DealerProfile>();
             services.AddScoped<IUserBookingService, UserBookingService>();
+            services.AddScoped<IVehicleService, VehicleService>();
 
 
             //Repository

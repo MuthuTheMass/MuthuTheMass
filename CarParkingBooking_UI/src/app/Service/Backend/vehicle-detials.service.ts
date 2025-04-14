@@ -33,7 +33,10 @@ export class VehicleDetialsService {
     return this.http.get(environment.apiUrl + 'Vehicle/onevehicle', { params });
   }
 
-  addVehicleDetails(editVehicleDetails: VehicleModal): Observable<any> {
-    return this.http.post<any>(environment.apiUrl + 'Vehicle', editVehicleDetails);
+  addVehicleDetails(editVehicleDetails: VehicleModal, emailId: string): Observable<any> {
+    return this.http.post<any>(
+      environment.apiUrl + `Vehicle/AddVehicleFromUser?userEmailId=${emailId}`,
+      editVehicleDetails,
+    );
   }
 }

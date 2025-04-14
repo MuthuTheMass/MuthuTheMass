@@ -4,7 +4,7 @@
   vehicleNumber: string;
   vehicleNumberImage: string;
   vehicleImage: string;
-  driverName: string;
+  driverName: string | null;
   driverPhoneNumber: string;
   vehicleModel: string;
   alternative_Phone_Number: string;

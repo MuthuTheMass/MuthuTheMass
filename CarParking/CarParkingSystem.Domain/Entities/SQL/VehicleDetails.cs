@@ -10,6 +10,7 @@ namespace CarParkingSystem.Domain.Entities.SQL
         public string VehicleName { get; set; }
         public string VehicleNumber { get; set; }
         public byte[] VehicleImage { get; set; }
+        public byte[] VehicleNumberImage { get; set; }
         public string? DriverName { get; set; }
 
         [StringLength(10, MinimumLength = 10)]
@@ -22,10 +23,8 @@ namespace CarParkingSystem.Domain.Entities.SQL
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string? Alternative_Phone_Number { get; set; }
 
-        //[ForeignKey("UserDetails")]
         public string UserID { get; set; }
         [DataType(DataType.DateTime)] public DateTime? CreatedDate { get; set; } = DateTiming.GetIndianTime();
 
-        //public virtual UserDetails UserDetails { get; set; }
     }
 }
