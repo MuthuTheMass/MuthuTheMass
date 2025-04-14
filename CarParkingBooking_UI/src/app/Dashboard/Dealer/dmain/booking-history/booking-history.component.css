@@ -21,6 +21,7 @@
 .dname {
   color: white;
 }
+
 .dealerdata {
   border-bottom: 1px solid white;
 }
@@ -98,28 +99,28 @@ table{
   top: -0.1px;
   background:#fff;
   color:  #0b3d91;
-
+  z-index: 1020;
 
 }
 
 
- @media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 
-   .search {
-     width: 80%;
-     position: relative;
-     display: flex;
-     left: 50px;
-   }
+  .search {
+    width: 80%;
+    position: relative;
+    display: flex;
+    left: 50px;
+  }
 
-   .card-head h2{
-     font-size: 20px;
-   }
+  .card-head h2 {
+    font-size: 20px;
+  }
 
-   .searchTerm {
-     width: 250px;
+  .searchTerm {
+    width: 250px;
 
-   }
+  }
 }
 
 .dropdown-menu {

@@ -1,0 +1,27 @@
+<div class="camera-wrapper">
+  <!-- Show existing image -->
+  <div *ngIf="!showCamera && existingImage">
+    <img [src]="existingImage" alt="Captured image"
+         class="captured-img d-flex justify-content-center align-items-center" />
+    <button (click)="changePicture()" class="btn btn-warning mt-3" type="button">Change Picture</button>
+  </div>
+
+  <!-- Camera preview -->
+  <div *ngIf="showCamera" class="">
+    <div class="video-preview-container d-flex justify-content-center">
+      <app-loading [isloading]="isLoadingCamera" class="d-flex " />
+      <video #videoElement autoplay class="video-preview d-flex justify-content-center align-items-center" muted
+             playsinline></video>
+    </div>
+    <div class="camera-controls">
+      <button (click)="capture()" class="btn btn-success" type="button">Capture</button>
+      <button (click)="closeCamera()" class="btn btn-secondary" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <!-- If no image and camera not active -->
+  <div *ngIf="!existingImage && !showCamera">
+    <p class="text-white">No image available.</p>
+    <button (click)="openCamera()" class="btn btn-info" type="button">Take Picture</button>
+  </div>
+</div>

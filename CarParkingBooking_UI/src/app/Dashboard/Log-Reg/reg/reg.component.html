@@ -1,173 +1,172 @@
 <div class="bg-blure">
 
 
-<div class="fullbody">
-  <div class="halfbody">
-    <div class="container" id="container">
-      <div class="form-container sign-up">
-        <form [formGroup]="regpage">
-          <h5>Create Account</h5>
-          <!-- <div class="social-icons">
-        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-        <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
-    </div> -->
-          <!-- <span>
-        Or use your email for registeration
-    </span> -->
-          <input
-            type="text"
-            placeholder="Name"
-            name="fullname"
-            formControlName="fullname"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(this.regpage, 'fullname')"
+  <div class="fullbody">
+    <div class="halfbody">
+      <div class="container" id="container">
+        <div class="form-container sign-up">
+          <form [formGroup]="regpage">
+            <h5>Create Account</h5>
+            <!-- <div class="social-icons">
+          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+      </div> -->
+            <!-- <span>
+          Or use your email for registeration
+      </span> -->
+            <input
+              formControlName="fullname"
+              name="fullname"
+              placeholder="Name"
+              type="text"
+            />
+            <span
+              *ngIf="this.validate.validation(this.regpage, 'fullname')"
+              class="error"
             >*Enter the Fullname</span
-          >
-          <input
-            type="email"
-            placeholder="Email"
-            name="regemail"
-            formControlName="regemail"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(this.regpage, 'regemail')"
+            >
+            <input
+              formControlName="regemail"
+              name="regemail"
+              placeholder="Email"
+              type="email"
+            />
+            <span
+              *ngIf="this.validate.validation(this.regpage, 'regemail')"
+              class="error"
             >*Enter the Email</span
-          >
-          <input
-            type="text"
-            placeholder="mobilenumber"
-            name="mobilenumber"
-            formControlName="mobilenumber"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(this.regpage, 'mobilenumber')"
+            >
+            <input
+              formControlName="mobilenumber"
+              name="mobilenumber"
+              placeholder="mobilenumber"
+              type="text"
+            />
+            <span
+              *ngIf="this.validate.validation(this.regpage, 'mobilenumber')"
+              class="error"
             >*Enter the mobile number</span
-          >
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            formControlName="password"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(this.regpage, 'password')"
+            >
+            <input
+              formControlName="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+            />
+            <span
+              *ngIf="this.validate.validation(this.regpage, 'password')"
+              class="error"
             >*Enter the password</span
-          >
-          <input
-            type="password"
-            placeholder="confirmpassword"
-            name="confirmpassword"
-            formControlName="confirmpassword"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(this.regpage, 'confirmpassword')"
+            >
+            <input
+              formControlName="confirmpassword"
+              name="confirmpassword"
+              placeholder="confirmpassword"
+              type="password"
+            />
+            <span
+              *ngIf="this.validate.validation(this.regpage, 'confirmpassword')"
+              class="error"
             >*Confirm password</span
-          >
-          <button (click)="signin()">Sign Up
-            @if (userSignUpRotate) {
-              <i  class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
-            }
-          </button>
-          
-          <span class="Dlog"><a href="Dreg">Dealer Register</a></span>
-        </form>
-      </div>
-      <div class="form-container sign-in">
-        <form [formGroup]="login">
-          <h1>Sign In</h1>
-          <div class="social-icons">
-            <div class="button-container">
+            >
+            <button (click)="signin()">Sign Up
+              @if (userSignUpRotate) {
+                <i class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
+              }
+            </button>
 
-              <div class="glass-btn blue-btn">
-                <!--<div class="content">
-                  h
-                </div> -->
-                <img src="https://i.postimg.cc/DwbWDQTx/facebook.png" alt="facebook" style="width: 3em;">
+            <span class="Dlog"><a href="Dreg">Dealer Register</a></span>
+          </form>
+        </div>
+        <div class="form-container sign-in">
+          <form [formGroup]="login">
+            <h1>Sign In</h1>
+            <div class="social-icons">
+              <div class="button-container">
+
+                <div class="glass-btn blue-btn">
+                  <!--<div class="content">
+                    h
+                  </div> -->
+                  <img alt="facebook" src="https://i.postimg.cc/DwbWDQTx/facebook.png" style="width: 3em;">
+                </div>
+
+                <div class="glass-btn red-btn">
+                  <!-- <div class="content">
+                    e
+                  </div> -->
+                  <img alt="youtube" src="/assets/google-logo-9826.png" style="width: 2em;">
+                </div>
+
+                <div class="glass-btn amber-btn">
+                  <!-- <div class="content">
+                    y
+                  </div> -->
+                  <img alt="soundcloud" src="/assets/512x512-logo-27148.png" style="width: 2em;">
+                </div>
+
               </div>
-
-              <div class="glass-btn red-btn">
-                <!-- <div class="content">
-                  e
-                </div> -->
-                <img src="/assets/google-logo-9826.png" alt="youtube" style="width: 2em;">
-              </div>
-
-              <div class="glass-btn amber-btn">
-                <!-- <div class="content">
-                  y
-                </div> -->
-                <img src="/assets/512x512-logo-27148.png" alt="soundcloud" style="width: 2em;">
-              </div>
-
             </div>
-          </div>
-          <span> Or use your email Password </span>
+            <span> Or use your email Password </span>
 
-          <input
-            type="email"
-            placeholder="Email"
-            name="useremail"
-            formControlName="useremail"
-          />
-          <span
-            class="error"
-            *ngIf="this.validate.validation(login, 'useremail')"
+            <input
+              formControlName="useremail"
+              name="useremail"
+              placeholder="Email"
+              type="email"
+            />
+            <span
+              *ngIf="this.validate.validation(login, 'useremail')"
+              class="error"
             >Enter The Valid Email</span
-          >
+            >
 
-          <input
-            type="password"
-            placeholder="Password"
-            class="form-control"
-            name="pass"
-            formControlName="pass"
-          />
-          <span class="error" *ngIf="this.validate.validation(login, 'pass')"
+            <input
+              class="form-control"
+              formControlName="pass"
+              name="pass"
+              placeholder="Password"
+              type="password"
+            />
+            <span *ngIf="this.validate.validation(login, 'pass')" class="error"
             >Enter The Valid Password</span
-          >
-          <a href="#">Forget your Password?</a>
-          <button (click)="logininto()">Sign in 
-            @if (userSignInRotate) {
-              <i  class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
-            }
-          </button>
-          
-          <span class="Dlog"><a href="Dreg">Dealer Login</a></span>
-        </form>
-      </div>
+            >
+            <a href="#">Forget your Password?</a>
+            <button (click)="logininto()">Sign in
+              @if (userSignInRotate) {
+                <i class="fa-duotone fa-solid fa-gear fa-spin rotate" id="userSignup"></i>
+              }
+            </button>
 
-      <div class="toggle-container">
-        <div class="toggle">
-          <div class="toggle-panel toggle-left">
-            <h1>Welcome to ParkZone!</h1>
-            <p>Enter your personal details to use all of site features</p>
-            <div class="wrapper">
-              <a  class="btn-log" (click)="loginBtn()"><span>SIGN IN!</span></a>
+            <span class="Dlog"><a href="Dreg">Dealer Login</a></span>
+          </form>
+        </div>
+
+        <div class="toggle-container">
+          <div class="toggle">
+            <div class="toggle-panel toggle-left">
+              <h1>Welcome to ZenPark!</h1>
+              <p>Enter your personal details to use all of site features</p>
+              <div class="wrapper">
+                <a (click)="loginBtn()" class="btn-log"><span>SIGN IN!</span></a>
+              </div>
+
+
             </div>
-
-
-
-          </div>
-          <div class="toggle-panel toggle-right">
-            <h1>Hello, Welcome to ParkZone!</h1>
-            <p>
-              Register with your personal details to use all of site features
-            </p>
-            <div class="wrapper">
-              <a  class="btn-log" (click)="registerBtn()"><span>SIGN UP!</span></a>
+            <div class="toggle-panel toggle-right">
+              <h1>Hello, Welcome to ZenPark!</h1>
+              <p>
+                Register with your personal details to use all of site features
+              </p>
+              <div class="wrapper">
+                <a (click)="registerBtn()" class="btn-log"><span>SIGN UP!</span></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
