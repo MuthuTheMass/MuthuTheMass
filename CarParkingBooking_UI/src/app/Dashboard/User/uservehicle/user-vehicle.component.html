@@ -1,0 +1,114 @@
+<div class="card">
+  <div class="left-container d-flex justify-content-center align-items-center">
+    <app-sliders class="container">
+      <div *slide>
+        <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
+          Vehicle Image
+        </div>
+        <app-error-message [error]="isValid('VehicleImage')" />
+        <app-camera-capture (imageCaptured)="setImage($event,'VehicleImage')"></app-camera-capture>
+      </div>
+      <div *slide>
+        <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
+          Vehicle Number Image
+        </div>
+        <app-error-message [error]="isValid('VehicleNumberImage')" />
+        <app-camera-capture (imageCaptured)="setImage($event,'VehicleNumberImage')"></app-camera-capture>
+      </div>
+    </app-sliders>
+  </div>
+  <div class="right-container d-flex justify-content-center align-items-center">
+    <form [formGroup]="vehicleDetails" class="mt-lg-5 pt-4">
+      <h3>Vehicle Details</h3>
+
+      <tr>
+        <td>Vehicle Number</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
+            formControlName="VehicleNumber"
+            type="text"
+          />
+          <app-error-message [error]="isValid('VehicleNumber')" />
+        </td>
+      </tr>
+      <tr>
+        <td>Owner Name</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
+            formControlName="OwnerName"
+            type="text"
+          />
+          <app-error-message [error]="isValid('OwnerName')" />
+        </td>
+      </tr>
+      <tr>
+        <td>Driver Name</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="DriverName"
+            class="form-control"
+            formControlName="DriverName"
+            type="text"
+          />
+          <app-error-message [error]="isValid('DriverName')" />
+        </td>
+      </tr>
+      <tr>
+        <td>Driver Number</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
+            formControlName="DriverNumber"
+            type="text"
+          />
+          <app-error-message [error]="isValid('DriverNumber')" />
+        </td>
+      </tr>
+      <tr>
+        <td>Vehicle Modal</td>
+        <td>
+          <div class="autocomplete">
+            <input
+              class="form-control"
+              formControlName="vehicleModal"
+              id="myInput"
+              name="myCountry"
+              placeholder="Country"
+              type="text"
+            />
+            <app-error-message [error]="isValid('vehicleModal')" />
+          </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="">Mobile Number</td>
+        <td>
+          <input
+            aria-describedby="basic-addon1"
+            aria-label="Username"
+            class="form-control"
+            formControlName="mobileNumber"
+            type="text"
+          />
+          <app-error-message [error]="isValid('mobileNumber')" />
+        </td>
+      </tr>
+
+      <button (click)="confirmAddVehicle()" [disabled]="!this.vehicleDetails.valid" class="btn btn-success mx-3 mt-3">
+        Add
+      </button>
+      <button (click)="cancel()" class="btn btn-danger mx-3 mt-3"> Cancel</button>
+    </form>
+
+  </div>
+</div>
