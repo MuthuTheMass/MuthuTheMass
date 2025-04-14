@@ -1,8 +1,12 @@
 <div class="card">
   <div class="left-container">
-    <app-sliders>
-      <app-camera-capture *slide></app-camera-capture>
-      <app-camera-capture *slide></app-camera-capture>
+    <app-sliders class="container">
+      <div *slide>
+        <app-camera-capture></app-camera-capture>
+      </div>
+      <div *slide>
+        <app-camera-capture></app-camera-capture>
+      </div>
     </app-sliders>
 
 

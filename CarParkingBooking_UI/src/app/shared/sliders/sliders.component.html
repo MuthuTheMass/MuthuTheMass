@@ -1,8 +1,34 @@
 @if (slideTemplates.length > 0) {
-  <ngb-carousel>
-    <ng-template *ngFor="let tpl of slideTemplates; let i = index" ngbSlide>
-      <ng-container *ngTemplateOutlet="tpl"></ng-container>
-    </ng-template>
-  </ngb-carousel>
+  <div class="carousel-wrapper">
+    <!-- Carousel -->
+    <ngb-carousel
+      #carousel
+      [showNavigationArrows]="false"
+      [showNavigationIndicators]="false"
+      [interval]="0"
+      class="custom-carousel"
+    >
+      <ng-template ngbSlide *ngFor="let tpl of slideTemplates">
+        <div class="slide-content">
+          <ng-container *ngTemplateOutlet="tpl"></ng-container>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+    <!-- Custom navigation arrows (far left/right) -->
+    <button class="carousel-arrow left" (click)="carousel.prev()">‹</button>
+    <button class="carousel-arrow right" (click)="carousel.next()">›</button>
+
+    <!-- Custom indicators below -->
+    <div class="carousel-indicators">
+      <button
+        *ngFor="let tpl of slideTemplates; let i = index"
+        [class.active]="i === currentSlide"
+        (click)="selectSlide(i)"
+      ></button>
+    </div>
+  </div>
+
+
 }
 

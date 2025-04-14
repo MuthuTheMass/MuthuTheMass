@@ -4,6 +4,7 @@ import {
   ContentChildren,
   QueryList,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
@@ -16,9 +17,17 @@ import { CommonModule, NgTemplateOutlet } from '@angular/common';
 })
 export class SlidersComponent implements AfterContentInit {
   @ContentChildren(TemplateRef) templates!: QueryList<TemplateRef<any>>;
-  slideTemplates: TemplateRef<any>[] = [];
+  @ViewChild('carousel') carousel!: NgbCarousel;
 
-  ngAfterContentInit(): void {
+  slideTemplates: TemplateRef<any>[] = [];
+  currentSlide = 0;
+
+  ngAfterContentInit() {
     this.slideTemplates = this.templates.toArray();
+  }
+
+  selectSlide(index: number) {
+    this.carousel.select(`ngb-slide-${index}`);
+    this.currentSlide = index;
   }
 }
