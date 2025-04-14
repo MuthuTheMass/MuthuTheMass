@@ -13,9 +13,6 @@ import { SlidersComponent } from '../../../shared/sliders/sliders.component';
   styleUrl: './user-vehicle.component.css',
 })
 export class UserVehicleComponent implements AfterViewInit, OnInit {
-  @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('photo') photoRef!: ElementRef<HTMLImageElement>;
   editVehicleDetails!: any;
   vehicleDetails!: FormGroup;
 
@@ -39,11 +36,7 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
     this.InitialEditVehicleDetails();
   }
 
-  ngAfterViewInit() {
-    this.setupCamera().then((r) => {
-      console.log('Camera setup complete');
-    });
-  }
+  ngAfterViewInit() {}
 
   InitialEditVehicleDetails() {
     this.activateRoute.queryParamMap.subscribe((params) => {
@@ -54,34 +47,11 @@ export class UserVehicleComponent implements AfterViewInit, OnInit {
     });
   }
 
-  async setupCamera() {
-    try {
-      this.videoRef.nativeElement.srcObject = await navigator.mediaDevices.getUserMedia({
-        video: true,
-      });
-    } catch (err) {
-      console.error('Error accessing webcam: ', err);
-      alert('Could not access the webcam. Please check your settings.');
-    }
-  }
-
-  capturePhoto() {
-    const canvas = this.canvasRef.nativeElement;
-    const context = canvas.getContext('2d');
-    if (context) {
-      context.drawImage(this.videoRef.nativeElement, 0, 0, canvas.width, canvas.height);
-      const dataURL = canvas.toDataURL('image/png');
-      this.photoRef.nativeElement.src = dataURL;
-    } else {
-      console.error('Failed to get canvas context');
-    }
-  }
-
   userconfirmbooking() {
-    this.router.navigate(['/main/dealer-details']);
+    // this.router.navigate(['/main/dealer-details']);
   }
 
-  onImageCaptured($event: string) {
-    console.log('captured image', $event);
+  setImage($event: string, formControlName: string) {
+    this.vehicleDetails.get(formControlName)?.setValue($event);
   }
 }
