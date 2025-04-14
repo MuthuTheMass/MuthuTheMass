@@ -1,16 +1,19 @@
 <div class="card">
-  <div class="left-container">
+  <div class="left-container d-flex justify-content-center align-items-center">
     <app-sliders class="container">
       <div *slide>
+        <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
+          Vehicle Image
+        </div>
         <app-camera-capture></app-camera-capture>
       </div>
       <div *slide>
+        <div class="text text-white fw-bold mb-2 pb-2 border-bottom d-flex align-items-center justify-content-center">
+          Vehicle Number Image
+        </div>
         <app-camera-capture></app-camera-capture>
       </div>
     </app-sliders>
-
-
-    <!--    </div>-->
   </div>
   <div class="right-container">
     <form [formGroup]="vehicleDetails">
