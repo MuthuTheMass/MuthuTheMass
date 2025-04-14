@@ -25,10 +25,6 @@ export class CameraCaptureComponent {
   showCamera = false;
   stream: MediaStream | null = null;
 
-  ngAfterViewInit() {
-    // no-op for now, optional future usage
-  }
-
   openCamera() {
     this.showCamera = true;
     this.isLoadingCamera = true;
@@ -44,9 +40,9 @@ export class CameraCaptureComponent {
       }
     } catch (err) {
       console.error('Webcam error:', err);
-      alert(
-        'Could not access the camera. Please allow camera access or check your device settings.',
-      );
+      // alert(
+      //   'Could not access the camera. Please allow camera access or check your device settings.',
+      // );
       this.showCamera = false;
     } finally {
       this.isLoadingCamera = false;

@@ -1,21 +1,10 @@
 <div class="card">
   <div class="left-container">
-    <!--    <h1>Vehicle Image</h1>-->
-    <!--    <video #video autoplay height="150" width="200"></video>-->
-    <!--    <button (click)="capturePhoto()">Capture Photo</button>-->
-    <!--    <canvas #canvas height="480" style="display: none" width="640"></canvas>-->
-    <!--    <img #photo alt="Captured Image" />-->
+    <app-sliders>
+      <app-camera-capture *slide></app-camera-capture>
+      <app-camera-capture *slide></app-camera-capture>
+    </app-sliders>
 
-    <!--    <div class="d-grid gap-2 col-4 mx-auto">-->
-    <!--      <button-->
-    <!--        (click)="userconfirmbooking()"-->
-    <!--        class="btn btn-primary"-->
-    <!--        id="ebtnn"-->
-    <!--        type="button"-->
-    <!--      >-->
-    <!--        Add New Vehicle-->
-    <!--      </button>-->
-    <app-camera-capture />
 
     <!--    </div>-->
   </div>

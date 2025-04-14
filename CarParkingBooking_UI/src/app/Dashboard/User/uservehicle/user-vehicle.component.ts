@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { VehicleDetialsService } from '../../../Service/Backend/vehicle-detials.service';
 import { CameraCaptureComponent } from '../../../shared/camera-capture/camera-capture.component';
+import { SlidersComponent } from '../../../shared/sliders/sliders.component';
 
 @Component({
-  selector: 'app-userdata',
+  selector: 'app-uservehicle',
   standalone: true,
-  imports: [ReactiveFormsModule, CameraCaptureComponent],
+  imports: [ReactiveFormsModule, CameraCaptureComponent, SlidersComponent],
   templateUrl: './user-vehicle.component.html',
   styleUrl: './user-vehicle.component.css',
 })

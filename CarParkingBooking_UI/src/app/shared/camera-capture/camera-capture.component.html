@@ -6,8 +6,9 @@
   </div>
 
   <!-- Camera preview -->
-  <div *ngIf="showCamera">
-    <div class="video-preview-container">
+  <div *ngIf="showCamera" class="">
+    <div class="video-preview-container d-flex justify-content-center">
+      <app-loading [isloading]="isLoadingCamera" />
       <video #videoElement autoplay class="video-preview d-flex" muted playsinline></video>
     </div>
     <div class="camera-controls">
