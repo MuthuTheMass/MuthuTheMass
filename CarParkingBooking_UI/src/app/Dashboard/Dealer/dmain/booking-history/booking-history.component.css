@@ -18,9 +18,11 @@
   outline: none;
   color: #9dbfaf;
 }
+
 .dname {
   color: white;
 }
+
 .dealerdata {
   border-bottom: 1px solid white;
 }
@@ -43,9 +45,9 @@
 }
 
 .searchButton:hover{
-  background-color:  rgb(255, 21, 119);
+  background-color:   #0b3d91;
   color: #fff;
-  border:1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
 }
 
 table{
@@ -55,7 +57,7 @@ table{
 
 
 .card{
-  background: rgb(255, 21, 119);
+  background:  #0b3d91;
   width: 90%;
   position: relative;
   left: 50px;
@@ -64,11 +66,11 @@ table{
 
 }
 
-.card-head{
+.card-head {
   padding: 1rem;
 }
 
-.card-head{
+.card-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,49 +78,50 @@ table{
 }
 
 
-
-
-.table-responsive{
+.table-responsive {
   width: 100%;
   height: 550px;
   position: relative;
   left: 10px;
   border: 1px solid white;
 }
-.table td{
-  border-bottom:1px solid black ;
+
+.table td {
+  border-bottom: 1px solid black;
   text-align: center;
   padding: 20px 2px;
-  background:transparent;
-  color: #000
+  background: transparent;
+  color: #fff;
 }
+
 .table th {
   text-align: center;
   position: sticky;
-  top: 0; /* Ensure it sticks at the top */
-  background: #fff; /* Make sure header has a background */
-  color: rgb(255, 21, 119);
-  z-index: 1020; /* Higher than buttons */
+  top: -0.1px;
+  background:#fff;
+  color:  #0b3d91;
+  z-index: 1020;
+
 }
 
 
- @media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 
-   .search {
-     width: 80%;
-     position: relative;
-     display: flex;
-     left: 50px;
-   }
+  .search {
+    width: 80%;
+    position: relative;
+    display: flex;
+    left: 50px;
+  }
 
-   .card-head h2{
-     font-size: 20px;
-   }
+  .card-head h2 {
+    font-size: 20px;
+  }
 
-   .searchTerm {
-     width: 250px;
+  .searchTerm {
+    width: 250px;
 
-   }
+  }
 }
 
 .dropdown-menu {
