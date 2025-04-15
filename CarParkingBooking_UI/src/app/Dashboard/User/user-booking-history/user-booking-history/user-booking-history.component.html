@@ -1,0 +1,52 @@
+<span><p class="head-slot">Booking Order Details</p></span>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Booking Id</th>
+      <th>Vehicle Number</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Slot Number</th>
+      <th>Parking Area</th>
+      <th>QR Code</th>
+
+    </tr>
+    </thead>
+    <tbody>
+      @for (history of BookingDetailsOfUser(); track history) {
+        <tr>
+          <td data-label="Event Name">
+            <app-value-validators [value]="history.bookingId" />
+          </td>
+          <td data-label="Total Seats">
+            <app-value-validators [value]="history.vehicleNumber" />
+          </td>
+          <td data-label="Event Date">
+            <app-value-validators [value]="history.bookedDate" />
+          </td>
+          <td data-label="Seats Available">
+            <a class="btn btn__active">
+              <app-value-validators [value]="BookingProcessDetails[history.status]" />
+            </a>
+          </td>
+          <td data-label="slot number">
+            <app-value-validators [value]="history.slotNumber" />
+          </td>
+          <td data-label="Booking Status">
+            <a class="btn btn__active">
+              <app-value-validators [value]="history.parkingName" />
+            </a>
+          </td>
+          <td class="view" data-label="view details" title="View Detail">
+            <button (click)="viewDetails(history.bookingId)" class="btn btn-outline-warning" type="button"><i
+              class='bx bx-qr'></i>
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+

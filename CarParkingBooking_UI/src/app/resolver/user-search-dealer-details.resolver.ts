@@ -1,7 +1,7 @@
 import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { UserDetailsService } from '../app/Service/Backend/user-details.service';
+import { UserDetailsService } from '../Service/Backend/user-details.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserSearchDealerDetailsResolver implements Resolve<any> {

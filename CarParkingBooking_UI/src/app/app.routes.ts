@@ -13,7 +13,7 @@ import { DealeraccountComponent } from './Dashboard/Dealer/dmain/dealeraccount/d
 import { EditDealerdataComponent } from './Dashboard/Dealer/dmain/edit-dealerdata/edit-dealerdata.component';
 import { AllPaymentComponent } from './Dashboard/Dealer/dmain/all-payment/all-payment.component';
 import { ZenparkAboutComponent } from './Dashboard/home-navebar/zenpark-about/zenpark-about.component';
-import { UserBookingHistoryComponent } from './Dashboard/home-navebar/user-booking-history/user-booking-history.component';
+import { UserBookingHistoryComponent } from './Dashboard/User/user-booking-history/user-booking-history/user-booking-history.component';
 import { UserConfirmBookingComponent } from './Dashboard/User/main/user-confirm-booking/user-confirm-booking.component';
 import { UserPaymentHistoryComponent } from './Dashboard/home-navebar/user-payment-history/user-payment-history.component';
 import { MainComponent } from './Dashboard/User/main/main.component';
@@ -30,9 +30,9 @@ import { CustomerMainpageComponent } from './customer-mainpage/customer-mainpage
 import { PathwayComponent } from './Dashboard/Dealer/dmain/pathway/pathway.component';
 import { TestComponent } from './home/test/test.component';
 import { NotificationComponent } from './Dashboard/User/notification/notification.component';
-import { QrScannerComponent } from './shared/QrScanner/QrScanner.component';
-import { UserSearchDealerDetailsResolver } from '../resolver/user-search-dealer-details.resolver';
-import { bookingProcessResolver } from '../resolver/booking-process.resolver';
+import { UserSearchDealerDetailsResolver } from './resolver/user-search-dealer-details.resolver';
+import { bookingProcessResolver } from './resolver/booking-process.resolver';
+import { UserBookingHistoryResolver } from './resolver/user-booking-history-resolver.service';
 
 export const routes: Routes = [
   {
@@ -101,6 +101,9 @@ export const routes: Routes = [
         path: 'customerhistory',
         component: UserBookingHistoryComponent,
         title: 'user-booking-info-',
+        resolve: {
+          Bookings: UserBookingHistoryResolver,
+        },
       },
       {
         path: 'userpaymenthistory',
@@ -123,7 +126,10 @@ export const routes: Routes = [
         title: 'confirm-booking',
       },
       { path: 'uservehicle', component: UserVehicleComponent },
-      { path: 'erecepit', component: EReceiptComponent },
+      {
+        path: 'erecepit/:id',
+        component: EReceiptComponent,
+      },
       { path: 'notification', component: NotificationComponent, title: 'notification' },
     ],
   },

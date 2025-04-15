@@ -1,6 +1,6 @@
 
     <body>
-<app-razorpaybutton></app-razorpaybutton>
+@if(isloading == false){
         <div class = "invoice-wrapper" id = "print-area">
             <div class = "invoice">
                 <div class = "invoice-container">
@@ -16,161 +16,142 @@
                         <div class = "hr"></div>
                         <div class = "invoice-head-middle">
                             <div class = "invoice-head-middle-left text-start">
-                                <p><span class = "text-bold">Date</span>: 05/12/2020</p>
+                                <p><span class = "text-bold">Date</span>: 
+                                <app-value-validators [value]="bookingDetail()?.bookedDate ?? '' " />
+                                </p>
                             </div>
                             <div class = "invoice-head-middle-right text-end">
-                                <p><span class = "text-bold">Booking Id:</span>16789</p>
+                                <p><span class = "text-bold">Booking Id: </span>
+                                    <app-value-validators [value]="bookingDetail()?.bookingId" />
+                                </p>
                             </div>
                         </div>
                         <div class = "hr"></div>
                         <div class = "invoice-head-bottom">
                             <div class = "invoice-head-bottom-left">
                                 <ul>
-                                    <li class = 'text-bold'>Vechile  Details:</li>
-                                    <li>Smith Rhodes</li>
-                                    <li>15 Hodges Mews, High Wycombe</li>
-                                    <li>HP12 3JL</li>
-                                    <li>United Kingdom</li>
+                                    <li class = 'text-bold'>Customer Details:</li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.customerName" />
+                                    </li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.customerEmailId" />
+                                    </li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.customerMobileNumber" />
+                                    </li>
                                 </ul>
                             </div>
                             <div class = "invoice-head-bottom-right">
                                 <ul class = "text-end">
                                     <li class = 'text-bold'>Dealer Details:</li>
-                                    <li>Koice Inc.</li>
-                                    <li>2705 N. Enterprise</li>
-                                    <li>Orange, CA 89438</li>
-                                    <li>contactkoiceinc.com</li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.dealerName" />
+                                    </li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.dealerStorename" />
+                                    </li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.dealerEmail" />
+                                    </li>
+                                    <li>
+                                        <app-value-validators [value]="bookingDetail()?.dealerMobileNumber" />
+                                    </li>
+                                    <li class="">
+                                        <app-value-validators class="text-wrap text-break" [value]="bookingDetail()?.dealerAddress" />
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
 <hr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
      <div class="container">
-        <div class="user-data">
-            <h2>QR code generator</h2>
-            <input type="text" class="user-name input" placeholder="Enter your name...">
-            <input type="email" class="user-email input" placeholder="Enter your email...">
-            <input type="number" class="user-phone input" placeholder="Enter your number...">
-            <button class="generate-qr-code">Generate QR code</button>
+        <div class="invoice-head-bottom">
+        <div class = "invoice-head-bottom-left">
+            <ul>
+                <li class = 'text-bold'>Vehicle Details:</li>
+                <li>
+                    <app-value-validators [value]="bookingDetail()?.vehicleNumber" />
+                </li>
+                <li>
+                    <app-value-validators [value]="bookingDetail()?.vehicleModal" />
+                </li>
+                <li>
+                    <app-value-validators [value]="bookingDetail()?.vehicleModal" />
+                </li>
+                <li>
+                    <app-value-validators [value]="bookingDetail()?.vehicleDriverName" />
+                </li>
+                <li>
+                    <app-value-validators [value]="bookingDetail()?.vehicleDriverMobileNumber" />
+                </li>
+            </ul>
         </div>
-        <div class="qr-canvas">
-            <h2>QR code</h2>
-            <div class="loading"></div>
-            <img src="" alt="" class="qr-image">
+        <div class = "invoice-head-bottom-right">
+            <ul class = "text-end">
+                <li ></li>
+                <li>
+                    <span>Vehicle Image:</span>
+                </li>
+                <li>
+                    <img src="{{bookingDetail()?.vehicleImage}}" alt="Vehicle Image" class="img-fluid" style="width: 100px; height: 100px; border-radius: 10px;">
+                </li>
+                
+            </ul>
         </div>
     </div>
+    </div>
+<hr>
+<div class="container">
+    <div class="invoice-head-bottom">
+    <div class = "invoice-head-bottom-left">
+        <ul>
+            <li class = 'text-bold'>Booking Details:</li>
+            <li>
+                <span style="text-decoration: underline;">Booking source</span>&nbsp; :
+                <app-value-validators [value]="bookingDetail()?.bookingSource" />
+            </li>
+            <li>
+                <span style="text-decoration: underline;">Booking Status</span>&nbsp; :
+                <app-value-validators [value]="bookingDetail()?.bookingStatus" />
+            </li>
+           
+        </ul>
+    </div>
+    <div class = "invoice-head-bottom-right">
+        <ul class = "text-end">
+            <li class = 'text-bold'>Payment :</li>
+            <li>
+                <span style="text-decoration: underline;">Status</span>&nbsp; :
+                <app-value-validators [value]="bookingDetail()?.advanceAmount ? 'Done' : 'Not Done' " />
+            </li>
+            <li>
+                <span style="text-decoration: underline;">Amount</span>&nbsp; :
+                <app-value-validators [value]="bookingDetail()?.advanceAmount" />
+            </li>
+            
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col text-center pt-3">
+            @if(bookingDetail().advanceAmount == ""){
+                <app-razorpaybutton [paymentAmount]="advanceAmount"></app-razorpaybutton>
+            }
+            @else{
+                <h3>QR Code</h3>
+                <img src="{{bookingDetail()?.qrCode}}" alt="QR Code" class="img-fluid" style="width: 200px; height: 200px; border-radius: 10px;">
+            }
 
+           
+        </div>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!-- <div>
-                        <div class="container">
-                            <header>
-                                <h1>QR Code Generator</h1>
-                                <p>Paste an URL or enter text to create QR Code</p>
-                            </header>
-                            <div class="form">
-                                <input type="text" spellcheck="false" placeholder="Enter text or URL">
-                                <button>Generate QR Code</button>
-                            </div>
-                            <div class="qr-code">
-                                <img src="" alt="qr-code">
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class = "overflow-view">
-                        <div class = "invoice-body">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td class = "text-bold">Service</td>
-                                        <td class = "text-bold">Description</td>
-                                        <td class = "text-bold">Rate</td>
-                                        <td class = "text-bold">QTY</td>
-                                        <td class = "text-bold">Amount</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Design</td>
-                                        <td>Creating a website design</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Development</td>
-                                        <td>Website Development</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>SEO</td>
-                                        <td>Optimize the site for search engines (SEO)</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">10</td>
-                                        <td>$500.00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class = "invoice-body-bottom">
-                                <div class = "invoice-body-info-item border-bottom">
-                                    <div class = "info-item-td text-end text-bold">Sub Total:</div>
-                                    <div class = "info-item-td text-end">$2150.00</div>
-                                </div>
-                                <div class = "invoice-body-info-item border-bottom">
-                                    <div class = "info-item-td text-end text-bold">Tax:</div>
-                                    <div class = "info-item-td text-end">$215.00</div>
-                                </div>
-                                <div class = "invoice-body-info-item">
-                                    <div class = "info-item-td text-end text-bold">Total:</div>
-                                    <div class = "info-item-td text-end">$21365.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+</div>
                     <div class = "invoice-foot text-center">
                         <p><span class = "text-bold text-center">NOTE:&nbsp;</span>This is computer generated receipt and does not require physical signature.</p>
 
@@ -194,4 +175,7 @@
         </div>
 
         <script src = "script.js"></script>
+    }
     </body>
+
+    <app-loading [isloading]="isloading"></app-loading>

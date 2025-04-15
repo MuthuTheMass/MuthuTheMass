@@ -3,21 +3,19 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-value-validators',
   templateUrl: './value-validators.component.html',
-  styleUrls: ['./value-validators.component.css']
+  styleUrls: ['./value-validators.component.css'],
 })
 export class ValueValidatorsComponent implements OnInit {
-
   @Input() value: any | null;
   protected _value: any;
- 
-  constructor() { }
+
+  constructor() {}
 
   ngOnInit() {
-    this._value = "N/A";
+    this._value = 'N/A';
     var index = 0;
-    console.log('value:', this.value);
     const valueHandlers: Record<string, () => string> = {
-      'Date': () => {
+      Date: () => {
         const date = new Date(this.value);
         const options: Intl.DateTimeFormatOptions = {
           day: '2-digit',
@@ -26,22 +24,21 @@ export class ValueValidatorsComponent implements OnInit {
           hour: '2-digit',
           minute: '2-digit',
           hour12: true,
-          timeZone: 'UTC'
+          timeZone: 'UTC',
         };
         const formattedDate = date.toLocaleString('en-GB', options).replace(',', '');
         const [day, month, year, time] = formattedDate.split(' ');
         return `${day} ${month} ${year}, ${time}`;
       },
-      'default': () => this.value.toString()
+      default: () => this.value.toString(),
     };
-    
-    if (this.value?.toString().trim()) {
+
+     if (this.value?.toString().trim()) {
       const isDate = this.isStrictDate(this.value);
       const type = isDate ? 'Date' : 'default';
       this._value = valueHandlers[type]();
+    }
   }
-}
-
 
   isStrictDate(val: any): boolean {
     if (val instanceof Date && !isNaN(val.getTime())) {

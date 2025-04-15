@@ -24,7 +24,12 @@ export class BackStoreService {
   constructor() {}
 
   getUserDetialsByEmailId() {
-    var userData = JSON.parse(localStorage.getItem('User') ?? ({} as any));
-    this.userDetails.next(userData as userDetails);
+    if (
+      this.userDetails.getValue().email == null ||
+      this.userDetails.getValue().email == undefined
+    ) {
+      var userData = JSON.parse(localStorage.getItem('User') ?? ({} as any));
+      this.userDetails.next(userData as userDetails);
+    }
   }
 }

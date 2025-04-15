@@ -124,7 +124,8 @@ export class DealeDetailsComponent implements OnInit {
       },
       bookingSource: BookingSources.User,
       bookingDate: {
-        from: new Date(this.BookingDate),
+        userBookingDate: new Date(this.BookingDate!),
+        from: undefined,
         to: undefined,
       } as CarBookingDates,
       advanceAmount: '',

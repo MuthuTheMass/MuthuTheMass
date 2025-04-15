@@ -82,5 +82,13 @@ namespace CarParkingBooking.Controllers
                 return BadRequest(result);
             }
         }
+
+        [HttpGet]
+        [Route(nameof(AdvanceAmountOfDealer))]
+        public async Task<IActionResult> AdvanceAmountOfDealer(string dealerEmail)
+        {
+            var result = await dealerData.GetDealerByEmail(dealerEmail);
+            return Ok(result.OneHourAmount);
+        }
     }
 }

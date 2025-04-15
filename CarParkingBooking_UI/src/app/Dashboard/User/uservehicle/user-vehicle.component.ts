@@ -17,13 +17,7 @@ import { NotificationType } from '../../../Service/Enums/NotificationType';
 @Component({
   selector: 'app-uservehicle',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    CameraCaptureComponent,
-    SlidersComponent,
-    ValueValidatorsComponent,
-    ErrorMessageComponent,
-  ],
+  imports: [ReactiveFormsModule, CameraCaptureComponent, SlidersComponent, ErrorMessageComponent],
   templateUrl: './user-vehicle.component.html',
   styleUrl: './user-vehicle.component.css',
 })

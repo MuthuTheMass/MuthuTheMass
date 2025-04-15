@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 declare var Razorpay: any;
 
 @Component({
@@ -14,7 +14,7 @@ export class RazorpaybuttonComponent implements OnInit {
   ngOnInit() {
   }
 
-  paymentAmount: number = 100; // Amount in INR
+  @Input() paymentAmount: number = 100; // Amount in INR
   currency: string = 'INR';
   upiId: string = 'razorpay.me/@carparking1144';
   key:string = 'rzp_test_K5F8atqTrPzCOi';

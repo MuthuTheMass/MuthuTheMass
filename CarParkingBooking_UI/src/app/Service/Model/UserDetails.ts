@@ -1,23 +1,23 @@
-import {miniVehicleModal} from "./VehicleModal";
+import { miniVehicleModal } from './VehicleModal';
+import { BookingProcessDetails } from './BookingDealerModal';
 
-export interface userDetails{
-    userID:string,
-    name: string,
-    profilePicture: string,
-    email: string,
-    mobileNumber: string,
-    address: string
-    carDetails:miniVehicleModal[]
+export interface userDetails {
+  userID: string;
+  name: string;
+  profilePicture: string;
+  email: string;
+  mobileNumber: string;
+  address: string;
+  carDetails: miniVehicleModal[];
 }
 
 export interface UserUpdateData {
-  Address: string,
-  Email: string,
-  MobileNumber: string,
-  Name: string,
-  ProfilePicture: File
+  Address: string;
+  Email: string;
+  MobileNumber: string;
+  Name: string;
+  ProfilePicture: File;
 }
-
 
 export interface DashboardDetailsForDealer {
   newCustomers?: UserDetailsForDealer[];
@@ -25,7 +25,6 @@ export interface DashboardDetailsForDealer {
   bookedSlots: number;
   totalSlots: number;
   recentBookings?: RecentBookingInDealerDashBoard[];
-
 }
 
 export interface UserDetailsForDealer {
@@ -43,3 +42,11 @@ export interface RecentBookingInDealerDashBoard {
   qRCode: string;
 }
 
+export interface BookingInUserDashBoard {
+  bookingId: string;
+  vehicleNumber: string;
+  bookedDate: Date | null;
+  status: BookingProcessDetails;
+  slotNumber: string;
+  parkingName: string;
+}

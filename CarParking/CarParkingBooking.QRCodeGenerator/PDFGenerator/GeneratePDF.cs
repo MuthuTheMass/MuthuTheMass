@@ -1,4 +1,5 @@
 using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Domain.Helper;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
@@ -24,15 +25,35 @@ public class GeneratePdf : IGeneratePdf
         var valueFont = FontFactory.GetFont("Helvetica", 12);
 
         // Header
-        var headerTable = new PdfPTable(1) { WidthPercentage = 100 };
-        var headerCell = new PdfPCell(new Phrase("Zenpark Booking Confirmation", titleFont))
+        var headerTable = new PdfPTable(2)
+        {
+            WidthPercentage = 100
+        };
+        headerTable.SetWidths(new float[] { 70f, 30f }); // Adjust the width ratio of the columns
+
+        // Left Cell - Title
+        var titleCell = new PdfPCell(new Phrase("Zenpark Booking Confirmation", titleFont))
         {
             BackgroundColor = new BaseColor(0, 102, 204),
             HorizontalAlignment = Element.ALIGN_CENTER,
             Padding = 12,
             Border = Rectangle.NO_BORDER
         };
-        headerTable.AddCell(headerCell);
+
+        // Right Cell - Date
+        var dateCell = new PdfPCell(new Phrase(DateTiming.GetIndianTime().ToString("dd MMM yyyy HH:mm"), titleFont))
+        {
+            BackgroundColor = new BaseColor(0, 102, 204),
+            HorizontalAlignment = Element.ALIGN_RIGHT,
+            Padding = 12,
+            Border = Rectangle.NO_BORDER
+        };
+
+        // Add both cells to the table
+        headerTable.AddCell(titleCell);
+        headerTable.AddCell(dateCell);
+
+        // Add the table to the document
         document.Add(headerTable);
 
         // Spacer

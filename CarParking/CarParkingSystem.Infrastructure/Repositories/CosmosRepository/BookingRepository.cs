@@ -22,6 +22,7 @@ public interface IBookingRepository
     Task<List<UserDetailsNewCustomer>> GetUserByConfirmedBookingForDealer(string dealerId);
     
     Task<CarBooking?> GetSingleBookingByDate(DateTime dateTime, string customerName);
+    Task<List<CarBooking>> GetBookingByUser(string emailId);
 }
 
 public class BookingRepository : IBookingRepository
@@ -154,7 +155,7 @@ public class BookingRepository : IBookingRepository
     {
         var query = Container.GetItemLinqQueryable<CarBooking>();
         var feedIterator = query
-            .Where(b => b.BookingDate.From == dateTime && b.CustomerData.CustomerEmail.ToLower().Contains(customerName.ToLower())).ToFeedIterator();
+            .Where(b => b.BookingDate.UserBookingDate == dateTime && b.CustomerData.CustomerEmail.ToLower().Contains(customerName.ToLower())).ToFeedIterator();
         
         return feedIterator.HasMoreResults ? (await feedIterator.ReadNextAsync()).FirstOrDefault() : null;
     }
@@ -189,5 +190,23 @@ public class BookingRepository : IBookingRepository
 
         Console.WriteLine($"User {carBooking.id} updated successfully.");
         return true;
+    }
+
+    public async Task<List<CarBooking>> GetBookingByUser(string emailId)
+    {
+        var queryable = Container.GetItemLinqQueryable<CarBooking>();
+        var iterator = queryable.Where(b => b.CustomerData.CustomerEmail != null && b.CustomerData.CustomerEmail.Equals(emailId))
+            .ToFeedIterator();
+
+        List<CarBooking> result = new();
+        while (iterator.HasMoreResults)
+        {
+            FeedResponse<CarBooking> response = await iterator.ReadNextAsync();
+            foreach (var item in response)
+            {
+                result.Add(item);
+            }
+        }
+        return result;
     }
 }

@@ -63,4 +63,36 @@ namespace CarParkingSystem.Application.Dtos.Booking
         string? BookingStatus,
         string? AllottedSlots
     );
+
+    public record UserBookingHistory(
+        string BookingId,
+        string VehicleNumber,
+        DateTime? BookedDate,
+        BookingProcessDetails Status,
+        string SlotNumber,
+        string ParkingName
+        );
+    
+    public record PreUserBookingDetails(
+        DateTime BookedDate,
+        string BookingId,
+        string CustomerName,
+        string CustomerMobileNumber,
+        string CustomerEmailId,
+        string DealerName,
+        string DealerStorename,
+        string DealerEmail,
+        string DealerMobileNumber,
+        string DealerAddress,
+        string VehicleNumber,
+        string VehicleModal,
+        string? VehicleDriverName,
+        string? VehicleDriverMobileNumber,
+        string  VehicleImage,
+        string QrCode,
+        string BookingStatus,
+        string BookingSource,
+        string AdvanceAmount,
+        string AllotedSlots
+        );
 }

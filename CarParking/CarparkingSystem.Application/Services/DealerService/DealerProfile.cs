@@ -23,6 +23,7 @@ public interface IDealerProfile
     Task<DashboardDetailsForDealer?> GetUsersByDealer(string emailId);
     
     Task<DealerDto> GetDealerById(string id);
+    Task<DealerDto> GetDealerByEmail(string emailId);
 
     Task<bool> DealerBookingOffline(BookingDto offlineBooking);
 
@@ -268,5 +269,11 @@ public class DealerProfile : IDealerProfile
         }
 
         return null;
+    }
+
+    public async Task<DealerDto> GetDealerByEmail(string emailId)
+    {
+        var data = await _dealerRepository.GetUserByEmail(emailId);
+        return _mapper.Map<DealerDto>(data);
     }
 }

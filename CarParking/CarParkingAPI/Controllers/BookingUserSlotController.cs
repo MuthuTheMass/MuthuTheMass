@@ -85,8 +85,8 @@ namespace CarParkingBooking.Controllers
             var pdfBytes = await _generatePdf.BookingConfirmation(confirmedBooking);
             return File(pdfBytes, "application/pdf", $"ZenPark_{confirmedBooking.BookingId}");
         }
-        
-        
+
+
         #region UserSide
 
         [HttpPost("UserBooking")]
@@ -114,7 +114,34 @@ namespace CarParkingBooking.Controllers
             var result = await _bookingData.GetSingleBookingAsync(dateTime, customerEmail);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route(nameof(GetBookingHistoryForUser))]
+        public async Task<IActionResult> GetBookingHistoryForUser([FromQuery] string emailId)
+        {
+            var result = await _bookingData.GetUserBookingHistoryAsync(emailId);
+            if (result.Count() >= 0)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpGet]
+        [Route(nameof(FetchUserBookingDownload))]
+        public async Task<IActionResult> FetchUserBookingDownload([FromQuery] string bookingId)
+        {
+            var result =  await _bookingData.GetFirstBookingDetialByBookingIdAsync(bookingId);
+            return Ok(result ?? null);
+            
+        }
+
         
+
+
         #endregion
     }
 }

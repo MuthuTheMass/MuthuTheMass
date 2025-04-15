@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { BookingDto, CarBookingDetailDto } from '../../../../Service/Model/BookingDealerModal';
-import { ValueValidatorsComponent } from "../../../../shared/value-validators/value-validators.component";
+import { BookingDto } from '../../../../Service/Model/BookingDealerModal';
+import { ValueValidatorsComponent } from '../../../../shared/value-validators/value-validators.component';
 
 @Component({
   selector: 'app-user-confirm-booking',
@@ -18,14 +18,14 @@ export class UserConfirmBookingComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-ngOnInit(): void {
- this. initialize();
-}
+  ngOnInit(): void {
+    this.initialize();
+  }
 
-    initialize():void{
-      this.bookingDetails.set(this.route.snapshot.data['booking']);
-      console.log('booking confirmed details',this.bookingDetails());
-    }
+  initialize(): void {
+    this.bookingDetails.set(this.route.snapshot.data['booking']);
+    console.log('booking confirmed details', this.bookingDetails());
+  }
 
   bookingslot() {
     this.router.navigate(['/main/customerhistory']);

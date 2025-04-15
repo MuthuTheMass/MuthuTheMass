@@ -1,17 +1,24 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { userDetails, UserDetailsForDealer, UserUpdateData } from '../Model/UserDetails';
+import {
+  BookingInUserDashBoard,
+  userDetails,
+  UserDetailsForDealer,
+  UserUpdateData,
+} from '../Model/UserDetails';
 import { BackStoreService } from '../store/back-store.service';
 import { Observable } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { dealerVM } from '../Model/dealermodal';
 import { BookingDto } from '../Model/BookingDealerModal';
+import { PreUserBookingDetails } from '../Model/EreciptUserModal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDetailsService {
+
   constructor(
     private http: HttpClient,
     private bstore: BackStoreService,
@@ -47,5 +54,22 @@ export class UserDetailsService {
         '&customerEmail=' +
         customerEmail,
     );
+  }
+
+  GetAllBookingForUser(emailId: string): Observable<BookingInUserDashBoard[]> {
+    return this.http.get<BookingInUserDashBoard[]>(
+      environment.apiUrl + 'BookingUserSlot/GetBookingHistoryForUser?emailId=' + emailId,
+    );
+  }
+
+  FetchPreDownloadDetails(bookingId: string): Observable<PreUserBookingDetails> {
+    return this.http.get<PreUserBookingDetails>(
+      environment.apiUrl + `BookingUserSlot/FetchUserBookingDownload?bookingId=${bookingId}`,
+    );
+  }
+
+  PaymentInitialize(dealerId: string): Observable<string> {
+    return this.http.get<string>(
+      environment.apiUrl + `Dealer/AdvanceAmountOfDealer?dealerEmail=${dealerId}`,)
   }
 }

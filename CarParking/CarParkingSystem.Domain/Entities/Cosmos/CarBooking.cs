@@ -38,7 +38,8 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
     public class CarBookingDates
     {
-        public required DateTime From { get; set; }
+        public DateTime? UserBookingDate { get; set; }
+        public DateTime? From { get; set; }
 
         public DateTime? To { get; set; }
     }

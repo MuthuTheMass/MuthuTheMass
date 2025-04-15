@@ -114,7 +114,8 @@ public class Program
                 BookingSource = "Offline",
                 BookingDate = new CarBookingDates
                 {
-                    From = DateTiming.GetIndianTime(),
+                    UserBookingDate = DateTiming.GetIndianTime(),
+                    From = null,
                     To = null
                 },
                 CreatedDate = DateTiming.GetIndianTime().AddDays(5),

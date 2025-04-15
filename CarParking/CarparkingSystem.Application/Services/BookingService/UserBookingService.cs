@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CarParkingSystem.Application.Dtos.Booking;
+using CarParkingSystem.Application.Helper.DtoHelper;
 using CarParkingSystem.Domain.Entities.SQL;
+using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Domain.ValueObjects;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using CarParkingSystem.Infrastructure.Repositories.CosmosRepository;
@@ -13,10 +15,13 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<bool> AddBooking(BookingDto booking);
 
         Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId);
+        Task<PreUserBookingDetails> GetFirstBookingDetialByBookingIdAsync(string bookingId);
 
         Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId);
         
         Task<BookingDto> GetSingleBookingAsync(DateTime date,string customerEmail);
+
+        Task<List<UserBookingHistory>> GetUserBookingHistoryAsync(string emailId);
     }
 
     public class UserBookingService : IUserBookingService
@@ -93,6 +98,16 @@ namespace CarParkingSystem.Application.Services.BookingService
             return data;
         }
 
+        public async Task<PreUserBookingDetails> GetFirstBookingDetialByBookingIdAsync(string bookingId)
+        {
+            var data = await _bookingRepository.GetSingleBooking(bookingId);
+            var dealerInfo = await _dealerRepository.GetDealerById(data.DealerId);
+            var vehicleInfo = await _vehicleRepository.GetVehicleByNumber(data.VehicleInfo.VehicleNumber);
+            data.VehicleInfo.VehicleImage = $"data:image/png;base64,{Convert.ToBase64String(vehicleInfo?.VehicleImage)}" ?? null;
+            var convertedData = Dtos_Helper.converter(data, vehicleInfo, dealerInfo);
+            return convertedData;
+        }
+
         public async Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId)
         {
             var data = await _bookingRepository.GetBookingByQR(encryptedId);
@@ -113,6 +128,32 @@ namespace CarParkingSystem.Application.Services.BookingService
             var vehicleInfo = await _vehicleRepository.GetVehicleByNumber(data.VehicleInfo.VehicleNumber);
             data.VehicleInfo.VehicleImage = $"data:image/png;base64,{Convert.ToBase64String(vehicleInfo?.VehicleImage)}" ?? null ;
             return  _mapper.Map<CarBookingDetailDto>(data);
+        }
+
+        public async Task<List<UserBookingHistory>> GetUserBookingHistoryAsync(string emailId)
+        {
+            var data = await _bookingRepository.GetBookingByUser(emailId);
+
+            // Sort based on the numeric part of the Booking ID
+            var sortedData =  data.OrderByDescending(b => Dtos_Helper.ExtractBookingNumber(b.id)).ToList();
+
+            List<UserBookingHistory> convertedBookingHistory = new();
+
+            foreach (var booking in sortedData)
+            {
+                var dealer = await _dealerRepository.GetDealerById(booking.DealerId ?? "");
+
+                convertedBookingHistory.Add(
+                    new UserBookingHistory(booking.id, // booking.id is already "Booking-1", etc.
+                        booking.VehicleInfo.VehicleNumber,
+                        booking.CreatedDate,
+                        booking.BookingStatus.State,
+                        booking.AllottedSlots ?? "",
+                        dealer?.DealerStoreName ?? "")
+                );
+            }
+
+            return convertedBookingHistory;
         }
     }
 }

@@ -29,7 +29,8 @@ export interface VehicleInformation {
 }
 
 export interface CarBookingDates {
-  from: Date;
+  userBookingDate?: Date;
+  from?: Date;
   to?: Date;
 }
 

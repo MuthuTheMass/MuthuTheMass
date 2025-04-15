@@ -14,52 +14,59 @@
     <hr class="hr hr-blurry" />
     <form class="container-fluid">
       <div class="row justify-content-center align-items-center mt-3 g-2">
-        <div class="col">Name: </div>
+        <div class="col">Name:</div>
         <div class="col">
           <app-value-validators [value]="bookingDetails().customerDetails.customerName" />
         </div>
       </div>
 
       <div class="row justify-content-center align-items-center mt-3 g-2">
-        <div class="col">Booking Id: </div>
+        <div class="col">Booking Id:</div>
         <div class="col">
           <app-value-validators [value]="bookingDetails().bookingId" />
         </div>
       </div>
 
       <div class="row justify-content-center align-items-center mt-3 g-2">
-        <div class="col">Vechile Modal:  </div>
+        <div class="col">Vechile Modal:</div>
         <div class="col">
           <app-value-validators [value]="bookingDetails().vehicleInfo?.vehicleModel" />
         </div>
       </div>
 
       <div class="row justify-content-center align-items-center mt-3 g-2">
-        <div class="col">Vechile Number:   </div>
+        <div class="col">Vechile Number:</div>
         <div class="col">
           <app-value-validators [value]="bookingDetails().vehicleInfo?.vehicleNumber" />
         </div>
       </div>
 
       <div class="row justify-content-center align-items-center mt-3 g-2">
-        <div class="col">Booking From: </div>
+        <div class="col">Booked Date:</div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().bookingDate.userBookingDate" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Booking From:</div>
         <div class="col">
           <app-value-validators [value]="bookingDetails().bookingDate.from" />
         </div>
       </div>
-      
-        <div class="row justify-content-center align-items-center mt-3 g-2">
-          <div class="col">Booking To: </div>
-          <div class="col">
-            <app-value-validators [value]="bookingDetails().bookingDate.to" />
-          </div>
-        </div>
 
-        <div class="row justify-content-center align-items-center mt-3 g-2">
-          <div class="col text-center">
-            <button (click)="bookingslot()" class="btn btn-outline-danger" type="button">History</button>
-          </div>
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col">Booking To:</div>
+        <div class="col">
+          <app-value-validators [value]="bookingDetails().bookingDate.to" />
         </div>
+      </div>
+
+      <div class="row justify-content-center align-items-center mt-3 g-2">
+        <div class="col text-center">
+          <button (click)="bookingslot()" class="btn btn-outline-danger" type="button">History</button>
+        </div>
+      </div>
     </form>
 
 
