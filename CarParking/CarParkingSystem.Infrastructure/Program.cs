@@ -82,7 +82,17 @@ public class Program
                 UpdatedDate = null,
                 IsDeleted = false,
                 GeneratedQrCode = new byte[0],
-                AdvanceAmount = "1000",
+                Payment = new PaymentInfo()
+                {
+                    AdvanceAmount = "50",
+                    CreatedDate = DateTiming.GetIndianTime(),
+                    Due_Amount = null,
+                    Final_Amount = (decimal.Parse("50") - null).ToString(),
+                    Source = BookingSources.User,
+                    status = BookingStatus.Pending,
+                    TransactionId = Guid.NewGuid().ToString(),
+                    UpdatedDate = null,
+                },
                 BookingStatus = new Status
                 {
                     State = BookingProcessDetails.InProgress,
@@ -122,7 +132,17 @@ public class Program
                 UpdatedDate = null,
                 IsDeleted = false,
                 GeneratedQrCode = new byte[1],
-                AdvanceAmount = "2000",
+                Payment = new PaymentInfo()
+                {
+                    AdvanceAmount = "50",
+                    CreatedDate = DateTiming.GetIndianTime(),
+                    Due_Amount = null,
+                    Final_Amount = (decimal.Parse("50") - null).ToString(),
+                    Source = BookingSources.User,
+                    status = BookingStatus.Pending,
+                    TransactionId = Guid.NewGuid().ToString(),
+                    UpdatedDate = null,
+                },
                 BookingStatus = new Status
                 {
                     State = BookingProcessDetails.SlotConfirmed,

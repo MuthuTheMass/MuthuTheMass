@@ -29,7 +29,7 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
 
         public byte[]? GeneratedQrCode { get; set; }
 
-        public string? AdvanceAmount { get; set; }
+        public PaymentInfo? Payment { get; set; }
 
         public required Status BookingStatus { get; set; }
 
@@ -86,5 +86,20 @@ namespace CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities
         public string? CustomerProof { get; set; }
         public string? CustomerProofNumber { get; set; }
         public string? CustomerAuthorityOfIssue { get; set; }
+    }
+
+    public class PaymentInfo
+    {
+        public string? TransactionId { get; set; }
+        public BookingSources Source { get; set; }
+        public string? AdvanceAmount { get; set; }
+        public Currency? CurrencyMode { get; set; }
+        public modeOfPayment? PaymentMethod { get; set; }
+        public string? Due_Amount { get; set; }
+        public string? Final_Amount { get; set; }
+        public BookingStatus? status { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+
     }
 }

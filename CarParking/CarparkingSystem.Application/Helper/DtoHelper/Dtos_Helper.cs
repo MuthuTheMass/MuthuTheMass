@@ -72,7 +72,7 @@ namespace CarParkingSystem.Application.Helper.DtoHelper
                 ConvertQrByteToPngString(booking.GeneratedQrCode),
                 booking.BookingStatus.State.ToString(),
                 booking.BookingSource.ToString(),
-                booking?.AdvanceAmount ?? "",
+                booking?.Payment?.AdvanceAmount ?? "",
                 booking?.AllottedSlots ?? "");
         }
 

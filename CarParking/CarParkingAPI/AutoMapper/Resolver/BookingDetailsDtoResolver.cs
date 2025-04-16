@@ -24,7 +24,7 @@ namespace CarParkingBooking.AutoMapper.Resolver
                 source.BookingDate?.From,
                 source.BookingDate?.To,
                 ConvertQrByteToPngString(source.GeneratedQrCode), // Convert QR Code
-                source.AdvanceAmount,
+                source.Payment.AdvanceAmount,
                 source.BookingStatus?.State.ToString() ?? "Unknown", // Handle Enum
                 source.AllottedSlots
             );
@@ -54,7 +54,9 @@ namespace CarParkingBooking.AutoMapper.Resolver
                     To = source.BookingToDate
                 },
                 GeneratedQrCode = ConvertPngStringToQrByte(source.QrCode), // Convert back to Byte[]
-                AdvanceAmount = source.AdvanceAmount,
+                Payment = new PaymentInfo(){
+                    AdvanceAmount =  source.AdvanceAmount 
+                },
                 BookingStatus = new Status
                 {
                     State = Enum.TryParse<BookingProcessDetails>(source.BookingStatus, out var state)

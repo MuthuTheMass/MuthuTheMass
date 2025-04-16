@@ -255,7 +255,7 @@ namespace CarParkingBooking.AutoMapper
            .ForMember(dest => dest.BookingSource, opt => opt.MapFrom(src => src.BookingSource.ToString()))
            .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate))
            .ForMember(dest => dest.GeneratedQrCode, opt => opt.MapFrom(src => src.GeneratedQrCode))
-           .ForMember(dest => dest.AdvanceAmount, opt => opt.MapFrom(src => src.AdvanceAmount))
+           .ForMember(dest => dest.Payment.AdvanceAmount, opt => opt.MapFrom(src => src.AdvanceAmount))
            .ForMember(dest => dest.BookingStatus, opt => opt.MapFrom(src => src.BookingStatus))
            .ForMember(dest => dest.DealerId, opt => opt.MapFrom(src => src.DealerId))
            .ForMember(dest => dest.AllottedSlots, opt => opt.MapFrom(src => src.AllottedSlot))
@@ -300,7 +300,7 @@ namespace CarParkingBooking.AutoMapper
                 .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate))
                 .ForMember(dest => dest.BookingStatus, opt => opt.MapFrom(src => src.BookingStatus))
                 .ForMember(dest => dest.BookingSource, opt => opt.MapFrom(src => Enum.Parse<BookingSources>(src.BookingSource)))
-                .ForMember(dest => dest.AdvanceAmount, opt => opt.MapFrom(src => src.AdvanceAmount))
+                .ForMember(dest => dest.AdvanceAmount, opt => opt.MapFrom(src => src.Payment.AdvanceAmount))
                 .ForMember(dest => dest.GeneratedQrCode, opt => opt.MapFrom(src => src.GeneratedQrCode))
                 .ForMember(dest => dest.DealerEmail, opt => opt.Ignore()) // ← optional: set it manually if needed
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerData.CustomerId))

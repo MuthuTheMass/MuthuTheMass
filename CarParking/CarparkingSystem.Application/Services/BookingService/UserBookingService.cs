@@ -22,6 +22,7 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<BookingDto> GetSingleBookingAsync(DateTime date,string customerEmail);
 
         Task<List<UserBookingHistory>> GetUserBookingHistoryAsync(string emailId);
+        Task<bool> ProcessPaymentForUserBooking();
     }
 
     public class UserBookingService : IUserBookingService
@@ -85,7 +86,11 @@ namespace CarParkingSystem.Application.Services.BookingService
                 BookingSource = booking.BookingSource.ToString(),
                 BookingDate = booking.BookingDate,
                 GeneratedQrCode = booking.GeneratedQrCode,
-                AdvanceAmount = booking.AdvanceAmount,
+                Payment = new PaymentInfo()
+                {
+                    Source = BookingSources.Dealer,
+                    CreatedDate = DateTiming.GetIndianTime(),
+                },
                 BookingStatus = new Status()
                 {
                     State = BookingProcessDetails.InProgress,
@@ -154,6 +159,11 @@ namespace CarParkingSystem.Application.Services.BookingService
             }
 
             return convertedBookingHistory;
+        }
+
+        public async Task<bool> ProcessPaymentForUserBooking()
+        {
+            return false;
         }
     }
 }

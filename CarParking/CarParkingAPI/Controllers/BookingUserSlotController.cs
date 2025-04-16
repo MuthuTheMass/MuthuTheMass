@@ -139,7 +139,24 @@ namespace CarParkingBooking.Controllers
             
         }
 
-        
+        [HttpPost]
+        [Route(nameof(ProcessUserBookingPayment))]
+        public async Task<IActionResult> ProcessUserBookingPayment([FromQuery] string bookingId, [FromBody] string customerEmail)
+        {
+            var result = await _bookingData.ProcessPaymentForUserBooking();
+            if (result == true)
+            {
+                return Ok(result);
+            }
+            else if (result == false)
+            {
+                return UnprocessableEntity(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
 
 
         #endregion

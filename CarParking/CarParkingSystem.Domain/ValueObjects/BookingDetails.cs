@@ -14,3 +14,40 @@ public enum BookingSources
     Dealer = 0,
     User = 1,
 }
+
+public enum BookingStatus
+{
+    Failed = 0,
+    Pending = 1,
+    Success = 2,
+}
+
+public enum modeOfPayment
+{
+    Cash = 0,
+    UPI = 1,
+    Card = 2,
+    Wallet = 3,
+    NetBanking = 4,
+    Other = 5,
+}
+
+public enum Currency
+{
+    INR,
+    USD,
+    AED,
+    EUR,
+    GBP,
+    JPY,
+    CAD,
+    AUD,
+    CNY,
+    CHF,
+    SEK,
+    NZD,
+    MXN,
+    SGD,
+    HKD,
+
+}
