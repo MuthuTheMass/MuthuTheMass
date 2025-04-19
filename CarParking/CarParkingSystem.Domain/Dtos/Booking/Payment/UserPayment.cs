@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarParkingSystem.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,9 @@ namespace CarParkingSystem.Domain.Dtos.Booking.Payment
         public string? PaymentId { get; set; }
         public string? BookingId { get; set; }
         public string? CustomerEmail { get; set; }
-        public string? PaymentStatus { get; set; }
-        public string? PaymentMethod { get; set; }
+        public Currency? CurrencyMode { get; set; }
+        public BookingStatus? PaymentStatus { get; set; }
+        public modeOfPayment? PaymentMethod { get; set; }
         public string? Amount { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }

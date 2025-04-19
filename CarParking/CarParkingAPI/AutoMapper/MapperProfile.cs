@@ -10,6 +10,7 @@ using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Infrastructure.Database.CosmosDatabase.Entities;
 using System.Globalization;
+using CarParkingAPI.AutoMapper.Resolver;
 using CarParkingSystem.Domain.ValueObjects;
 using Dealers_Filter = CarParkingSystem.Domain.Dtos.Dealers.Filter;
 using Dealers_Filters = CarParkingSystem.Domain.Dtos.Dealers.Filters;
@@ -249,23 +250,23 @@ namespace CarParkingBooking.AutoMapper
 
 
             CreateMap<BookingDto, CarBooking>()
-           .ForMember(dest => dest.CustomerData, opt => opt.MapFrom(src => src.customerDetails))
-           .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.BookingId))
-           .ForMember(dest => dest.VehicleInfo, opt => opt.MapFrom(src => src.VehicleInfo ?? new VehicleInformation()))
-           .ForMember(dest => dest.BookingSource, opt => opt.MapFrom(src => src.BookingSource.ToString()))
-           .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate))
-           .ForMember(dest => dest.GeneratedQrCode, opt => opt.MapFrom(src => src.GeneratedQrCode))
-           .ForMember(dest => dest.Payment.AdvanceAmount, opt => opt.MapFrom(src => src.AdvanceAmount))
-           .ForMember(dest => dest.BookingStatus, opt => opt.MapFrom(src => src.BookingStatus))
-           .ForMember(dest => dest.DealerId, opt => opt.MapFrom(src => src.DealerId))
-           .ForMember(dest => dest.AllottedSlots, opt => opt.MapFrom(src => src.AllottedSlot))
-           .ForMember(dest => dest.id, opt => opt.Ignore()) // let it be generated separately
-           .ForMember(dest => dest.PartitionId, opt => opt.Ignore())
-           .ForMember(dest => dest.EncryptedBookingId, opt => opt.Ignore())
-           .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
-           .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
-           .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false))
-           .ReverseMap();
+                .ForMember(dest => dest.CustomerData, opt => opt.MapFrom<CustomerDataResolver>())
+                .ForMember(dest => dest.id, opt => opt.Ignore())
+                .ForMember(dest => dest.PartitionId, opt => opt.Ignore())
+                .ForMember(dest => dest.EncryptedBookingId, opt => opt.Ignore())
+                .ForMember(dest => dest.DealerId, opt => opt.MapFrom(src => src.DealerId))
+                .ForMember(dest => dest.VehicleInfo, opt => opt.MapFrom<VehicleInfoResolver>())
+                .ForMember(dest => dest.BookingSource, opt => opt.MapFrom(src => src.BookingSource.ToString()))
+                .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate))
+                .ForMember(dest => dest.GeneratedQrCode, opt => opt.MapFrom(src => src.GeneratedQrCode))
+                .ForMember(dest => dest.Payment, opt => opt.MapFrom<PaymentResolver>())
+                .ForMember(dest => dest.BookingStatus, opt => opt.MapFrom(src => src.BookingStatus))
+                .ForMember(dest => dest.AllottedSlots, opt => opt.MapFrom(src => src.AllottedSlot))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false))
+                .ReverseMap();
+
 
             CreateMap<CustomerDetails, CustomerUserDetails>()
                 .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.CustomerName))

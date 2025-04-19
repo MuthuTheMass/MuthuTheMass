@@ -1,6 +1,7 @@
 ﻿using CarParkingBooking.QRCodeGenerator.PDFGenerator;
 using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Services.BookingService;
+using CarParkingSystem.Domain.Dtos.Booking.Payment;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
@@ -9,23 +10,13 @@ namespace CarParkingBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingUserSlotController : ControllerBase
+    public class BookingUserSlotController(IUserBookingService bookingData, IGeneratePdf generatePdf) : ControllerBase
     {
-        private readonly IUserBookingService _bookingData;
-        private readonly IGeneratePdf _generatePdf;
-
-        public BookingUserSlotController(IUserBookingService bookingData, IGeneratePdf generatePdf)
-        {
-            _bookingData = bookingData;
-            _generatePdf = generatePdf;
-        }
-
-
         [HttpPost("Booking")]
         //[Authorize(Policy = AccessToUser.Dealer)]
         public async Task<IActionResult> Booking([FromBody] BookingDto booking)
         {
-            var result = await _bookingData.AddBooking(booking);
+            var result = await bookingData.AddBooking(booking);
             if (result == true)
             {
                 return Ok(result);
@@ -44,7 +35,7 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(GetSingleBookingDetailByBookingId))]
         public async Task<IActionResult> GetSingleBookingDetailByBookingId([FromQuery] string bookingId)
         {
-            var result = await _bookingData.GetSingleBookingDetialByBookingIdAsync(bookingId);
+            var result = await bookingData.GetSingleBookingDetialByBookingIdAsync(bookingId);
             if (result?.BookingId is not null)
             {
                 return Ok(result);
@@ -63,7 +54,7 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(GetBookingDetailByEncryptedId))]
         public async Task<IActionResult> GetBookingDetailByEncryptedId(string EncryptedId)
         {
-            var result = await _bookingData.GetSingleBookingAsync(EncryptedId);
+            var result = await bookingData.GetSingleBookingAsync(EncryptedId);
             if (result?.BookingId is not null)
             {
                 return Ok(result);
@@ -81,8 +72,8 @@ namespace CarParkingBooking.Controllers
         [HttpGet("generate-pdf/{id}")]
         public async Task<IActionResult> GenerateBookingPdf(string id)
         {
-            var confirmedBooking = await _bookingData.GetSingleBookingDetialByBookingIdAsync(id);
-            var pdfBytes = await _generatePdf.BookingConfirmation(confirmedBooking);
+            var confirmedBooking = await bookingData.GetSingleBookingDetialByBookingIdAsync(id);
+            var pdfBytes = await generatePdf.BookingConfirmation(confirmedBooking);
             return File(pdfBytes, "application/pdf", $"ZenPark_{confirmedBooking.BookingId}");
         }
 
@@ -92,26 +83,23 @@ namespace CarParkingBooking.Controllers
         [HttpPost("UserBooking")]
         public async Task<IActionResult> UserBooking([FromBody] BookingDto booking)
         {
-            var result = await _bookingData.AddBooking(booking);
+            var result = await bookingData.AddBooking(booking);
             if (result == true)
             {
                 return Ok(result);
             }
-            else if (result == false)
+            if (result == false)
             {
                 return UnprocessableEntity(result);
             }
-            else
-            {
-                return BadRequest(result);
-            }
+            return BadRequest(result);
         }
 
         [HttpGet("UserBooking")]
         public async Task<IActionResult> GetBookingDetailByBookingId([FromQuery] DateTime dateTime,
             [FromQuery] string customerEmail)
         {
-            var result = await _bookingData.GetSingleBookingAsync(dateTime, customerEmail);
+            var result = await bookingData.GetSingleBookingAsync(dateTime, customerEmail);
             return Ok(result);
         }
 
@@ -119,7 +107,7 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(GetBookingHistoryForUser))]
         public async Task<IActionResult> GetBookingHistoryForUser([FromQuery] string emailId)
         {
-            var result = await _bookingData.GetUserBookingHistoryAsync(emailId);
+            var result = await bookingData.GetUserBookingHistoryAsync(emailId);
             if (result.Count() >= 0)
             {
                 return Ok(result);
@@ -134,28 +122,20 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(FetchUserBookingDownload))]
         public async Task<IActionResult> FetchUserBookingDownload([FromQuery] string bookingId)
         {
-            var result =  await _bookingData.GetFirstBookingDetialByBookingIdAsync(bookingId);
+            var result = await bookingData.GetFirstBookingDetialByBookingIdAsync(bookingId);
             return Ok(result ?? null);
-            
+
         }
 
         [HttpPost]
         [Route(nameof(ProcessUserBookingPayment))]
-        public async Task<IActionResult> ProcessUserBookingPayment([FromQuery] string bookingId, [FromBody] string customerEmail)
+        public async Task<IActionResult> ProcessUserBookingPayment([FromBody] UserPayment userPayment)
         {
-            var result = await _bookingData.ProcessPaymentForUserBooking();
-            if (result == true)
-            {
+            var result = await bookingData.ProcessPaymentForUserBooking(userPayment);
+            if (result is not null)
                 return Ok(result);
-            }
-            else if (result == false)
-            {
-                return UnprocessableEntity(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
+            return result == false ? UnprocessableEntity(result) : BadRequest(result);
+
         }
 
 

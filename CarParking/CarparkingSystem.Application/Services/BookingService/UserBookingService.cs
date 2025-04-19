@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Helper.DtoHelper;
+using CarParkingSystem.Domain.Dtos.Booking.Payment;
 using CarParkingSystem.Domain.Entities.SQL;
 using CarParkingSystem.Domain.Helper;
 using CarParkingSystem.Domain.ValueObjects;
@@ -22,7 +23,7 @@ namespace CarParkingSystem.Application.Services.BookingService
         Task<BookingDto> GetSingleBookingAsync(DateTime date,string customerEmail);
 
         Task<List<UserBookingHistory>> GetUserBookingHistoryAsync(string emailId);
-        Task<bool> ProcessPaymentForUserBooking();
+        Task<bool?> ProcessPaymentForUserBooking(UserPayment userPayment);
     }
 
     public class UserBookingService : IUserBookingService
@@ -161,8 +162,27 @@ namespace CarParkingSystem.Application.Services.BookingService
             return convertedBookingHistory;
         }
 
-        public async Task<bool> ProcessPaymentForUserBooking()
+        public async Task<bool?> ProcessPaymentForUserBooking(UserPayment userPayment)
         {
+            var data = await _bookingRepository.GetSingleBooking(userPayment.BookingId ?? "");
+            if(data is null) return null;
+
+            data.Payment = new PaymentInfo()
+            {
+                Source = BookingSources.User,
+                CreatedDate = DateTiming.GetIndianTime(),
+                AdvanceAmount = userPayment.Amount,
+                PaymentMethod = userPayment.PaymentMethod,
+                status = userPayment.PaymentStatus,
+                TransactionId = userPayment.PaymentId,
+                CurrencyMode = userPayment.CurrencyMode,
+                UpdatedDate = userPayment.UpdatedDate,
+
+            };
+            data.UpdatedDate = userPayment.UpdatedDate;
+
+            await _bookingRepository.UpdateBookingDetails(data);
+
             return false;
         }
     }
