@@ -20,5 +20,10 @@
                 throw new ArgumentException("Invalid date format", nameof(date));
             }
         }
+
+        public static string FormatDateTime(this DateTime dateTime)
+        {
+            return dateTime.ToString("dd MMM yyyy HH:mm");
+        }
     }
 }

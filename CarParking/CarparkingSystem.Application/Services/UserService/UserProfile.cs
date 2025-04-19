@@ -1,5 +1,6 @@
 using AutoMapper;
 using CarParkingBookingVM.Login;
+using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Dtos.Users;
 using CarParkingSystem.Application.Dtos.Vehicle;
 using CarParkingSystem.Domain.Entities.SQL;
@@ -14,6 +15,7 @@ public interface IUserProfile
     Task<UserDataVM> GetSingleUserDetails(string emailId);
     
     Task<List<VehicleDetailOfSingle>> GetUserVehicles(string emailId);
+
 }
 
 public class UserProfile : IUserProfile

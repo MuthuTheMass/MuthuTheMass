@@ -77,7 +77,7 @@
                 <li>
                     <app-value-validators [value]="bookingDetail()?.vehicleModal" />
                 </li>
-                
+
                 <li>
                     <app-value-validators [value]="bookingDetail()?.vehicleDriverName" />
                 </li>
@@ -137,7 +137,7 @@
     <div class="row">
         <div class="col text-center pt-3">
             @if(bookingDetail().advanceAmount == ""){
-                <app-razorpaybutton [paymentAmount]="advanceAmount"></app-razorpaybutton>
+                <app-razorpaybutton [paymentAmount]="advanceAmount" (paymentResult)="handlePaymentResult($event)"></app-razorpaybutton>
             }
             @else{
                 <h3>QR Code</h3>
@@ -150,6 +150,7 @@
 </div>
 
 </div>
+                @if(bookingDetail().advanceAmount != ""){
                     <div class = "invoice-foot text-center">
                         <p><span class = "text-bold text-center">NOTE:&nbsp;</span>This is computer generated receipt and does not require physical signature.</p>
 
@@ -168,6 +169,7 @@
                             </button>
                         </div>
                     </div>
+                }
                 </div>
             </div>
         </div>

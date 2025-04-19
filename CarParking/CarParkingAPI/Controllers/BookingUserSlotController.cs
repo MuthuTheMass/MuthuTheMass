@@ -5,6 +5,7 @@ using CarParkingSystem.Domain.Dtos.Booking.Payment;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CarParkingBooking.Controllers
 {
@@ -35,7 +36,7 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(GetSingleBookingDetailByBookingId))]
         public async Task<IActionResult> GetSingleBookingDetailByBookingId([FromQuery] string bookingId)
         {
-            var result = await bookingData.GetSingleBookingDetialByBookingIdAsync(bookingId);
+            var result = await bookingData.GetSingleBookingDetailByBookingIdAsync(bookingId);
             if (result?.BookingId is not null)
             {
                 return Ok(result);
@@ -72,7 +73,7 @@ namespace CarParkingBooking.Controllers
         [HttpGet("generate-pdf/{id}")]
         public async Task<IActionResult> GenerateBookingPdf(string id)
         {
-            var confirmedBooking = await bookingData.GetSingleBookingDetialByBookingIdAsync(id);
+            var confirmedBooking = await bookingData.GetSingleBookingDetailByBookingIdAsync(id);
             var pdfBytes = await generatePdf.BookingConfirmation(confirmedBooking);
             return File(pdfBytes, "application/pdf", $"ZenPark_{confirmedBooking.BookingId}");
         }
@@ -122,7 +123,7 @@ namespace CarParkingBooking.Controllers
         [Route(nameof(FetchUserBookingDownload))]
         public async Task<IActionResult> FetchUserBookingDownload([FromQuery] string bookingId)
         {
-            var result = await bookingData.GetFirstBookingDetialByBookingIdAsync(bookingId);
+            var result = await bookingData.GetFirstBookingDetailByBookingIdAsync(bookingId);
             return Ok(result ?? null);
 
         }
@@ -138,6 +139,13 @@ namespace CarParkingBooking.Controllers
 
         }
 
+        [HttpPost]
+        [Route(nameof(DownloadUserPdf))]
+        public async Task<IActionResult> DownloadUserPdf(string bookingId)
+        {
+            var result = await bookingData.GenerateUserPDF(bookingId);
+            return File(result, "application / pdf", "BookingConfirmation.pdf");
+        }
 
         #endregion
     }

@@ -247,6 +247,8 @@ namespace CarParkingBooking.AutoMapper
                 .ReverseMap();
 
             CreateMap<CarBooking, CarBookingDetailDto>().ConvertUsing<BookingDetailsDtoResolver>();
+            CreateMap<CarBooking, CarBookingPdfDto>().ConvertUsing<BookingDetailsPDFDtoResolver>(); // Use the custom resolver for CarBooking -> CarBookingPdfDto mapping
+            CreateMap<CarBookingPdfDto, CarBooking>().ConvertUsing<BookingDetailsPDFDtoResolver>(); // Use the custom resolver for CarBookingPdfDto -> CarBooking mapping
 
 
             CreateMap<BookingDto, CarBooking>()

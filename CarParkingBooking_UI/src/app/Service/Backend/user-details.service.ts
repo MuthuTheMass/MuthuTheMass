@@ -13,6 +13,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { dealerVM } from '../Model/dealermodal';
 import { BookingDto } from '../Model/BookingDealerModal';
 import { PreUserBookingDetails } from '../Model/EreciptUserModal';
+import { UserPayment } from '../Model/Payment';
 
 @Injectable({
   providedIn: 'root',
@@ -71,5 +72,10 @@ export class UserDetailsService {
   PaymentInitialize(dealerId: string): Observable<string> {
     return this.http.get<string>(
       environment.apiUrl + `Dealer/AdvanceAmountOfDealer?dealerEmail=${dealerId}`,)
+  }
+
+
+  PaymentForAdvanceBooking(payment:UserPayment):Observable<any>{
+    return this.http.post(environment.apiUrl + 'BookingUserSlot/ProcessUserBookingPayment', payment);
   }
 }

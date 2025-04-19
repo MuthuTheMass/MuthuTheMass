@@ -32,10 +32,9 @@ export class RazorpaybuttonComponent implements OnInit {
       handler: (response: any) => {
         // ✅ Payment successful
         console.log('Payment Successful:', response);
-        alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
         this.paymentResult.emit({
+          razorpay_payment_id: response,
           status: 'success',
-          data: response
         });
       },
       prefill: {

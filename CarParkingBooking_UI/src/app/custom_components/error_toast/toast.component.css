@@ -1,0 +1,17 @@
+@import "../../../CommonStyles/colors.css";
+
+.error{
+    background-color: var(--error-red);
+}
+
+.warning{
+    background-color: var(--warning-yellow);
+}
+
+.info{
+    background-color: var(--info-blue);
+}
+
+.success{
+    background-color: var(--success-green);
+}

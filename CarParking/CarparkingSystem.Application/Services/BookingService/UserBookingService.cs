@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarParkingBooking.QRCodeGenerator.PDFGenerator;
 using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Helper.DtoHelper;
 using CarParkingSystem.Domain.Dtos.Booking.Payment;
@@ -15,8 +16,8 @@ namespace CarParkingSystem.Application.Services.BookingService
     {
         Task<bool> AddBooking(BookingDto booking);
 
-        Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId);
-        Task<PreUserBookingDetails> GetFirstBookingDetialByBookingIdAsync(string bookingId);
+        Task<CarBookingDetailDto> GetSingleBookingDetailByBookingIdAsync(string bookingId);
+        Task<PreUserBookingDetails> GetFirstBookingDetailByBookingIdAsync(string bookingId);
 
         Task<CarBookingDetailDto> GetSingleBookingAsync(string encryptedId);
         
@@ -24,6 +25,7 @@ namespace CarParkingSystem.Application.Services.BookingService
 
         Task<List<UserBookingHistory>> GetUserBookingHistoryAsync(string emailId);
         Task<bool?> ProcessPaymentForUserBooking(UserPayment userPayment);
+        Task<byte[]> GenerateUserPDF(string bookingId);
     }
 
     public class UserBookingService : IUserBookingService
@@ -104,7 +106,7 @@ namespace CarParkingSystem.Application.Services.BookingService
             return data;
         }
 
-        public async Task<PreUserBookingDetails> GetFirstBookingDetialByBookingIdAsync(string bookingId)
+        public async Task<PreUserBookingDetails> GetFirstBookingDetailByBookingIdAsync(string bookingId)
         {
             var data = await _bookingRepository.GetSingleBooking(bookingId);
             var dealerInfo = await _dealerRepository.GetDealerById(data.DealerId);
@@ -128,7 +130,7 @@ namespace CarParkingSystem.Application.Services.BookingService
             return _mapper.Map<BookingDto>(data);
         }
 
-        public async Task<CarBookingDetailDto> GetSingleBookingDetialByBookingIdAsync(string bookingId)
+        public async Task<CarBookingDetailDto> GetSingleBookingDetailByBookingIdAsync(string bookingId)
         {
             var data = await _bookingRepository.GetSingleBooking(bookingId);
             var vehicleInfo = await _vehicleRepository.GetVehicleByNumber(data.VehicleInfo.VehicleNumber);
@@ -184,6 +186,13 @@ namespace CarParkingSystem.Application.Services.BookingService
             await _bookingRepository.UpdateBookingDetails(data);
 
             return false;
+        }
+
+        public async Task<byte[]> GenerateUserPDF(string bookingId)
+        {
+            var data = await _bookingRepository.GetSingleBooking(bookingId);
+            var filePath = await new GenerateUserBookingPdf().GeneratePdfAsync(data);
+            return filePath;
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using QuestPDF.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,7 +56,7 @@ builder.Services.AddSwaggerGen(c =>
 GenerateJwtToken.Initialize(builder.Configuration);
 AppSettingValues.Initialize(builder.Configuration);
 builder.Services.AddCosmosClient(builder.Configuration);
-
+QuestPDF.Settings.License = LicenseType.Community;
 
 builder.Services.AddCors(options =>
 {
