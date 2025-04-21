@@ -78,4 +78,8 @@ export class UserDetailsService {
   PaymentForAdvanceBooking(payment:UserPayment):Observable<any>{
     return this.http.post(environment.apiUrl + 'BookingUserSlot/ProcessUserBookingPayment', payment);
   }
+
+  DownloadBookedData(bookingId:string):Observable<any>{
+    return this.http.get(environment.apiUrl + 'BookingUserSlot/DownloadUserPdf?bookingId=' + bookingId, { responseType: 'blob' });
+  }
 }

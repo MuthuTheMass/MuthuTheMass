@@ -1,4 +1,5 @@
-﻿using CarParkingBooking.QRCodeGenerator.PDFGenerator;
+﻿using System.Diagnostics.CodeAnalysis;
+using CarParkingBooking.QRCodeGenerator.PDFGenerator;
 using CarParkingSystem.Application.Dtos.Booking;
 using CarParkingSystem.Application.Services.BookingService;
 using CarParkingSystem.Domain.Dtos.Booking.Payment;
@@ -139,7 +140,7 @@ namespace CarParkingBooking.Controllers
 
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route(nameof(DownloadUserPdf))]
         public async Task<IActionResult> DownloadUserPdf(string bookingId)
         {
