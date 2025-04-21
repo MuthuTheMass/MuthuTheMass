@@ -9,6 +9,7 @@ import { PreUserBookingDetails } from '../../../Service/Model/EreciptUserModal';
 import { BackStoreService } from '../../../Service/store/back-store.service';
 import { LoadingComponent } from "../../../shared/loading/loading.component";
 import { UserPayment } from '../../../Service/Model/Payment';
+import { CustomerDetails } from '../../../Service/Model/BookingDealerModal';
 
 @Component({
   selector: 'app-e-receipt',
@@ -23,6 +24,7 @@ export class EReceiptComponent implements OnInit {
   advanceAmount: number = 0;
   isloading: boolean = true;
   bookingDetail = signal({} as PreUserBookingDetails);
+  customerdata = signal({} as CustomerDetails);
 
   constructor(
     private _userService: UserDetailsService,
@@ -44,6 +46,7 @@ export class EReceiptComponent implements OnInit {
         this.bookingDetail.set(data);
         this.isloading = false;
         this.PaymentInitialize()
+        this.setCustomerData();
       },
       error: (error) => {
         this._toast.showToast({
@@ -52,6 +55,19 @@ export class EReceiptComponent implements OnInit {
         });
       },
     });
+  }
+
+  setCustomerData() {
+    if(this.bookingDetail().customerName == null || this.bookingDetail().customerEmailId == null || this.bookingDetail().customerMobileNumber == null){
+      return;
+    }
+    const data = {
+      customerName: this.bookingDetail().customerName,
+      email: this.bookingDetail().customerEmailId,
+      mobileNumber: this.bookingDetail().customerMobileNumber,
+    }as CustomerDetails;
+
+    this.customerdata.set(data);
   }
 
   PaymentInitialize(){

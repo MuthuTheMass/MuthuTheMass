@@ -137,7 +137,11 @@
     <div class="row">
         <div class="col text-center pt-3">
             @if(bookingDetail().advanceAmount == ""){
-                <app-razorpaybutton [paymentAmount]="advanceAmount" (paymentResult)="handlePaymentResult($event)"></app-razorpaybutton>
+                <app-razorpaybutton 
+                    [paymentAmount]="advanceAmount" 
+                    (paymentResult)="handlePaymentResult($event)"
+                    [customerDetail]="customerdata()"
+                    ></app-razorpaybutton>
             }
             @else{
                 <h3>QR Code</h3>

@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CustomerDetails } from '../../../../Service/Model/BookingDealerModal';
-import { environment } from '../../../../../environments/environment';
+import { CustomerDetails } from '../../../../../Service/Model/BookingDealerModal';
+import { environment } from '../../../../../../environments/environment';
 declare var Razorpay: any;
 
 @Component({
-  selector: 'app-razorpaybutton',
-  standalone: true,
-  templateUrl: './razorpaybutton.component.html',
-  styleUrls: ['./razorpaybutton.component.css']
+  selector: 'app-offline-payment',
+  templateUrl: './offline-payment.component.html',
+  styleUrls: ['./offline-payment.component.css']
 })
-export class RazorpaybuttonComponent implements OnInit {
+export class OfflinePaymentComponent implements OnInit {
+
   @Input() paymentAmount: number = 0; // Amount in INR
   currency: string = 'INR';
   upiId: string = environment.razorUpiId;
@@ -39,8 +39,8 @@ export class RazorpaybuttonComponent implements OnInit {
         });
       },
       prefill: {
-        name: this.customerDetail.customerName,
-        email: this.customerDetail.email,
+        name: 'Customer Name',
+        email: 'customer@example.com',
         contact: this.customerDetail.mobileNumber,
         method: 'upi',
         upi: {
@@ -48,7 +48,7 @@ export class RazorpaybuttonComponent implements OnInit {
         }
       },
       notes: {
-        from: 'user'
+        address: 'Customer Address'
       },
       theme: {
         color: '#F37254'
@@ -59,6 +59,7 @@ export class RazorpaybuttonComponent implements OnInit {
   
     // ❌ Handle failure or cancellation
     rzp.on('payment.failed', (response: any) => {
+      console.error('Payment Failed:', response.error);
       alert('Payment Failed: ' + response.error.description);
       this.paymentResult.emit({
         status: 'failure',
